@@ -1,0 +1,274 @@
+# Bitcoin Network Constants
+# Centralized Bitcoin blockchain constants and network parameters
+# Maintains consistency for all Bitcoin-related technical references
+
+bitcoin_network:
+  mainnet:
+    networkId: "bitcoin-mainnet"
+    chainId: 0
+    port: 8333
+    rpcPort: 8332
+    magicBytes: "f9beb4d9"
+    addressPrefixes:
+      p2pkh: 0x00
+      p2sh: 0x05
+      bech32: "bc"
+      bech32m: "bc"
+    wifPrefix: 0x80
+    extendedKeyPrefixes:
+      public: "0488b21e"  # xpub
+      private: "0488ade4"  # xprv
+    
+  testnet:
+    networkId: "bitcoin-testnet"
+    chainId: 1
+    port: 18333
+    rpcPort: 18332
+    magicBytes: "0b110907"
+    addressPrefixes:
+      p2pkh: 0x6f
+      p2sh: 0xc4
+      bech32: "tb"
+      bech32m: "tb"
+    wifPrefix: 0xef
+    extendedKeyPrefixes:
+      public: "043587cf"  # tpub
+      private: "04358394"  # tprv
+
+  regtest:
+    networkId: "bitcoin-regtest"
+    chainId: 2
+    port: 18444
+    rpcPort: 18443
+    magicBytes: "fabfb5da"
+    addressPrefixes:
+      p2pkh: 0x6f
+      p2sh: 0xc4
+      bech32: "bcrt"
+      bech32m: "bcrt"
+
+# Bitcoin Protocol Constants
+protocol:
+  consensus:
+    maxBlockSize: 4000000  # bytes (4MB weight)
+    maxBlockBaseSize: 1000000  # bytes (1MB base)
+    maxTxSize: 100000  # bytes
+    maxTxSigOps: 4000
+    maxScriptSize: 10000  # bytes
+    maxPubkeySize: 65  # bytes
+    maxTxInSequence: 0xffffffff
+    
+  mining:
+    targetBlockTime: 600  # seconds (10 minutes)
+    difficultyAdjustmentPeriod: 2016  # blocks
+    maxDifficultyAdjustment: 4.0  # ratio
+    minDifficultyAdjustment: 0.25  # ratio
+    powLimit: "00000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+    bip34Height: 227931  # block height
+    
+  supply:
+    maxSupply: 2100000000000000  # satoshis (21M BTC)
+    initialReward: 5000000000  # satoshis (50 BTC)
+    halvingInterval: 210000  # blocks
+    subsidyHalvingBlocks: [210000, 420000, 630000, 840000, 1050000, 1260000, 1470000]
+    finalHalvingBlock: 6930000  # approximate
+    
+  transaction:
+    minTxFee: 546  # satoshis (dust limit)
+    maxStandardTxWeight: 400000  # weight units
+    standardTxNonSegwitSize: 100000  # bytes
+    witnessScaleFactor: 4
+    segwitDiscount: 0.75
+    
+  script:
+    maxOpsPerScript: 201
+    maxPubkeysPerMultisig: 20
+    maxStackSize: 1000
+    maxScriptElementSize: 520  # bytes
+    maxStandardMultisigKeys: 3  # for standard txs
+
+# Economics and Fees
+economics:
+  dust_limit: 546  # satoshis
+  default_relay_fee: 1000  # satoshis per kB
+  min_relay_fee: 1000  # satoshis per kB
+  max_money: 2100000000000000  # satoshis
+  coin: 100000000  # satoshis per BTC
+  
+  fee_estimation:
+    blocks_1: "high-priority"      # next block
+    blocks_3: "medium-priority"    # within 3 blocks
+    blocks_6: "normal-priority"    # within 6 blocks
+    blocks_25: "low-priority"      # within 25 blocks
+    blocks_144: "minimum-priority" # within 1 day
+
+# Stamps-Specific Network Constants
+stamps_network:
+  minimum_stamp_fee: 546  # satoshis
+  recommended_stamp_fee: 1000  # satoshis
+  maximum_image_size: 80000  # bytes
+  supported_image_formats: ["image/png", "image/jpeg", "image/svg+xml", "image/webp"]
+  
+  gas_prices:
+    minimum: 546  # satoshis
+    recommended: 1000  # satoshis
+    fast: 2000  # satoshis
+    maximum: 100000  # satoshis
+    
+  confirmations:
+    stamp_creation: 1  # minimum confirmations
+    token_transfer: 3  # recommended confirmations
+    nft_transfer: 6  # recommended confirmations
+    large_transfer: 6  # for significant value transfers
+    
+  indexing:
+    reorg_safe_depth: 100  # blocks
+    finality_threshold: 6  # blocks
+    pruning_depth: 50000  # blocks to keep in fast index
+
+# RPC Node Configuration
+rpc_nodes:
+  primary:
+    host: "mainnet.bitcoin.nodes"
+    port: 8332
+    ssl: true
+    timeout: 30000  # milliseconds
+    max_connections: 100
+    
+  fallback:
+    host: "backup.bitcoin.nodes"
+    port: 8332
+    ssl: true
+    timeout: 45000  # milliseconds
+    max_connections: 50
+    
+  testnet:
+    host: "testnet.bitcoin.nodes"
+    port: 18332
+    ssl: true
+    timeout: 30000  # milliseconds
+
+# Time Constants
+time:
+  block_interval_target: 600  # seconds
+  difficulty_adjustment_interval: 1209600  # seconds (2 weeks)
+  timestamp_rules:
+    max_future_time: 7200  # seconds (2 hours)
+    median_time_past: 11  # previous blocks for MTP calculation
+    
+  checkpoint_intervals:
+    major: 2016  # difficulty adjustment periods
+    minor: 144  # daily checkpoints
+    validation: 1  # every block validation
+
+# Cryptographic Constants
+cryptography:
+  hash_algorithms:
+    sha256: "SHA-256"
+    ripemd160: "RIPEMD-160"
+    hash160: "SHA-256 + RIPEMD-160"
+    double_sha256: "SHA-256(SHA-256(x))"
+    
+  signature_schemes:
+    ecdsa: "secp256k1"
+    schnorr: "secp256k1-schnorr"  # BIP340
+    
+  key_sizes:
+    private_key: 32  # bytes
+    public_key_compressed: 33  # bytes
+    public_key_uncompressed: 65  # bytes
+    signature_der_max: 73  # bytes
+    signature_compact: 64  # bytes
+
+# Network Communication
+network:
+  protocol_version: 70016
+  user_agent: "/Satoshi:24.0.0/"
+  services: 
+    network: 0x01
+    getutxo: 0x02
+    bloom: 0x04
+    witness: 0x08
+    compact_filters: 0x40
+    
+  message_limits:
+    max_message_size: 32000000  # bytes (32MB)
+    max_inventory_size: 50000
+    max_addresses_per_message: 1000
+    max_blocks_in_transit: 16
+    
+  timeouts:
+    connection: 60000  # milliseconds
+    handshake: 60000  # milliseconds
+    ping: 20000  # milliseconds
+    inventory: 2000  # milliseconds
+
+# Block Validation Constants
+validation:
+  max_future_block_time: 7200  # seconds
+  coinbase_maturity: 100  # blocks
+  bip16_switch_time: 1333238400  # Unix timestamp
+  bip65_height: 388381  # CHECKLOCKTIMEVERIFY
+  bip66_height: 363725  # strict DER signatures
+  csv_height: 419328  # BIP68/112/113
+  segwit_height: 481824  # BIP141/143/147
+  
+  script_verification_flags:
+    - "SCRIPT_VERIFY_P2SH"
+    - "SCRIPT_VERIFY_STRICTENC" 
+    - "SCRIPT_VERIFY_DERSIG"
+    - "SCRIPT_VERIFY_LOW_S"
+    - "SCRIPT_VERIFY_WITNESS"
+    - "SCRIPT_VERIFY_NULLDUMMY"
+
+# Address and Key Constants
+addresses:
+  formats:
+    legacy_p2pkh: "^[13][a-km-zA-HJ-NP-Z1-9]{25,34}$"
+    legacy_p2sh: "^3[a-km-zA-HJ-NP-Z1-9]{25,34}$"
+    segwit_v0: "^bc1[a-z0-9]{39,59}$"
+    segwit_v1: "^bc1p[a-z0-9]{58}$"
+    
+  validation:
+    checksum_required: true
+    case_sensitive: true
+    max_length: 62
+    min_length: 26
+
+# API and Integration Constants
+integration:
+  api_version: "2.1"
+  websocket_version: "1.0"
+  rest_api_limits:
+    requests_per_hour: 1000
+    max_response_size: 10485760  # 10MB
+    timeout: 30000  # milliseconds
+    
+  pagination:
+    default_page_size: 100
+    max_page_size: 1000
+    max_pages: 1000
+
+# Data Storage Constants  
+storage:
+  index_depths:
+    address_index: 50000  # blocks
+    transaction_index: 100000  # blocks
+    utxo_set: "full"  # complete UTXO set
+    
+  pruning_settings:
+    min_disk_space: 550  # MB
+    target_disk_space: 2000  # MB
+    prune_depth: 288  # blocks (2 days)
+
+# Metadata
+metadata:
+  constants_version: "1.0.0"
+  bitcoin_core_compatibility: "24.0+"
+  last_updated: "2024-01-26"
+  network_upgrade_tracking: true
+  sources:
+    - "bitcoin-core-source"
+    - "bitcoin-bips"
+    - "bitcoin-developer-documentation"
+  validation_status: "verified"

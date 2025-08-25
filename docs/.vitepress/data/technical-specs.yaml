@@ -1,0 +1,243 @@
+# Bitcoin Stamps Technical Specifications
+# Centralized protocol versions, features, and technical constants
+# Maintains consistency across all protocol documentation
+
+protocols:
+  src20:
+    version: "1.1"
+    status: "active"
+    launchBlock: 788041
+    enhancementBlock: 796000
+    features:
+      - "fungible-tokens"
+      - "decimals-support"
+      - "total-supply-cap"
+      - "transfer-functionality"
+      - "approval-system"
+      - "event-logging"
+    maxSupply: "18,446,744,073,709,551,615"
+    minTransferAmount: 1
+    decimalsSupported: 18
+    gasEfficiency: "optimized-v1.1"
+    compatibilityLevel: "bitcoin-core-24+"
+    
+  src721:
+    version: "1.0"
+    status: "active"
+    launchBlock: 796000
+    features:
+      - "non-fungible-tokens"
+      - "unique-identifiers"
+      - "metadata-support"
+      - "ownership-transfer"
+      - "approval-system"
+      - "enumerable-extension"
+    maxTokenId: "18,446,744,073,709,551,615"
+    metadataStandard: "JSON-schema"
+    imageSupport: ["PNG", "JPG", "SVG", "WebP"]
+    maxMetadataSize: "80KB"
+    compatibilityLevel: "bitcoin-core-24+"
+
+  src101:
+    version: "1.0"
+    status: "active"
+    launchBlock: 796000
+    features:
+      - "domain-names"
+      - "subdomain-support"
+      - "name-resolution"
+      - "ownership-transfer"
+      - "expiration-handling"
+    maxNameLength: 63
+    minNameLength: 1
+    allowedCharacters: "a-z0-9-"
+    registrationPeriod: "365-days"
+    renewalPeriod: "365-days"
+    maxSubdomainLevels: 5
+    compatibilityLevel: "bitcoin-core-24+"
+
+  olga:
+    version: "1.0"
+    status: "active"
+    launchBlock: 865000
+    features:
+      - "lossless-compression"
+      - "adaptive-algorithms"
+      - "multi-format-support"
+      - "metadata-preservation"
+      - "streaming-support"
+    encodingEfficiency: "up-to-90-percent"
+    supportedFormats: ["PNG", "JPG", "JSON", "TEXT", "SVG"]
+    maxInputSize: "4MB"
+    maxOutputSize: "80KB"
+    algorithmType: "adaptive-lz4-zstd"
+    compatibilityLevel: "bitcoin-core-25+"
+
+# Bitcoin Network Constants
+network:
+  bitcoin:
+    minTxFee: 546  # satoshis
+    maxTxSize: 100000  # bytes
+    maxBlockSize: 4000000  # bytes
+    targetBlockTime: 600  # seconds
+    difficultyAdjustment: 2016  # blocks
+    halvingInterval: 210000  # blocks
+    maxSupply: 21000000  # BTC
+    currentSupply: 19656250  # BTC (approximate)
+
+  stamps:
+    minStampSize: 546  # satoshis (dust limit)
+    maxImageSize: 80000  # bytes
+    defaultGasPrice: 546  # satoshis
+    recommendedGasPrice: 1000  # satoshis
+    maxGasPrice: 100000  # satoshis
+    confirmationThreshold: 6  # blocks
+    reorgSafeDepth: 100  # blocks
+
+# Transaction Specifications
+transactions:
+  stamp_creation:
+    minFee: 546  # satoshis
+    recommendedFee: 1000  # satoshis
+    maxDataSize: 80000  # bytes
+    requiredConfirmations: 1
+    encoding: "base64"
+    mimeTypes: ["image/png", "image/jpeg", "image/svg+xml", "image/webp"]
+
+  token_transfer:
+    minFee: 546  # satoshis
+    recommendedFee: 800  # satoshis
+    maxAmount: "18,446,744,073,709,551,615"
+    requiredConfirmations: 3
+    encoding: "utf8-json"
+
+  nft_transfer:
+    minFee: 546  # satoshis
+    recommendedFee: 1200  # satoshis
+    requiredConfirmations: 6
+    metadataEncoding: "utf8-json"
+
+# API Specifications
+api:
+  current_version: "v2.1"
+  supported_versions: ["v2.0", "v2.1"]
+  deprecated_versions: ["v1.0", "v1.1"]
+  base_url: "https://stampchain.io/api"
+  rate_limits:
+    anonymous: "1000/hour"
+    authenticated: "10000/hour"
+    premium: "100000/hour"
+  response_format: "json"
+  max_response_size: "10MB"
+  timeout: "30s"
+
+  endpoints:
+    stamps:
+      path: "/v2/stamps"
+      methods: ["GET"]
+      pagination: true
+      max_per_page: 1000
+      default_per_page: 100
+      
+    src20:
+      path: "/v2/src20"
+      methods: ["GET"]
+      pagination: true
+      max_per_page: 1000
+      default_per_page: 100
+
+    balances:
+      path: "/v2/balances"
+      methods: ["GET"]
+      authentication: "optional"
+      rate_limit: "enhanced"
+
+# Development Tools
+tools:
+  sdk:
+    javascript:
+      version: "2.1.0"
+      npm_package: "@btcstamps/sdk"
+      min_node_version: "16.0.0"
+      typescript_support: true
+      
+    python:
+      version: "1.0.2"
+      pip_package: "btc-stamps"
+      min_python_version: "3.8"
+      type_hints: true
+
+  cli:
+    version: "1.5.0"
+    npm_package: "@btcstamps/cli"
+    binary_name: "btc-stamps"
+    supported_platforms: ["linux", "macos", "windows"]
+
+# Data Validation Rules
+validation:
+  block_heights:
+    min: 779652  # genesis block
+    max: null    # no upper limit
+    format: "integer"
+    
+  addresses:
+    format: "bitcoin-address"
+    types: ["p2pkh", "p2sh", "p2wpkh", "p2wsh"]
+    validation: "checksum-required"
+    
+  token_amounts:
+    min: 0
+    max: "18,446,744,073,709,551,615"
+    format: "integer"
+    decimals: 18
+
+  image_data:
+    max_size: 80000  # bytes
+    formats: ["PNG", "JPEG", "SVG", "WebP"]
+    encoding: "base64"
+    validation: "mime-type-required"
+
+# Performance Benchmarks
+performance:
+  indexing_speed: "500-txs-per-second"
+  api_response_time: "<100ms-p95"
+  database_query_time: "<50ms-average"
+  image_processing_time: "<2s-per-image"
+  compression_speed: "5MB-per-second"
+
+# Compliance and Standards
+standards:
+  json_schema: "draft-07"
+  uri_format: "rfc3986"
+  datetime_format: "iso8601"
+  encoding_standards: ["utf8", "base64", "hex"]
+  hash_algorithms: ["sha256", "ripemd160"]
+
+# Error Codes and Messages
+errors:
+  validation:
+    invalid_block_height: "E001"
+    invalid_address: "E002"
+    invalid_amount: "E003"
+    invalid_image_format: "E004"
+    
+  protocol:
+    insufficient_balance: "P001"
+    token_not_found: "P002"
+    unauthorized_transfer: "P003"
+    protocol_version_mismatch: "P004"
+
+  network:
+    connection_timeout: "N001"
+    node_sync_error: "N002"
+    transaction_rejected: "N003"
+    block_not_found: "N004"
+
+# Metadata
+metadata:
+  schema_version: "1.0.0"
+  last_updated: "2024-01-26"
+  maintainers: ["bitcoin-stamps-core-team"]
+  data_sources: ["bitcoin-core", "stampchain-indexer", "protocol-specifications"]
+  validation_status: "verified"
+  breaking_changes_policy: "semantic-versioning"

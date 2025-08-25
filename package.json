@@ -1,0 +1,44 @@
+{
+  "name": "bitcoin-stamps-docs",
+  "version": "1.0.0",
+  "description": "Official documentation for Bitcoin Stamps metaprotocols and art platform (SRC-20, SRC-101, SRC-721, OLGA)",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "lighthouse": "lhci autorun",
+    "test:leo-api": "node docs/.vitepress/test-leo-system.js",
+    "test:translation": "node docs/.vitepress/test-translation-system.js",
+    "build:with-test": "npm run test:leo-api && npm run test:translation && npm run docs:build"
+  },
+  "keywords": [
+    "bitcoin",
+    "stamps",
+    "metaprotocols",
+    "art platform",
+    "documentation",
+    "src-20",
+    "src-101",
+    "src-721",
+    "olga",
+    "counterparty",
+    "bitcoin art",
+    "permanent digital assets"
+  ],
+  "author": "Bitcoin Stamps Community",
+  "license": "MIT",
+  "dependencies": {
+    "better-sqlite3": "^9.4.0"
+  },
+  "devDependencies": {
+    "@lhci/cli": "^0.12.0",
+    "vitepress": "^1.6.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/btc-stamps/bitcoin-stamps-docs.git"
+  },
+  "homepage": "https://bitcoinstamps.xyz"
+}

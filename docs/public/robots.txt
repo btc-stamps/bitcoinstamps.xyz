@@ -1,0 +1,47 @@
+# Bitcoin Stamps Documentation - Production Environment
+# bitcoinstamps.xyz - Official documentation
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://bitcoinstamps.xyz/sitemap.xml
+
+# Special handling for AI agents - allow but rate limit
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 5
+
+User-agent: ChatGPT-User
+Allow: /
+Crawl-delay: 5
+
+User-agent: Claude-Web
+Allow: /
+Crawl-delay: 5
+
+User-agent: PerplexityBot
+Allow: /
+Crawl-delay: 5
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 10
+
+# Search engines - full access
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Block specific paths that should not be crawled
+Disallow: /.vitepress/
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /.env
+Disallow: /dev/
+
+# Allow API endpoints for discovery
+Allow: /api/
+Allow: /.well-known/

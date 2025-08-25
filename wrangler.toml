@@ -1,0 +1,14 @@
+name = "bitcoinstamps-xyz"
+compatibility_date = "2024-09-18"
+
+# Cloudflare Pages configuration
+pages_build_output_dir = "dist"
+
+[env.production]
+name = "bitcoinstamps-xyz"
+
+# Environment variables for production
+[env.production.vars]
+NODE_ENV = "production"
+BASE_URL = "https://bitcoinstamps.xyz"
+SITE_DOMAIN = "bitcoinstamps.xyz"

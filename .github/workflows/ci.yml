@@ -1,0 +1,194 @@
+name: CI - LEO API Quality Assurance
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+
+jobs:
+  leo-validation:
+    name: LEO API System Validation
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run LEO API Tests
+        run: npm run test:leo-api
+        continue-on-error: false
+
+      - name: Build with LEO API System
+        run: npm run docs:build
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+
+      - name: Validate Generated API Files
+        run: |
+          echo "🔍 Validating generated API files..."
+          
+          # Check that all expected API files exist
+          if [[ ! -f "dist/api/entities.json" ]]; then
+            echo "❌ entities.json not generated"
+            exit 1
+          fi
+          
+          if [[ ! -f "dist/api/protocols.json" ]]; then
+            echo "❌ protocols.json not generated"
+            exit 1
+          fi
+          
+          if [[ ! -f "dist/api/schema.json" ]]; then
+            echo "❌ schema.json not generated"
+            exit 1
+          fi
+          
+          # Validate JSON structure
+          echo "📋 Validating JSON structure..."
+          jq empty dist/api/entities.json || (echo "❌ Invalid entities.json" && exit 1)
+          jq empty dist/api/protocols.json || (echo "❌ Invalid protocols.json" && exit 1)
+          jq empty dist/api/schema.json || (echo "❌ Invalid schema.json" && exit 1)
+          
+          # Check for required content
+          echo "🔍 Validating content completeness..."
+          
+          # Verify KEVIN data is present
+          if ! jq -e '.protocols[] | select(.id == "src-20" and .community.holders > 2000)' dist/api/protocols.json > /dev/null; then
+            echo "❌ KEVIN/SRC-20 community data missing or incomplete"
+            exit 1
+          fi
+          
+          # Verify cultural entities exist
+          if ! jq -e '.entities.concepts[] | select(.id == "kevin")' dist/api/entities.json > /dev/null; then
+            echo "❌ KEVIN entity missing from entities.json"
+            exit 1
+          fi
+          
+          # Verify ecosystem economics data
+          if ! jq -e '.metadata.ecosystem | select(.totalSRC20Volume and .bitcoinVolume)' dist/api/protocols.json > /dev/null; then
+            echo "❌ Ecosystem economics data incomplete"
+            exit 1
+          fi
+          
+          echo "✅ All API files validated successfully"
+
+      - name: Check Structured Data Coverage
+        run: |
+          echo "📊 Checking structured data coverage..."
+          
+          # Count files with SmartStructuredData component
+          SMART_DATA_COUNT=$(grep -r "SmartStructuredData" docs --include="*.md" | wc -l)
+          TOTAL_MD_FILES=$(find docs -name "*.md" -not -path "*/api/*" | wc -l)
+          
+          echo "SmartStructuredData coverage: $SMART_DATA_COUNT / $TOTAL_MD_FILES files"
+          
+          # Ensure at least 95% coverage
+          COVERAGE_PERCENT=$(( SMART_DATA_COUNT * 100 / TOTAL_MD_FILES ))
+          if [[ $COVERAGE_PERCENT -lt 95 ]]; then
+            echo "❌ Insufficient structured data coverage: $COVERAGE_PERCENT% (minimum: 95%)"
+            echo "Missing files:"
+            find docs -name "*.md" -not -path "*/api/*" -exec grep -L "SmartStructuredData" {} \;
+            exit 1
+          fi
+          
+          echo "✅ Structured data coverage: $COVERAGE_PERCENT%"
+
+      - name: Validate LEO Frontmatter
+        run: |
+          echo "🏷️  Validating LEO frontmatter fields..."
+          
+          # Check for required LEO fields
+          MISSING_LEO_TYPE=$(find docs -name "*.md" -not -path "*/api/*" -exec grep -L "leoType:" {} \; | wc -l)
+          MISSING_AUDIENCE=$(find docs -name "*.md" -not -path "*/api/*" -exec grep -L "audience:" {} \; | wc -l)
+          
+          if [[ $MISSING_LEO_TYPE -gt 0 ]]; then
+            echo "❌ Files missing leoType field:"
+            find docs -name "*.md" -not -path "*/api/*" -exec grep -L "leoType:" {} \;
+            exit 1
+          fi
+          
+          if [[ $MISSING_AUDIENCE -gt 0 ]]; then
+            echo "❌ Files missing audience field:"
+            find docs -name "*.md" -not -path "*/api/*" -exec grep -L "audience:" {} \;
+            exit 1
+          fi
+          
+          echo "✅ All files have required LEO frontmatter"
+
+      - name: Test API Performance
+        run: |
+          echo "⚡ Testing API file sizes for performance..."
+          
+          # Check that API files aren't too large
+          MAX_SIZE=500000  # 500KB max per API file
+          
+          for file in dist/api/*.json; do
+            if [[ -f "$file" ]]; then
+              SIZE=$(stat -c%s "$file" 2>/dev/null || stat -f%z "$file")
+              if [[ $SIZE -gt $MAX_SIZE ]]; then
+                echo "❌ API file too large: $(basename $file) = ${SIZE}B (max: ${MAX_SIZE}B)"
+                exit 1
+              fi
+              echo "✅ $(basename $file): ${SIZE}B"
+            fi
+          done
+          
+          echo "✅ All API files within size limits"
+
+      - name: Upload API Artifacts for Review
+        uses: actions/upload-artifact@v4
+        with:
+          name: leo-api-files
+          path: |
+            dist/api/
+            docs/.vitepress/api/compiled/
+          retention-days: 30
+
+  lighthouse-audit:
+    name: Lighthouse Performance Audit  
+    runs-on: ubuntu-latest
+    needs: leo-validation
+    if: github.event_name == 'pull_request'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build documentation
+        run: npm run docs:build
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+
+      - name: Run Lighthouse CI
+        run: npm run lighthouse
+        continue-on-error: true  # Don't fail CI on lighthouse issues
+
+      - name: Upload Lighthouse Reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lighthouse-reports
+          path: .lighthouseci/
+          retention-days: 30

@@ -1,0 +1,75 @@
+---
+title: "Protocolos Bitcoin Stamps - Resumen"
+description: "Guía completa de metaprotocolos Bitcoin Stamps: SRC-20 para tokens, SRC-101 para nombres, SRC-721 para NFTs, y OLGA para optimización"
+leoType: "protocol-overview"
+audience: "both"
+culturalSignificance: "high"
+mentions: ["src-20", "src-101", "src-721", "olga", "kevin", "metaprotocols"]
+category: "protocols"
+---
+
+# Protocolos Bitcoin Stamps
+
+<SmartStructuredData />
+
+Los Bitcoin Stamps utilizan varios metaprotocolos para crear diferentes tipos de activos digitales en Bitcoin. Cada protocolo sirve un propósito único, desde la creación de arte digital hasta sistemas sofisticados de tokens.
+
+## Protocolos Principales
+
+### 🪙 [Tokens SRC-20](/es/protocols/src-20)
+**Tokens fungibles en Bitcoin**  
+Crea e intercambia tokens como <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention>, el primer token SRC-20 que marcó el camino para el desarrollo impulsado por la comunidad.
+
+- Emisión de tokens
+- Transferencias entre cuentas
+- Mecanismos de quema
+- Gobernanza comunitaria
+
+### 🏷️ [Nombres SRC-101](/en/protocols/src-101) *(en inglés)*
+**Sistema de nombres legible por humanos**  
+Crea nombres memorables para direcciones de Bitcoin y recursos, haciendo el ecosistema más accesible para los usuarios.
+
+- Registro de nombres
+- Resolución de direcciones
+- Metadatos de espacios de nombres
+- Gestión de renovaciones
+
+### 🎨 [NFTs SRC-721](/en/protocols/src-721) *(en inglés)*
+**Tokens no fungibles avanzados**  
+Crea NFTs sofisticados con capacidades on-chain, arte recursivo y características interactivas.
+
+- NFTs únicos
+- Capacidades recursivas
+- Metadatos on-chain
+- Características interactivas
+
+### ⚡ [Compresión OLGA](/en/protocols/olga) *(en inglés)*
+**Optimización para todos los protocolos**  
+Reduce los costos de transacción y mejora la eficiencia en todos los protocolos Bitcoin Stamps con codificación de compresión inteligente.
+
+- Compresión de datos
+- Reducción de costos
+- Optimización de eficiencia
+- Compatibilidad universal
+
+## Arquitectura del Sistema
+
+Todos los protocolos Bitcoin Stamps comparten:
+
+- **Almacenamiento on-chain**: Datos almacenados directamente en transacciones Bitcoin
+- **Modelo basado en cuentas**: Gestión simplificada de propiedad
+- **Consenso Counterparty**: Infraestructura de confianza establecida
+- **Indexación comunitaria**: Sistemas de indexación distribuidos y resistentes
+
+## Comenzar con los protocolos
+
+Elige tu camino según tu caso de uso:
+
+- **Creadores**: Comienza con [NFTs SRC-721](/en/protocols/src-721) para arte digital *(en inglés)*
+- **Desarrolladores de tokens**: Explora [SRC-20](/es/protocols/src-20) para tokens fungibles
+- **Servicios de infraestructura**: Implementa [SRC-101](/en/protocols/src-101) para direccionamiento amigable *(en inglés)*
+- **Optimización de costos**: Usa [OLGA](/en/protocols/olga) para eficiencia *(en inglés)*
+
+---
+
+*Todos los protocolos Bitcoin Stamps están diseñados para permanencia, descentralización y valores comunitarios encarnados por <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention>.*

@@ -1,0 +1,310 @@
+# External Links and API Endpoints
+# Centralized external URLs, APIs, and integration points
+# Maintains consistency across all language versions and prevents link rot
+
+# Primary APIs
+apis:
+  stampchain:
+    name: "Stampchain API"
+    base_url: "https://stampchain.io/api"
+    documentation: "https://stampchain.io/docs/api"
+    status_page: "https://status.stampchain.io"
+    version: "v2.1"
+    rate_limits:
+      anonymous: 1000  # per hour
+      authenticated: 10000  # per hour
+      premium: 100000  # per hour
+    endpoints:
+      stamps: "/v2/stamps"
+      src20: "/v2/src20" 
+      src721: "/v2/src721"
+      src101: "/v2/src101"
+      balances: "/v2/balances"
+      transactions: "/v2/transactions"
+      blocks: "/v2/blocks"
+    websocket: "wss://stampchain.io/ws"
+    
+  bitcoin_core:
+    name: "Bitcoin Core RPC"
+    default_port: 8332
+    testnet_port: 18332
+    regtest_port: 18443
+    documentation: "https://developer.bitcoin.org/reference/rpc/"
+    
+  counterparty:
+    name: "Counterparty API"  
+    base_url: "https://api.counterparty.io"
+    documentation: "https://counterparty.io/docs/api/"
+    version: "v2"
+
+# Block Explorers
+explorers:
+  primary:
+    name: "Stampchain Explorer"
+    url: "https://stampchain.io"
+    api: "https://stampchain.io/api"
+    
+  bitcoin:
+    - name: "Blockstream"
+      url: "https://blockstream.info"
+      api: "https://blockstream.info/api"
+    - name: "Blockchain.com"
+      url: "https://blockchain.com/explorer"
+      api: "https://api.blockchain.info"
+    - name: "Mempool.space" 
+      url: "https://mempool.space"
+      api: "https://mempool.space/api"
+
+# Trading and Market Data
+markets:
+  primary:
+    name: "Emblem Vault"
+    url: "https://emblem.finance"
+    type: "marketplace"
+    
+  aggregators:
+    - name: "CoinMarketCap"
+      url: "https://coinmarketcap.com"
+      api: "https://pro-api.coinmarketcap.com"
+    - name: "CoinGecko" 
+      url: "https://coingecko.com"
+      api: "https://api.coingecko.com"
+
+# Development Resources
+development:
+  repositories:
+    bitcoin_stamps_core:
+      url: "https://github.com/btc-stamps/btc-stamps-core"
+      description: "Core Bitcoin Stamps protocol implementation"
+      language: "Python"
+      
+    bitcoin_stamps_js:
+      url: "https://github.com/btc-stamps/btc-stamps-js" 
+      description: "JavaScript SDK for Bitcoin Stamps"
+      language: "JavaScript/TypeScript"
+      npm: "@btcstamps/sdk"
+      
+    bitcoin_stamps_docs:
+      url: "https://github.com/btc-stamps/bitcoin-stamps-docs"
+      description: "Official Bitcoin Stamps documentation"
+      language: "Markdown/Vue"
+      
+    bitcoin_stamps_indexer:
+      url: "https://github.com/btc-stamps/indexer"
+      description: "Blockchain indexer for Bitcoin Stamps"
+      language: "Python"
+
+  package_managers:
+    npm:
+      sdk: "@btcstamps/sdk"
+      cli: "@btcstamps/cli"
+      
+    pip:
+      sdk: "btc-stamps"
+      cli: "btc-stamps-cli"
+      
+    docker:
+      indexer: "btcstamps/indexer"
+      api: "btcstamps/api"
+
+# Community Resources
+community:
+  social:
+    twitter:
+      url: "https://twitter.com/btcstamps"
+      handle: "@btcstamps"
+      
+    discord:
+      url: "https://discord.gg/btcstamps"
+      name: "Bitcoin Stamps Discord"
+      
+    telegram:
+      url: "https://t.me/btcstamps"
+      name: "Bitcoin Stamps Telegram"
+      
+    reddit:
+      url: "https://reddit.com/r/btcstamps"
+      name: "r/btcstamps"
+      
+    github:
+      url: "https://github.com/btc-stamps"
+      name: "Bitcoin Stamps Organization"
+
+  forums:
+    bitcointalk:
+      url: "https://bitcointalk.org/index.php?topic=bitcoin-stamps"
+      title: "Bitcoin Stamps Discussion"
+
+# Educational Resources
+education:
+  bitcoin:
+    developer_docs:
+      url: "https://developer.bitcoin.org"
+      description: "Official Bitcoin developer documentation"
+      
+    whitepaper:
+      url: "https://bitcoin.org/bitcoin.pdf"
+      description: "Original Bitcoin whitepaper by Satoshi Nakamoto"
+      
+    bips:
+      url: "https://github.com/bitcoin/bips"
+      description: "Bitcoin Improvement Proposals"
+
+  counterparty:
+    documentation:
+      url: "https://counterparty.io/docs"
+      description: "Counterparty protocol documentation"
+      
+    whitepaper:
+      url: "https://counterparty.io/whitepaper.pdf"
+      description: "Counterparty protocol whitepaper"
+
+# Tools and Utilities
+tools:
+  wallets:
+    bitcoin_core:
+      url: "https://bitcoincore.org"
+      type: "full-node"
+      platforms: ["Windows", "macOS", "Linux"]
+      
+    electrum:
+      url: "https://electrum.org"
+      type: "light-wallet"
+      platforms: ["Windows", "macOS", "Linux", "Android"]
+      
+    sparrow:
+      url: "https://sparrowwallet.com"
+      type: "desktop-wallet"
+      platforms: ["Windows", "macOS", "Linux"]
+
+  development:
+    bitcoin_testnet_faucet:
+      url: "https://testnet-faucet.mempool.co"
+      description: "Get testnet bitcoins for development"
+      
+    regtest_setup:
+      url: "https://github.com/btc-stamps/regtest-setup"
+      description: "Local Bitcoin regtest environment"
+
+# Monitoring and Analytics
+monitoring:
+  network:
+    bitnodes:
+      url: "https://bitnodes.io"
+      description: "Bitcoin network node statistics"
+      
+    fork_monitor:
+      url: "https://forkmonitor.info"
+      description: "Bitcoin blockchain fork monitoring"
+      
+    mining_pools:
+      url: "https://btc.com/stats/pool"
+      description: "Bitcoin mining pool statistics"
+
+  stamps:
+    analytics:
+      url: "https://stampchain.io/analytics"
+      description: "Bitcoin Stamps protocol analytics"
+      
+    metrics:
+      url: "https://stampchain.io/metrics"
+      description: "Real-time protocol metrics"
+
+# Compliance and Legal
+compliance:
+  licenses:
+    mit_license:
+      url: "https://opensource.org/licenses/MIT"
+      description: "MIT License text"
+      
+    apache_license:
+      url: "https://www.apache.org/licenses/LICENSE-2.0"
+      description: "Apache License 2.0 text"
+
+# External Documentation
+documentation:
+  standards:
+    json_schema:
+      url: "https://json-schema.org"
+      description: "JSON Schema specification"
+      
+    rfc3986_uri:
+      url: "https://tools.ietf.org/rfc/rfc3986.txt"
+      description: "URI specification RFC 3986"
+      
+    iso8601_datetime:
+      url: "https://www.iso.org/iso-8601-date-and-time-format.html"
+      description: "ISO 8601 date/time format standard"
+
+  bitcoin_specifications:
+    bip32:
+      url: "https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki"
+      description: "Hierarchical Deterministic Wallets"
+      
+    bip39:
+      url: "https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki"
+      description: "Mnemonic code for generating deterministic keys"
+      
+    bip141:
+      url: "https://github.com/bitcoin/bips/blob/master/bip-0141.mediawiki"
+      description: "Segregated Witness (Consensus layer)"
+
+# Testing and Development
+testing:
+  testnet_explorers:
+    blockstream_testnet:
+      url: "https://blockstream.info/testnet"
+      description: "Testnet block explorer"
+      
+  faucets:
+    bitcoin_testnet:
+      url: "https://testnet-faucet.mempool.co"
+      description: "Bitcoin testnet faucet"
+      rate_limit: "1 request per day"
+
+# Health Checks and Status
+health:
+  api_status:
+    stampchain:
+      url: "https://status.stampchain.io"
+      description: "Stampchain API status page"
+      
+  network_status:
+    bitcoin_nodes:
+      url: "https://bitnodes.io/nodes/"
+      description: "Bitcoin network node status"
+
+# Mirror and Backup Resources
+mirrors:
+  documentation:
+    github_pages:
+      url: "https://bitcoinstamps.xyz"
+      description: "GitHub Pages mirror of documentation"
+      
+  apis:
+    backup_api:
+      url: "https://backup.stampchain.io/api"
+      description: "Backup API endpoint"
+      status: "standby"
+
+# Link Validation
+validation:
+  last_checked: "2024-01-26"
+  check_frequency: "weekly"
+  broken_link_policy: "immediate-replacement"
+  archive_policy: "wayback-machine-backup"
+  
+  status_codes:
+    active: 200
+    redirect: 301
+    temporary_redirect: 302
+    not_found: 404
+    server_error: 500
+
+# Metadata
+metadata:
+  schema_version: "1.0.0"
+  maintainer: "bitcoin-stamps-core-team"
+  update_frequency: "weekly"
+  validation_required: true
+  sources: ["official-websites", "community-verified", "protocol-documentation"]

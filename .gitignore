@@ -1,0 +1,51 @@
+.claude-activity.log
+docs/.claude-activity.log
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dev-debug.log
+# Dependency directories
+node_modules/
+# Environment variables
+.env
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+# OS specific
+.DS_Store
+
+# Build output
+dist/
+
+.cursor
+.claude/
+.claude-activity.log
+.claude-remote/
+.mcp.json
+
+# Task Master (local orchestration)
+.taskmaster/
+
+# Development documentation (local work only)
+dev/
+
+/docs/.vitepress/cache/
+
+# Translation database (auto-generated)
+docs/.vitepress/translation/*.db
+docs/.vitepress/translation/*.db-shm
+docs/.vitepress/translation/*.db-wal
+
+# Task files
+# tasks.json
+# tasks/
