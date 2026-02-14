@@ -33,7 +33,7 @@
     "better-sqlite3": "^9.4.0"
   },
   "devDependencies": {
-    "@lhci/cli": "^0.12.0",
+    "@lhci/cli": "^0.15.1",
     "vitepress": "^1.6.4"
   },
   "repository": {
