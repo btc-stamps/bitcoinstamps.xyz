@@ -1,5 +1,5 @@
 {
-  "name": "bitcoin-stamps-docs",
+  "name": "bitcoinstamps-xyz",
   "version": "1.0.0",
   "description": "Official documentation for Bitcoin Stamps metaprotocols and art platform (SRC-20, SRC-101, SRC-721, OLGA)",
   "type": "module",
@@ -30,15 +30,15 @@
   "author": "Bitcoin Stamps Community",
   "license": "MIT",
   "dependencies": {
-    "better-sqlite3": "^9.4.0"
+    "better-sqlite3": "^12.6.2"
   },
   "devDependencies": {
-    "@lhci/cli": "^0.12.0",
+    "@lhci/cli": "^0.15.1",
     "vitepress": "^1.6.4"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/btc-stamps/bitcoin-stamps-docs.git"
+    "url": "https://github.com/btc-stamps/bitcoinstamps.xyz.git"
   },
   "homepage": "https://bitcoinstamps.xyz"
 }

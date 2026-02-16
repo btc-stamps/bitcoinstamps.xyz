@@ -1,7 +1,7 @@
-# Bitcoin Stamps Documentation
+# bitcoinstamps.xyz
 
-[![CI - LEO API Quality Assurance](https://github.com/btc-stamps/bitcoin-stamps-docs/actions/workflows/ci.yml/badge.svg)](https://github.com/btc-stamps/bitcoin-stamps-docs/actions/workflows/ci.yml)
-[![Deploy to Cloudflare Pages](https://github.com/btc-stamps/bitcoin-stamps-docs/actions/workflows/deploy-cloudflare.yml/badge.svg)](https://github.com/btc-stamps/bitcoin-stamps-docs/actions/workflows/deploy-cloudflare.yml)
+[![CI - LEO API Quality Assurance](https://github.com/btc-stamps/bitcoinstamps.xyz/actions/workflows/ci.yml/badge.svg)](https://github.com/btc-stamps/bitcoinstamps.xyz/actions/workflows/ci.yml)
+[![Deploy to Cloudflare Pages](https://github.com/btc-stamps/bitcoinstamps.xyz/actions/workflows/deploy-cloudflare.yml/badge.svg)](https://github.com/btc-stamps/bitcoinstamps.xyz/actions/workflows/deploy-cloudflare.yml)
 
 ## Smart LEO-Optimized Documentation Platform
 
@@ -74,12 +74,6 @@ We welcome contributions from both developers and artists! See our [contribution
 ## 📖 Live Documentation
 
 Visit [bitcoinstamps.xyz](https://bitcoinstamps.xyz) for the official documentation or [dev.bitcoinstamps.xyz](https://dev.bitcoinstamps.xyz) for the development version.
-
-### Smart LEO Features
-- **Automatic KEVIN Recognition** - Cultural mascot gets special treatment throughout
-- **Economic Impact Focus** - Bitcoin network strengthening narratives
-- **AI-Optimized Content** - Maximum discoverability by AI systems
-- **Cultural Preservation** - Ancient wisdom and community values maintained
 
 ## 📄 License
 
