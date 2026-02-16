@@ -76,13 +76,25 @@ sips:
     dependencies: []
     softDependencies: ["0005"]
 
+  - number: "0008"
+    title: "Dual Transaction Parsing — Combined SRC-20 Transfer + Stamp Issuance"
+    status: "draft"
+    issue: 692
+    author: "DerpHerpenstein"
+    created: "2025-04-30"
+    phase: 1
+    effort: "2-3 weeks"
+    dependencies: []
+    softDependencies: ["0005"]
+    originIssue: 554
+
 # Roadmap phases with strategic ordering
 roadmap:
   - name: "Foundation"
     phase: 1
-    weeks: "1-8"
-    sips: ["0001", "0005"]
-    description: "HTLC capabilities and binary encoding for cost reduction"
+    weeks: "1-10"
+    sips: ["0001", "0005", "0008"]
+    description: "HTLC capabilities, binary encoding, and dual transaction parsing"
 
   - name: "Core Trading"
     phase: 2

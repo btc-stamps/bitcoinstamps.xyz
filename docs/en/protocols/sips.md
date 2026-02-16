@@ -39,6 +39,7 @@ Current protocol proposals and their implementation status:
 | [SIP-0004](https://github.com/stampchain-io/btc_stamps/issues/687) | Shielded SRC-20 — Privacy Extension (Phased) | Draft | [#687](https://github.com/stampchain-io/btc_stamps/issues/687) |
 | [SIP-0005](https://github.com/stampchain-io/btc_stamps/issues/688) | Binary Transfer Format for SRC-20 | Draft | [#688](https://github.com/stampchain-io/btc_stamps/issues/688) |
 | [SIP-0006](https://github.com/stampchain-io/btc_stamps/issues/689) | Native SRC-20 AMM (Automated Market Maker) | Draft | [#689](https://github.com/stampchain-io/btc_stamps/issues/689) |
+| [SIP-0008](https://github.com/stampchain-io/btc_stamps/issues/692) | Dual Transaction Parsing — Combined SRC-20 Transfer + Stamp Issuance | Draft | [#692](https://github.com/stampchain-io/btc_stamps/issues/692) |
 
 ### Status Definitions
 
@@ -56,21 +57,24 @@ Current protocol proposals and their implementation status:
 
 Strategic phasing ensures each foundation is battle-tested before dependent features build upon it.
 
-### Phase 1: Foundation (Weeks 1-8)
+### Phase 1: Foundation (Weeks 1-10)
 
 ```
-SIP-0001 (HTLC)                 SIP-0005 (Binary Format)
-3-4 weeks                        2 weeks
-No dependencies                  No dependencies
-║                                │
-║  Unlocks: atomic swaps,        │  Unlocks: ~60% fee reduction
-║  escrow, oracle integration,   │  for all transfer operations
-║  trustless bridge deposits     │
+SIP-0001 (HTLC)        SIP-0005 (Binary Format)   SIP-0008 (Dual Parsing)
+3-4 weeks               2 weeks                     2-3 weeks
+No dependencies         No dependencies             Soft dep: SIP-0005
+║                       │                           │
+║  Unlocks: atomic      │  Unlocks: ~60% fee        │  Unlocks: combined
+║  swaps, escrow,       │  reduction for all         │  SRC-20 + stamp ops
+║  oracle integration,  │  transfer operations       │  in a single tx
+║  trustless deposits   │                           │
 ```
 
 **SIP-0001** provides hashlock/timelock capabilities for conditional transfers, enabling atomic swaps and escrow without trusted intermediaries.
 
 **SIP-0005** introduces binary encoding to reduce transaction costs by approximately 60% across all <EntityMention entity="src-20" variant="technical">SRC-20</EntityMention> operations.
+
+**SIP-0008** enables a single Bitcoin transaction to carry both an SRC-20 transfer and a stamp issuance, reducing fees and enabling atomic combined operations. Originally proposed by DerpHerpenstein in [#554](https://github.com/stampchain-io/btc_stamps/issues/554).
 
 ### Phase 2: Core Trading (Weeks 6-14)
 
@@ -135,14 +139,15 @@ No hard dependencies on other SIPs (independent track)
 |----------|-----|--------|-------------------|-------------------|
 | **1** | SIP-0001 (HTLC) | 3-4 weeks | None | — |
 | **2** | SIP-0005 (Binary Format) | 2 weeks | None | — |
-| **3** | SIP-0006 Phase 1 (AMM) | 4-6 weeks | None | SIP-0005 (fee savings) |
-| **4** | SIP-0003 (Bridge) | 6-8 weeks | None | SIP-0001 (trustless deposits) |
-| **5** | SIP-0007 (Wrapped Assets) | 3-4 weeks | SIP-0001, SIP-0003 | — |
-| **6** | SIP-0006 Phase 2 (wBTC) | 2-3 weeks | SIP-0007, SIP-0006 Ph1 | SIP-0001 (wrapping) |
-| **7** | SIP-0006 Phase 3 (Stables) | 2-3 weeks | SIP-0007, SIP-0003 | SIP-0006 Ph2 stable |
+| **3** | SIP-0008 (Dual Parsing) | 2-3 weeks | None | SIP-0005 (binary encoding) |
+| **4** | SIP-0006 Phase 1 (AMM) | 4-6 weeks | None | SIP-0005 (fee savings) |
+| **5** | SIP-0003 (Bridge) | 6-8 weeks | None | SIP-0001 (trustless deposits) |
+| **6** | SIP-0007 (Wrapped Assets) | 3-4 weeks | SIP-0001, SIP-0003 | — |
+| **7** | SIP-0006 Phase 2 (wBTC) | 2-3 weeks | SIP-0007, SIP-0006 Ph1 | SIP-0001 (wrapping) |
+| **8** | SIP-0006 Phase 3 (Stables) | 2-3 weeks | SIP-0007, SIP-0003 | SIP-0006 Ph2 stable |
 | **—** | SIP-0004 (Privacy) | 2-18 months | None | Independent, phased |
 
-**Parallel Development**: SIP-0001 and SIP-0005 can be developed concurrently as they have no dependencies on each other.
+**Parallel Development**: SIP-0001, SIP-0005, and SIP-0008 can be developed concurrently as they have no hard dependencies on each other (SIP-0008 has a soft dependency on SIP-0005 for binary encoding benefits).
 
 ## Gating Criteria Between Phases
 
