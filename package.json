@@ -1,5 +1,5 @@
 {
-  "name": "bitcoin-stamps-docs",
+  "name": "bitcoinstamps-xyz",
   "version": "1.0.0",
   "description": "Official documentation for Bitcoin Stamps metaprotocols and art platform (SRC-20, SRC-101, SRC-721, OLGA)",
   "type": "module",
@@ -38,7 +38,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/btc-stamps/bitcoin-stamps-docs.git"
+    "url": "https://github.com/btc-stamps/bitcoinstamps.xyz.git"
   },
   "homepage": "https://bitcoinstamps.xyz"
 }
