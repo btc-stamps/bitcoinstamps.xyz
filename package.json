@@ -11,7 +11,8 @@
     "lighthouse": "lhci autorun",
     "test:leo-api": "node docs/.vitepress/test-leo-system.js",
     "test:translation": "node docs/.vitepress/test-translation-system.js",
-    "build:with-test": "npm run test:leo-api && npm run test:translation && npm run docs:build"
+    "build:with-test": "npm run test:leo-api && npm run test:translation && npm run docs:build",
+    "whitepaper:generate": "node scripts/generate-whitepaper-pdf.js"
   },
   "keywords": [
     "bitcoin",
@@ -34,6 +35,7 @@
   },
   "devDependencies": {
     "@lhci/cli": "^0.15.1",
+    "md-to-pdf": "^5.2.5",
     "vitepress": "^1.6.4"
   },
   "repository": {
