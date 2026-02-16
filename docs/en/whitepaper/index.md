@@ -72,8 +72,8 @@ Indexer architecture, consensus mechanisms, validation logic, and reference impl
 ### 7. [Security Analysis](https://github.com/stampchain-io/btc_stamps/blob/main/docs/whitepaper/security.md)
 Threat model, attack vectors, permanence guarantees, and immutability analysis. Examines consensus-level security and protocol-level protections.
 
-### 8. [Future Directions](https://github.com/stampchain-io/btc_stamps/blob/main/docs/whitepaper/future.md)
-Roadmap covering conditional transfers, privacy enhancements, cross-chain bridges, and active research areas. Explores potential protocol extensions while maintaining core permanence guarantees.
+### 8. [Future Work](https://github.com/stampchain-io/btc_stamps/blob/main/docs/whitepaper/future.md)
+Research directions and SIP roadmap summary. Points to the Stamps Improvement Proposal (SIP) process for detailed specifications of conditional transfers, privacy, bridges, and other protocol extensions.
 
 ## Quick Reference
 
@@ -98,6 +98,7 @@ Version 1.0. Retrieved from https://bitcoinstamps.xyz/en/whitepaper/
 ## Community and Development
 
 - **GitHub Repository**: [stampchain-io/btc_stamps](https://github.com/stampchain-io/btc_stamps)
+- **Telegram**: [t.me/BitcoinStamps](https://t.me/BitcoinStamps) — Community hub
 - **Community Hub**: [Bitcoin Stamps Community](/en/community/)
 - **Protocol Documentation**: [Protocols Overview](/en/protocols/)
 - **Development Tutorials**: [Developer Guides](/en/tutorials/)
