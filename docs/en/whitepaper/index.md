@@ -64,7 +64,7 @@ Complete specifications for SRC-20 (fungible tokens), SRC-721 (recursive NFTs), 
 Fee structures, UTXO permanence economics, storage cost analysis comparing bare multisig vs P2WSH encoding, and long-term sustainability considerations.
 
 ### 5. [Stamps Improvement Proposals](https://github.com/stampchain-io/btc_stamps/blob/main/docs/whitepaper/improvement-proposals.md)
-SIP governance framework and active proposals including SIP-0001 (Conditional Transfers/HTLC), SIP-0003 (Cross-Chain Bridge), SIP-0004 (Privacy/Shielded SRC-20), SIP-0005 (Binary Transfer Format), and SIP-0006 (Native AMM). SIP-0002 (UTXO Binding) is superseded by SIP-0001.
+SIP governance framework and active proposals including SIP-0001 (Conditional Transfers/HTLC), SIP-0003 (Cross-Chain Bridge), SIP-0004 (Privacy/Shielded SRC-20), SIP-0005 (Binary Transfer Format), SIP-0006 (Native AMM), and SIP-0008 (Dual Transaction Parsing). SIP-0002 (UTXO Binding) is superseded by SIP-0001.
 
 ### 6. [Implementation](https://github.com/stampchain-io/btc_stamps/blob/main/docs/whitepaper/implementation.md)
 Indexer architecture, consensus mechanisms, validation logic, and reference implementation details. Covers block parsing, transaction validation, and state management.
