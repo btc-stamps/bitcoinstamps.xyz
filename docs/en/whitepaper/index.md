@@ -35,16 +35,16 @@ The protocol evolved from Counterparty foundations (block 779,652) through nativ
   <p style="font-size: 18px; margin-bottom: 15px;">📄 <strong>Bitcoin Stamps Technical Whitepaper</strong></p>
   <p style="margin-bottom: 15px;">Complete specification including architecture, token standards, economics, and implementation details</p>
   <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-    <a href="/bitcoin-stamps-whitepaper.html" target="_blank" style="display: inline-block; padding: 12px 24px; background: var(--vp-c-brand); color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">
-      View HTML Version →
+    <a href="/bitcoin-stamps-whitepaper.pdf" download style="display: inline-block; padding: 12px 24px; background: var(--vp-c-brand); color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">
+      Download PDF →
     </a>
-    <a href="/bitcoin-stamps-whitepaper-combined.md" download style="display: inline-block; padding: 12px 24px; background: var(--vp-c-brand-dark); color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">
-      Download Markdown →
+    <a href="/bitcoin-stamps-whitepaper.html" target="_blank" style="display: inline-block; padding: 12px 24px; background: var(--vp-c-brand-dark); color: white; text-decoration: none; border-radius: 6px; font-weight: 600;">
+      View HTML →
+    </a>
+    <a href="/bitcoin-stamps-whitepaper-combined.md" download style="display: inline-block; padding: 12px 24px; border: 1px solid var(--vp-c-brand); color: var(--vp-c-brand); text-decoration: none; border-radius: 6px; font-weight: 600;">
+      Markdown Source →
     </a>
   </div>
-  <p style="margin-top: 15px; font-size: 14px; color: var(--vp-c-text-2);">
-    Note: PDF version can be generated from HTML (Print to PDF) or Markdown using pandoc
-  </p>
 </div>
 
 ## Individual Sections

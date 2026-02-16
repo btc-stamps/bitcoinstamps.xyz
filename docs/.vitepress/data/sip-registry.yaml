@@ -1,0 +1,167 @@
+# Bitcoin Stamps Improvement Proposals (SIPs) Registry
+# Single source of truth for SIP data across the documentation site
+# Update this file when SIP status changes or new SIPs are created
+
+sips:
+  - number: "0000"
+    title: "Stamps Improvement Proposal Process"
+    status: "active"
+    issue: 686
+    author: "Reinamora"
+    created: "2026-02-15"
+    phase: null
+    effort: null
+    dependencies: []
+
+  - number: "0001"
+    title: "SRC-20 Conditional Transfers (Hashlock/Timelock)"
+    status: "draft"
+    issue: 685
+    author: "Reinamora"
+    created: "2026-02-15"
+    phase: 1
+    effort: "3-4 weeks"
+    dependencies: []
+
+  - number: "0002"
+    title: "SRC-20 UTXO Binding & Transfer Format v2.0"
+    status: "superseded"
+    issue: 484
+    author: "Reinamora"
+    created: "2024-06-15"
+    phase: null
+    effort: null
+    dependencies: []
+    supersededBy: "0001"
+
+  - number: "0003"
+    title: "SRC-20 Cross-Chain Bridge Specification"
+    status: "draft"
+    issue: 485
+    author: "Reinamora"
+    created: "2024-06-15"
+    phase: 3
+    effort: "6-8 weeks"
+    dependencies: []
+    softDependencies: ["0001"]
+
+  - number: "0004"
+    title: "Shielded SRC-20 — Privacy Extension (Phased)"
+    status: "draft"
+    issue: 687
+    author: "Reinamora"
+    created: "2026-02-15"
+    phase: 5
+    effort: "2-18 months"
+    dependencies: []
+
+  - number: "0005"
+    title: "Binary Transfer Format for SRC-20"
+    status: "draft"
+    issue: 688
+    author: "Reinamora"
+    created: "2026-02-15"
+    phase: 1
+    effort: "2 weeks"
+    dependencies: []
+
+  - number: "0006"
+    title: "Native SRC-20 AMM (Automated Market Maker)"
+    status: "draft"
+    issue: 689
+    author: "Reinamora"
+    created: "2026-02-15"
+    phase: 2
+    effort: "4-6 weeks"
+    dependencies: []
+    softDependencies: ["0005"]
+
+# Roadmap phases with strategic ordering
+roadmap:
+  - name: "Foundation"
+    phase: 1
+    weeks: "1-8"
+    sips: ["0001", "0005"]
+    description: "HTLC capabilities and binary encoding for cost reduction"
+
+  - name: "Core Trading"
+    phase: 2
+    weeks: "6-14"
+    sips: ["0006"]
+    description: "Native on-chain liquidity with AMM functionality"
+
+  - name: "Cross-Chain"
+    phase: 3
+    weeks: "10-22"
+    sips: ["0003"]
+    description: "Bridge connectivity to EVM chains"
+
+  - name: "Wrapped Assets & BTC Pools"
+    phase: 4
+    weeks: "18-28"
+    sips: ["0007"]
+    description: "Wrapped asset standard enabling Bitcoin-native liquidity pools"
+    futureSips: true
+
+  - name: "Privacy"
+    phase: 5
+    weeks: "independent"
+    sips: ["0004"]
+    description: "Stealth addresses to zero-knowledge shielded pools"
+
+# Gating criteria between phases
+gating:
+  - from: 1
+    to: 2
+    condition: "SIP-0001 live for 2000+ blocks (~2 weeks)"
+    rationale: "HTLC must be battle-tested before AMM dependencies"
+
+  - from: 2
+    to: 3
+    condition: "SIP-0006 Phase 1 stable for 1000+ blocks"
+    rationale: "AMM core proven before cross-chain integration"
+
+  - from: 3
+    to: 4
+    condition: "SIP-0003 bridge operational, security audited"
+    rationale: "Bridge custody is high-risk — requires validation"
+
+# Future SIPs not yet formally drafted
+future:
+  - number: "0007"
+    title: "Wrapped Asset Standard"
+    purpose: "wBTC/wUSDT mint/burn protocol, custody model"
+    prerequisite: "SIP-0003 bridge architecture"
+
+  - title: "Concentrated Liquidity"
+    purpose: "Uniswap V3-style capital efficiency"
+    prerequisite: "SIP-0006 Phase 1 proven stable"
+
+  - title: "Multi-hop Router"
+    purpose: "A→B→C swaps in single operation"
+    prerequisite: "Multiple active AMM pools"
+
+  - title: "Governance"
+    purpose: "Protocol fee distribution, parameter changes"
+    prerequisite: "Ecosystem maturity"
+
+# Status definitions for reference
+statusDefinitions:
+  active: "Process document in effect"
+  draft: "Proposal written, open for initial feedback"
+  review: "Specification complete, formal review in progress"
+  accepted: "Specification agreed, activation block pending"
+  activated: "Activation block set, countdown in progress"
+  final: "Live on mainnet, all indexers processing"
+  superseded: "Replaced by a newer SIP"
+  withdrawn: "Author abandoned"
+  rejected: "Community consensus against implementation"
+
+# GitHub repository for all SIP issues
+repository: "stampchain-io/btc_stamps"
+
+# Metadata
+metadata:
+  lastUpdated: "2026-02-16"
+  version: "1.0.0"
+  maintainer: "Reinamora"
