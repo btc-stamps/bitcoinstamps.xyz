@@ -56,6 +56,13 @@ Encoding optimization protocol that reduces transaction costs by using P2WSH ins
 
 **[OLGA Technical Details →](/en/protocols/olga)**
 
+### Stamps Improvement Proposals (SIPs)
+Structured framework for protocol-level changes coordinating implementation across indexers. Includes roadmap for conditional transfers, bridges, privacy features, and native AMM.
+
+**Features**: Protocol governance, implementation coordination, phased rollout
+
+**[View SIP Registry & Roadmap →](/en/protocols/sips)**
+
 ## Getting Started
 
 Ready to build with Bitcoin Stamps protocols?

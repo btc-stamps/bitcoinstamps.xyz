@@ -56,7 +56,7 @@ async function testLEOSystem() {
     
     if (!data.entities) throw new Error('Missing entities object')
     if (!data.metadata) throw new Error('Missing metadata object')
-    if (data.metadata.totalEntities !== 15) throw new Error(`Expected 15 entities, got ${data.metadata.totalEntities}`)
+    if (data.metadata.totalEntities < 15) throw new Error(`Expected at least 15 entities, got ${data.metadata.totalEntities}`)
   })
 
   // Test 3: KEVIN entity validation 

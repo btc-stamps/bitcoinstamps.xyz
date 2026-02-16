@@ -17,6 +17,7 @@ export default defineConfig({
         nav: [
           { text: 'Guide', link: '/en/guide/introduction' },
           { text: 'Protocols', link: '/en/protocols/' },
+          { text: 'Whitepaper', link: '/en/whitepaper/' },
           { text: 'Tutorials', link: '/en/tutorials/' },
           { text: 'Stories', link: '/en/narratives/' },
           { text: 'Community', link: '/en/community/' }
@@ -36,6 +37,7 @@ export default defineConfig({
         nav: [
           { text: 'Guide', link: '/fr/guide/introduction' },
           { text: 'Protocoles', link: '/fr/protocols/' },
+          { text: 'Livre blanc', link: '/en/whitepaper/' },
           { text: 'Tutoriels', link: '/fr/tutorials/' },
           { text: 'Histoires', link: '/fr/narratives/' },
           { text: 'Communauté', link: '/fr/community/' }
@@ -55,6 +57,7 @@ export default defineConfig({
         nav: [
           { text: 'Guía', link: '/es/guide/introduction' },
           { text: 'Protocolos', link: '/es/protocols/' },
+          { text: 'Libro blanco', link: '/en/whitepaper/' },
           { text: 'Tutoriales', link: '/es/tutorials/' },
           { text: 'Historias', link: '/es/narratives/' },
           { text: 'Comunidad', link: '/es/community/' }
@@ -74,6 +77,7 @@ export default defineConfig({
         nav: [
           { text: '指南', link: '/zh/guide/introduction' },
           { text: '协议', link: '/zh/protocols/' },
+          { text: '白皮书', link: '/en/whitepaper/' },
           { text: '教程', link: '/zh/tutorials/' },
           { text: '故事', link: '/zh/narratives/' },
           { text: '社区', link: '/zh/community/' }
@@ -93,6 +97,7 @@ export default defineConfig({
         nav: [
           { text: 'Rehber', link: '/tr/guide/introduction' },
           { text: 'Protokoller', link: '/tr/protocols/' },
+          { text: 'Beyaz kitap', link: '/en/whitepaper/' },
           { text: 'Eğitimler', link: '/tr/tutorials/' },
           { text: 'Hikayeler', link: '/tr/narratives/' },
           { text: 'Topluluk', link: '/tr/community/' }
@@ -429,7 +434,8 @@ export default defineConfig({
             { text: 'SRC-20 Tokens', link: '/en/protocols/src-20' },
             { text: 'SRC-101 Names', link: '/en/protocols/src-101' },
             { text: 'SRC-721 Recursion', link: '/en/protocols/src-721' },
-            { text: 'OLGA P2WSH Encoding', link: '/en/protocols/olga' }
+            { text: 'OLGA P2WSH Encoding', link: '/en/protocols/olga' },
+            { text: 'Stamps Improvement Proposals', link: '/en/protocols/sips' }
           ]
         }
       ],
@@ -515,7 +521,8 @@ export default defineConfig({
             { text: 'Jetons SRC-20', link: '/fr/protocols/src-20' },
             { text: 'Noms SRC-101', link: '/fr/protocols/src-101' },
             { text: 'NFT SRC-721', link: '/fr/protocols/src-721' },
-            { text: 'Encodage OLGA', link: '/fr/protocols/olga' }
+            { text: 'Encodage OLGA', link: '/fr/protocols/olga' },
+            { text: 'Propositions d\'amélioration (anglais)', link: '/en/protocols/sips' }
           ]
         }
       ],
@@ -581,7 +588,8 @@ export default defineConfig({
             { text: 'Tokens SRC-20', link: '/es/protocols/src-20' },
             { text: 'Nombres SRC-101', link: '/es/protocols/src-101' },
             { text: 'NFTs SRC-721', link: '/es/protocols/src-721' },
-            { text: 'Codificación OLGA', link: '/es/protocols/olga' }
+            { text: 'Codificación OLGA', link: '/es/protocols/olga' },
+            { text: 'Propuestas de mejora (inglés)', link: '/en/protocols/sips' }
           ]
         }
       ],
@@ -647,7 +655,8 @@ export default defineConfig({
             { text: 'SRC-20 代币（英文版）', link: '/en/protocols/src-20' },
             { text: 'SRC-101 名称（英文版）', link: '/en/protocols/src-101' },
             { text: 'SRC-721 NFT（英文版）', link: '/en/protocols/src-721' },
-            { text: 'OLGA P2WSH（英文版）', link: '/en/protocols/olga' }
+            { text: 'OLGA P2WSH（英文版）', link: '/en/protocols/olga' },
+            { text: '改进提案（英文版）', link: '/en/protocols/sips' }
           ]
         }
       ],
@@ -708,7 +717,8 @@ export default defineConfig({
             { text: 'SRC-20 Tokenları', link: '/tr/protocols/src-20' },
             { text: 'SRC-101 İsimler', link: '/tr/protocols/src-101' },
             { text: 'SRC-721 NFTler (İngilizce)', link: '/en/protocols/src-721' },
-            { text: 'OLGA Sıkıştırma (İngilizce)', link: '/en/protocols/olga' }
+            { text: 'OLGA Sıkıştırma (İngilizce)', link: '/en/protocols/olga' },
+            { text: 'İyileştirme Önerileri (İngilizce)', link: '/en/protocols/sips' }
           ]
         }
       ],
