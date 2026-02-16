@@ -27,14 +27,13 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run LEO API Tests
-        run: npm run test:leo-api
-        continue-on-error: false
-
       - name: Build with LEO API System
         run: npm run docs:build
         env:
           NODE_OPTIONS: --max-old-space-size=4096
+
+      - name: Run LEO API Tests
+        run: npm run test:leo-api
 
       - name: Validate Generated API Files
         run: |
