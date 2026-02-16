@@ -42,7 +42,7 @@ This whitepaper consists of multiple sections:
 - **[architecture.md](./architecture.md)** — Technical architecture: UTXO storage model, bare multisig vs P2WSH encoding, account-based asset tracking
 - **[token-standards.md](./token-standards.md)** — SRC-20, SRC-721, SRC-721r, SRC-101 specifications
 - **[economics.md](./economics.md)** — UTXO permanence economics, storage costs, fee analysis
-- **[improvement-proposals.md](./improvement-proposals.md)** — SIP governance framework and active proposals (SIP-0001 through SIP-0005)
+- **[improvement-proposals.md](./improvement-proposals.md)** — SIP governance framework and active proposals (SIP-0001 through SIP-0008)
 - **[implementation.md](./implementation.md)** — Indexer architecture, consensus mechanisms, validation logic
 - **[security.md](./security.md)** — Threat model, attack vectors, immutability guarantees
 - **[future.md](./future.md)** — Roadmap for conditional transfers, privacy enhancements, cross-chain bridges
@@ -1427,6 +1427,45 @@ Example (0.3% fee tier):
 
 **Activation Timeline**: TBD pending community review and Phase 1 implementation.
 
+### 6.2.6 SIP-0008: Dual Transaction Parsing — Combined SRC-20 Transfer + Stamp Issuance
+
+**GitHub Issue**: [#692](https://github.com/stampchain-io/btc_stamps/issues/692) (originated from [#554](https://github.com/stampchain-io/btc_stamps/issues/554))
+
+**Author**: DerpHerpenstein
+
+**Status**: Draft
+
+**Phase**: 1 (Foundation) | **Estimated Effort**: 2-3 weeks
+
+**Motivation**: Currently, a single Bitcoin transaction can only perform one stamp operation — either issue a new stamp OR execute an SRC-20 transfer. Users who want to do both must create two separate transactions, paying double the fees. SIP-0008 enables a single transaction to contain both a stamp issuance and an SRC-20 transfer, reducing costs and enabling new composable workflows.
+
+**Technical Design**:
+
+The indexer currently processes each transaction for a single stamp operation. SIP-0008 extends the transaction parser to detect and process multiple stamp payloads within a single transaction:
+
+```
+Transaction outputs:
+  Output 0: SRC-20 transfer payload (bare multisig or P2WSH)
+  Output 1: Stamp image data (bare multisig or P2WSH)
+  Output 2: Change output
+```
+
+**Parsing Rules**:
+1. **Output scanning**: Indexer scans all outputs for stamp-compatible payloads
+2. **Payload classification**: Each payload classified as SRC-20 operation or stamp issuance based on content type detection
+3. **Ordered execution**: SRC-20 transfers processed before stamp issuance (deterministic ordering)
+4. **Atomic processing**: Both operations succeed or both fail — no partial execution
+5. **Backward compatibility**: Single-operation transactions continue to work unchanged
+
+**Soft Dependency**: SIP-0005 (Binary Transfer Format) — binary encoding makes dual payloads more size-efficient, but SIP-0008 works with JSON encoding as well.
+
+**Use Cases**:
+- **Mint-and-transfer**: Create a stamp and immediately send SRC-20 tokens in one transaction
+- **Composable workflows**: Agent-driven pipelines that batch stamp operations for efficiency
+- **Fee optimization**: Single transaction fee instead of two for combined operations
+
+**Activation Timeline**: TBD pending community review and Phase 1 implementation.
+
 ## 6.3 Superseded SIPs
 
 ### 6.3.1 SIP-0002: SRC-20 UTXO Binding & Transfer Format v2.0
@@ -1594,6 +1633,7 @@ Example (0.3% fee tier):
 | **0004** | Shielded SRC-20 — Privacy Extension | Draft | [#687](https://github.com/stampchain-io/btc_stamps/issues/687) | 2027+ (phased) |
 | **0005** | Binary Transfer Format for SRC-20 | Draft | [#688](https://github.com/stampchain-io/btc_stamps/issues/688) | TBD |
 | **0006** | Native SRC-20 AMM (Automated Market Maker) | Draft | [#689](https://github.com/stampchain-io/btc_stamps/issues/689) | TBD |
+| **0008** | Dual Transaction Parsing | Draft | [#692](https://github.com/stampchain-io/btc_stamps/issues/692) | TBD |
 
 ---
 
