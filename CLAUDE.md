@@ -1,8 +1,8 @@
-# Bitcoin Stamps Documentation - Claude Code Instructions
+# bitcoinstamps.xyz - Claude Code Instructions
 
 ## Project Overview
 
-This is the official Bitcoin Stamps documentation project featuring:
+This is the official Bitcoin Stamps documentation site (bitcoinstamps.xyz) featuring:
 - **VitePress documentation site** with custom LEO (Large Language Model Enhanced Organization) system
 - **Multilingual support** for 5 languages (English, Spanish, French, Chinese, Turkish)
 - **Cultural preservation system** for KEVIN, Trinity narratives, and Rare Pepe heritage
@@ -11,8 +11,10 @@ This is the official Bitcoin Stamps documentation project featuring:
 
 ## Task Master AI Integration
 
-**Import Task Master's development workflow commands and guidelines:**
-[.taskmaster/CLAUDE.md](mdc:.taskmaster/CLAUDE.md)
+**Task management is handled at the workspace root level.**
+- TaskMaster tag: `bitcoinstamps.xyz`
+- All task operations use workspace root `.taskmaster/` (NOT a local .taskmaster)
+- See workspace-level [.taskmaster/CLAUDE.md](mdc:../../.taskmaster/CLAUDE.md) for workflow commands
 
 ## Project-Specific Guidelines
 
@@ -231,7 +233,7 @@ docs/
 **Never modify these without explicit user permission**:
 - `docs/.vitepress/api/types.d.ts` - Core type definitions
 - `docs/.vitepress/config.ts` - VitePress configuration
-- `.taskmaster/` directory - Task Master AI files
+- Workspace-level `.taskmaster/` directory - Task Master AI files
 - `package.json` dependencies - Production dependencies
 - `.github/workflows/` - CI/CD workflows
 - `dist/` directory - Auto-generated, never edit manually
@@ -321,8 +323,7 @@ Project-specific slash commands (use with `/command-name`):
 npm run docs:dev          # Development server
 npm run docs:build        # Production build
 npm run docs:preview      # Preview built site
-task-master next          # Get next task to work on
-task-master show <id>     # View task details
+# Task management via MCP (workspace-level, tag: bitcoinstamps.xyz)
 ```
 
 **File Watching**: VitePress watches `.md`, `.vue`, and data files automatically. Changes to entity data require full rebuild.
