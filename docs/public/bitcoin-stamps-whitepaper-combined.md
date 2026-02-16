@@ -1,9 +1,7 @@
 ---
 title: "Bitcoin Stamps Protocol"
 subtitle: "A Technical Whitepaper — Version 1.0"
-author:
-  - The Original Trinity (Mikeinspace, Arwyn, Reinamora)
-  - Bitcoin Stamps Community
+author: "The Original Trinity (Mikeinspace, Arwyn, Reinamora) & Bitcoin Stamps Community"
 date: "2026-02-16"
 version: "1.0"
 lang: en
