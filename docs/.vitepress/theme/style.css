@@ -1302,31 +1302,7 @@ a:hover {
   }
 }
 
-/* Fix VitePress layout for proper sidebar and content spacing */
-@media (min-width: 960px) {
-  /* Reset any problematic layout overrides */
-  .VPSidebar {
-    position: fixed !important;
-    z-index: 1 !important;
-  }
-  
-  /* Ensure main content doesn't get cropped by sidebar */
-  .VPContent {
-    padding-left: var(--vp-sidebar-width, 272px) !important;
-    margin-left: 0 !important;
-  }
-  
-  /* Alternative approach - ensure content container respects sidebar */
-  .VPDoc .container {
-    padding-left: 0 !important;
-    margin-left: 0 !important;
-  }
-  
-  .VPDoc .content {
-    padding-left: 2rem !important;
-    padding-right: 2rem !important;
-  }
-}
+/* VitePress handles sidebar layout natively — no overrides needed */
 
 /* Professional Footer Styling */
 .VPFooter {
