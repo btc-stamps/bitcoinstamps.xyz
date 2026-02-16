@@ -89,7 +89,11 @@ This whitepaper consists of multiple sections:
 - <strong>[architecture.md](./architecture.md)</strong> — Technical architecture: UTXO storage model, bare multisig vs P2WSH encoding, account-based asset tracking
 - <strong>[token-standards.md](./token-standards.md)</strong> — SRC-20, SRC-721, SRC-721r, SRC-101 specifications
 - <strong>[economics.md](./economics.md)</strong> — UTXO permanence economics, storage costs, fee analysis
+<<<<<<< HEAD
 - <strong>[improvement-proposals.md](./improvement-proposals.md)</strong> — SIP governance framework and active proposals (SIP-0001 through SIP-0008)
+=======
+- <strong>[improvement-proposals.md](./improvement-proposals.md)</strong> — SIP governance framework and active proposals (SIP-0001 through SIP-0005)
+>>>>>>> origin/main
 - <strong>[implementation.md](./implementation.md)</strong> — Indexer architecture, consensus mechanisms, validation logic
 - <strong>[security.md](./security.md)</strong> — Threat model, attack vectors, immutability guarantees
 - <strong>[future.md](./future.md)</strong> — Roadmap for conditional transfers, privacy enhancements, cross-chain bridges
@@ -1170,12 +1174,17 @@ All SIPs are tracked as GitHub Issues in the Bitcoin Stamps repository:
 
 <h2>6.2 Active SIPs</h2>
 
+<<<<<<< HEAD
 <h3>6.2.1 SIP-0001: SRC-20 HTLC (Hash Time-Locked Contracts)</h3>
+=======
+<h3>6.2.1 SIP-0001: Conditional Transfers</h3>
+>>>>>>> origin/main
 
 <strong>GitHub Issue</strong>: [#685](https://github.com/stampchain-io/btc_stamps/issues/685)
 
 <strong>Status</strong>: Draft (as of 2026-02)
 
+<<<<<<< HEAD
 <strong>Motivation</strong>: Enable trustless atomic swaps and escrow services for SRC-20 tokens through hash time-locked contracts. Supports cross-asset exchanges and conditional transfers without requiring external oracles or modifying Bitcoin consensus.
 
 <strong>Technical Design</strong>:
@@ -1183,6 +1192,11 @@ All SIPs are tracked as GitHub Issues in the Bitcoin Stamps repository:
 SIP-0001 introduces three new SRC-20 operations:
 
 <strong>1. <code>conditional_transfer</code> — Create HTLC with hashlock and/or timelock</strong>:
+=======
+<strong>Motivation</strong>: Enable programmable token transfers with conditions evaluated by indexers. Supports DeFi primitives (escrows, swaps, vesting) without modifying Bitcoin consensus.
+
+<strong>Technical Design</strong>:
+>>>>>>> origin/main
 <code>`</code>json
 {
   "p": "src-20",
@@ -1190,6 +1204,7 @@ SIP-0001 introduces three new SRC-20 operations:
   "tick": "KEVIN",
   "amt": "1000",
   "to": "bc1q...recipient",
+<<<<<<< HEAD
   "hashlock": "a4b9c8d7e6f5...sha256hash",
   "timelock": 900000
 }
@@ -1236,6 +1251,26 @@ SIP-0001 introduces three new SRC-20 operations:
 - <strong>Timelock griefing</strong>: Malicious actors can lock counterparty funds then abandon swap
 - <strong>Multi-step process</strong>: Atomic swap requires 4 transactions (2 conditional_transfer + 2 claim)
 - <strong>Indexer validation complexity</strong>: Requires SHA-256 verification and timelock enforcement
+=======
+  "conditions": {
+    "unlock_height": 900000,
+    "oracle_signature": "witness_required",
+    "multisig_threshold": {"m": 2, "n": 3}
+  }
+}
+<code>`</code>
+
+<strong>Use Cases</strong>:
+- <strong>Time-locked transfers</strong>: Tokens released at specific block height
+- <strong>Escrow services</strong>: Third-party oracle signatures required for release
+- <strong>Atomic swaps</strong>: Cross-asset exchange with cryptographic settlement
+- <strong>Vesting schedules</strong>: Gradual token unlock over time
+
+<strong>Challenges</strong>:
+- Oracle trust assumptions (mitigated by multi-oracle schemes)
+- Indexer validation complexity (requires condition evaluation logic)
+- Backward compatibility (legacy indexers ignore conditional fields)
+>>>>>>> origin/main
 
 <strong>Activation Timeline</strong>: TBD pending community review and implementation testing.
 
@@ -1243,7 +1278,11 @@ SIP-0001 introduces three new SRC-20 operations:
 
 <strong>GitHub Issue</strong>: [#485](https://github.com/stampchain-io/btc_stamps/issues/485)
 
+<<<<<<< HEAD
 <strong>Status</strong>: Draft (as of 2026-02)
+=======
+<strong>Status</strong>: Review (as of 2026-02)
+>>>>>>> origin/main
 
 <strong>Motivation</strong>: Enable SRC-20 token movement between Bitcoin mainnet and Layer 2 protocols (Lightning Network, sidechains, rollups) while maintaining UTXO-based permanence guarantees for bridged asset records.
 
@@ -1326,6 +1365,7 @@ prove(0 &lt; amount &lt; max_supply)
 
 <strong>Activation Timeline</strong>: Specification under development (target 2027).
 
+<<<<<<< HEAD
 <h3>6.2.4 SIP-0005: Binary Transfer Format for SRC-20</h3>
 
 <strong>GitHub Issue</strong>: [#688](https://github.com/stampchain-io/btc_stamps/issues/688)
@@ -1552,6 +1592,73 @@ Transaction outputs:
 - Account-based models should not be forcibly bound to UTXO mechanics
 - Protocol safety (loss prevention) outweighs UX convenience (single-step swaps)
 - Multi-step protocols (HTLC) acceptable when they eliminate fundamental risks
+=======
+<h3>6.2.4 SIP-0005: Binary Data Format</h3>
+
+<strong>GitHub Issue</strong>: [#688](https://github.com/stampchain-io/btc_stamps/issues/688)
+
+<strong>Status</strong>: Review (as of 2026-02)
+
+<strong>Motivation</strong>: Replace JSON-encoded SRC-20 transactions with compact binary format. Reduce transaction size by 40-60%, lowering minting costs and increasing throughput.
+
+<strong>Format Specification</strong>:
+<code>`</code>
+Binary SRC-20 Transfer:
+[1 byte: version] [1 byte: op_code] [4 bytes: tick_id]
+[8 bytes: amount] [32 bytes: to_address_hash]
+
+Total: 46 bytes vs. ~120 bytes JSON equivalent
+<code>`</code>
+
+<strong>Op Codes</strong>:
+- <code>0x01</code>: DEPLOY
+- <code>0x02</code>: MINT
+- <code>0x03</code>: TRANSFER
+- <code>0x04</code>: CONDITIONAL_TRANSFER (SIP-0001)
+
+<strong>Encoding Rules</strong>:
+- <strong>Variable-length integers</strong>: Smaller amounts use fewer bytes
+- <strong>Address compression</strong>: Use hash instead of full Bech32 string
+- <strong>Tick identifiers</strong>: Numeric IDs replace string tickers (lookup table)
+
+<strong>Benefits</strong>:
+- 40-60% size reduction → 40-60% cost savings
+- Faster indexer parsing (binary vs JSON)
+- Increased data density (more stamps per block)
+
+<strong>Migration Strategy</strong>:
+- Binary format optional after activation
+- JSON format remains valid indefinitely
+- Indexers must support both formats
+- Wallets can choose format based on user preference
+
+<strong>Activation Timeline</strong>: Pending final specification review (target Q2 2026).
+
+<h2>6.3 Superseded SIPs</h2>
+
+<h3>6.3.1 SIP-0002: Extended Counterparty Support</h3>
+
+<strong>GitHub Issue</strong>: [#484](https://github.com/stampchain-io/btc_stamps/issues/484)
+
+<strong>Status</strong>: Superseded
+
+<strong>Original Motivation</strong>: Extend SRC-20 Counterparty support beyond block 796,000 to maintain backward compatibility with legacy Counterparty infrastructure.
+
+<strong>Rejection Rationale</strong>:
+- <strong>Protocol independence</strong>: Community consensus favored Bitcoin-native encoding over Counterparty dependency
+- <strong>Technical debt</strong>: Maintaining dual validation paths (Counterparty + native) increased complexity
+- <strong>Security surface</strong>: Counterparty protocol vulnerabilities could affect Stamps
+- <strong>Migration success</strong>: Block 796,000 cutoff executed smoothly without significant user disruption
+
+<strong>Historical Context</strong>: Early stamps (blocks 779,652 - 796,000) used Counterparty OP_RETURN encoding. SIP-0002 proposed continuing this approach, but community voted to enforce native encoding only after block 796,000.
+
+<strong>Superseded By</strong>: Native Bitcoin encoding became mandatory. No SIP replacement needed—community consensus rejected the proposal.
+
+<strong>Lessons Learned</strong>:
+- Clean breaks preferred over indefinite backward compatibility
+- Protocol independence increases long-term resilience
+- Sufficient migration time (779,652 → 796,000) prevented ecosystem disruption
+>>>>>>> origin/main
 
 <h2>6.4 SIP Process Best Practices</h2>
 
@@ -1674,6 +1781,7 @@ Transaction outputs:
 
 | SIP | Title | Status | GitHub | Target Activation |
 |-----|-------|--------|--------|-------------------|
+<<<<<<< HEAD
 | <strong>0001</strong> | SRC-20 Conditional Transfers (HTLC) | Draft | [#685](https://github.com/stampchain-io/btc_stamps/issues/685) | TBD |
 | <strong>0002</strong> | SRC-20 UTXO Binding &amp; Transfer Format v2.0 | Superseded (by SIP-0001) | [#484](https://github.com/stampchain-io/btc_stamps/issues/484) | N/A |
 | <strong>0003</strong> | SRC-20 Cross-Chain Bridge Specification | Draft | [#485](https://github.com/stampchain-io/btc_stamps/issues/485) | TBD |
@@ -1681,12 +1789,23 @@ Transaction outputs:
 | <strong>0005</strong> | Binary Transfer Format for SRC-20 | Draft | [#688](https://github.com/stampchain-io/btc_stamps/issues/688) | TBD |
 | <strong>0006</strong> | Native SRC-20 AMM (Automated Market Maker) | Draft | [#689](https://github.com/stampchain-io/btc_stamps/issues/689) | TBD |
 | <strong>0008</strong> | Dual Transaction Parsing | Draft | [#692](https://github.com/stampchain-io/btc_stamps/issues/692) | TBD |
+=======
+| <strong>0001</strong> | Conditional Transfers | Draft | [#685](https://github.com/stampchain-io/btc_stamps/issues/685) | TBD |
+| <strong>0002</strong> | Extended Counterparty Support | Superseded | [#484](https://github.com/stampchain-io/btc_stamps/issues/484) | N/A (Rejected) |
+| <strong>0003</strong> | Cross-Chain Bridges | Review | [#485](https://github.com/stampchain-io/btc_stamps/issues/485) | Q3 2026 (target) |
+| <strong>0004</strong> | Privacy Enhancements | Draft | [#687](https://github.com/stampchain-io/btc_stamps/issues/687) | 2027 (target) |
+| <strong>0005</strong> | Binary Data Format | Review | [#688](https://github.com/stampchain-io/btc_stamps/issues/688) | Q2 2026 (target) |
+>>>>>>> origin/main
 
 <hr>
 
 <strong>References</strong>:
 - [Bitcoin Stamps GitHub Repository](https://github.com/stampchain-io/btc_stamps)
+<<<<<<< HEAD
 - [SIP-0000: SIP Purpose and Guidelines](https://github.com/stampchain-io/btc_stamps/issues/686)
+=======
+- [SIP Process Documentation](https://github.com/stampchain-io/btc_stamps/blob/main/SIPS.md)
+>>>>>>> origin/main
 - [Counterparty Improvement Proposals (CIPs)](https://github.com/CounterpartyXCP/cips) — Inspiration for SIP governance model
 
 <hr>
