@@ -123,7 +123,7 @@ You're paying for **guaranteed permanent storage** on the world's most secure ne
 
 
 **Integration Options:
-- **[Stamps SDK →](https://github.com/stampchain-io/stamps_sdk)** - Build applications
+- **[TX-Builder SDK →](https://github.com/btc-stamps/tx-builder)** - Build applications
 - **[API Documentation →](/en/tutorials/api-integration)** - Query stamp data
 - **[Cost Estimation →](/en/tutorials/sdk-integration)** - Calculate fees programmatically
 

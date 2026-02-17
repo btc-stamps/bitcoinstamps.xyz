@@ -16,12 +16,9 @@ import type {
 
 // Import multilingual data and utilities
 import { getAllMultilingualEntities } from './multilingual-data.js'
-import { 
-  localizeProtocolEntity, 
-  localizeConceptEntity, 
-  localizeToolEntity, 
-  extractLanguageFromQuery, 
-  getAvailableLanguages 
+import {
+  localizeProtocolEntity,
+  getAvailableLanguages
 } from './language-utils.js'
 
 // Get current directory for relative imports
@@ -348,39 +345,37 @@ async function extractProtocolCards(language: SupportedLanguage = 'en'): Promise
     console.warn(`⚠️  ${extractionErrors.length} ProtocolCard parsing issues found. Check component syntax.`)
   }
   
-  console.log(`✅ Successfully extracted ${protocols.length} protocol entities from ${markdownFiles.length} markdown files`)
-  
-  return protocols
+  // Deduplicate protocols by ID (keep first occurrence)
+  const seen = new Set<string>()
+  const uniqueProtocols = protocols.filter(p => {
+    if (seen.has(p.id)) return false
+    seen.add(p.id)
+    return true
+  })
+
+  console.log(`✅ Successfully extracted ${uniqueProtocols.length} protocol entities from ${markdownFiles.length} markdown files`)
+
+  return uniqueProtocols
 }
 
 /**
  * Extract StructuredData entities for concepts with multilingual support
  */
-async function extractStructuredDataEntities(language: SupportedLanguage = 'en'): Promise<ConceptEntity[]> {
-  // Get multilingual concept entities and localize them
+async function extractStructuredDataEntities(_language: SupportedLanguage = 'en'): Promise<ConceptEntity[]> {
+  // Return raw multilingual entities - localization is applied later
+  // by localizeConceptEntity() in localized-endpoints.ts per language
   const multilingualEntities = getAllMultilingualEntities()
-  
-  // Localize concept entities for the requested language
-  const localizedConcepts = multilingualEntities.concepts.map(concept => 
-    localizeConceptEntity(concept, language)
-  )
-  
-  return localizedConcepts
+  return multilingualEntities.concepts
 }
 
 /**
  * Extract tool entities with multilingual support
  */
-async function extractToolEntities(language: SupportedLanguage = 'en'): Promise<ToolEntity[]> {
-  // Get multilingual tool entities and localize them
+async function extractToolEntities(_language: SupportedLanguage = 'en'): Promise<ToolEntity[]> {
+  // Return raw multilingual entities - localization is applied later
+  // by localizeToolEntity() in localized-endpoints.ts per language
   const multilingualEntities = getAllMultilingualEntities()
-  
-  // Localize tool entities for the requested language
-  const localizedTools = multilingualEntities.tools.map(tool => 
-    localizeToolEntity(tool, language)
-  )
-  
-  return localizedTools
+  return multilingualEntities.tools
 }
 
 /**

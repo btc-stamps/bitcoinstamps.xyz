@@ -55,9 +55,9 @@ For developers implementing OLGA-optimized applications:
 - **Miner Priority**: Better inclusion rates during high fee periods
 
 ### Development Resources
-- **[TX-Builder SDK →](https://github.com/stampchain-io/stamps_sdk)** - OLGA integration built-in
+- **[TX-Builder SDK →](https://github.com/btc-stamps/tx-builder)** - OLGA integration built-in
 - **[API Documentation →](/en/tutorials/api-integration)** - P2WSH storage endpoints
-- **[Protocol Specs →](https://github.com/stampchain-io/stamps_sdk)** - Technical implementation details
+- **[Protocol Specs →](https://github.com/stampchain-io/btc_stamps/blob/main/docs/whitepaper/architecture.md)** - Technical implementation details
 
 ## Storage Techniques
 
@@ -135,13 +135,13 @@ OLGA P2WSH storage is **automatically enabled** (block 865,000+) in all major Bi
 
 **Automatic Integration:**
 - **[Stampchain.io →](https://stampchain.io)** - OLGA enabled by default
-- **[TX-Builder SDK →](https://github.com/stampchain-io/stamps_sdk)** - Built-in P2WSH storage
+- **[TX-Builder SDK →](https://github.com/btc-stamps/tx-builder)** - Built-in P2WSH storage
 - **[Artist Tools →](/en/tutorials/artist-tools)** - Automatic optimization
 
 **For Developers:**
 - **[SDK Integration →](/en/tutorials/sdk-integration)** - OLGA configuration options
 - **[API Reference →](/en/tutorials/api-integration)** - P2WSH storage endpoints
-- **[Protocol Specs →](https://github.com/stampchain-io/stamps_sdk)** - Technical details
+- **[Protocol Specs →](https://github.com/stampchain-io/btc_stamps/blob/main/docs/whitepaper/architecture.md)** - Technical details
 
 ## Technical Background
 

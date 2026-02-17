@@ -37,7 +37,7 @@ Comprehensive developer resources for building with Bitcoin Stamps protocols and
 ### Development Tools
 
 **SDKs and Libraries:**
-- **[@btc-stamps/tx-builder →](https://github.com/stampchain-io/stamps_sdk)** - Official JavaScript/TypeScript SDK
+- **[@btc-stamps/tx-builder →](https://github.com/btc-stamps/tx-builder)** - Official JavaScript/TypeScript SDK
 - **Python SDK** - Python integration library
 - **API Clients** - Ready-to-use API wrappers
 
