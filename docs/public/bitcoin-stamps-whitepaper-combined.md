@@ -1,42 +1,69 @@
----
-title: "Bitcoin Stamps Protocol"
-subtitle: "A Technical Whitepaper — Version 1.0"
-author: "The Original Trinity (Mikeinspace, Arwyn, Reinamora) & Bitcoin Stamps Community"
-date: "2026-02-16"
-version: "1.0"
-lang: en
-mainfont: "Liberation Serif"
-sansfont: "Liberation Sans"
-monofont: "Liberation Mono"
-fontsize: 10pt
-papersize: a4
-margin-left: 1in
-margin-right: 1in
-margin-top: 1in
-margin-bottom: 1in
-abstract: |
-  Bitcoin Stamps is a metaprotocol for creating permanent, immutable digital
-  assets on Bitcoin through direct UTXO storage. Unlike witness-data approaches,
-  Bitcoin Stamps embed asset data in transaction outputs using bare multisig and
-  P2WSH encoding, ensuring universal node storage and consensus-critical permanence.
+# Bitcoin Stamps Protocol: A Technical Whitepaper
 
-  The protocol evolved from Counterparty foundations (block 779,652, March 29, 2023)
-  through native Bitcoin encoding (block 793,068) to P2WSH optimization via OLGA
-  (block 865,000, October 15, 2023). Built on account-based asset tracking, Bitcoin Stamps
-  support fungible tokens (SRC-20), non-fungible assets (base stamps), decentralized
-  naming (SRC-101), and composable recursion (SRC-721).
----
+## Abstract
 
-# Version History
+Bitcoin Stamps is a metaprotocol for creating permanent, immutable digital assets on Bitcoin through direct UTXO storage. Unlike witness-data approaches, Bitcoin Stamps embed asset data in transaction outputs using bare multisig and P2WSH encoding, ensuring universal node storage and consensus-critical permanence.
 
-| Version | Date | Description |
-|:-------:|------|-------------|
-| 1.0 | 2026-02-16 | Current release — factual corrections, OLGA clarifications, condensed future roadmap |
-| 0.9 | 2026-02-16 | Initial whitepaper draft — full protocol specification |
-| — | March 29, 2023 | Protocol genesis — first Bitcoin Stamp at block 779,652 |
+The protocol evolved from Counterparty foundations (block 779,652) through native Bitcoin encoding (block 793,068) to P2WSH optimization via OLGA (block 865,000). Built on account-based asset tracking, Bitcoin Stamps support fungible tokens (SRC-20), non-fungible assets (base stamps), decentralized naming (SRC-101), and composable recursion (SRC-721).
+
+**Core Innovation**: Leveraging Bitcoin's UTXO set for permanent data storage, making asset data consensus-critical and unprunable. All full nodes must store stamp data to validate transactions, guaranteeing permanence as long as Bitcoin exists.
+
+**Key Properties**:
+- **UTXO-based permanence**: Data stored in spendable outputs, not witness segments
+- **Consensus-critical storage**: Required for transaction validation across all nodes
+- **Account-based assets**: Counterparty-style balance tracking, not UTXO-bound tokens
+- **Multi-protocol support**: Extensible architecture for tokens, names, and recursion
+- **Cost-optimized encoding**: OLGA P2WSH reduces fees 30-95% vs bare multisig
+
+**Architecture**: The protocol separates data encoding (UTXO layer) from asset tracking (account layer). Stamps create permanent records in Bitcoin's UTXO set while maintaining balances through Counterparty-proven account ledger. This hybrid approach combines Bitcoin's permanence with practical asset management.
 
 ---
 
+## Table of Contents
+
+1. **[Introduction](./introduction.md)** — Protocol motivation, history, evolution
+2. **[Protocol Architecture](./architecture.md)** — UTXO storage, encoding layers, data encoding methods (bare multisig, P2WSH/OLGA)
+3. **[Token Standards](./token-standards.md)** — SRC-20 tokens, SRC-721 recursion, SRC-101 names
+4. **[Economic Model](./economics.md)** — Fee structures, miner incentives, sustainability
+5. **[Stamps Improvement Proposals](./improvement-proposals.md)** — SIP governance, active proposals, roadmap
+6. **[Implementation](./implementation.md)** — Indexer architecture, consensus model, validation logic
+7. **[Security Analysis](./security.md)** — Permanence guarantees, attack vectors, mitigations
+8. **[Future Work](./future.md)** — Research directions, SIP roadmap summary
+
+---
+
+## Document Structure
+
+This whitepaper consists of multiple sections:
+
+- **[introduction.md](./introduction.md)** — Protocol history from Counterparty origins (block 779,652) through native encoding (793,068) to OLGA optimization (833,000/865,000)
+- **[architecture.md](./architecture.md)** — Technical architecture: UTXO storage model, bare multisig and P2WSH/OLGA encoding, account-based asset tracking
+- **[token-standards.md](./token-standards.md)** — SRC-20, SRC-721, SRC-721r, SRC-101 specifications
+- **[economics.md](./economics.md)** — UTXO permanence economics, storage costs, fee analysis
+- **[improvement-proposals.md](./improvement-proposals.md)** — SIP governance framework and active proposals (SIP-0001 through SIP-0008)
+- **[implementation.md](./implementation.md)** — Indexer architecture, consensus mechanisms, validation logic
+- **[security.md](./security.md)** — Threat model, attack vectors, immutability guarantees
+- **[future.md](./future.md)** — Research directions and SIP roadmap summary
+
+---
+
+## Quick Reference
+
+**Genesis Block**: 779,652 (March 29, 2023) — First Bitcoin Stamp by Mikeinspace
+**Native Encoding**: 793,068 (April 20, 2023) — Direct Bitcoin encoding begins
+**Counterparty Cutoff**: 796,000 (August 15, 2023) — SRC-20 consensus rule
+**OLGA Activation**: 865,000 (October 15, 2023) — P2WSH optimization available
+
+**Foundation**: Built on Counterparty protocol (est. 2014) for proven account-based asset tracking
+**Storage Model**: UTXO-based (consensus-critical, unprunable)
+**Asset Model**: Account-based (balances tracked per address, not per UTXO)
+
+---
+
+*This whitepaper serves as the canonical technical specification for Bitcoin Stamps protocol. All implementations should reference this document for protocol compliance.*
+
+
+---
 
 # 1. Introduction
 
@@ -60,7 +87,6 @@ Bitcoin's primary innovation is permanent, censorship-resistant value storage ba
 ### 1.2.1 Counterparty Foundation (2014-2023)
 
 Bitcoin Stamps builds on Counterparty protocol, established January 2014 as Bitcoin's first metaprotocol for asset creation. Counterparty introduced:
-
 - **Account-based assets**: Balance ledger tracked per address, not per UTXO
 - **OP_RETURN encoding**: Embed metadata in 80-byte provably unspendable outputs
 - **Decentralized exchange**: On-chain order books and atomic swaps
@@ -97,7 +123,6 @@ OP_1 <pubkey1> <pubkey2> <pubkey3> OP_3 OP_CHECKMULTISIG
 Each "pubkey" is 32 bytes of image/data. A 2-of-3 multisig provides 64 bytes usable data per output. Multiple outputs chain together for larger assets.
 
 **Advantages**:
-
 - Direct Bitcoin encoding without metaprotocol dependencies
 - UTXO-based storage (consensus-critical, unprunable)
 - No witness data—data is part of transaction validation itself
@@ -126,14 +151,12 @@ Witness script contains data, hashed and stored in output. More efficient than b
 **Key insight**: P2WSH witness scripts are still consensus-critical (unlike witness data for signatures). Scripts must be provided to spend P2WSH outputs, so nodes must store them for UTXO validation. Data remains unprunable and permanent.
 
 **Cost reduction mechanism**:
-
 - Bare multisig: 3 fake pubkeys (96 bytes) per output in transaction data
 - P2WSH: 32-byte hash per output, actual data in witness script
 - Witness discount: 4:1 reduction (witness data counted at 1/4 weight)
 - Result: 60-80% fee reduction for typical stamps
 
 **OLGA benefits**:
-
 - Maintains UTXO permanence (witness scripts are consensus-critical)
 - Dramatically reduces creation costs (broader accessibility)
 - Better miner priority (more efficient byte usage)
@@ -165,7 +188,6 @@ Bitcoin Stamps protocol comprises:
 ## 1.5 Document Scope
 
 This whitepaper specifies:
-
 - UTXO storage architecture and data encoding — bare multisig and P2WSH/OLGA (Section 2)
 - Token standards — SRC-20, SRC-721, SRC-101 (Section 3)
 - Economic model (Section 4)
@@ -189,12 +211,10 @@ This whitepaper specifies:
 
 ---
 
+**Next**: [Protocol Architecture →](./architecture.md)
 
 
-```{=typst}
-#pagebreak()
-```
-
+---
 
 # 2. Protocol Architecture
 
@@ -270,7 +290,6 @@ struct UTXO {
 Contrast with witness data (SegWit):
 
 **Witness data** (signatures, witness scripts):
-
 - Required only during transaction validation
 - After validation, nodes can prune witness data
 - Not part of transaction hash (malleability fix)
@@ -278,7 +297,6 @@ Contrast with witness data (SegWit):
 - **Result**: Witness data is prunable, not guaranteed permanent
 
 **UTXO data** (scriptPubKey, amounts):
-
 - Required for all future transaction validation
 - Cannot be pruned without breaking validation
 - Part of transaction hash (UTXO uniquely identified by txid:vout)
@@ -290,7 +308,6 @@ Contrast with witness data (SegWit):
 ### 2.2.3 UTXO Set Size Implications
 
 UTXO storage has real cost—every full node stores entire UTXO set in fast-access databases. As of 2026:
-
 - ~150M UTXOs globally (~6GB UTXO database)
 - Each stamp adds 1-20 UTXOs depending on data size
 - Trade-off: Higher fees for permanent storage vs lower fees for prunable witness data
@@ -309,7 +326,6 @@ OP_1 <pubkey1> <pubkey2> <pubkey3> OP_3 OP_CHECKMULTISIG
 ```
 
 **Data encoding**:
-
 - `<pubkey1>`, `<pubkey2>`, `<pubkey3>` are 33-byte compressed pubkey format
 - Actually contain stamp data, not real public keys
 - 2-of-3 multisig: keys 1 & 2 are data (66 bytes), key 3 is real signing key
@@ -322,7 +338,6 @@ output_script = OP_1 + data[0:33] + data[33:66] + real_pubkey + OP_3 + OP_CHECKM
 ```
 
 **Characteristics**:
-
 - **Permanent**: Data in scriptPubKey, part of UTXO set
 - **Consensus-critical**: Required to spend multisig UTXO
 - **Expensive**: Full transaction weight (4 WU per byte)
@@ -330,7 +345,6 @@ output_script = OP_1 + data[0:33] + data[33:66] + real_pubkey + OP_3 + OP_CHECKM
 - **Universal**: Any Bitcoin node can validate
 
 **Limitations**:
-
 - High fees due to no witness discount
 - Large stamps require many outputs (cost scales linearly)
 - Multisig scripts flagged by some mempool policies (relay issues)
@@ -363,7 +377,6 @@ witness = [signatures, witness_script]
 Data chunks are pushed to stack and dropped, leaving only signature verification logic.
 
 **Characteristics**:
-
 - **Still consensus-critical**: Witness script must be provided to spend P2WSH output
 - **Weight discount**: Witness data counted at 1/4 weight (WU)
 - **Cost reduction**: 30-95% vs bare multisig
@@ -549,14 +562,12 @@ def handle_reorg(old_chain_tip, new_chain_tip):
 ### 2.5.1 Encoding ≠ Ownership
 
 **Encoding layer** (UTXO storage):
-
 - Determines WHERE data is stored (which UTXOs)
 - Ensures permanence (consensus-critical storage)
 - Handles Bitcoin transaction construction
 - **Example**: Bare multisig or P2WSH encoding
 
 **Asset tracking layer** (account balances):
-
 - Determines WHO owns WHAT (balances per address)
 - Manages transfer logic and validation
 - Maintains asset metadata and history
@@ -567,13 +578,11 @@ def handle_reorg(old_chain_tip, new_chain_tip):
 ### 2.5.2 Standards Layer Flexibility
 
 **Base stamps protocol**:
-
 - Defines encoding methods (bare multisig, P2WSH)
 - No inherent asset semantics
 - Just permanent data storage on Bitcoin
 
 **Standards define semantics**:
-
 - **SRC-20**: Fungible tokens with DEPLOY/MINT/TRANSFER operations
 - **SRC-721**: Recursion standard for composable stamps
 - **SRC-101**: Decentralized naming system
@@ -601,14 +610,12 @@ Multiple standards operate on same underlying UTXO permanence.
 5. **Applications**: Wallets, DEXs, explorers building on indexer APIs
 
 **Key innovations**:
-
 - **UTXO permanence**: Leverage Bitcoin's consensus requirements for guaranteed storage
 - **Account simplicity**: Counterparty-proven model avoids UTXO tracking complexity
 - **Layer separation**: Encoding independent from asset logic; standards independent from protocol
 - **P2WSH optimization**: OLGA reduces costs 30-95% while maintaining permanence
 
 **Tradeoffs**:
-
 - **Higher fees**: True cost of permanent Bitcoin storage (vs prunable witness tricks)
 - **Indexer dependency**: Need off-chain state computation (vs pure Bitcoin validation)
 - **Larger UTXO set**: Global node storage impact (vs transient witness data)
@@ -617,11 +624,11 @@ Multiple standards operate on same underlying UTXO permanence.
 
 ---
 
+**Next**: [Token Standards →](./token-standards.md)
+**Previous**: [← Introduction](./introduction.md)
 
 
-```{=typst}
-#pagebreak()
-```
+---
 
 # 4. Token Standards
 
@@ -682,7 +689,6 @@ SRC-721 addresses the economic challenge of high-resolution NFT collections by i
 **Layer Storage**: Collections deploy up to 10 layered stamp images using standard Stamps protocol. Each layer is independently stamped with full immutability guarantees.
 
 **Composition Manifests**: Users mint small JSON files (~100-500 bytes) that reference pre-stamped layers, specifying:
-
 - Layer stamp IDs
 - Stacking order (z-index)
 - Optional layer transformations
@@ -721,7 +727,6 @@ SRC-721r extends the layered model by incorporating **on-chain JavaScript librar
 **JavaScript Runtime**: Manifests can include or reference stamped JavaScript libraries that execute client-side to produce final artwork.
 
 **Recursive Composition**: Supports:
-
 - Nested layer hierarchies
 - Algorithmic pattern generation
 - Animation sequences
@@ -801,7 +806,6 @@ Transfers administrative control of the name service:
 ### Address Interoperability
 
 SRC-101 supports resolution and interconversion of all Bitcoin address types, enabling seamless integration with:
-
 - Mainnet (Legacy, P2SH, P2WPKH, P2WSH, Taproot)
 - Layer 2 protocols (Lightning Network, sidechains)
 - Bitcoin ecosystem extensions
@@ -822,11 +826,18 @@ All token standards share fundamental properties:
 
 These guarantees distinguish Stamps-based protocols from witness-data alternatives that compromise on permanence or introduce auxiliary dependencies.
 
+---
+
+**References**:
+
+- [Bitcoin Stamps Indexer Repository](https://github.com/stampchain-io/btc_stamps)
+- [SRC-101 Specification](https://bitname.gitbook.io/bitname/src-101)
+- [Stampchain FAQ](https://stampchain.io/faq)
+- [SRC-20 Token Standard Overview](https://trustmachines.co/learn/what-is-the-src-20-token-standard/)
+- [Bitcoin Stamps vs Ordinals Analysis](https://coinpedia.org/guest-post/bitcoin-stamps-vs-ordinals-deep-dive-into-future-of-on-chain-permanence/)
 
 
-```{=typst}
-#pagebreak()
-```
+---
 
 # 5. Economic Model
 
@@ -862,7 +873,6 @@ Bitcoin Stamps are stored directly in Bitcoin's Unspent Transaction Output (UTXO
 ### Bare Multisig (OP_MULTISIG)
 
 **Original Format**: Early Stamps used Counterparty's bare multisig encoding:
-
 - Base64-encode image binary
 - Split encoded data into 33-byte chunks
 - Embed chunks as fake public keys in multisig outputs (e.g., 1-of-3, 2-of-3)
@@ -874,7 +884,6 @@ Bitcoin Stamps are stored directly in Bitcoin's Unspent Transaction Output (UTXO
 ### P2WSH Migration
 
 **Efficiency Gains**: Pay-to-Witness-Script-Hash (P2WSH) outputs store data in the witness field, which receives a 75% discount under SegWit rules:
-
 - Base block data: 4 weight units per byte
 - Witness data: 1 weight unit per byte
 
@@ -889,7 +898,6 @@ Bitcoin Stamps are stored directly in Bitcoin's Unspent Transaction Output (UTXO
 **Breakthrough Optimization**: P2WSH encoding was enabled at block 833,000 (`CP_P2WSH_FEAT_BLOCK_START`), with the first SRC-20 OLGA transaction at block 865,000 (`BTC_SRC20_OLGA_BLOCK`). OLGA (Octet Linked Graphical Artifacts) eliminates Base64 encoding:
 
 **Technical Innovation**:
-
 - Stores raw binary data directly in transaction outputs
 - Removes 33% overhead from Base64 conversion
 - Achieves 50% transaction size reduction vs. OP_MULTISIG
@@ -906,13 +914,11 @@ Bitcoin Stamps are stored directly in Bitcoin's Unspent Transaction Output (UTXO
 **Base Layer Fees**: Stamp minters compete in Bitcoin's fee market alongside financial transactions. During congestion (e.g., Ordinals inscription waves, halving periods), Stamp costs scale proportionally.
 
 **Fee Rate Dynamics**:
-
 - Low congestion: 1-5 sat/vByte (Stamps cost $0.50-$5 per KB)
 - Medium congestion: 20-50 sat/vByte (Stamps cost $10-$30 per KB)
 - High congestion: 100-500 sat/vByte (Stamps cost $60-$300 per KB)
 
 **Batching Economies**: Minting multiple Stamps in a single transaction amortizes overhead:
-
 - Single Stamp: ~300 bytes overhead + data
 - 10 Stamps: ~300 bytes overhead + (10 × data), reducing per-Stamp cost
 
@@ -928,7 +934,6 @@ Bitcoin Stamps are stored directly in Bitcoin's Unspent Transaction Output (UTXO
 | **Total** | **5,200 bytes** | **~104,000 sats (~$62 @ $60K BTC)** |
 
 **Comparative Costs**:
-
 - Ordinals inscription (5KB): ~26,000 sats (~$16) — 75% cheaper due to witness discount
 - Classic Stamp (Base64): ~180,000 sats (~$108) — 73% more expensive due to encoding overhead
 - OLGA Stamp: ~104,000 sats (~$62) — balanced cost-permanence tradeoff
@@ -955,12 +960,10 @@ Bitcoin Stamps are stored directly in Bitcoin's Unspent Transaction Output (UTXO
 ### UTXO Set Growth Implications
 
 **Long-Term Costs**: As of 2026, storing 1GB of UTXO data costs validators:
-
 - SSD storage: ~$0.10/GB/year
 - RAM caching (performance nodes): ~$5/GB/year
 
 **Scaling Concerns**: If Stamps adoption scales to 100GB UTXO footprint, validators face:
-
 - $10/year storage costs (SSD)
 - $500/year RAM costs (high-performance nodes)
 
@@ -969,12 +972,10 @@ These costs are externalized to the network, raising debate over sustainable pro
 ### Alternative Protocols
 
 **IPFS + Bitcoin Anchoring**: Store data off-chain (IPFS), anchor hashes on Bitcoin:
-
 - Cost: ~200 bytes per anchor (~$2 at 20 sat/vByte)
 - Tradeoff: Requires IPFS network availability; not truly immutable
 
 **Arweave + Bitcoin Verification**: Permanent storage layer with Bitcoin proof references:
-
 - Cost: ~$5-$10 per MB on Arweave
 - Tradeoff: Dependency on Arweave network; cross-chain trust assumptions
 
@@ -987,7 +988,6 @@ These costs are externalized to the network, raising debate over sustainable pro
 **No Native Fees**: Stamps protocol itself collects no fees. All costs are miner fees paid to Bitcoin validators.
 
 **Token Economics** (SRC-20/721/101):
-
 - **Deploy Fees**: Set by deployer; collected in satoshis by minting smart contracts or indexer-enforced logic
 - **Royalties**: Not enforced at protocol level; marketplace-dependent
 - **Renewal Fees** (SRC-101): Deployer-set pricing for domain lease extensions
@@ -1026,6 +1026,31 @@ These costs are externalized to the network, raising debate over sustainable pro
 
 Bitcoin Stamps occupies the "maximum permanence" niche within Bitcoin's data inscription ecosystem. Users willing to pay premium costs for uncompromising immutability choose Stamps over cheaper, less permanent alternatives. This positions the protocol as a premium store-of-value layer for digital artifacts requiring absolute permanence guarantees.
 
+---
+
+## 5.7 Future Economic Considerations
+
+### UTXO Set Management Proposals
+
+**Spent Output Archiving**: Future Bitcoin soft forks may introduce mechanisms to archive spent outputs while maintaining cryptographic proofs, potentially affecting Stamp permanence.
+
+**Fee Policy Changes**: BIP proposals targeting data-heavy transactions could introduce additional costs or restrictions on multisig/P2WSH data embedding.
+
+**Stamps Adaptation**: Protocol must monitor Bitcoin Core development to ensure continued viability under potential consensus rule changes.
+
+### Layer 2 Integration
+
+**Lightning Network**: Stamps could leverage LN for microtransactions involving SRC-20 tokens, though atomic swaps face account-based model challenges.
+
+**Sidechains**: Federated sidechains (e.g., Liquid) may support Stamps-compatible standards with different cost structures.
+
+**Rollups**: Bitcoin rollup proposals (e.g., BitVM) could enable Stamps-like permanence at reduced on-chain footprint.
+
+### Competitive Landscape Evolution
+
+As Bitcoin's data inscription ecosystem matures, protocols will differentiate along cost-permanence-functionality axes. Stamps' commitment to UTXO-based immutability positions it as the "gold standard" for applications where permanence justifies premium costs—archival NFTs, legal records, decentralized identity systems, and foundational digital artifacts.
+
+---
 
 **References**:
 
@@ -1037,10 +1062,7 @@ Bitcoin Stamps occupies the "maximum permanence" niche within Bitcoin's data ins
 - [Bitcoin Stamps FAQ](https://stampchain.io/faq)
 
 
-```{=typst}
-#pagebreak()
-```
-
+---
 
 # 6. Stamps Improvement Proposals (SIPs)
 
@@ -1053,7 +1075,6 @@ Bitcoin Stamps protocol evolves through community-driven Stamps Improvement Prop
 **Draft**: Proposal submitted as GitHub Issue with specification outline. Author presents motivation, technical design, and backward compatibility analysis.
 
 **Review**: Community discussion period (minimum 14 days). Technical reviewers evaluate:
-
 - Specification clarity and completeness
 - Implementation feasibility
 - Security implications
@@ -1073,7 +1094,6 @@ Bitcoin Stamps protocol evolves through community-driven Stamps Improvement Prop
 **Critical Safety Mechanism**: All consensus-changing SIPs must specify activation block height at least **4 weeks (approximately 4,032 blocks)** after acceptance.
 
 **Rationale**:
-
 - Indexer operators need time to upgrade software
 - Wallet developers must integrate new transaction formats
 - Service providers require testing and deployment cycles
@@ -1084,7 +1104,6 @@ Bitcoin Stamps protocol evolves through community-driven Stamps Improvement Prop
 ### 6.1.3 Consensus Requirements
 
 **Indexer Consensus**: Bitcoin Stamps has no on-chain consensus mechanism. Protocol rules are enforced by indexer implementations. SIP activation requires:
-
 - **Reference Indexer**: stampchain.io (official implementation) must deploy support
 - **Secondary Indexers**: At least 2 independent implementations demonstrate compatibility
 - **Community Signaling**: No significant objections from major stakeholders
@@ -1094,7 +1113,6 @@ Bitcoin Stamps protocol evolves through community-driven Stamps Improvement Prop
 ### 6.1.4 GitHub Issue Tracking
 
 All SIPs are tracked as GitHub Issues in the Bitcoin Stamps repository:
-
 - **Repository**: https://github.com/stampchain-io/btc_stamps
 - **Issue Labels**: `SIP`, `enhancement`, `consensus-change`
 - **Discussion Forum**: GitHub Discussions for preliminary ideas before formal SIP submission
@@ -1125,7 +1143,6 @@ SIP-0001 introduces three new SRC-20 operations:
   "timelock": 900000
 }
 ```
-
 - **hashlock** (optional): SHA-256 hash — recipient must reveal preimage to claim
 - **timelock** (optional): Block height — sender can refund after this block if unclaimed
 - At least one of hashlock/timelock required
@@ -1141,7 +1158,6 @@ SIP-0001 introduces three new SRC-20 operations:
   "preimage": "secret_value"
 }
 ```
-
 - Indexer verifies `SHA-256(preimage)` matches hashlock
 - Must be before timelock block height (if timelock set)
 - Tokens credited to recipient
@@ -1155,19 +1171,16 @@ SIP-0001 introduces three new SRC-20 operations:
   "transfer_tx": "abc123...original_txid"
 }
 ```
-
 - Only valid after timelock block height reached
 - Tokens returned to original sender
 
 **Use Cases**:
-
 - **Atomic swaps**: Cross-asset exchange (e.g., KEVIN ↔ STAMP) with cryptographic settlement
 - **Escrow services**: Time-locked deposits with refund guarantees
 - **Trustless bridge deposits**: Lock tokens with hashlock, mint on L2 with preimage reveal (see SIP-0003)
 - **Time-locked vesting**: Gradual token unlock over time
 
 **Challenges**:
-
 - **Liveness requirement**: Both parties must be online during swap window
 - **Timelock griefing**: Malicious actors can lock counterparty funds then abandon swap
 - **Multi-step process**: Atomic swap requires 4 transactions (2 conditional_transfer + 2 claim)
@@ -1204,13 +1217,11 @@ Bitcoin L1 (Stamps)  ←→  Bridge Contract  ←→  L2 Protocol
    - Bitcoin transaction permanently records bridge event
 
 **Security Model**:
-
 - **Federated multisig**: M-of-N bridge operators hold Bitcoin keys
 - **Fraud proofs**: Users can challenge invalid bridge operations
 - **Timelock withdrawals**: Delay allows dispute resolution
 
 **Implementation Requirements**:
-
 - Bridge indexer module for cross-chain state verification
 - Oracle network for L2 state attestation
 - Emergency pause mechanism for security incidents
@@ -1252,14 +1263,12 @@ prove(0 < amount < max_supply)
 ```
 
 **Tradeoffs**:
-
 - **Proof size**: Range proofs add 1-2KB per transfer (higher fees)
 - **Validation cost**: Indexers must verify cryptographic proofs (slower sync)
 - **Regulatory risk**: Privacy features may face jurisdictional challenges
 - **Complexity**: Wallet implementations require cryptographic libraries
 
 **Phased Rollout**:
-
 - **Phase 1**: Optional confidential amounts for willing users
 - **Phase 2**: Stealth address support in major wallets
 - **Phase 3**: Full privacy by default with opt-out mechanism
@@ -1281,17 +1290,14 @@ Binary SRC-20 Transfer Format (44 bytes total):
 ```
 
 **Field Breakdown**:
-
 - **prefix** (6 bytes): `stamp:` — indexer detection marker (ASCII: `73 74 61 6D 70 3A`)
 - **version** (1 byte): `0x01` for format version 1
 - **op** (1 byte): Operation code
   - `0x01`: DEPLOY
   - `0x02`: MINT
   - `0x03`: TRANSFER
-
 - **tick** (20 bytes): UTF-8 ticker padded with null bytes
   - Example: "KEVIN" → `4B 45 56 49 4E` + 15 null bytes (`0x00`)
-
 - **amount** (8 bytes): uint64 big-endian raw amount (not decimal-adjusted)
 - **decimals** (8 bytes): uint64 big-endian decimal precision
 
@@ -1306,14 +1312,12 @@ else:
 ```
 
 **Benefits**:
-
 - **~63% size reduction**: 44 bytes binary vs ~120 bytes JSON
 - **Faster indexer parsing**: Binary deserialization vs JSON parsing
 - **Lower transaction fees**: Smaller data size reduces on-chain costs
 - **Increased data density**: More stamps per block
 
 **Migration Strategy**:
-
 - Binary format optional after activation
 - JSON format remains valid indefinitely (backward compatibility)
 - Indexers must support both formats simultaneously
@@ -1343,7 +1347,6 @@ SIP-0006 introduces four new SRC-20 operations for constant product market maker
   "fee_tier": 30
 }
 ```
-
 - **fee_tier**: Fee in basis points (10 = 0.1%, 30 = 0.3%, 100 = 1.0%)
 - Creates LP token with tick: `LP:KEVIN/STAMP`
 
@@ -1357,7 +1360,6 @@ SIP-0006 introduces four new SRC-20 operations for constant product market maker
   "amt_b": "5000"
 }
 ```
-
 - Deposits proportional to current pool ratio
 - Mints LP tokens to liquidity provider
 - LP tokens are standard SRC-20 (transferable, tradeable)
@@ -1371,7 +1373,6 @@ SIP-0006 introduces four new SRC-20 operations for constant product market maker
   "lp_amt": "500"
 }
 ```
-
 - Burns LP tokens
 - Returns proportional share of pool reserves
 
@@ -1398,7 +1399,6 @@ Example (0.3% fee tier):
 ```
 
 **LP Token Mechanics**:
-
 - LP tokens are standard SRC-20 tokens with tick format `LP:{tick_a}/{tick_b}`
 - Fully transferable between addresses
 - Can be traded on secondary markets
@@ -1406,20 +1406,17 @@ Example (0.3% fee tier):
 - Represent proportional claim on pool reserves
 
 **Phased Rollout**:
-
 - **Phase 1**: SRC-20/SRC-20 pools (fully trustless, no external dependencies)
 - **Phase 2**: wBTC pools (requires SIP-0007 wrapped asset standard)
 - **Phase 3**: Stablecoin pools (requires SIP-0003 bridge for USDT/USDC)
 
 **Benefits**:
-
 - **Trustless**: No intermediaries, no custody risk
 - **Permissionless**: Anyone can create pools or provide liquidity
 - **Atomic operations**: Swaps execute in single indexer transaction
 - **Capital efficient**: Liquidity providers earn fees on all trades
 
 **Challenges**:
-
 - **Impermanent loss**: Liquidity providers exposed to price divergence
 - **MEV risk**: Indexer ordering can enable front-running (mitigated by transaction fee priority)
 - **Pool fragmentation**: Multiple fee tiers for same pair splits liquidity
@@ -1459,7 +1456,6 @@ Transaction outputs:
 **Soft Dependency**: SIP-0005 (Binary Transfer Format) — binary encoding makes dual payloads more size-efficient, but SIP-0008 works with JSON encoding as well.
 
 **Use Cases**:
-
 - **Mint-and-transfer**: Create a stamp and immediately send SRC-20 tokens in one transaction
 - **Composable workflows**: Agent-driven pipelines that batch stamp operations for efficiency
 - **Fee optimization**: Single transaction fee instead of two for combined operations
@@ -1486,18 +1482,15 @@ Transaction outputs:
   "utxo": "txid:vout"
 }
 ```
-
 - Tokens would be locked to specific UTXO
 - Spending the UTXO would automatically transfer bound tokens
 - Enabled single-step atomic swaps via PSBT co-signing
 
 **Rejection Rationale**:
-
 - **Fundamental loss risk**: If user spends bound UTXO in normal Bitcoin transaction, SRC-20 tokens could be lost
   - Bitcoin consensus has no knowledge of SRC-20 state
   - Wallets cannot prevent accidental UTXO spending
   - Loss prevention is impossible without modifying Bitcoin protocol
-
 - **Non-deterministic rescue operations**: Indexer "token recovery" would break consensus determinism
 - **SIP-0001 provides superior solution**: HTLC covers all atomic swap use cases without loss risk
 - **Complexity vs benefit**: UTXO coordination adds significant implementation burden for marginal UX improvement
@@ -1505,7 +1498,6 @@ Transaction outputs:
 **Superseded By**: SIP-0001 (HTLC) provides trustless atomic swaps without binding tokens to UTXOs, eliminating loss risk while maintaining full functionality.
 
 **Lessons Learned**:
-
 - Account-based models should not be forcibly bound to UTXO mechanics
 - Protocol safety (loss prevention) outweighs UX convenience (single-step swaps)
 - Multi-step protocols (HTLC) acceptable when they eliminate fundamental risks
@@ -1537,27 +1529,23 @@ Transaction outputs:
 ### 6.4.2 Review Criteria
 
 **Technical Soundness**:
-
 - Specification is complete and unambiguous
 - Implementation is feasible with existing Bitcoin constraints
 - No cryptographic or protocol vulnerabilities
 
 **Protocol Alignment**:
-
 - Preserves UTXO-based permanence guarantees
 - Maintains account-based asset model
 - Follows Bitcoin-native encoding principles
 - Respects community governance values
 
 **Ecosystem Impact**:
-
 - Breaking changes justified and necessary
 - Migration path documented for affected users
 - Indexer implementation complexity is reasonable
 - Wallet/service integration burden is acceptable
 
 **Community Support**:
-
 - Rough consensus among developers
 - No strong objections from major stakeholders
 - Clear demand from users and builders
@@ -1565,7 +1553,6 @@ Transaction outputs:
 ### 6.4.3 Implementation Requirements
 
 **Reference Implementation**: All accepted SIPs must include:
-
 - Working code in stampchain.io indexer repository
 - Comprehensive test suite with edge cases
 - Documentation for indexer operators
@@ -1582,13 +1569,11 @@ Transaction outputs:
 **Research Question**: Can zk-SNARKs enable private SRC-20 transfers with succinct on-chain proofs?
 
 **Potential Benefits**:
-
 - Strong privacy (ZCash-level confidentiality)
 - Compact proofs (200-500 bytes regardless of transfer complexity)
 - Trustless verification by indexers
 
 **Challenges**:
-
 - Trusted setup requirements (or STARK alternatives)
 - Proof generation complexity for wallet implementations
 - Validation performance impact on indexer sync speed
@@ -1600,13 +1585,11 @@ Transaction outputs:
 **Research Question**: Can stamps reference external Bitcoin data (taproot scripts, DLCs) to enable advanced smart contracts?
 
 **Potential Applications**:
-
 - Stamps triggered by DLC oracle outcomes
 - Integration with BitVM computation verification
 - Lightning Network settlement to stamp ownership
 
 **Challenges**:
-
 - Cross-protocol coordination complexity
 - Security assumptions for external data sources
 - Indexer validation of external state
@@ -1618,19 +1601,16 @@ Transaction outputs:
 **Research Question**: Can Bitcoin rollups (BitVM, Sovereign SDK) support Stamps-compatible assets with L1 permanence guarantees?
 
 **Potential Architecture**:
-
 - L2 transactions executed off-chain
 - Periodic L1 commitment (Merkle root stamped on Bitcoin)
 - L2 state reconstructible from L1 commitments
 
 **Benefits**:
-
 - High throughput (1000s of transfers per second)
 - Low per-transfer cost (amortized L1 fees)
 - Maintained UTXO permanence for rollup commitments
 
 **Challenges**:
-
 - Data availability (ensure L2 state accessible)
 - Fraud proof mechanisms (dispute resolution)
 - Indexer complexity (track both L1 and L2 state)
@@ -1654,19 +1634,17 @@ Transaction outputs:
 ---
 
 **References**:
-
 - [Bitcoin Stamps GitHub Repository](https://github.com/stampchain-io/btc_stamps)
 - [SIP-0000: SIP Purpose and Guidelines](https://github.com/stampchain-io/btc_stamps/issues/686)
 - [Counterparty Improvement Proposals (CIPs)](https://github.com/CounterpartyXCP/cips) — Inspiration for SIP governance model
 
 ---
 
+**Next**: [Implementation Details →](./implementation.md)
+**Previous**: [← Economic Model](./economics.md)
 
 
-```{=typst}
-#pagebreak()
-```
-
+---
 
 # 7. Implementation
 
@@ -1969,7 +1947,6 @@ def validate_src20_transfer(tx, parsed, block_height):
 ```
 
 **Consensus Rules**:
-
 - Validation logic must be **order-dependent**: Process transactions in block order
 - Floating-point arithmetic **forbidden**: Use fixed-point decimals (Python `Decimal`)
 - No external data sources: Only blockchain data determines validity
@@ -2001,7 +1978,6 @@ def process_block(block):
 **Example**:
 ```
 Block 900,000 contains:
-
 - Tx A (index 5): Transfer 1000 KEVIN from Alice to Bob
 - Tx B (index 12): Transfer 1000 KEVIN from Alice to Carol
 
@@ -2276,7 +2252,6 @@ pub fn parse_stamp_data(raw_bytes: &[u8]) -> Result<StampData, ParseError> {
 ```
 
 **Performance Impact**:
-
 - Full chain sync (genesis → block 900,000): 3 hours (Rust) vs 48 hours (pure Python)
 - Real-time block processing: <100ms per block (Rust) vs 1-3 seconds (Python)
 
@@ -2402,7 +2377,6 @@ async def stream_new_stamps(websocket):
 ---
 
 **References**:
-
 - [stampchain.io Indexer Source Code](https://github.com/stampchain-io/btc_stamps)
 - [OpenStamps Independent Implementation](https://github.com/openstamps/indexer)
 - [Bitcoin Core RPC Documentation](https://developer.bitcoin.org/reference/rpc/)
@@ -2410,12 +2384,11 @@ async def stream_new_stamps(websocket):
 
 ---
 
+**Next**: [Security Analysis →](./security.md)
+**Previous**: [← SIPs](./improvement-proposals.md)
 
 
-```{=typst}
-#pagebreak()
-```
-
+---
 
 # 8. Security Analysis
 
@@ -2441,7 +2414,6 @@ Data Persists (unprunable consensus-critical data)
 ```
 
 **Proof-of-Work Protection**:
-
 - To reverse a stamp (via blockchain reorganization), attacker must:
   1. Mine competing chain longer than confirmed depth
   2. Accumulate more proof-of-work than honest network
@@ -2477,7 +2449,6 @@ attack_cost = 7 * 3.125 * 60000 = $1,312,500 USD
 | **Long-term permanence** | ✅ Guaranteed | ⚠️ Dependent on node policies |
 
 **Security Implication**: Stamps data survives even if:
-
 - Archival nodes stop operating
 - Witness data is pruned by majority of nodes
 - Protocol indexers cease operation
@@ -2528,7 +2499,6 @@ net_loss = 2454 sats
 **Result**: Stamp UTXOs are **economically unspendable** under normal fee markets, ensuring perpetual UTXO set residence.
 
 **Exception**: During extremely low fee periods (<1 sat/vByte), spending may become economically viable. However:
-
 - Most stamp creators use addresses without private keys (burn addresses)
 - Community norm: Do not spend stamp UTXOs
 - Even if spent, data remains in blockchain history (recoverable via archival indexing)
@@ -2819,20 +2789,17 @@ revenue_lost = 7 * 3.125 BTC * $60,000 = $1,312,500
 ### 8.5.1 Security Hierarchy
 
 **Layer 1: Bitcoin Consensus (Trustless)**
-
 - ✅ Stamp data permanence guaranteed by PoW
 - ✅ Reversal requires >$20B attack (infeasible)
 - ✅ Data availability as long as Bitcoin operates
 
 **Layer 2: Indexer Validation (Trust-Minimized)**
-
 - ⚠️ Requires trust in indexer validation logic
 - ✅ Mitigated by multi-indexer consensus
 - ✅ Open-source, verifiable by anyone
 - ⚠️ State divergence bugs possible (rare, detectable, fixable)
 
 **Layer 3: Application Layer (Trust-Dependent)**
-
 - ⚠️ Wallets/explorers may report false data
 - ⚠️ Users must verify application integrity
 - ✅ Mitigated by using reputable services
@@ -2903,13 +2870,11 @@ revenue_lost = 7 * 3.125 BTC * $60,000 = $1,312,500
 **Threat**: Quantum computers (Shor's algorithm) can break ECDSA signatures, potentially allowing theft of funds from known public keys.
 
 **Impact on Stamps**:
-
 - Stamp data permanence unaffected (data is public, not secret)
 - UTXO spending risk if quantum attacker derives private keys
 - Indexer validation logic unaffected (no cryptographic secrets)
 
 **Mitigation**:
-
 - Use burn addresses (no private key exists → quantum-proof)
 - Future stamps may use quantum-resistant signatures (post-quantum cryptography)
 - Bitcoin-level mitigation (soft fork to quantum-resistant signatures) protects all stamps
@@ -2919,13 +2884,11 @@ revenue_lost = 7 * 3.125 BTC * $60,000 = $1,312,500
 **Threat**: Future Bitcoin soft/hard forks may affect stamp permanence guarantees.
 
 **Potential Risks**:
-
 - UTXO set pruning mechanisms (BIP proposal: stateless validation)
 - Changes to multisig or P2WSH validation rules
 - Block size reductions affecting stamp relay
 
 **Mitigation**:
-
 - Community monitoring of Bitcoin Core development
 - Participation in BIP discussions affecting data storage
 - Fork contingency plans (maintain support for longest PoW chain)
@@ -2935,13 +2898,11 @@ revenue_lost = 7 * 3.125 BTC * $60,000 = $1,312,500
 **Threat**: Jurisdictions may ban stamp creation or indexing.
 
 **Impact**:
-
 - Stamp data remains on-chain (cannot be removed by regulation)
 - Indexers may shut down in restricted jurisdictions
 - Wallets may delist stamp functionality
 
 **Mitigation**:
-
 - Geographic indexer distribution (censorship-resistant)
 - Open-source code enables permissionless operation
 - Tor/VPN access to indexers in permissive jurisdictions
@@ -2950,7 +2911,6 @@ revenue_lost = 7 * 3.125 BTC * $60,000 = $1,312,500
 ---
 
 **References**:
-
 - [Bitcoin Security Model](https://en.bitcoin.it/wiki/Weaknesses)
 - [51% Attack Cost Analysis](https://www.crypto51.app/)
 - [UTXO Set Research](https://research.mempool.space/utxo-set-report/)
@@ -2959,12 +2919,11 @@ revenue_lost = 7 * 3.125 BTC * $60,000 = $1,312,500
 
 ---
 
+**Next**: [Future Directions →](./future.md)
+**Previous**: [← Implementation](./implementation.md)
 
 
-```{=typst}
-#pagebreak()
-```
-
+---
 
 # 9. Future Work
 
@@ -3028,7 +2987,6 @@ The protocol's future is shaped by community contributions through the SIP proce
 ---
 
 **Get Involved**:
-
 - **GitHub**: https://github.com/stampchain-io/btc_stamps (contribute code, submit SIPs)
 - **Telegram**: https://t.me/BitcoinStamps (community hub)
 - **Discord**: https://discord.gg/stampchain (community discussions)
@@ -3037,5 +2995,9 @@ The protocol's future is shaped by community contributions through the SIP proce
 
 ---
 
+**Previous**: [← Security Analysis](./security.md)
 **Table of Contents**: [↑ Whitepaper Index](./index.md)
+
+
+---
 
