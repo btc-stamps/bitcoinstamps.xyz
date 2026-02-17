@@ -26,7 +26,7 @@ hero:
       link: /es/protocols/
     - theme: alt
       text: Iniciar Tutoriales
-      link: /en/tutorials/
+      link: /es/tutorials/
 ---
 
 <SmartStructuredData />
@@ -51,18 +51,18 @@ Nuestra comunidad sigue el principio de *"In Lak'ech Ala K'in"* - "Yo soy tú y 
 Construye aplicaciones con protocolos Bitcoin Stamps:
 
 - **[Documentación de Protocolos →](/es/protocols/)** - Especificaciones técnicas
-- **[Integración SDK →](/en/tutorials/sdk-integration)** - `@btc-stamps/tx-builder` 
-- **[Referencia API →](/en/tutorials/api-integration)** - Endpoints REST
-- **[Ejemplos de Código →](/en/tutorials/)** - Implementaciones prácticas
+- **[Integración SDK →](/es/tutorials/sdk-integration)** - `@btc-stamps/tx-builder`
+- **[Referencia API →](/es/tutorials/api-integration)** - Endpoints REST
+- **[Ejemplos de Código →](/es/tutorials/)** - Implementaciones prácticas
 
 ### Para Creadores
 
 Crea activos digitales en Bitcoin:
 
-- **[Crear tu Primer Stamp →](/en/tutorials/creating-first-stamp)** - Empieza aquí
-- **[Guía de Token SRC-20 →](/en/tutorials/src20-token-creation)** - Hacer tokens
-- **[Herramientas de Artista →](/en/tutorials/artist-tools)** - Flujos de trabajo creativos  
-- **[Guía Visual →](/en/tutorials/visual-workflow)** - Proceso paso a paso
+- **[Crear tu Primer Stamp →](/es/tutorials/creating-first-stamp)** - Empieza aquí
+- **[Guía de Token SRC-20 →](/es/tutorials/src20-token-creation)** - Hacer tokens
+- **[Herramientas de Artista →](/es/tutorials/artist-tools)** - Flujos de trabajo creativos
+- **[Guía Visual →](/es/tutorials/visual-workflow)** - Proceso paso a paso
 
 ## ¿Por qué Bitcoin Stamps?
 

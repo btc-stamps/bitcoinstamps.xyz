@@ -10,6 +10,7 @@ Bitcoin Stamps represents a revolution in permanent digital assets on Bitcoin, p
 
 ### SRC-20 Fungible Tokens
 - **Pioneer**: KEVIN token established the template for community-driven success
+- **Ownership Model**: **Account-based** — token balances are tracked per address by the Stamps indexer, NOT locked in individual UTXOs. Deploy, mint, and transfer operations update account balances. You cannot accidentally spend SRC-20 tokens by spending a UTXO (unlike Ordinals inscriptions). Stamps *data* is stored in the UTXO set, but token *ownership* is account-based.
 - **Genesis Blocks**:
   - Counterparty SRC-20: Block 788,041 (KEVIN token)
   - Bitcoin-native SRC-20: Block 793,068 (direct encoding)

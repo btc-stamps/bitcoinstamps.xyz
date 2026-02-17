@@ -6,6 +6,12 @@
 
 Bitcoin Stamps and Ordinals represent fundamentally different approaches to on-chain data storage. **Bitcoin Stamps embed data directly in the UTXO set** via P2WSH outputs, making that data consensus-critical: every full Bitcoin node must retain it permanently and cannot prune it without breaking transaction validation. **Ordinals/Inscriptions store data in witness segments** of SegWit transactions, which are not part of the transaction hash and can be pruned by nodes after initial validation — providing no guarantee that the data persists across the full network. In short, Bitcoin Stamps data is permanent and consensus-enforced; Ordinals data is optional and infrastructure-dependent. For a full technical analysis see the [Bitcoin Stamps vs Ordinals comparison](https://bitcoinstamps.xyz/en/guide/bitcoin-stamps-vs-ordinals).
 
+## SRC-20 Ownership Model: Account-Based
+
+SRC-20 token ownership uses an **account-based model**, not a UTXO model. Token balances are tracked per address by the Stamps indexer — they are NOT locked in individual UTXOs. When a user deploys, mints, or transfers SRC-20 tokens, the indexer updates the sender's and recipient's account balances accordingly. This means you cannot "lock" SRC-20 tokens in a multisig UTXO or spend them by accident the way UTXO-bound assets (like Ordinals inscriptions) can be lost. The account-based design provides simpler, safer asset management for both developers and end users.
+
+**Key distinction:** Stamps *data* is stored in the UTXO set (bare multisig or P2WSH), but token *ownership* is account-based. The data layer is permanent and consensus-enforced; the ownership layer is tracked by the indexer using account balances per address.
+
 ## Smart LEO API System
 
 The Bitcoin Stamps documentation implements the Smart LEO (Large Enterprise Optimization) system providing structured JSON APIs optimized for AI consumption while preserving cultural context and community values.

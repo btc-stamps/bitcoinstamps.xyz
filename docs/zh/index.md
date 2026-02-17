@@ -26,7 +26,7 @@ hero:
       link: /zh/protocols/
     - theme: alt
       text: 开始教程
-      link: /en/tutorials/
+      link: /zh/tutorials/
 ---
 
 <SmartStructuredData />
@@ -51,18 +51,18 @@ Bitcoin Stamps 始于比特币上的涂鸦运动——无法被删除或审查�
 使用 Bitcoin Stamps 协议构建应用程序：
 
 - **[协议文档 →](/zh/protocols/)** - 技术规范
-- **[SDK 集成 →](/en/tutorials/sdk-integration)** - `@btc-stamps/tx-builder` 
-- **[API 参考 →](/en/tutorials/api-integration)** - REST 端点
-- **[代码示例 →](/en/tutorials/)** - 实践实现
+- **[SDK 集成 →](/zh/tutorials/sdk-integration)** - `@btc-stamps/tx-builder`
+- **[API 参考 →](/zh/tutorials/api-integration)** - REST 端点
+- **[代码示例 →](/zh/tutorials/)** - 实践实现
 
 ### 创作者
 
 在比特币上创建数字资产：
 
-- **[创建你的第一个 Stamp →](/en/tutorials/creating-first-stamp)** - 从这里开始
-- **[SRC-20 代币指南 →](/en/tutorials/src20-token-creation)** - 制作代币
-- **[艺术家工具 →](/en/tutorials/artist-tools)** - 创意工作流程
-- **[可视化指南 →](/en/tutorials/visual-workflow)** - 分步过程
+- **[创建你的第一个 Stamp →](/zh/tutorials/creating-first-stamp)** - 从这里开始
+- **[SRC-20 代币指南 →](/zh/tutorials/src20-token-creation)** - 制作代币
+- **[艺术家工具 →](/zh/tutorials/artist-tools)** - 创意工作流程
+- **[可视化指南 →](/zh/tutorials/visual-workflow)** - 分步过程
 
 ## 为什么选择 Bitcoin Stamps？
 
