@@ -111,6 +111,24 @@ For developers implementing OLGA-optimized applications:
 - **Fee Optimization**: More efficient fee-per-byte ratios
 - **Reduced Penalties**: No multisig fee penalties that affected pre-OLGA stamps
 
+## Permanence Guarantee
+
+Bitcoin Stamps achieve a level of data permanence that is architecturally superior to other Bitcoin-based protocols. OLGA optimizes the cost of achieving this permanence while preserving its fundamental guarantees.
+
+### How OLGA Maintains Permanence
+
+Pre-OLGA stamps embed data directly in the **unspent transaction output (UTXO) set** via bare multisig outputs -- data that every fully validating Bitcoin node must retain to verify new transactions. OLGA shifts the storage mechanism to P2WSH witness scripts for cost efficiency, while the P2WSH output hashes remain in the UTXO set as immutable proof of the data's existence. The encoded data itself is permanently recorded in Bitcoin blocks and is retrievable by any node that has processed those blocks. OLGA reduces transaction costs without sacrificing the permanence that defines Bitcoin Stamps.
+
+### Contrast with Ordinals and Witness Data
+
+Ordinals inscriptions store their data in the **witness** (SegWit) portion of Bitcoin transactions. While witness data is included in blocks, Bitcoin's protocol explicitly allows nodes to prune witness data after validation. A pruned node can discard witness sections entirely and still function as a valid participant in the network. This means Ordinals data availability depends on archival nodes choosing to retain that data -- it is not structurally guaranteed.
+
+Bitcoin Stamps take a fundamentally different approach. Whether using the original bare multisig method or OLGA's P2WSH optimization, Stamps create unspendable outputs whose hashes are retained in the UTXO set by every full node. The data is permanently anchored to Bitcoin's consensus layer rather than stored in an optional, prunable section.
+
+### Practical Implication
+
+Any Bitcoin Stamp created with OLGA can be retrieved from **any Bitcoin full node, indefinitely**. OLGA achieves 30-95% cost savings without compromising this guarantee. There is no reliance on specialized archival infrastructure, IPFS pinning services, or third-party data availability layers. The Bitcoin network itself serves as the permanent, uncensorable storage layer -- OLGA simply makes accessing that permanence more affordable.
+
 ## Getting Started
 
 OLGA P2WSH storage is **automatically enabled** (block 865,000+) in all major Bitcoin Stamps tools:

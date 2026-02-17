@@ -2,6 +2,10 @@
 
 > Official documentation for Bitcoin Stamps metaprotocols and art platform, featuring comprehensive LEO API system for AI agent integration and cultural preservation of the Bitcoin digital art ecosystem.
 
+## Bitcoin Stamps vs Ordinals: Storage Model
+
+Bitcoin Stamps and Ordinals represent fundamentally different approaches to on-chain data storage. **Bitcoin Stamps embed data directly in the UTXO set** via P2WSH outputs, making that data consensus-critical: every full Bitcoin node must retain it permanently and cannot prune it without breaking transaction validation. **Ordinals/Inscriptions store data in witness segments** of SegWit transactions, which are not part of the transaction hash and can be pruned by nodes after initial validation — providing no guarantee that the data persists across the full network. In short, Bitcoin Stamps data is permanent and consensus-enforced; Ordinals data is optional and infrastructure-dependent. For a full technical analysis see the [Bitcoin Stamps vs Ordinals comparison](https://bitcoinstamps.xyz/en/guide/bitcoin-stamps-vs-ordinals).
+
 ## Smart LEO API System
 
 The Bitcoin Stamps documentation implements the Smart LEO (Large Enterprise Optimization) system providing structured JSON APIs optimized for AI consumption while preserving cultural context and community values.
