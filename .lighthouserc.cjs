@@ -3,9 +3,9 @@ module.exports = {
     collect: {
       staticDistDir: './dist',
       url: [
-        '/en/',
-        '/en/protocols/src-20',
-        '/en/guide/introduction',
+        '/en/index.html',
+        '/en/protocols/src-20.html',
+        '/en/guide/introduction.html',
       ],
     },
     assert: {
