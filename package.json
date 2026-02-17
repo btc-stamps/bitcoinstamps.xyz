@@ -11,7 +11,8 @@
     "lighthouse": "lhci autorun",
     "test:leo-api": "node docs/.vitepress/test-leo-system.js",
     "test:translation": "node docs/.vitepress/test-translation-system.js",
-    "build:with-test": "npm run test:leo-api && npm run test:translation && npm run docs:build",
+    "test:comparisons-api": "node docs/.vitepress/test-comparisons-api.js",
+    "build:with-test": "npm run test:leo-api && npm run test:translation && npm run test:comparisons-api && npm run docs:build",
     "whitepaper:generate": "node scripts/generate-whitepaper-pdf.js"
   },
   "keywords": [

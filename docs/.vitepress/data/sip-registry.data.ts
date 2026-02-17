@@ -6,7 +6,7 @@
 import { defineLoader } from 'vitepress'
 import { readFileSync } from 'fs'
 import { join } from 'path'
-import { load } from 'js-yaml'
+import yaml from 'js-yaml'
 
 interface SipEntry {
   number: string
@@ -67,7 +67,7 @@ export default defineLoader({
     try {
       const yamlPath = join(__dirname, 'sip-registry.yaml')
       const yamlContent = readFileSync(yamlPath, 'utf8')
-      const rawData = load(yamlContent) as any
+      const rawData = yaml.load(yamlContent) as any
 
       const data: SipRegistryData = {
         sips: rawData.sips || [],

@@ -5,6 +5,7 @@ import './style.css'
 import SmartStructuredData from './components/LEO/SmartStructuredData.vue'
 import EntityMention from './components/LEO/EntityMention.vue'
 import LanguageSwitcher from './components/LanguageSwitcher.vue'
+import SipRegistry from './components/SipRegistry.vue'
 
 export default {
   extends: DefaultTheme,
@@ -13,5 +14,6 @@ export default {
     app.component('SmartStructuredData', SmartStructuredData)
     app.component('EntityMention', EntityMention)
     app.component('LanguageSwitcher', LanguageSwitcher)
+    app.component('SipRegistry', SipRegistry)
   }
 }
