@@ -56,7 +56,7 @@ async function testLEOSystem() {
     
     if (!data.entities) throw new Error('Missing entities object')
     if (!data.metadata) throw new Error('Missing metadata object')
-    if (data.metadata.totalEntities < 15) throw new Error(`Expected at least 15 entities, got ${data.metadata.totalEntities}`)
+    if (data.metadata.totalEntities < 14) throw new Error(`Expected at least 14 entities, got ${data.metadata.totalEntities}`)
   })
 
   // Test 3: KEVIN entity validation 
@@ -104,12 +104,89 @@ async function testLEOSystem() {
     if (!allSame) throw new Error(`Inconsistent entity counts across languages: ${entityCounts.join(', ')}`)
   })
 
-  // Test 6: Performance check
-  await test('Build output size is reasonable', async () => {
+  // Test 6: No duplicate protocol entities
+  await test('No duplicate protocol entities', async () => {
+    const entityPath = join(__dirname, '../../dist/api/entities.json')
+    const content = await readFile(entityPath, 'utf-8')
+    const data = JSON.parse(content)
+
+    const ids = data.entities.protocols.map(p => p.id)
+    const uniqueIds = [...new Set(ids)]
+    if (ids.length !== uniqueIds.length) {
+      const dupes = ids.filter((id, i) => ids.indexOf(id) !== i)
+      throw new Error(`Duplicate protocol IDs: ${dupes.join(', ')}`)
+    }
+  })
+
+  // Test 7: All protocols have blockIntroduced
+  await test('All protocols have blockIntroduced', async () => {
+    const protocolPath = join(__dirname, '../../dist/api/protocols.json')
+    const content = await readFile(protocolPath, 'utf-8')
+    const data = JSON.parse(content)
+
+    const missing = data.protocols
+      .filter(p => !p.blockIntroduced)
+      .map(p => p.id)
+    if (missing.length > 0) {
+      throw new Error(`Protocols missing blockIntroduced: ${missing.join(', ')}`)
+    }
+  })
+
+  // Test 8: Non-English locales have localized text (not English fallback)
+  await test('Non-English locales have localized text', async () => {
+    const checks = [
+      { locale: 'tr', path: join(__dirname, '../../dist/tr/api/entities.json'), markers: ['sevilen', 'maskot', 'topluluk'] },
+      { locale: 'es', path: join(__dirname, '../../dist/es/api/entities.json'), markers: ['querida', 'mascota', 'comunidad'] },
+      { locale: 'fr', path: join(__dirname, '../../dist/fr/api/entities.json'), markers: ['mascotte', 'communautaire', 'culturel'] },
+      { locale: 'zh', path: join(__dirname, '../../dist/zh/api/entities.json'), markers: ['吉祥物', '社区', '文化'] },
+    ]
+
+    for (const { locale, path: filePath, markers } of checks) {
+      const content = await readFile(filePath, 'utf-8')
+      const data = JSON.parse(content)
+      const kevin = data.entities.concepts.find(c => c.id === 'kevin')
+      if (!kevin) throw new Error(`${locale}: KEVIN entity missing`)
+
+      const desc = kevin.description.toLowerCase()
+      const hasLocalized = markers.some(m => desc.includes(m))
+      if (!hasLocalized) {
+        throw new Error(`${locale}: KEVIN description appears to be English fallback: "${kevin.description.substring(0, 80)}"`)
+      }
+    }
+  })
+
+  // Test 9: Static deployment files exist
+  await test('Static deployment files exist', async () => {
     const distPath = join(__dirname, '../../dist')
-    // This is a basic check - in real scenarios you'd measure actual size
-    await access(distPath, constants.F_OK)
-    console.log(`   📊 Build output exists at ${distPath}`)
+    const requiredFiles = [
+      'llms.txt',
+      'llms-full.txt',
+      'sitemap.xml',
+      'robots.txt',
+      '.well-known/ai-plugin.json',
+    ]
+
+    const missing = []
+    for (const file of requiredFiles) {
+      try {
+        await access(join(distPath, file), constants.F_OK)
+      } catch {
+        missing.push(file)
+      }
+    }
+    if (missing.length > 0) {
+      throw new Error(`Missing deployment files: ${missing.join(', ')}`)
+    }
+  })
+
+  // Test 10: Sitemap has expected URL count
+  await test('Sitemap contains expected pages', async () => {
+    const sitemapPath = join(__dirname, '../../dist/sitemap.xml')
+    const content = await readFile(sitemapPath, 'utf-8')
+    const urlCount = (content.match(/<url>/g) || []).length
+    if (urlCount < 100) {
+      throw new Error(`Sitemap has only ${urlCount} URLs, expected at least 100`)
+    }
   })
 
   console.log(`\n📋 Test Results:`)
