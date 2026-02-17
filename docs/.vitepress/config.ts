@@ -1,6 +1,7 @@
 import { defineConfig } from 'vitepress'
 import { generateStaticAPIFiles, validateAPIConsistency } from './api/endpoints.ts'
 import path from 'path'
+import fs from 'fs/promises'
 
 export default defineConfig({
   title: 'BITCOIN STAMPS',
@@ -24,7 +25,7 @@ export default defineConfig({
         ],
         footer: {
           message: 'Community-owned open source project preserving digital culture on Bitcoin',
-          copyright: '© 2023-2025 Bitcoin Stamps Community. Documentation licensed under MIT.'
+          copyright: '© 2023-2026 Bitcoin Stamps Community. Documentation licensed under MIT.'
         }
       }
     },
@@ -44,7 +45,7 @@ export default defineConfig({
         ],
         footer: {
           message: 'Projet open source communautaire préservant la culture numérique sur Bitcoin',
-          copyright: '© 2023-2025 Communauté Bitcoin Stamps. Documentation sous licence MIT.'
+          copyright: '© 2023-2026 Communauté Bitcoin Stamps. Documentation sous licence MIT.'
         }
       }
     },
@@ -64,7 +65,7 @@ export default defineConfig({
         ],
         footer: {
           message: 'Proyecto comunitario de código abierto que preserva la cultura digital en Bitcoin',
-          copyright: '© 2023-2025 Comunidad Bitcoin Stamps. Documentación bajo licencia MIT.'
+          copyright: '© 2023-2026 Comunidad Bitcoin Stamps. Documentación bajo licencia MIT.'
         }
       }
     },
@@ -84,7 +85,7 @@ export default defineConfig({
         ],
         footer: {
           message: '社区拥有的开源项目，在比特币上保存数字文化',
-          copyright: '© 2023-2025 比特币邮票社区。文档采用 MIT 许可证。'
+          copyright: '© 2023-2026 比特币邮票社区。文档采用 MIT 许可证。'
         }
       }
     },
@@ -104,7 +105,7 @@ export default defineConfig({
         ],
         footer: {
           message: 'Bitcoin üzerinde dijital kültürü koruyan topluluk sahipli açık kaynak projesi',
-          copyright: '© 2023-2025 Bitcoin Stamps Topluluğu. Dokümantasyon MIT lisansı altında.'
+          copyright: '© 2023-2026 Bitcoin Stamps Topluluğu. Dokümantasyon MIT lisansı altında.'
         }
       }
     }
@@ -766,13 +767,67 @@ export default defineConfig({
   buildEnd: async (siteConfig) => {
     console.log('🚀 LEO API system: Generating static API files...')
     const outDir = siteConfig.outDir || path.join(process.cwd(), '../dist')
-    
+
     try {
       await generateStaticAPIFiles(outDir)
       console.log('✅ LEO API system: Static API files generated successfully')
     } catch (error) {
       console.error('❌ LEO API system: Failed to generate static API files:', error)
       throw error
+    }
+
+    // Generate sitemap.xml
+    try {
+      console.log('🗺️ Generating sitemap.xml...')
+      const baseUrl = 'https://bitcoinstamps.xyz'
+      const buildDate = new Date().toISOString().split('T')[0]
+      const urls: Array<{ loc: string; priority: string }> = []
+
+      async function scanDir(dir: string) {
+        const entries = await fs.readdir(dir, { withFileTypes: true })
+        for (const entry of entries) {
+          const fullPath = path.join(dir, entry.name)
+          if (entry.isDirectory()) {
+            // Skip hidden dirs, assets, node_modules
+            if (!entry.name.startsWith('.') && entry.name !== 'assets' && entry.name !== 'node_modules') {
+              await scanDir(fullPath)
+            }
+          } else if (entry.name.endsWith('.html') && entry.name !== '404.html') {
+            let urlPath = '/' + path.relative(outDir, fullPath).replace(/\\/g, '/')
+            // Convert index.html to directory path
+            if (urlPath.endsWith('/index.html')) {
+              urlPath = urlPath.replace(/index\.html$/, '')
+            }
+            // Determine priority
+            let priority = '0.5'
+            if (urlPath === '/') priority = '1.0'
+            else if (urlPath.match(/^\/(en|es|fr|zh|tr)\/$/)) priority = '0.9'
+            else if (urlPath.includes('/protocols/')) priority = '0.8'
+            else if (urlPath.includes('/whitepaper/')) priority = '0.8'
+            else if (urlPath.includes('/guide/')) priority = '0.7'
+            else if (urlPath.includes('/tutorials/')) priority = '0.7'
+
+            urls.push({ loc: `${baseUrl}${urlPath}`, priority })
+          }
+        }
+      }
+
+      await scanDir(outDir)
+      urls.sort((a, b) => a.loc.localeCompare(b.loc))
+
+      const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls.map(u => `  <url>
+    <loc>${u.loc}</loc>
+    <lastmod>${buildDate}</lastmod>
+    <priority>${u.priority}</priority>
+  </url>`).join('\n')}
+</urlset>
+`
+      await fs.writeFile(path.join(outDir, 'sitemap.xml'), sitemap, 'utf-8')
+      console.log(`✅ Sitemap generated with ${urls.length} URLs`)
+    } catch (error) {
+      console.warn('⚠️ Sitemap generation failed (non-critical):', error)
     }
   },
 
@@ -797,6 +852,13 @@ export default defineConfig({
     return pageData
   },
 
+  // Generate canonical URLs for SEO deduplication
+  transformHead({ pageData }) {
+    const canonicalUrl = `https://bitcoinstamps.xyz/${pageData.relativePath}`
+      .replace(/index\.md$/, '')
+      .replace(/\.md$/, '')
+    return [['link', { rel: 'canonical', href: canonicalUrl }]]
+  },
 
   // Configure for Cloudflare Pages deployment with custom domain
   base: '/', // Always use root path for custom domain (bitcoinstamps.xyz)

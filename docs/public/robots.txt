@@ -1,11 +1,19 @@
 # Bitcoin Stamps Documentation - Production Environment
 # bitcoinstamps.xyz - Official documentation
+# (c) 2023-2026 Bitcoin Stamps Community
 
 User-agent: *
 Allow: /
 
 # Sitemap location
 Sitemap: https://bitcoinstamps.xyz/sitemap.xml
+
+# LLM Discovery
+# See https://llmstxt.org for the llms.txt standard
+# llms.txt - concise summary for LLM context windows
+# llms-full.txt - comprehensive reference for detailed queries
+Allow: /llms.txt
+Allow: /llms-full.txt
 
 # Special handling for AI agents - allow but rate limit
 User-agent: GPTBot
