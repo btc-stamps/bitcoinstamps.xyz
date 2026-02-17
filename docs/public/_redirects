@@ -1,0 +1,6 @@
+# Cloudflare Pages Redirects
+# See: https://developers.cloudflare.com/pages/configuration/redirects/
+
+# .well-known directory workaround - Cloudflare Pages doesn't serve dotfile directories
+# Proxy rewrite (200) serves /api/ai-plugin.json transparently at the .well-known path
+/.well-known/ai-plugin.json /api/ai-plugin.json 200
