@@ -39,6 +39,9 @@ jobs:
           NODE_OPTIONS: --max-old-space-size=4096
         run: npm run docs:build
 
+      - name: Run LEO API Tests
+        run: npm run test:leo-api
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:

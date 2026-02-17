@@ -155,7 +155,29 @@ async function testLEOSystem() {
     }
   })
 
-  // Test 9: Static deployment files exist
+  // Test 9: Protocol descriptions are localized per language (not all Turkish)
+  await test('Protocol descriptions are localized per language', async () => {
+    const checks = [
+      { locale: 'es', path: join(__dirname, '../../dist/es/api/entities.json'), markers: ['fungibles', 'Bitcoin'] },
+      { locale: 'fr', path: join(__dirname, '../../dist/fr/api/entities.json'), markers: ['fongibles', 'Bitcoin'] },
+      { locale: 'zh', path: join(__dirname, '../../dist/zh/api/entities.json'), markers: ['同质化', '代币'] },
+    ]
+    for (const { locale, path: filePath, markers } of checks) {
+      const content = await readFile(filePath, 'utf-8')
+      const data = JSON.parse(content)
+      const src20 = data.entities.protocols.find(p => p.id === 'src-20')
+      if (!src20) throw new Error(`${locale}: SRC-20 protocol missing`)
+      const desc = typeof src20.description === 'string'
+        ? src20.description.toLowerCase()
+        : (src20.description[locale] || src20.description.en || '').toLowerCase()
+      const hasLocalized = markers.some(m => desc.includes(m.toLowerCase()))
+      if (!hasLocalized) {
+        throw new Error(`${locale}: SRC-20 description not in ${locale}: "${typeof src20.description === 'string' ? src20.description.substring(0, 80) : JSON.stringify(src20.description).substring(0, 80)}"`)
+      }
+    }
+  })
+
+  // Test 10: Static deployment files exist (was Test 9)
   await test('Static deployment files exist', async () => {
     const distPath = join(__dirname, '../../dist')
     const requiredFiles = [
@@ -179,7 +201,7 @@ async function testLEOSystem() {
     }
   })
 
-  // Test 10: Sitemap has expected URL count
+  // Test 11: Sitemap has expected URL count
   await test('Sitemap contains expected pages', async () => {
     const sitemapPath = join(__dirname, '../../dist/sitemap.xml')
     const content = await readFile(sitemapPath, 'utf-8')

@@ -15,7 +15,7 @@ import type {
 } from './types.d.ts'
 
 // Import multilingual data and utilities
-import { getAllMultilingualEntities } from './multilingual-data.js'
+import { getAllMultilingualEntities, getAllMultilingualProtocols } from './multilingual-data.js'
 import {
   localizeProtocolEntity,
   getAvailableLanguages
@@ -301,61 +301,33 @@ function normalizeRelationshipType(value: string): EntityRelationshipType | stri
 }
 
 /**
- * Extract ProtocolCard props from markdown files with language support
+ * Extract protocol entities from multilingual data definitions.
+ *
+ * Previously this scanned markdown files for <ProtocolCard> components,
+ * but those only existed in Turkish locale files — producing plain Turkish
+ * strings instead of proper MultiLangText objects for all other languages.
+ * Now uses the authoritative multilingual protocol data directly.
  */
-async function extractProtocolCards(language: SupportedLanguage = 'en'): Promise<ProtocolEntity[]> {
-  const protocols: ProtocolEntity[] = []
-  const extractionErrors: string[] = []
-  
-  // Find markdown files that might contain ProtocolCard components
-  const markdownFiles = await findMarkdownFiles(docsDir)
-  
-  for (const file of markdownFiles) {
-    try {
-      const content = await readFile(file, 'utf-8')
-      const protocolMatches = content.matchAll(/<ProtocolCard[^>]*>/gs)
-      
-      for (const match of protocolMatches) {
-        const result = parseProtocolCard(match[0])
-        
-        if (result.success && result.data) {
-          // Localize the protocol entity if it has multilingual content
-          const localizedProtocol = localizeProtocolEntity(result.data, language)
-          protocols.push(localizedProtocol)
-        } else {
-          // Log parsing errors but don't throw - continue processing
-          const errorContext = `File: ${file}, Source: ${match[0].substring(0, 100)}...`
-          extractionErrors.push(`${errorContext} - Errors: ${result.errors.join(', ')}`)
-          
-          // For debugging: log the first few errors
-          if (extractionErrors.length <= 3) {
-            console.warn(`ProtocolCard parsing issues in ${file}:`, result.errors)
-          }
-        }
-      }
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Unknown error'
-      extractionErrors.push(`Error reading file ${file}: ${errorMessage}`)
-      console.warn(`Error reading file ${file}:`, error)
-    }
-  }
-  
-  // Log summary of extraction results
-  if (extractionErrors.length > 0) {
-    console.warn(`⚠️  ${extractionErrors.length} ProtocolCard parsing issues found. Check component syntax.`)
-  }
-  
-  // Deduplicate protocols by ID (keep first occurrence)
-  const seen = new Set<string>()
-  const uniqueProtocols = protocols.filter(p => {
-    if (seen.has(p.id)) return false
-    seen.add(p.id)
-    return true
-  })
+async function extractProtocolCards(_language: SupportedLanguage = 'en'): Promise<ProtocolEntity[]> {
+  const multilingualProtocols = getAllMultilingualProtocols()
 
-  console.log(`✅ Successfully extracted ${uniqueProtocols.length} protocol entities from ${markdownFiles.length} markdown files`)
+  const protocolEntities: ProtocolEntity[] = multilingualProtocols.map(pm => ({
+    id: pm.id,
+    name: pm.name,
+    description: pm.description,
+    type: 'protocol' as const,
+    culturalSignificance: pm.culturalSignificance,
+    features: pm.features,
+    relationships: pm.relationships,
+    url: `/protocols/${pm.id}`,
+    blockIntroduced: pm.blockIntroduced,
+    status: pm.status,
+    version: pm.version,
+    ...(pm.kevinLegacy && { kevinLegacy: pm.kevinLegacy }),
+  }))
 
-  return uniqueProtocols
+  console.log(`✅ Successfully extracted ${protocolEntities.length} protocol entities from multilingual data`)
+  return protocolEntities
 }
 
 /**
