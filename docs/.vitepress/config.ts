@@ -829,6 +829,18 @@ ${urls.map(u => `  <url>
     } catch (error) {
       console.warn('⚠️ Sitemap generation failed (non-critical):', error)
     }
+
+    // Sync ai-plugin.json to /api/ for Cloudflare Pages compatibility
+    // Cloudflare Pages doesn't serve dotfile directories (.well-known/)
+    // _redirects proxies /.well-known/ai-plugin.json -> /api/ai-plugin.json
+    try {
+      const wellKnownSrc = path.join(outDir, '.well-known', 'ai-plugin.json')
+      const apiDest = path.join(outDir, 'api', 'ai-plugin.json')
+      await fs.copyFile(wellKnownSrc, apiDest)
+      console.log('✅ Synced ai-plugin.json to /api/ for Cloudflare Pages')
+    } catch {
+      console.warn('⚠️ ai-plugin.json sync skipped (non-critical)')
+    }
   },
 
   // Search result transformation for cultural context

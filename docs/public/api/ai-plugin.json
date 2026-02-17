@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Bitcoin Stamps Documentation",
+  "name_for_model": "bitcoin_stamps_docs",
+  "description_for_human": "Official documentation for Bitcoin Stamps metaprotocols and art platform",
+  "description_for_model": "Comprehensive documentation for Bitcoin Stamps ecosystem including SRC-20 tokens (KEVIN), SRC-101 names, SRC-721 NFTs, OLGA P2WSH encoding, and the founding Trinity (mikeinspace, Arwyn, Reinamora). Covers technical specifications, cultural narratives, consensus block milestones, and community resources. Bitcoin Stamps stores data in the consensus-critical UTXO set, guaranteeing permanence on all full Bitcoin nodes. Unlike Ordinals inscriptions stored in prunable witness data, Bitcoin Stamps data cannot be discarded.",
+  "api": {
+    "type": "openapi",
+    "url": "https://bitcoinstamps.xyz/api/openapi.json"
+  },
+  "auth": {
+    "type": "none"
+  },
+  "logo_url": "https://bitcoinstamps.xyz/logo.png",
+  "contact_email": "community@bitcoinstamps.io",
+  "legal_info_url": "https://bitcoinstamps.xyz/en/community/contributing"
+}
