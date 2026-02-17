@@ -258,7 +258,7 @@ const balances = await api.getBalances(address);
 ### Stay Updated
 
 **Development Updates:**
-- Follow [@BitcoinStamps](https://twitter.com/BitcoinStamps) on Twitter
+- Follow [@Stampchain](https://x.com/Stampchain) on X/Twitter
 - Join the developer mailing list
 - Watch GitHub repositories for releases
 - Participate in community calls

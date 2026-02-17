@@ -25,8 +25,8 @@ Crea e intercambia tokens como <EntityMention entity="kevin" variant="cultural">
 - Mecanismos de quema
 - Gobernanza comunitaria
 
-### 🏷️ [Nombres SRC-101](/en/protocols/src-101) *(en inglés)*
-**Sistema de nombres legible por humanos**  
+### 🏷️ [Nombres SRC-101](/es/protocols/src-101)
+**Sistema de nombres legible por humanos**
 Crea nombres memorables para direcciones de Bitcoin y recursos, haciendo el ecosistema más accesible para los usuarios.
 
 - Registro de nombres
@@ -34,8 +34,8 @@ Crea nombres memorables para direcciones de Bitcoin y recursos, haciendo el ecos
 - Metadatos de espacios de nombres
 - Gestión de renovaciones
 
-### 🎨 [NFTs SRC-721](/en/protocols/src-721) *(en inglés)*
-**Tokens no fungibles avanzados**  
+### 🎨 [NFTs SRC-721](/es/protocols/src-721)
+**Tokens no fungibles avanzados**
 Crea NFTs sofisticados con capacidades on-chain, arte recursivo y características interactivas.
 
 - NFTs únicos
@@ -43,12 +43,12 @@ Crea NFTs sofisticados con capacidades on-chain, arte recursivo y característic
 - Metadatos on-chain
 - Características interactivas
 
-### ⚡ [Compresión OLGA](/en/protocols/olga) *(en inglés)*
-**Optimización para todos los protocolos**  
-Reduce los costos de transacción y mejora la eficiencia en todos los protocolos Bitcoin Stamps con codificación de compresión inteligente.
+### ⚡ [Almacenamiento OLGA](/es/protocols/olga)
+**Optimización para todos los protocolos**
+Reduce los costos de transacción y mejora la eficiencia en todos los protocolos Bitcoin Stamps con el almacenamiento eficiente P2WSH.
 
-- Compresión de datos
-- Reducción de costos
+- Almacenamiento P2WSH
+- Reducción de costos del 30-95%
 - Optimización de eficiencia
 - Compatibilidad universal
 
@@ -65,10 +65,10 @@ Todos los protocolos Bitcoin Stamps comparten:
 
 Elige tu camino según tu caso de uso:
 
-- **Creadores**: Comienza con [NFTs SRC-721](/en/protocols/src-721) para arte digital *(en inglés)*
+- **Creadores**: Comienza con [NFTs SRC-721](/es/protocols/src-721) para arte digital
 - **Desarrolladores de tokens**: Explora [SRC-20](/es/protocols/src-20) para tokens fungibles
-- **Servicios de infraestructura**: Implementa [SRC-101](/en/protocols/src-101) para direccionamiento amigable *(en inglés)*
-- **Optimización de costos**: Usa [OLGA](/en/protocols/olga) para eficiencia *(en inglés)*
+- **Servicios de infraestructura**: Implementa [SRC-101](/es/protocols/src-101) para direccionamiento amigable
+- **Optimización de costos**: Usa [OLGA](/es/protocols/olga) para eficiencia
 
 ---
 

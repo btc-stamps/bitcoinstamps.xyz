@@ -25,8 +25,8 @@ Créez et échangez des jetons comme <EntityMention entity="kevin" variant="cult
 - Mécanismes de brûlage
 - Gouvernance communautaire
 
-### 🏷️ [SRC-101 Noms](/en/protocols/src-101) *(en anglais)*
-**Système de nommage lisible par l'homme**  
+### 🏷️ [SRC-101 Noms](/fr/protocols/src-101)
+**Système de nommage lisible par l'homme**
 Créez des noms mémorables pour les adresses Bitcoin et ressources, rendant l'écosystème plus accessible aux utilisateurs.
 
 - Enregistrement de noms
@@ -34,8 +34,8 @@ Créez des noms mémorables pour les adresses Bitcoin et ressources, rendant l'�
 - Métadonnées d'espaces de noms
 - Gestion des renouvellements
 
-### 🎨 [SRC-721 Récursion](/en/protocols/src-721) *(en anglais)*
-**Standard de récursion avancé**  
+### 🎨 [SRC-721 Récursion](/fr/protocols/src-721)
+**Standard de récursion avancé**
 Créez des compositions sophistiquées permettant aux stamps de référencer et combiner d'autres stamps.
 
 - NFT uniques
@@ -43,8 +43,8 @@ Créez des compositions sophistiquées permettant aux stamps de référencer et 
 - Métadonnées on-chain
 - Fonctionnalités interactives
 
-### ⚡ [OLGA P2WSH Encoding](/en/protocols/olga) *(en anglais)*
-**Optimisation pour tous les protocoles**  
+### ⚡ [OLGA Encodage P2WSH](/fr/protocols/olga)
+**Optimisation pour tous les protocoles**
 Réduisez les coûts de transaction et améliorez l'efficacité à travers tous les protocoles Bitcoin Stamps avec l'encodage P2WSH au lieu de multisig simple.
 
 - Encodage P2WSH
@@ -65,10 +65,10 @@ Tous les protocoles Bitcoin Stamps partagent :
 
 Choisissez votre chemin selon votre cas d'usage :
 
-- **Créateurs** : Commencez avec [SRC-721 Récursion](/en/protocols/src-721) pour l'art composite *(en anglais)*
+- **Créateurs** : Commencez avec [SRC-721 Récursion](/fr/protocols/src-721) pour l'art composite
 - **Développeurs de jetons** : Explorez [SRC-20](/fr/protocols/src-20) pour les jetons fongibles
-- **Services d'infrastructure** : Implémentez [SRC-101](/en/protocols/src-101) pour l'adressage convivial *(en anglais)*
-- **Optimisation des coûts** : Utilisez [OLGA](/en/protocols/olga) pour l'efficacité *(en anglais)*
+- **Services d'infrastructure** : Implémentez [SRC-101](/fr/protocols/src-101) pour l'adressage convivial
+- **Optimisation des coûts** : Utilisez [OLGA](/fr/protocols/olga) pour l'efficacité
 
 ---
 

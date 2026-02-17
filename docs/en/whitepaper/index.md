@@ -76,14 +76,6 @@ Read individual sections on GitHub (canonical source):
 | 833,000 | &mdash; | P2WSH transactions enabled on stamps |
 | 865,000 | October 15, 2023 | OLGA activation &mdash; P2WSH optimization for SRC-20 |
 
-<div style="margin: 1rem 0; padding: 1rem 1.5rem; background: var(--vp-c-bg-soft); border-radius: 8px;">
-
-**Foundation**: Built on Counterparty protocol (est. 2014) for proven account-based asset tracking<br>
-**Storage Model**: UTXO-based (consensus-critical, unprunable)<br>
-**Asset Model**: Account-based (balances tracked per address, not per UTXO)
-
-</div>
-
 ---
 
 ## Citation

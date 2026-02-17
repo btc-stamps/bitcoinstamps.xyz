@@ -188,7 +188,7 @@ Bitcoin Stamps ekosisteminde **pratik beceriler** kazanmak için tasarlanmış k
 ### Teknik Destek
 
 🔧 **Problem Yaşıyorsanız**:
-1. [Hata giderme rehberi](/tr/community/troubleshooting) kontrol edin
+1. [Topluluk kaynakları](/tr/community/resources) kontrol edin
 2. [GitHub Issues](https://github.com/btc-stamps/issues) açın
 3. [Discord](https://discord.gg/bitcoinstamps)'dan topluluk desteği alın
 4. [Telegram](https://t.me/bitcoinstamps) gruplarına katılın

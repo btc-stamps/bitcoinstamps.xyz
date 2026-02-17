@@ -18,10 +18,10 @@ Founded by <EntityMention entity="mikeinspace">mikeinspace</EntityMention>, <Ent
 
 ## Getting Involved
 
-- **GitHub**: Contribute to Bitcoin Stamps development
+- **Telegram**: [@BitcoinStamps](https://t.me/BitcoinStamps) — main community chat
+- **X/Twitter**: [@Stampchain](https://x.com/Stampchain) — announcements and updates
+- **GitHub**: [stampchain-io](https://github.com/stampchain-io) (indexer, explorer) · [btc-stamps](https://github.com/btc-stamps) (tx-builder, docs, tooling)
 - **Discord**: Join community discussions and get support
-- **Twitter**: Follow Bitcoin Stamps updates and news
-- **Reddit**: Participate in community discussions
 
 ## Contributing
 

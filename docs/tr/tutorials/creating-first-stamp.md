@@ -35,7 +35,7 @@ Bu eğitim, hiçbir deneyiminiz olmasa bile **ilk Bitcoin Stamp'ınızı başar�
 - Önerilen: [Counterwallet](https://wallet.counterwallet.io/)
 - Alternatifler: FreeWallet, BitPay
 
-**Bitcoin Balance**:
+**Bitcoin Bakiyesi**:
 - Minimum 0.001 BTC (işlem ücretleri için)
 - Önerilen: 0.005 BTC (güvenlik marjı)
 
@@ -60,8 +60,8 @@ Bu eğitim, hiçbir deneyiminiz olmasa bile **ilk Bitcoin Stamp'ınızı başar�
 **Sanatsal Vizyon**:
 - Ne anlatmak istiyorsunuz?
 - Hangi duyguları uyandırmalı?
-- Target audience kimler?
-- Kültürel referanslar var mı?
+- Hedef kitle kimler?
+- Kültürel referanslar var mı? <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> gibi kültürel etkiyi göz önünde bulundurun
 
 **Teknik Hedefler**:
 - İlk deneyim mi yoksa ciddi proje mi?
@@ -153,7 +153,7 @@ Bu eğitim, hiçbir deneyiminiz olmasa bile **ilk Bitcoin Stamp'ınızı başar�
    • Browser popup'lara izin verin
    ```
 
-#### Upload ve Metadata
+#### Yükleme ve Metadata
 
 1. **Görüntü yükleme**:
    - Dosyayı drag & drop ile sürükleyin
@@ -183,10 +183,10 @@ Total: ~0.0005-0.002 BTC arası
 ```
 
 **İşlem Önizleme**:
-- Görüntü preview kontrolü
+- Görüntü önizleme kontrolü
 - Metadata doğrulama
-- Fee estimation review
-- Final confirmation
+- Ücret tahmini incelemesi
+- Son onay
 
 #### İmzalama ve Gönderme
 
@@ -207,10 +207,10 @@ Total: ~0.0005-0.002 BTC arası
 4. 1+ confirmation = İşlem tamamlandı
 ```
 
-**StampChain.io Tracking**:
-- Dashboard'dan "My Stamps" bölümü
-- Real-time status updates
-- Stamp ID atanması bekleme
+**StampChain.io Takibi**:
+- Kontrol panelinden "My Stamps" bölümü
+- Gerçek zamanlı durum güncellemeleri
+- Stamp ID atanmasını bekleme
 
 #### Başarı Doğrulaması
 
@@ -286,9 +286,9 @@ curl "https://stampchain.io/api/stamp/123456"
 
 ## İleri Seviye İpuçları
 
-### Gas Fee Optimizasyonu
+### Ağ Ücreti Optimizasyonu
 
-**Timing Strategy**:
+**Zamanlama Stratejisi**:
 ```javascript
 // Düşük fee zamanları:
 - Hafta sonu (UTC)
@@ -304,7 +304,7 @@ curl "https://stampchain.io/api/stamp/123456"
 
 ### Sanatsal Optimizasyon
 
-**Visual Impact Artırma**:
+**Görsel Etki Artırma**:
 ```css
 /* Color strategy */
 - High contrast ratios
@@ -321,11 +321,11 @@ curl "https://stampchain.io/api/stamp/123456"
 
 ### Topluluk Etkileşimi
 
-**Launch Strategy**:
-1. **Pre-launch teasing**: Social media'da preview'ler
-2. **Story telling**: Sanatın arkasındaki hikaye
-3. **Community engagement**: Discord, Twitter interaction
-4. **Documentation**: Creation process paylaşımı
+**Lansman Stratejisi**:
+1. **Ön lansman hazırlığı**: Sosyal medyada önizlemeler
+2. **Hikaye anlatımı**: Sanatın arkasındaki hikaye
+3. **Topluluk etkileşimi**: Discord, Twitter katılımı — <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> değerlerine saygı gösterin
+4. **Belgeleme**: Yaratım sürecini paylaşın
 
 ## Sonraki Adımlar
 
@@ -336,10 +336,10 @@ curl "https://stampchain.io/api/stamp/123456"
    - Discord community'de showcase kanalında
    - Reddit r/bitcoinstamps'da
 
-2. **Network expansion**:
-   - Diğer sanatçılarla connection
-   - Feedback alma ve verme
-   - Community events'e katılım
+2. **Ağ genişletme**:
+   - Diğer sanatçılarla bağlantı kurma
+   - Geri bildirim alma ve verme
+   - Topluluk etkinliklerine katılım
 
 ### Orta Vadeli (1-4 hafta)
 
@@ -348,22 +348,22 @@ curl "https://stampchain.io/api/stamp/123456"
    - Advanced metadata kullanımı
    - OLGA protocol integration
 
-2. **Collection planning**:
+2. **Koleksiyon planlaması**:
    - Tema belirleme
-   - Roadmap oluşturma
-   - Economic model tasarlama
+   - Yol haritası oluşturma
+   - Ekonomik model tasarlama
 
 ### Uzun Vadeli (1-6 ay)
 
-1. **Professional development**:
-   - Custom tools development
-   - API integration learning
-   - Smart contract understanding
+1. **Profesyonel gelişim**:
+   - Özel araç geliştirme
+   - API entegrasyonu öğrenme
+   - Akıllı sözleşme anlayışı
 
-2. **Business model**:
-   - Revenue stream planning
-   - Brand building strategy
-   - Cross-platform expansion
+2. **İş modeli**:
+   - Gelir akışı planlaması
+   - Marka oluşturma stratejisi
+   - Platformlar arası genişleme
 
 ## Başarı Ölçümü
 
@@ -381,10 +381,10 @@ curl "https://stampchain.io/api/stamp/123456"
 
 ### Kültürel Başarı Sinyalleri
 
-- **Community recognition**: Sosyal medya engagement
-- **Artistic merit**: Peer feedback ve appreciation  
-- **Technical excellence**: Clean execution ve innovation
-- **Historical significance**: Timeline'da yer alma
+- **Topluluk tanınırlığı**: Sosyal medya etkileşimi
+- **Sanatsal değer**: Akran geri bildirimi ve takdiri
+- **Teknik mükemmellik**: Temiz uygulama ve yenilik
+- **Tarihsel önemi**: Zaman çizelgesinde yer alma
 
 ## Destek ve Kaynaklar
 
@@ -395,23 +395,23 @@ curl "https://stampchain.io/api/stamp/123456"
 - [Telegram Türkçe Grup](https://t.me/bitcoinstamps_tr)
 
 🔧 **Teknik Destek**:
-- GitHub Issues: Bug reports
-- Community Wiki: FAQs
-- Developer Documentation
+- GitHub Issues: Hata raporları
+- Topluluk Wiki: Sık Sorulan Sorular
+- Geliştirici Belgeleri
 
 ### Öğrenme Devamı
 
 📚 **Sonraki Eğitimler**:
 - [SRC-20 Token Yaratımı](/tr/tutorials/src20-token-creation)
-- [SDK Integration](/tr/tutorials/sdk-integration)
-- [Advanced Techniques](/tr/tutorials/advanced-techniques)
+- [SDK Entegrasyonu](/tr/tutorials/sdk-integration)
+- [Sanatçı Araçları](/tr/tutorials/artist-tools)
 
 🎨 **Sanat Geliştirme**:
-- Digital art communities
-- Color theory resources  
-- Composition guidelines
-- Bitcoin art history
+- Dijital sanat toplulukları
+- Renk teorisi kaynakları
+- Kompozisyon rehberleri
+- Bitcoin sanat tarihi
 
 ---
 
-*Tebrikler! İlk Bitcoin Stamp'ınızı başarıyla yarattınız. Bu kalıcı dijital varlık artık Bitcoin blok zincirinde sonsuza kadar yaşayacak ve Bitcoin Stamps ekosisteminin kültürel mirasının bir parçası olacak.*
+*Tebrikler! İlk Bitcoin Stamp'ınızı başarıyla yarattınız. Bu kalıcı dijital varlık artık Bitcoin blok zincirinde sonsuza kadar yaşayacak ve <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> ile birlikte Bitcoin Stamps ekosisteminin kültürel mirasının bir parçası olacak.*

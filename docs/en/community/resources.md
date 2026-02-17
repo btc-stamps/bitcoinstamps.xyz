@@ -68,12 +68,11 @@ Resource directory for the Bitcoin Stamps ecosystem - from creating your first s
 ## Community
 
 **Chat Platforms:**
-- **Discord** - Real-time discussion, artist showcase, dev channels (5,000+ members)
-- **Telegram** - Announcements, developer talks, KEVIN holders
+- **[Telegram](https://t.me/BitcoinStamps)** - @BitcoinStamps — main community chat, announcements, KEVIN holders
+- **Discord** - Real-time discussion, artist showcase, dev channels
 
 **Social Media:**
-- **Twitter/X** - @BitcoinStamps, @KEVINToken, @Stampchain
-- **Reddit** - r/BitcoinStamps, r/PixelArt
+- **[X/Twitter](https://x.com/Stampchain)** - @Stampchain — official updates and announcements
 
 **Content:**
 - Community blog on Medium
