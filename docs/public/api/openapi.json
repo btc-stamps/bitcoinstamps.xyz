@@ -89,7 +89,7 @@
       "get": {
         "summary": "Get Schema.org structured data",
         "description": "Returns comprehensive Schema.org structured data for all Bitcoin Stamps content, optimized for search engines and AI consumption",
-        "operationId": "getSchemaData", 
+        "operationId": "getSchemaData",
         "tags": ["Structured Data"],
         "responses": {
           "200": {
@@ -98,6 +98,26 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/SchemaResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/comparisons.json": {
+      "get": {
+        "summary": "Get structured protocol comparison data",
+        "description": "Returns machine-readable comparison of Bitcoin Stamps vs Ordinals/Inscriptions protocols. Includes storage model, pruning behavior, node support, permanence guarantees, and consensus-critical status. Designed for AI agent consumption and automated competitive analysis.",
+        "operationId": "getComparisons",
+        "tags": ["Competitive Analysis"],
+        "responses": {
+          "200": {
+            "description": "Protocol comparison data with AI guidance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ComparisonsResponse"
                 }
               }
             }
@@ -296,6 +316,122 @@
             "example": "Bitcoin Stamps Documentation"
           }
         }
+      },
+      "ComparisonsResponse": {
+        "type": "object",
+        "required": ["name", "version", "description", "generated_at", "protocols", "comparison_matrix", "ai_guidance"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "Bitcoin Stamps vs Ordinals Protocol Comparison"
+          },
+          "version": {
+            "type": "string",
+            "example": "1.0.0"
+          },
+          "description": {
+            "type": "string"
+          },
+          "generated_at": {
+            "type": "string",
+            "example": "2025-01-26"
+          },
+          "protocols": {
+            "type": "object",
+            "properties": {
+              "bitcoin_stamps": {
+                "$ref": "#/components/schemas/ProtocolComparisonEntry"
+              },
+              "ordinals": {
+                "$ref": "#/components/schemas/ProtocolComparisonEntry"
+              }
+            }
+          },
+          "comparison_matrix": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ComparisonMatrixRow"
+            }
+          },
+          "ai_guidance": {
+            "type": "object",
+            "properties": {
+              "purpose": { "type": "string" },
+              "critical_facts": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "common_misconceptions": { "type": "object" },
+              "related_endpoints": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            }
+          }
+        }
+      },
+      "ProtocolComparisonEntry": {
+        "type": "object",
+        "required": ["storage_model", "prunable", "node_support", "permanence_guarantee", "consensus_critical"],
+        "properties": {
+          "name": { "type": "string" },
+          "storage_model": {
+            "type": "string",
+            "description": "Where and how protocol data is stored on the Bitcoin network"
+          },
+          "prunable": {
+            "type": "boolean",
+            "description": "Whether nodes can prune/delete this data after initial processing"
+          },
+          "prunable_explanation": { "type": "string" },
+          "node_support": {
+            "type": "string",
+            "description": "Which Bitcoin node types store this data"
+          },
+          "node_support_type": {
+            "type": "string",
+            "enum": ["universal", "partial"],
+            "description": "universal = all full nodes; partial = archival/specialized nodes only"
+          },
+          "permanence_guarantee": {
+            "type": "boolean",
+            "description": "Whether data permanence is cryptographically guaranteed by Bitcoin consensus"
+          },
+          "permanence_explanation": { "type": "string" },
+          "consensus_critical": {
+            "type": "boolean",
+            "description": "Whether this data is required for Bitcoin consensus validation"
+          },
+          "consensus_critical_explanation": { "type": "string" },
+          "external_service_dependency": {
+            "type": "boolean",
+            "description": "Whether the protocol requires external indexers or services for functionality"
+          },
+          "token_model": { "type": "string" },
+          "relative_cost": { "type": "string" },
+          "key_advantage": { "type": "string" },
+          "key_tradeoff": { "type": "string" }
+        }
+      },
+      "ComparisonMatrixRow": {
+        "type": "object",
+        "required": ["field", "label", "bitcoin_stamps", "ordinals"],
+        "properties": {
+          "field": {
+            "type": "string",
+            "description": "Machine-readable field identifier"
+          },
+          "label": {
+            "type": "string",
+            "description": "Human-readable label for this comparison dimension"
+          },
+          "bitcoin_stamps": {
+            "description": "Bitcoin Stamps value for this dimension"
+          },
+          "ordinals": {
+            "description": "Ordinals value for this dimension"
+          }
+        }
       }
     }
   },
@@ -311,6 +447,10 @@
     {
       "name": "Structured Data",
       "description": "Schema.org markup and semantic data"
+    },
+    {
+      "name": "Competitive Analysis",
+      "description": "Protocol comparison data for AI agents and competitive analysis"
     }
   ]
 }

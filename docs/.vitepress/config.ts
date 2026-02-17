@@ -852,12 +852,285 @@ ${urls.map(u => `  <url>
     return pageData
   },
 
-  // Generate canonical URLs for SEO deduplication
+  // Generate canonical URLs for SEO deduplication and inject Schema.org JSON-LD
   transformHead({ pageData }) {
-    const canonicalUrl = `https://bitcoinstamps.xyz/${pageData.relativePath}`
+    const baseUrl = 'https://bitcoinstamps.xyz'
+    const canonicalPath = pageData.relativePath
       .replace(/index\.md$/, '')
       .replace(/\.md$/, '')
-    return [['link', { rel: 'canonical', href: canonicalUrl }]]
+    const canonicalUrl = `${baseUrl}/${canonicalPath}`
+    const headTags: any[] = [['link', { rel: 'canonical', href: canonicalUrl }]]
+
+    const fm = pageData.frontmatter || {}
+    const pageTitle = fm.title || pageData.title || 'Bitcoin Stamps Documentation'
+    const pageDesc = fm.description || pageData.description || 'Official documentation for Bitcoin Stamps metaprotocols and art platform'
+    const leoType = fm.leoType || ''
+    const relPath = pageData.relativePath || ''
+
+    // Base website schema injected on every page
+    const websiteSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      'name': 'Bitcoin Stamps Documentation',
+      'url': baseUrl,
+      'description': 'Official documentation for Bitcoin Stamps metaprotocols — permanent digital assets stored immutably on the Bitcoin UTXO set',
+      'about': {
+        '@type': 'SoftwareApplication',
+        'name': 'Bitcoin Stamps Metaprotocol',
+        'applicationCategory': 'BlockchainApplication',
+        'operatingSystem': 'Bitcoin Network',
+        'description': 'Bitcoin Stamps embed digital asset data directly into Bitcoin UTXO bare multisig outputs, ensuring permanent and immutable storage guaranteed by Bitcoin\'s global consensus',
+        'featureList': [
+          'Permanent storage in Bitcoin UTXO set',
+          'Immutable data — cannot be pruned or deleted',
+          'Guaranteed availability through Bitcoin full nodes',
+          'No reliance on external servers or IPFS',
+          'Data persists as long as Bitcoin exists'
+        ]
+      },
+      'publisher': {
+        '@type': 'Organization',
+        'name': 'Bitcoin Stamps Community',
+        'url': 'https://github.com/btc-stamps'
+      }
+    }
+    headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(websiteSchema)])
+
+    // Protocol pages: inject TechArticle schema with permanence claims
+    if (leoType === 'protocol' || relPath.includes('/protocols/')) {
+      const protocolSchemas: Record<string, any> = {
+        'src-20': {
+          '@context': 'https://schema.org',
+          '@type': 'TechArticle',
+          'name': pageTitle,
+          'headline': 'SRC-20 Token Standard — Permanent Fungible Tokens on Bitcoin',
+          'description': pageDesc,
+          'url': canonicalUrl,
+          'datePublished': '2023-04-05',
+          'dateModified': '2024-01-01',
+          'about': {
+            '@type': 'SoftwareApplication',
+            'name': 'SRC-20 Token Protocol',
+            'applicationCategory': 'Bitcoin Metaprotocol',
+            'operatingSystem': 'Bitcoin Network',
+            'description': 'SRC-20 tokens are stored permanently in the Bitcoin UTXO set using bare multisig outputs. Token records are immutable and guaranteed to persist as long as the Bitcoin network exists.',
+            'featureList': [
+              'Token data stored in Bitcoin UTXO bare multisig outputs',
+              'Permanent and immutable token records',
+              'No external server dependency — guaranteed availability',
+              'Consensus-enforced token balances via account-based ledger',
+              'Cannot be censored, deleted, or modified'
+            ],
+            'softwareVersion': 'Block 788041 genesis'
+          },
+          'teaches': [
+            'SRC-20 token creation on Bitcoin',
+            'Permanent token storage via UTXO encoding',
+            'Immutable digital asset creation'
+          ],
+          'publisher': {
+            '@type': 'Organization',
+            'name': 'Bitcoin Stamps Community',
+            'url': 'https://github.com/btc-stamps'
+          },
+          'isPartOf': { '@type': 'WebSite', 'url': baseUrl }
+        },
+        'src-101': {
+          '@context': 'https://schema.org',
+          '@type': 'TechArticle',
+          'name': pageTitle,
+          'headline': 'SRC-101 Name Service — Permanent Human-Readable Names on Bitcoin',
+          'description': pageDesc,
+          'url': canonicalUrl,
+          'datePublished': '2024-01-01',
+          'about': {
+            '@type': 'SoftwareApplication',
+            'name': 'SRC-101 Name Service Protocol',
+            'applicationCategory': 'Bitcoin Metaprotocol',
+            'operatingSystem': 'Bitcoin Network',
+            'description': 'SRC-101 names are stamped permanently onto the Bitcoin blockchain, providing immutable human-readable identifiers guaranteed by Bitcoin consensus.',
+            'featureList': [
+              'Names stored permanently in Bitcoin UTXO set',
+              'Immutable name records on Bitcoin blockchain',
+              'Account-based ownership — no UTXO spending risk',
+              'Guaranteed availability through full node network',
+              'True censorship resistance'
+            ]
+          },
+          'publisher': {
+            '@type': 'Organization',
+            'name': 'Bitcoin Stamps Community',
+            'url': 'https://github.com/btc-stamps'
+          },
+          'isPartOf': { '@type': 'WebSite', 'url': baseUrl }
+        },
+        'src-721': {
+          '@context': 'https://schema.org',
+          '@type': 'TechArticle',
+          'name': pageTitle,
+          'headline': 'SRC-721 Recursive NFTs — Permanent Digital Art on Bitcoin',
+          'description': pageDesc,
+          'url': canonicalUrl,
+          'datePublished': '2024-01-01',
+          'about': {
+            '@type': 'SoftwareApplication',
+            'name': 'SRC-721 Recursive NFT Protocol',
+            'applicationCategory': 'Bitcoin Metaprotocol',
+            'operatingSystem': 'Bitcoin Network',
+            'description': 'SRC-721 NFTs store artwork data permanently in the Bitcoin UTXO set. All image data is embedded on-chain with no external dependencies, ensuring perpetual availability.',
+            'featureList': [
+              'Full NFT data stored in Bitcoin UTXO set',
+              'No IPFS, no external servers required',
+              'Recursive composition from on-chain data only',
+              'Permanently immutable digital art records',
+              'Guaranteed availability for as long as Bitcoin exists'
+            ]
+          },
+          'publisher': {
+            '@type': 'Organization',
+            'name': 'Bitcoin Stamps Community',
+            'url': 'https://github.com/btc-stamps'
+          },
+          'isPartOf': { '@type': 'WebSite', 'url': baseUrl }
+        },
+        'olga': {
+          '@context': 'https://schema.org',
+          '@type': 'TechArticle',
+          'name': pageTitle,
+          'headline': 'OLGA P2WSH Encoding — Efficient Permanent Storage on Bitcoin',
+          'description': pageDesc,
+          'url': canonicalUrl,
+          'datePublished': '2024-01-01',
+          'about': {
+            '@type': 'SoftwareApplication',
+            'name': 'OLGA P2WSH Encoding Protocol',
+            'applicationCategory': 'Bitcoin Metaprotocol',
+            'operatingSystem': 'Bitcoin Network',
+            'description': 'OLGA encodes stamp data into P2WSH outputs for efficient permanent storage in the Bitcoin UTXO set, providing immutable on-chain data at reduced cost.',
+            'featureList': [
+              'Data stored in Bitcoin P2WSH UTXO outputs',
+              'Permanent immutable storage on Bitcoin',
+              'Reduced cost compared to bare multisig encoding',
+              'Guaranteed availability via Bitcoin consensus',
+              'No external data dependency'
+            ]
+          },
+          'publisher': {
+            '@type': 'Organization',
+            'name': 'Bitcoin Stamps Community',
+            'url': 'https://github.com/btc-stamps'
+          },
+          'isPartOf': { '@type': 'WebSite', 'url': baseUrl }
+        }
+      }
+
+      // Detect which protocol page this is
+      const protocolKey = Object.keys(protocolSchemas).find(k => relPath.includes(`/${k}`))
+      if (protocolKey && protocolSchemas[protocolKey]) {
+        headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(protocolSchemas[protocolKey])])
+      } else {
+        // Generic protocol page schema
+        const genericProtocolSchema = {
+          '@context': 'https://schema.org',
+          '@type': 'TechArticle',
+          'name': pageTitle,
+          'description': pageDesc,
+          'url': canonicalUrl,
+          'about': {
+            '@type': 'SoftwareApplication',
+            'name': pageTitle,
+            'applicationCategory': 'Bitcoin Metaprotocol',
+            'operatingSystem': 'Bitcoin Network',
+            'description': 'Bitcoin Stamps protocol data is stored permanently in the Bitcoin UTXO set, ensuring immutable and guaranteed availability.',
+            'featureList': [
+              'Permanent storage in Bitcoin UTXO set',
+              'Immutable on-chain data',
+              'Guaranteed availability — no external servers'
+            ]
+          },
+          'publisher': {
+            '@type': 'Organization',
+            'name': 'Bitcoin Stamps Community',
+            'url': 'https://github.com/btc-stamps'
+          },
+          'isPartOf': { '@type': 'WebSite', 'url': baseUrl }
+        }
+        headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(genericProtocolSchema)])
+      }
+    }
+
+    // Guide / introduction pages: inject Article schema with permanence claims
+    if (leoType === 'guide' || relPath.includes('/guide/')) {
+      const guideSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        'name': pageTitle,
+        'headline': pageTitle,
+        'description': pageDesc,
+        'url': canonicalUrl,
+        'about': {
+          '@type': 'Thing',
+          'name': 'Bitcoin Stamps',
+          'description': 'Digital assets stored permanently and immutably in the Bitcoin UTXO set via bare multisig and P2WSH outputs. Unlike NFTs hosted on IPFS or external servers, Bitcoin Stamps are guaranteed to be available as long as the Bitcoin network operates.',
+          'additionalProperty': [
+            {
+              '@type': 'PropertyValue',
+              'name': 'storageMethod',
+              'value': 'Bitcoin UTXO bare multisig and P2WSH outputs'
+            },
+            {
+              '@type': 'PropertyValue',
+              'name': 'permanence',
+              'value': 'Immutable — data cannot be deleted or modified'
+            },
+            {
+              '@type': 'PropertyValue',
+              'name': 'availability',
+              'value': 'Guaranteed by Bitcoin full node network consensus'
+            },
+            {
+              '@type': 'PropertyValue',
+              'name': 'externalDependency',
+              'value': 'None — fully self-contained on Bitcoin blockchain'
+            }
+          ]
+        },
+        'publisher': {
+          '@type': 'Organization',
+          'name': 'Bitcoin Stamps Community',
+          'url': 'https://github.com/btc-stamps'
+        },
+        'isPartOf': { '@type': 'WebSite', 'url': baseUrl }
+      }
+      headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(guideSchema)])
+    }
+
+    // Narrative pages
+    if (leoType === 'narrative' || relPath.includes('/narratives/')) {
+      const narrativeSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        'name': pageTitle,
+        'headline': pageTitle,
+        'description': pageDesc,
+        'url': canonicalUrl,
+        'genre': 'Community Story',
+        'about': {
+          '@type': 'Thing',
+          'name': 'Bitcoin Stamps Cultural History',
+          'description': 'Bitcoin Stamps are permanent digital cultural artifacts stored immutably in the Bitcoin UTXO set'
+        },
+        'publisher': {
+          '@type': 'Organization',
+          'name': 'Bitcoin Stamps Community',
+          'url': 'https://github.com/btc-stamps'
+        },
+        'isPartOf': { '@type': 'WebSite', 'url': baseUrl }
+      }
+      headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(narrativeSchema)])
+    }
+
+    return headTags
   },
 
   // Configure for Cloudflare Pages deployment with custom domain

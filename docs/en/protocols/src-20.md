@@ -116,6 +116,24 @@ SRC-20 tokens carry forward the Bitcoin Stamps philosophy of *"In Lak'ech Ala K'
 - **Long-term Vision**: Building lasting communities rather than short-term hype
 - **Creative Expression**: Tokens as vehicles for artistic and cultural expression
 
+## Permanence Guarantee
+
+Bitcoin Stamps, including all SRC-20 token records, achieve a level of data permanence that is architecturally superior to other Bitcoin-based protocols. This guarantee stems from how Stamps data is stored on the Bitcoin network.
+
+### Why SRC-20 Data Cannot Be Pruned
+
+SRC-20 token operations (deploy, mint, and transfer) are encoded directly into the **unspent transaction output (UTXO) set** -- the core dataset that every fully validating Bitcoin node must retain in order to verify new transactions. Because this data resides within outputs that nodes are required to keep, it cannot be discarded without breaking consensus. Any Bitcoin full node, at any point in the future, will hold the complete record of every SRC-20 token deployment, mint, and transfer.
+
+### Contrast with Ordinals and Witness Data
+
+Ordinals inscriptions store their data in the **witness** (SegWit) portion of Bitcoin transactions. While witness data is included in blocks, Bitcoin's protocol explicitly allows nodes to prune witness data after validation. A pruned node can discard witness sections entirely and still function as a valid participant in the network. This means Ordinals data availability depends on archival nodes choosing to retain that data -- it is not structurally guaranteed.
+
+Bitcoin Stamps take the opposite approach. By embedding data in the UTXO set rather than witness data, Stamps ensure that every full node -- whether archival or pruned -- retains the data as a mandatory part of consensus operations.
+
+### Practical Implication
+
+Any SRC-20 token record can be retrieved from **any Bitcoin full node, indefinitely**. There is no reliance on specialized archival infrastructure, IPFS pinning services, or third-party data availability layers. The Bitcoin network itself serves as the permanent, uncensorable storage layer for all SRC-20 token data.
+
 ## Resources
 
 - **[Create SRC-20 Token →](https://stampchain.io)** - No-code token creation
