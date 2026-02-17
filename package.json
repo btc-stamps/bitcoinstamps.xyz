@@ -8,7 +8,7 @@
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs",
-    "lighthouse": "lhci autorun",
+    "lighthouse": "lhci autorun --config .lighthouserc.cjs",
     "test:leo-api": "node docs/.vitepress/test-leo-system.js",
     "test:translation": "node docs/.vitepress/test-translation-system.js",
     "test:comparisons-api": "node docs/.vitepress/test-comparisons-api.js",
