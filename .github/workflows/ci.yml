@@ -198,7 +198,7 @@ jobs:
           echo "✅ All API files within size limits"
 
       - name: Upload API Artifacts for Review
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: leo-api-files
           path: |
@@ -207,7 +207,7 @@ jobs:
           retention-days: 30
 
       - name: Upload Full Build for Lighthouse
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: dist-full
           path: dist/
@@ -241,7 +241,7 @@ jobs:
         run: npm run lighthouse
 
       - name: Upload Lighthouse Reports
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         if: always()
         with:
           name: lighthouse-reports
