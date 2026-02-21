@@ -92,7 +92,7 @@ jobs:
           command: pages deploy dist --project-name=bitcoinstamps-xyz --branch=${{ github.head_ref }}
 
       - name: Comment Preview URL
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           script: |
             const branch = context.payload.pull_request.head.ref;
