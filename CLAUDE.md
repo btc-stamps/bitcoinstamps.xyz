@@ -2,45 +2,37 @@
 
 ## Project Overview
 
-This is the official Bitcoin Stamps documentation site (bitcoinstamps.xyz) featuring:
-- **VitePress documentation site** with custom LEO (Large Language Model Enhanced Organization) system
-- **Multilingual support** for 5 languages (English, Spanish, French, Chinese, Turkish)
-- **Cultural preservation system** for KEVIN, Trinity narratives, and Rare Pepe heritage
+Official Bitcoin Stamps documentation site (bitcoinstamps.xyz) with:
+- **VitePress + LEO** (Large Language Model Enhanced Organization) system
+- **5-language i18n**: English, Spanish, French, Chinese, Turkish
+- **Cultural preservation** for KEVIN, Trinity narratives, and Rare Pepe heritage
 - **Entity-driven content** with automated Schema.org structured data
 - **Translation management infrastructure** for systematic multilingual coordination
 
-## Task Master AI Integration
+**TaskMaster tag**: `bitcoinstamps.xyz` — all task operations use workspace root `.taskmaster/`
 
-**Task management is handled at the workspace root level.**
-- TaskMaster tag: `bitcoinstamps.xyz`
-- All task operations use workspace root `.taskmaster/` (NOT a local .taskmaster)
-- See workspace-level `CLAUDE.md` for TaskMaster rules and workflow commands
+## Cultural Preservation Requirements
 
-## Project-Specific Guidelines
-
-### Cultural Preservation Requirements
-
-**KEVIN Cultural Protection** (Critical):
+### KEVIN (Critical)
 - KEVIN must always be referenced in ALL CAPS
-- Preserve beloved community mascot status
-- Maintain Rare Pepe cultural heritage connections
+- Preserve beloved community mascot status and Rare Pepe cultural heritage connections
 - Reference kevinstamp.com for official KEVIN content
 - Use `<EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention>` for all references
 
-**Trinity Formation Narrative** (Critical):
+### Trinity Formation Narrative (Critical)
 - **mikeinspace**: Always lowercase, original dreamer and visionary founder
 - **Arwyn**: Standard case, orchestrator/magician behind KEVIN
 - **Reinamora**: Standard case, technical architect of protocols
 - Preserve Flooneybin connection story and founding narrative
 
-**Historical Accuracy** (Required):
+### Historical Accuracy (Required)
 - Block numbers and transaction hashes must be verified
 - Protocol evolution timeline must be accurate
 - Community metrics and statistics should be current
 
-### Entity System Guidelines
+## LEO Entity System
 
-**EntityMention Component Usage**:
+**EntityMention Component**:
 ```markdown
 <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention>
 <EntityMention entity="src-20">SRC-20</EntityMention>
@@ -58,19 +50,24 @@ This is the official Bitcoin Stamps documentation site (bitcoinstamps.xyz) featu
 - Detection logic: `docs/.vitepress/theme/composables/useLEO.ts`
 - Component rendering: `docs/.vitepress/theme/components/LEO/EntityMention.vue`
 
-### Content Structure Guidelines
+**Entity Editing** (Special Care Required):
+- Cultural entities (KEVIN, Trinity) require community discussion
+- Protocol entities must maintain technical accuracy
+- All entity changes affect all 5 languages simultaneously
+
+## Content Structure
 
 **File Organization**:
 ```
-docs/en/                    # English content (primary)
-├── protocols/              # Technical protocol documentation  
+docs/en/                    # English content (primary source of truth)
+├── protocols/              # Technical protocol documentation
 ├── tutorials/              # Step-by-step guides
 ├── narratives/             # Cultural stories and history
 ├── community/              # Community showcase and resources
 └── guide/                  # Getting started content
 ```
 
-**Shared Technical Data** (Auto-synchronized across languages):
+**Shared Technical Data** (auto-synchronized across languages):
 ```
 docs/.vitepress/data/
 ├── protocol-milestones.yaml    # Block heights and consensus dates
@@ -80,100 +77,30 @@ docs/.vitepress/data/
 └── external-links.yaml         # API endpoints and resources
 ```
 
-### Development Workflow
-
-**Content Updates**:
+**Content Update Workflow**:
 1. **English First**: All content changes start in `docs/en/` files
 2. **Entity Usage**: Use EntityMention components for all entity references
 3. **Cultural Validation**: Ensure KEVIN and Trinity narratives are preserved
-4. **Build Testing**: Always test with `npm run build` before committing
+4. Translation Management Infrastructure detects English changes and coordinates multilingual updates
 
-**Translation Workflow**:
-1. **Automatic Detection**: Translation Management Infrastructure detects English changes
-2. **Cultural Preservation**: Automated validation for KEVIN and Trinity content
-3. **Manual Coordination**: Use workflow management for systematic translation
-4. **Community Review**: Community validation for cultural accuracy
+## Build System (VitePress + Custom Plugins)
 
-**Entity Editing** (Special Care Required):
-- Review entity editing guidelines before making changes
-- Cultural entities (KEVIN, Trinity) require community discussion
-- Protocol entities must maintain technical accuracy
-- All entity changes affect 5 languages simultaneously
-
-### Build System and File Generation
-
-**Build Architecture**:
-The project uses VitePress with custom plugins for automated file generation and AI agent optimization.
-
-**Build Commands**:
-```bash
-# Development server
-npm run docs:dev
-
-# Production build (generates dist/ directory)
-npm run docs:build
-
-# Build preview
-npm run docs:preview
-
-# Build with testing
-npm run build:with-test
-
-# Entity validation (development)
-node dev/validate-multilingual-api.js
-```
-
-**Generated Files Structure**:
-```
-dist/                           # Build output (auto-generated, gitignored)
-├── .well-known/               # AI agent discovery
-│   └── ai-plugin.json         # OpenAI plugin manifest
-├── api/                       # Generated API endpoints
-│   ├── entities.json          # LEO entity data (multilingual)
-│   ├── protocols.json         # Protocol specifications
-│   ├── schema.json           # Schema.org structured data
-│   ├── consensus-blocks.json  # Consensus milestone data
-│   └── [entity-name].json    # Individual entity files
-├── en/, es/, fr/, zh/, tr/   # Multilingual HTML pages
-└── assets/                   # Bundled CSS/JS assets
-```
-
-**Source File Locations**:
-```
-docs/
-├── public/                    # Static files copied to dist/
-│   ├── .well-known/          # AI discovery files
-│   │   └── ai-plugin.json    # → dist/.well-known/ai-plugin.json
-│   └── api/                  # Static API data
-│       └── consensus-blocks.json # → dist/api/consensus-blocks.json
-├── .vitepress/
-│   ├── config.ts             # Build configuration with custom plugins
-│   ├── api/                  # LEO API generation system
-│   │   ├── multilingual-data.ts # Entity definitions
-│   │   └── endpoints.ts      # API file generation
-│   └── theme/                # Custom VitePress theme
-└── en/, es/, fr/, zh/, tr/   # Multilingual markdown content
-```
-
-**Build Process Flow**:
-1. **LEO API System**: Generates entity data from markdown frontmatter and components
-2. **Translation Management**: Processes multilingual content and cultural validation
-3. **Static File Copy**: Copies files from `docs/public/` to `dist/`
-4. **Well-Known Plugin**: Ensures `.well-known/` directory is properly copied (VitePress doesn't handle dotfiles by default)
-5. **VitePress Build**: Generates HTML pages and bundles assets
-
-**Custom Build Plugins**:
+**Custom Build Plugins** (project-specific, not generic VitePress):
 - `leo-api-validator`: Validates entity consistency before build
 - `translation-management`: Handles multilingual workflow and cultural validation
-- `copy-well-known`: Ensures AI discovery files are copied to dist/
+- `copy-well-known`: Ensures AI discovery files are copied to `dist/` (VitePress skips dotfiles by default)
 
-**Important Notes**:
-- Never manually edit files in `dist/` - they are auto-generated
+**Key Source Paths**:
+- VitePress config: `docs/.vitepress/config.ts`
+- LEO API generation: `docs/.vitepress/api/multilingual-data.ts`, `endpoints.ts`
+- Static AI discovery: `docs/public/.well-known/ai-plugin.json` → `dist/.well-known/`
+
+**Build Rules**:
+- Never manually edit files in `dist/` — auto-generated
 - All static files must go in `docs/public/` to be copied to `dist/`
 - Changes to entity data require full rebuild to update all language variants
-- Build process includes cultural preservation validation for KEVIN and Trinity narratives
 
-### Quality Standards
+## Quality and Performance Standards
 
 **Content Requirements**:
 - Technical accuracy verified against blockchain data
@@ -182,142 +109,55 @@ docs/
 - DualAudience components for developer/artist content
 - Schema.org structured data validation
 
-**Performance Requirements**:
+**Performance Targets**:
 - Build time impact <10% for LEO system features
-- Page load times <3 seconds
-- Mobile-optimized responsive design
+- Page load times <3 seconds; mobile-optimized responsive design
 - Multilingual API responses <200ms
 
 **Cultural Standards**:
 - KEVIN significance and mascot status preserved
 - Trinity formation story accuracy maintained
 - Community values ("In Lak'ech Ala K'in") reflected
-- Rare Pepe heritage connections honored
-- Fair launch principles and community values upheld
+- Rare Pepe heritage connections honored; fair launch principles upheld
 
-### Testing and Validation
+## Testing and Validation
 
 **Automated Checks**:
 - EntityMention component usage validation
 - Cultural preservation rule enforcement
 - Translation completeness verification
 - Schema.org structured data validation
-- Build process success confirmation
 
 **Manual Verification**:
 - KEVIN cultural context preservation
 - Trinity narrative historical accuracy
 - Protocol documentation technical correctness
-- Community guidelines compliance
 - Multilingual content consistency
 
-### Community Collaboration
+## Community Collaboration
 
 **GitHub Workflow**:
 - Community members edit English content via pull requests
 - Maintainer review for technical and cultural accuracy
-- Entity changes require special validation and discussion
+- Entity changes require special validation and community discussion
 - Cultural content receives extended community review
-- Translation coordination through automated workflow management
 
-**Documentation References**:
-- Production readiness: See development documentation
-- Community editing: Follow contributor guidelines
-- Entity system: Reference entity editing validation guide
-- Translation management: Use content management workflow
+## Do Not Touch Without Explicit Permission
 
-## Claude Code 2025 Best Practices
+- `docs/.vitepress/api/types.d.ts` — Core type definitions
+- `docs/.vitepress/config.ts` — VitePress configuration
+- `package.json` dependencies — Production dependencies
+- `.github/workflows/` — CI/CD workflows
+- `dist/` directory — Auto-generated, never edit manually
+- KEVIN cultural significance or mascot status
+- Trinity formation narrative accuracy (mikeinspace, Arwyn, Reinamora)
+- Historical block numbers and consensus dates
 
-### The "Do Not Touch" List (Critical ⚠️)
+## Cross-Project References
 
-**Never modify these without explicit user permission**:
-- `docs/.vitepress/api/types.d.ts` - Core type definitions
-- `docs/.vitepress/config.ts` - VitePress configuration
-- Workspace-level `.taskmaster/` directory - Task Master AI files
-- `package.json` dependencies - Production dependencies
-- `.github/workflows/` - CI/CD workflows
-- `dist/` directory - Auto-generated, never edit manually
-
-**Cultural Content Protection**:
-- Never alter KEVIN cultural significance or mascot status
-- Preserve Trinity formation narrative accuracy (mikeinspace, Arwyn, Reinamora)
-- Maintain historical block numbers and consensus dates
-- Keep community values and "In Lak'ech Ala K'in" philosophy
-
-### Quality Control Shortcuts
-
-Use these standardized patterns for efficient workflows:
-
-- **QPLAN**: "Analyze similar parts of codebase for consistency before implementing"
-- **QCODE**: "Implement plan, run tests, prettier, and type checking"
-- **QCHECK**: "Perform skeptical senior engineer review of the changes"
-
-### Extended Thinking Triggers
-
-For complex problems, use escalating thinking levels:
-- **"think"**: Basic extended reasoning
-- **"think hard"**: Deeper analysis and consideration
-- **"think harder"**: Maximum depth reasoning
-- **"ultrathink"**: Most comprehensive analysis
-
-### Claude Code Workflow Integration
-
-**Plan Mode Usage**:
-- Use `claude --permission-mode plan` for complex multi-file changes
-- Use **Shift+Tab** to cycle through permission modes during session
-- Plan mode is recommended for entity system changes affecting multiple languages
-
-**Subagent Integration**:
-- Use `/agents` to see available specialized agents
-- Project has custom agents for entity validation and cultural preservation
-- Claude Code will auto-delegate appropriate tasks to specialized subagents
-
-**Context Management**:
-- Use `/clear` frequently between different tasks to maintain focus
-- Use **@file.ext** syntax to quickly reference specific files
-- Use **#** during session to add instructions to CLAUDE.md organically
-
-**Memory Management**:
-- Use `/memory` to edit memory files (CLAUDE.md, etc.)
-- Use `#` shortcut to quickly add memories during conversation
-- CLAUDE.md imports with `@path/to/file` syntax (supports recursive imports)
-
-**MCP Integration**:
-- Use `claude mcp list` to see connected MCP servers
-- Use `/mcp` in Claude Code to authenticate with OAuth servers
-- Use `@server:protocol://resource` to reference MCP resources
-- MCP prompts available as `/mcp__servername__promptname` slash commands
-
-### Custom Commands Available
-
-Project-specific slash commands (use with `/command-name`):
-- `/entity-check` - Validate entity definitions across all languages
-- `/cultural-review` - Ensure KEVIN and Trinity narrative preservation  
-- `/build-test` - Run full build and validate all generated files
-- `/protocol-update [protocol-name]` - Update protocol definitions with proper attributions
-
-### Hooks Configuration
-
-**Available Hooks** (configured in `.claude/settings.json`):
-- `PreToolUse` - Validate commands before execution
-- `PostToolUse` - Run quality checks after file modifications
-- `UserPromptSubmit` - Add context or validate prompts
-- `SessionStart` - Load development context automatically
-- `SessionEnd` - Cleanup and logging tasks
-
-**Hook Security**:
-- Use `$CLAUDE_PROJECT_DIR` for project-relative paths
-- Always quote shell variables: `"$VAR"` not `$VAR`
-- Validate inputs and avoid path traversal attacks
-- Skip sensitive files (.env, .git/, keys)
-
-## Important Notes
-
-- **Cultural Heritage**: This project preserves authentic Bitcoin Stamps community culture
-- **Technical Excellence**: Maintain high standards for protocol documentation accuracy  
-- **Community Values**: Honor "we are all Kevin" philosophy and fair launch principles
-- **AI Optimization**: Content structured for AI agent discoverability and semantic relationships
-- **Multilingual Integrity**: Cultural context must be preserved across all languages
+- **stampchain.io API**: Block explorer and production API — see [stampchain.io CLAUDE.md](mdc:../stampchain.io/CLAUDE.md)
+- **tx-builder**: Transaction builder library used in tutorials — see [tx-builder CLAUDE.md](mdc:../tx-builder/CLAUDE.md)
+- **types**: Shared TypeScript types for Bitcoin Stamps protocol entities
 
 ---
 
