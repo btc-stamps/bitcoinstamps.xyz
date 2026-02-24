@@ -14,7 +14,7 @@ This is the official Bitcoin Stamps documentation site (bitcoinstamps.xyz) featu
 **Task management is handled at the workspace root level.**
 - TaskMaster tag: `bitcoinstamps.xyz`
 - All task operations use workspace root `.taskmaster/` (NOT a local .taskmaster)
-- See workspace-level [.taskmaster/CLAUDE.md](mdc:../../.taskmaster/CLAUDE.md) for workflow commands
+- See workspace-level `CLAUDE.md` for TaskMaster rules and workflow commands
 
 ## Project-Specific Guidelines
 
