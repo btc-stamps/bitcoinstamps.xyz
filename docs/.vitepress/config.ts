@@ -2,11 +2,15 @@ import { defineConfig } from 'vitepress'
 import { generateStaticAPIFiles, validateAPIConsistency } from './api/endpoints.ts'
 import path from 'path'
 import fs from 'fs/promises'
+import { execSync } from 'child_process'
 
 export default defineConfig({
   title: 'BITCOIN STAMPS',
   description: 'Official documentation for Bitcoin Stamps metaprotocols and art platform',
-  
+
+  // Enable last updated timestamps (reads from git commit dates)
+  lastUpdated: true,
+
   // Internationalization configuration
   locales: {
     en: {
@@ -760,7 +764,15 @@ export default defineConfig({
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/btc-stamps' }
-    ]
+    ],
+
+    // Last updated display config (pairs with root-level lastUpdated: true)
+    lastUpdated: {
+      text: 'Last updated',
+      formatOptions: {
+        dateStyle: 'medium'
+      }
+    }
   },
 
   // Static site generation with LEO API integration
@@ -781,7 +793,40 @@ export default defineConfig({
       console.log('🗺️ Generating sitemap.xml...')
       const baseUrl = 'https://bitcoinstamps.xyz'
       const buildDate = new Date().toISOString().split('T')[0]
-      const urls: Array<{ loc: string; priority: string }> = []
+      const urls: Array<{ loc: string; priority: string; lastmod: string; changefreq: string }> = []
+
+      // Map an output HTML path back to its source .md file and get its git last-commit date
+      function getGitLastmod(htmlPath: string): string {
+        let relativePath = path.relative(outDir, htmlPath).replace(/\\/g, '/')
+        // Convert index.html → directory/index.md; page.html → page.md
+        if (relativePath.endsWith('/index.html') || relativePath === 'index.html') {
+          relativePath = relativePath.replace(/\/?index\.html$/, '/index.md')
+        } else {
+          relativePath = relativePath.replace(/\.html$/, '.md')
+        }
+        const sourcePath = path.join('docs', relativePath)
+        try {
+          const result = execSync(`git log -1 --format=%cI -- "${sourcePath}"`, {
+            encoding: 'utf-8',
+            timeout: 5000,
+            stdio: ['pipe', 'pipe', 'pipe']
+          }).trim()
+          if (result) return result.split('T')[0]
+        } catch {
+          // Fall back to build date if git lookup fails
+        }
+        return buildDate
+      }
+
+      // Determine change frequency based on URL content type
+      function getChangeFreq(urlPath: string): string {
+        if (urlPath.includes('/blog/')) return 'weekly'
+        if (urlPath.includes('/protocols/')) return 'weekly'
+        if (urlPath.includes('/guide/') || urlPath.includes('/tutorials/')) return 'monthly'
+        if (urlPath.includes('/narratives/') || urlPath.includes('/community/')) return 'monthly'
+        if (urlPath === '/' || urlPath.match(/^\/(en|es|fr|zh|tr)\/$/)) return 'weekly'
+        return 'monthly'
+      }
 
       async function scanDir(dir: string) {
         const entries = await fs.readdir(dir, { withFileTypes: true })
@@ -807,7 +852,12 @@ export default defineConfig({
             else if (urlPath.includes('/guide/')) priority = '0.7'
             else if (urlPath.includes('/tutorials/')) priority = '0.7'
 
-            urls.push({ loc: `${baseUrl}${urlPath}`, priority })
+            urls.push({
+              loc: `${baseUrl}${urlPath}`,
+              priority,
+              lastmod: getGitLastmod(fullPath),
+              changefreq: getChangeFreq(urlPath)
+            })
           }
         }
       }
@@ -819,7 +869,8 @@ export default defineConfig({
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map(u => `  <url>
     <loc>${u.loc}</loc>
-    <lastmod>${buildDate}</lastmod>
+    <lastmod>${u.lastmod}</lastmod>
+    <changefreq>${u.changefreq}</changefreq>
     <priority>${u.priority}</priority>
   </url>`).join('\n')}
 </urlset>
