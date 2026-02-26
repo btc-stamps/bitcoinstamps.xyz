@@ -885,45 +885,47 @@ export default defineConfig({
       throw error
     }
 
+    // Shared helpers for sitemap and RSS generation
+    const buildDate = new Date().toISOString().split('T')[0]
+
+    // Map an output HTML path back to its source .md file and get its git last-commit date
+    function getGitLastmod(htmlPath: string): string {
+      let relativePath = path.relative(outDir, htmlPath).replace(/\\/g, '/')
+      // Convert index.html → directory/index.md; page.html → page.md
+      if (relativePath.endsWith('/index.html') || relativePath === 'index.html') {
+        relativePath = relativePath.replace(/\/?index\.html$/, '/index.md')
+      } else {
+        relativePath = relativePath.replace(/\.html$/, '.md')
+      }
+      const sourcePath = path.join('docs', relativePath)
+      try {
+        const result = execSync(`git log -1 --format=%cI -- "${sourcePath}"`, {
+          encoding: 'utf-8',
+          timeout: 5000,
+          stdio: ['pipe', 'pipe', 'pipe']
+        }).trim()
+        if (result) return result.split('T')[0]
+      } catch {
+        // Fall back to build date if git lookup fails
+      }
+      return buildDate
+    }
+
+    // Determine change frequency based on URL content type
+    function getChangeFreq(urlPath: string): string {
+      if (urlPath.includes('/blog/')) return 'weekly'
+      if (urlPath.includes('/protocols/')) return 'weekly'
+      if (urlPath.includes('/guide/') || urlPath.includes('/tutorials/')) return 'monthly'
+      if (urlPath.includes('/narratives/') || urlPath.includes('/community/')) return 'monthly'
+      if (urlPath === '/' || urlPath.match(/^\/(en|es|fr|zh|tr)\/$/)) return 'weekly'
+      return 'monthly'
+    }
+
     // Generate sitemap.xml
     try {
       console.log('🗺️ Generating sitemap.xml...')
       const baseUrl = 'https://bitcoinstamps.xyz'
-      const buildDate = new Date().toISOString().split('T')[0]
       const urls: Array<{ loc: string; priority: string; lastmod: string; changefreq: string }> = []
-
-      // Map an output HTML path back to its source .md file and get its git last-commit date
-      function getGitLastmod(htmlPath: string): string {
-        let relativePath = path.relative(outDir, htmlPath).replace(/\\/g, '/')
-        // Convert index.html → directory/index.md; page.html → page.md
-        if (relativePath.endsWith('/index.html') || relativePath === 'index.html') {
-          relativePath = relativePath.replace(/\/?index\.html$/, '/index.md')
-        } else {
-          relativePath = relativePath.replace(/\.html$/, '.md')
-        }
-        const sourcePath = path.join('docs', relativePath)
-        try {
-          const result = execSync(`git log -1 --format=%cI -- "${sourcePath}"`, {
-            encoding: 'utf-8',
-            timeout: 5000,
-            stdio: ['pipe', 'pipe', 'pipe']
-          }).trim()
-          if (result) return result.split('T')[0]
-        } catch {
-          // Fall back to build date if git lookup fails
-        }
-        return buildDate
-      }
-
-      // Determine change frequency based on URL content type
-      function getChangeFreq(urlPath: string): string {
-        if (urlPath.includes('/blog/')) return 'weekly'
-        if (urlPath.includes('/protocols/')) return 'weekly'
-        if (urlPath.includes('/guide/') || urlPath.includes('/tutorials/')) return 'monthly'
-        if (urlPath.includes('/narratives/') || urlPath.includes('/community/')) return 'monthly'
-        if (urlPath === '/' || urlPath.match(/^\/(en|es|fr|zh|tr)\/$/)) return 'weekly'
-        return 'monthly'
-      }
 
       async function scanDir(dir: string) {
         const entries = await fs.readdir(dir, { withFileTypes: true })
