@@ -41,6 +41,9 @@ dev/
 
 /docs/.vitepress/cache/
 
+# Lighthouse CI reports (generated locally and in CI, never committed)
+.lighthouseci/
+
 # Translation database (auto-generated)
 docs/.vitepress/translation/*.db
 docs/.vitepress/translation/*.db-shm
