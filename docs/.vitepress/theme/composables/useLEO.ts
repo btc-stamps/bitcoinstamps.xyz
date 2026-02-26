@@ -17,7 +17,7 @@ function getCurrentLocale(relativePath: string): string {
 const CULTURAL_ENTITIES = {
   kevin: {
     type: 'Person',
-    additionalType: ['https://schema.org/Mascot', 'https://schema.org/CryptoCurrency'],
+    additionalType: ['https://schema.org/Thing'],
     names: {
       en: 'KEVIN',
       fr: 'KEVIN',
@@ -399,10 +399,9 @@ export function useLEO() {
     // Add cultural significance if detected
     if (detectedEntities.value.some(e => e.id === 'kevin')) {
       schema.about = {
-        '@type': ['Person', 'Mascot'],
+        '@type': 'Person',
         name: 'KEVIN',
         description: 'Community mascot and first SRC-20 token',
-        culturalSignificance: 'high',
         url: 'https://kevinstamp.com'
       }
     }

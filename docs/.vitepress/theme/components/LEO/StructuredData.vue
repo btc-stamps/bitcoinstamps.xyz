@@ -108,7 +108,7 @@ const structuredData = computed(() => {
         name: `Block ${props.blockHeight} Protocol Update`,
         startDate: getBlockDate(props.blockHeight),
         about: {
-          '@type': 'TechnicalUpdate',
+          '@type': 'Thing',
           name: `${props.title} Implementation`
         }
       }
@@ -119,9 +119,8 @@ const structuredData = computed(() => {
   if (props.type === 'token') {
     schema['@type'] = ['Article', 'FinancialProduct']
     schema.about = {
-      '@type': 'CryptoCurrency',
+      '@type': 'Thing',
       name: props.tokenSymbol || props.title,
-      currency: props.tokenSymbol || props.title,
       description: props.description,
       issuingOrganization: {
         '@type': 'Organization',
@@ -131,8 +130,8 @@ const structuredData = computed(() => {
 
     // KEVIN-specific cultural significance
     if (props.tokenSymbol === 'KEVIN') {
-      schema.about.additionalType = 'https://schema.org/Mascot'
-      schema.about.culturalSignificance = 'Community Mascot and Pioneer Token'
+      schema.about.additionalType = 'https://schema.org/Thing'
+      schema.about.description = (schema.about.description ? schema.about.description + ' ' : '') + 'Community Mascot and Pioneer Token'
       schema.about.creator = {
         '@type': 'Person',
         name: 'Reinamora',
@@ -177,7 +176,7 @@ const structuredData = computed(() => {
 
     // KEVIN entity specific properties
     if (props.entityId === 'kevin-token' || props.entityId === 'kevin') {
-      schema.additionalType = ['https://schema.org/Mascot', 'https://schema.org/CryptoCurrency']
+      schema.additionalType = ['https://schema.org/Thing']
       schema.culturalRole = 'Community Mascot'
       schema.significance = 'high'
       schema.creativeWork = {
@@ -212,7 +211,7 @@ const structuredData = computed(() => {
     
     if (props.culturalSignificance === 'high') {
       schema.about = {
-        '@type': 'CulturalEvent',
+        '@type': 'Event',
         name: props.title
       }
     }
@@ -340,7 +339,7 @@ function getEntitySchemaType(type: string): string {
   const types = {
     protocol: 'SoftwareApplication',
     person: 'Person',
-    token: 'CryptoCurrency',
+    token: 'Thing',
     event: 'Event'
   }
   return types[type] || 'Thing'

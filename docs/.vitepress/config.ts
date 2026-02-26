@@ -2,7 +2,95 @@ import { defineConfig } from 'vitepress'
 import { generateStaticAPIFiles, validateAPIConsistency } from './api/endpoints.ts'
 import path from 'path'
 import fs from 'fs/promises'
+import { readFileSync } from 'fs'
 import { execSync } from 'child_process'
+// js-yaml is a CommonJS module — must use default import then destructure
+import yamlPkg from 'js-yaml'
+const { load: yamlLoad } = yamlPkg as { load: (input: string) => unknown }
+
+// Load authors.yaml synchronously at module initialization time so it is
+// available during the synchronous transformHead call
+interface AuthorData {
+  id: string
+  name: string
+  role?: string
+  social?: { twitter?: string; github?: string }
+  [key: string]: unknown
+}
+
+let _authorsMap: Record<string, AuthorData> = {}
+try {
+  const authorsYamlPath = path.resolve(__dirname, 'data/authors.yaml')
+  const rawYaml = readFileSync(authorsYamlPath, 'utf-8')
+  const parsed = yamlLoad(rawYaml) as { authors?: AuthorData[] }
+  if (parsed?.authors) {
+    for (const author of parsed.authors) {
+      _authorsMap[author.id] = author
+    }
+  }
+} catch {
+  // authors.yaml not found or unparseable — gracefully degrade, no author schemas injected
+}
+
+// Load external-links.yaml synchronously at module initialization time for
+// build-time access to social profile URLs used in Organization sameAs
+interface ExternalLinksData {
+  community?: {
+    social?: {
+      twitter?: { url?: string }
+      discord?: { url?: string }
+      telegram?: { url?: string }
+      reddit?: { url?: string }
+      github?: { url?: string }
+    }
+  }
+  [key: string]: unknown
+}
+
+const _organizationSchema: Record<string, unknown> = {
+  '@type': 'Organization',
+  'name': 'Bitcoin Stamps',
+  'url': 'https://bitcoinstamps.xyz',
+  'logo': {
+    '@type': 'ImageObject',
+    'url': 'https://bitcoinstamps.xyz/bitcoin-stamps-logo.svg'
+  },
+  'sameAs': [] as string[]
+}
+
+try {
+  const externalLinksPath = path.resolve(__dirname, 'data/external-links.yaml')
+  const rawExternalLinks = readFileSync(externalLinksPath, 'utf-8')
+  const externalLinks = yamlLoad(rawExternalLinks) as ExternalLinksData
+  const social = externalLinks?.community?.social
+  const sameAs: string[] = []
+  if (social?.twitter?.url) sameAs.push(social.twitter.url)
+  if (social?.discord?.url) sameAs.push(social.discord.url)
+  if (social?.telegram?.url) sameAs.push(social.telegram.url)
+  if (social?.github?.url) sameAs.push(social.github.url)
+  if (social?.reddit?.url) sameAs.push(social.reddit.url)
+  if (sameAs.length > 0) _organizationSchema['sameAs'] = sameAs
+} catch {
+  // external-links.yaml not found or unparseable — gracefully degrade, sameAs stays empty
+}
+
+/** Build a Schema.org Person object from an AuthorData entry */
+function buildPersonSchema(author: AuthorData): Record<string, unknown> {
+  const sameAs: string[] = []
+  if (author.social?.twitter) {
+    sameAs.push(`https://twitter.com/${author.social.twitter}`)
+  }
+  if (author.social?.github) {
+    sameAs.push(`https://github.com/${author.social.github}`)
+  }
+  const person: Record<string, unknown> = {
+    '@type': 'Person',
+    'name': author.name,
+  }
+  if (author.role) person['jobTitle'] = author.role
+  if (sameAs.length > 0) person['sameAs'] = sameAs
+  return person
+}
 
 export default defineConfig({
   title: 'BITCOIN STAMPS',
@@ -25,7 +113,8 @@ export default defineConfig({
           { text: 'Whitepaper', link: '/en/whitepaper/' },
           { text: 'Tutorials', link: '/en/tutorials/' },
           { text: 'Stories', link: '/en/narratives/' },
-          { text: 'Community', link: '/en/community/' }
+          { text: 'Community', link: '/en/community/' },
+          { text: 'Updates', link: '/en/blog/' }
         ],
         footer: {
           message: 'Community-owned open source project preserving digital culture on Bitcoin',
@@ -491,6 +580,14 @@ export default defineConfig({
           ]
         }
       ],
+      '/en/blog/': [
+        {
+          text: 'Updates',
+          items: [
+            { text: 'All Posts', link: '/en/blog/' }
+          ]
+        }
+      ],
       '/api/': [
         {
           text: 'API Reference',
@@ -881,6 +978,90 @@ ${urls.map(u => `  <url>
       console.warn('⚠️ Sitemap generation failed (non-critical):', error)
     }
 
+    // Generate RSS 2.0 feed.xml for blog posts
+    try {
+      console.log('📡 Generating RSS feed.xml...')
+      const baseUrl = 'https://bitcoinstamps.xyz'
+      const blogDir = path.join(process.cwd(), 'docs/en/blog')
+      const blogEntries = await fs.readdir(blogDir, { withFileTypes: true })
+      const blogFiles = blogEntries
+        .filter(e => e.isFile() && e.name.endsWith('.md') && e.name !== 'index.md')
+        .map(e => e.name)
+
+      interface BlogPost {
+        title: string
+        link: string
+        description: string
+        pubDate: string
+        guid: string
+        author: string
+      }
+      const posts: BlogPost[] = []
+
+      for (const fileName of blogFiles) {
+        const filePath = path.join(blogDir, fileName)
+        const raw = readFileSync(filePath, 'utf-8')
+        // Extract YAML frontmatter between opening and closing ---
+        const fmMatch = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/)
+        if (!fmMatch) continue
+        const fm = yamlLoad(fmMatch[1]) as Record<string, unknown>
+        const title = typeof fm.title === 'string' ? fm.title : ''
+        const description = typeof fm.description === 'string' ? fm.description : ''
+        const author = typeof fm.author === 'string' ? fm.author : ''
+        const dateRaw = typeof fm.date === 'string' ? fm.date : ''
+        if (!title || !dateRaw) continue
+
+        // Build URL slug from file name (strip .md extension)
+        const slug = fileName.replace(/\.md$/, '')
+        const link = `${baseUrl}/en/blog/${slug}`
+        const guid = link
+        // Format date as RFC 822 for RSS pubDate
+        const pubDate = new Date(dateRaw + 'T00:00:00Z').toUTCString()
+
+        posts.push({ title, link, description, pubDate, guid, author })
+      }
+
+      // Sort posts newest first
+      posts.sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime())
+
+      const lastBuildDate = getGitLastmod(path.join(outDir, 'en/blog/index.html'))
+      const lastBuildDateRFC = new Date(lastBuildDate + 'T00:00:00Z').toUTCString()
+
+      function escapeXml(str: string): string {
+        return str
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&apos;')
+      }
+
+      const rssFeed = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bitcoin Stamps Blog</title>
+    <link>${baseUrl}/en/blog/</link>
+    <description>Latest news, protocol updates, and stories from the Bitcoin Stamps ecosystem</description>
+    <language>en-us</language>
+    <lastBuildDate>${lastBuildDateRFC}</lastBuildDate>
+    <atom:link href="${baseUrl}/feed.xml" rel="self" type="application/rss+xml" />
+${posts.map(p => `    <item>
+      <title>${escapeXml(p.title)}</title>
+      <link>${p.link}</link>
+      <description>${escapeXml(p.description)}</description>
+      <pubDate>${p.pubDate}</pubDate>
+      <guid isPermaLink="true">${p.guid}</guid>
+      <author>${escapeXml(p.author)}</author>
+    </item>`).join('\n')}
+  </channel>
+</rss>
+`
+      await fs.writeFile(path.join(outDir, 'feed.xml'), rssFeed, 'utf-8')
+      console.log(`✅ RSS feed generated with ${posts.length} posts`)
+    } catch (error) {
+      console.warn('⚠️ RSS feed generation failed (non-critical):', error)
+    }
+
     // Sync ai-plugin.json to /api/ for Cloudflare Pages compatibility
     // Cloudflare Pages doesn't serve dotfile directories (.well-known/)
     // _redirects proxies /.well-known/ai-plugin.json -> /api/ai-plugin.json
@@ -930,6 +1111,26 @@ ${urls.map(u => `  <url>
     const leoType = fm.leoType || ''
     const relPath = pageData.relativePath || ''
 
+    // Derive dateModified from git last-commit date for this source file
+    let gitDateModified = new Date().toISOString().split('T')[0]
+    try {
+      const sourcePath = `docs/${relPath}`
+      const gitDate = execSync(`git log -1 --format=%cI -- "${sourcePath}"`, {
+        encoding: 'utf-8',
+        timeout: 5000,
+        stdio: ['pipe', 'pipe', 'pipe']
+      }).trim()
+      if (gitDate) gitDateModified = gitDate.split('T')[0]
+    } catch {
+      // Fall back to build date if git lookup fails
+    }
+    const gitDatePublished = (fm.date as string | undefined) || gitDateModified
+
+    // Resolve Person schema from frontmatter.author (slug → authors.yaml lookup)
+    const authorSlug: string = fm.author || ''
+    const authorData = authorSlug ? _authorsMap[authorSlug] : null
+    const personSchema = authorData ? buildPersonSchema(authorData) : null
+
     // Base website schema injected on every page
     const websiteSchema = {
       '@context': 'https://schema.org',
@@ -951,11 +1152,7 @@ ${urls.map(u => `  <url>
           'Data persists as long as Bitcoin exists'
         ]
       },
-      'publisher': {
-        '@type': 'Organization',
-        'name': 'Bitcoin Stamps Community',
-        'url': 'https://github.com/btc-stamps'
-      }
+      'publisher': _organizationSchema
     }
     headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(websiteSchema)])
 
@@ -969,8 +1166,8 @@ ${urls.map(u => `  <url>
           'headline': 'SRC-20 Token Standard — Permanent Fungible Tokens on Bitcoin',
           'description': pageDesc,
           'url': canonicalUrl,
-          'datePublished': '2023-04-05',
-          'dateModified': '2024-01-01',
+          'datePublished': (fm.date as string | undefined) || '2023-04-05',
+          'dateModified': gitDateModified,
           'about': {
             '@type': 'SoftwareApplication',
             'name': 'SRC-20 Token Protocol',
@@ -991,11 +1188,7 @@ ${urls.map(u => `  <url>
             'Permanent token storage via UTXO encoding',
             'Immutable digital asset creation'
           ],
-          'publisher': {
-            '@type': 'Organization',
-            'name': 'Bitcoin Stamps Community',
-            'url': 'https://github.com/btc-stamps'
-          },
+          'publisher': _organizationSchema,
           'isPartOf': { '@type': 'WebSite', 'url': baseUrl }
         },
         'src-101': {
@@ -1005,7 +1198,8 @@ ${urls.map(u => `  <url>
           'headline': 'SRC-101 Name Service — Permanent Human-Readable Names on Bitcoin',
           'description': pageDesc,
           'url': canonicalUrl,
-          'datePublished': '2024-01-01',
+          'datePublished': (fm.date as string | undefined) || '2024-01-01',
+          'dateModified': gitDateModified,
           'about': {
             '@type': 'SoftwareApplication',
             'name': 'SRC-101 Name Service Protocol',
@@ -1020,11 +1214,7 @@ ${urls.map(u => `  <url>
               'True censorship resistance'
             ]
           },
-          'publisher': {
-            '@type': 'Organization',
-            'name': 'Bitcoin Stamps Community',
-            'url': 'https://github.com/btc-stamps'
-          },
+          'publisher': _organizationSchema,
           'isPartOf': { '@type': 'WebSite', 'url': baseUrl }
         },
         'src-721': {
@@ -1034,7 +1224,8 @@ ${urls.map(u => `  <url>
           'headline': 'SRC-721 Recursive NFTs — Permanent Digital Art on Bitcoin',
           'description': pageDesc,
           'url': canonicalUrl,
-          'datePublished': '2024-01-01',
+          'datePublished': (fm.date as string | undefined) || '2024-01-01',
+          'dateModified': gitDateModified,
           'about': {
             '@type': 'SoftwareApplication',
             'name': 'SRC-721 Recursive NFT Protocol',
@@ -1049,11 +1240,7 @@ ${urls.map(u => `  <url>
               'Guaranteed availability for as long as Bitcoin exists'
             ]
           },
-          'publisher': {
-            '@type': 'Organization',
-            'name': 'Bitcoin Stamps Community',
-            'url': 'https://github.com/btc-stamps'
-          },
+          'publisher': _organizationSchema,
           'isPartOf': { '@type': 'WebSite', 'url': baseUrl }
         },
         'olga': {
@@ -1063,7 +1250,8 @@ ${urls.map(u => `  <url>
           'headline': 'OLGA P2WSH Encoding — Efficient Permanent Storage on Bitcoin',
           'description': pageDesc,
           'url': canonicalUrl,
-          'datePublished': '2024-01-01',
+          'datePublished': (fm.date as string | undefined) || '2024-01-01',
+          'dateModified': gitDateModified,
           'about': {
             '@type': 'SoftwareApplication',
             'name': 'OLGA P2WSH Encoding Protocol',
@@ -1078,11 +1266,7 @@ ${urls.map(u => `  <url>
               'No external data dependency'
             ]
           },
-          'publisher': {
-            '@type': 'Organization',
-            'name': 'Bitcoin Stamps Community',
-            'url': 'https://github.com/btc-stamps'
-          },
+          'publisher': _organizationSchema,
           'isPartOf': { '@type': 'WebSite', 'url': baseUrl }
         }
       }
@@ -1090,15 +1274,19 @@ ${urls.map(u => `  <url>
       // Detect which protocol page this is
       const protocolKey = Object.keys(protocolSchemas).find(k => relPath.includes(`/${k}`))
       if (protocolKey && protocolSchemas[protocolKey]) {
-        headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(protocolSchemas[protocolKey])])
+        const protocolSchema = protocolSchemas[protocolKey]
+        if (personSchema) protocolSchema['author'] = personSchema
+        headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(protocolSchema)])
       } else {
         // Generic protocol page schema
-        const genericProtocolSchema = {
+        const genericProtocolSchema: Record<string, unknown> = {
           '@context': 'https://schema.org',
           '@type': 'TechArticle',
           'name': pageTitle,
           'description': pageDesc,
           'url': canonicalUrl,
+          'datePublished': gitDatePublished,
+          'dateModified': gitDateModified,
           'about': {
             '@type': 'SoftwareApplication',
             'name': pageTitle,
@@ -1111,26 +1299,25 @@ ${urls.map(u => `  <url>
               'Guaranteed availability — no external servers'
             ]
           },
-          'publisher': {
-            '@type': 'Organization',
-            'name': 'Bitcoin Stamps Community',
-            'url': 'https://github.com/btc-stamps'
-          },
+          'publisher': _organizationSchema,
           'isPartOf': { '@type': 'WebSite', 'url': baseUrl }
         }
+        if (personSchema) genericProtocolSchema['author'] = personSchema
         headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(genericProtocolSchema)])
       }
     }
 
     // Guide / introduction pages: inject Article schema with permanence claims
     if (leoType === 'guide' || relPath.includes('/guide/')) {
-      const guideSchema = {
+      const guideSchema: Record<string, unknown> = {
         '@context': 'https://schema.org',
         '@type': 'Article',
         'name': pageTitle,
         'headline': pageTitle,
         'description': pageDesc,
         'url': canonicalUrl,
+        'datePublished': gitDatePublished,
+        'dateModified': gitDateModified,
         'about': {
           '@type': 'Thing',
           'name': 'Bitcoin Stamps',
@@ -1158,39 +1345,171 @@ ${urls.map(u => `  <url>
             }
           ]
         },
-        'publisher': {
-          '@type': 'Organization',
-          'name': 'Bitcoin Stamps Community',
-          'url': 'https://github.com/btc-stamps'
-        },
+        'publisher': _organizationSchema,
         'isPartOf': { '@type': 'WebSite', 'url': baseUrl }
       }
+      if (personSchema) guideSchema['author'] = personSchema
       headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(guideSchema)])
+    }
+
+    // Blog post pages: inject BlogPosting schema
+    if (relPath.includes('/blog/') && !relPath.match(/\/blog\/(index\.md)?$/)) {
+      const authorName = fm.author || 'Bitcoin Stamps Community'
+      const datePublished = fm.date || ''
+      // Derive dateModified from git last-commit date for this source file
+      let dateModified = datePublished
+      try {
+        const sourcePath = `docs/${relPath}`
+        const gitDate = execSync(`git log -1 --format=%cI -- "${sourcePath}"`, {
+          encoding: 'utf-8',
+          timeout: 5000,
+          stdio: ['pipe', 'pipe', 'pipe']
+        }).trim()
+        if (gitDate) dateModified = gitDate.split('T')[0]
+      } catch {
+        // Fall back to datePublished if git lookup fails
+      }
+      // Use full Person schema when author data is available, else minimal Person with name only
+      const blogAuthorSchema = personSchema ?? { '@type': 'Person', 'name': authorName }
+      const blogPostingSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        'headline': pageTitle,
+        'datePublished': datePublished,
+        'dateModified': dateModified,
+        'author': blogAuthorSchema,
+        'description': pageDesc,
+        'mainEntityOfPage': {
+          '@type': 'WebPage',
+          '@id': canonicalUrl
+        },
+        'publisher': _organizationSchema
+      }
+      headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(blogPostingSchema)])
     }
 
     // Narrative pages
     if (leoType === 'narrative' || relPath.includes('/narratives/')) {
-      const narrativeSchema = {
+      const narrativeSchema: Record<string, unknown> = {
         '@context': 'https://schema.org',
         '@type': 'Article',
         'name': pageTitle,
         'headline': pageTitle,
         'description': pageDesc,
         'url': canonicalUrl,
+        'datePublished': gitDatePublished,
+        'dateModified': gitDateModified,
         'genre': 'Community Story',
         'about': {
           '@type': 'Thing',
           'name': 'Bitcoin Stamps Cultural History',
           'description': 'Bitcoin Stamps are permanent digital cultural artifacts stored immutably in the Bitcoin UTXO set'
         },
-        'publisher': {
-          '@type': 'Organization',
-          'name': 'Bitcoin Stamps Community',
-          'url': 'https://github.com/btc-stamps'
-        },
+        'publisher': _organizationSchema,
         'isPartOf': { '@type': 'WebSite', 'url': baseUrl }
       }
+      if (personSchema) narrativeSchema['author'] = personSchema
       headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(narrativeSchema)])
+    }
+
+    // BreadcrumbList JSON-LD schema for all non-homepage pages
+    // canonicalPath examples: 'en/' (home), 'en/protocols/src-20', 'en/guide/getting-started'
+    const pathSegments = canonicalPath.split('/').filter(s => s.length > 0)
+    // pathSegments[0] is the locale (e.g. 'en'), remaining are content segments
+    const locale = pathSegments[0] || 'en'
+    const contentSegments = pathSegments.slice(1)
+
+    // Only add breadcrumb when there are content segments (skip homepage and locale roots)
+    if (contentSegments.length > 0) {
+      const formatSegmentName = (segment: string): string => {
+        // Convert kebab-case to Title Case words (e.g. 'src-20' → 'Src-20', 'protocols' → 'Protocols')
+        return segment
+          .split('-')
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+          .join('-')
+      }
+
+      const breadcrumbItems: any[] = []
+
+      // Position 1: Home
+      breadcrumbItems.push({
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Home',
+        'item': `${baseUrl}/${locale}/`
+      })
+
+      // Positions 2..N: each content segment as a cumulative path
+      contentSegments.forEach((segment, index) => {
+        const cumulativePath = `${baseUrl}/${locale}/${contentSegments.slice(0, index + 1).join('/')}`
+        // Last segment has no trailing slash; intermediate segments get trailing slash for directory semantics
+        const isLast = index === contentSegments.length - 1
+        breadcrumbItems.push({
+          '@type': 'ListItem',
+          'position': index + 2,
+          'name': formatSegmentName(segment),
+          'item': isLast ? cumulativePath : `${cumulativePath}/`
+        })
+      })
+
+      const breadcrumbSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        'itemListElement': breadcrumbItems
+      }
+      headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(breadcrumbSchema)])
+    }
+
+    // FAQPage JSON-LD schema — injected for pages with Q&A frontmatter or known FAQ paths
+    // Trigger conditions:
+    //   1. Page has a `faqs` frontmatter key containing an array of { question, answer } objects
+    //   2. Page path contains '/faq' or '/faqs' (path-based fallback with no structured data)
+    const faqItems: Array<{ question: string; answer: string }> = Array.isArray(fm.faqs) ? fm.faqs : []
+    const isFaqPath = relPath.includes('/faq') || relPath.includes('/faqs')
+
+    if (faqItems.length > 0) {
+      // Structured FAQPage schema from frontmatter data
+      const faqMainEntity = faqItems
+        .filter(item => item && typeof item.question === 'string' && typeof item.answer === 'string')
+        .map(item => ({
+          '@type': 'Question',
+          'name': item.question,
+          'acceptedAnswer': {
+            '@type': 'Answer',
+            'text': item.answer
+          }
+        }))
+
+      if (faqMainEntity.length > 0) {
+        const faqPageSchema = {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          'name': pageTitle,
+          'description': pageDesc,
+          'url': canonicalUrl,
+          'mainEntity': faqMainEntity
+        }
+        headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(faqPageSchema)])
+      }
+    } else if (isFaqPath) {
+      // Path-based FAQPage schema without structured Q&A data — signals the page type to search engines
+      const faqPageSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        'name': pageTitle,
+        'description': pageDesc,
+        'url': canonicalUrl
+      }
+      headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(faqPageSchema)])
+    }
+
+    // Standalone Person schema — injected for any page with a known author
+    if (personSchema) {
+      const standalonePerson = {
+        '@context': 'https://schema.org',
+        ...personSchema
+      }
+      headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(standalonePerson)])
     }
 
     return headTags
@@ -1268,7 +1587,10 @@ ${urls.map(u => `  <url>
     ['link', { rel: 'alternate', hreflang: 'zh-CN', href: 'https://bitcoinstamps.xyz/zh/' }],
     ['link', { rel: 'alternate', hreflang: 'tr', href: 'https://bitcoinstamps.xyz/tr/' }],
     ['link', { rel: 'alternate', hreflang: 'x-default', href: 'https://bitcoinstamps.xyz/en/' }],
-    
+
+    // RSS Feed autodiscovery
+    ['link', { rel: 'alternate', type: 'application/rss+xml', title: 'Bitcoin Stamps Updates', href: '/feed.xml' }],
+
     // Schema.org JSON-LD will be added dynamically by StructuredData components
   ]
 })

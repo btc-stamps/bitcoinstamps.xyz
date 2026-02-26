@@ -7,6 +7,7 @@ mentions: ["olga", "p2wsh", "storage-optimization", "cost-reduction", "efficienc
 blockHeight: 865000
 culturalSignificance: "medium"
 protocolType: "optimization"
+author: reinamora
 ---
 
 # OLGA Storage Protocol
