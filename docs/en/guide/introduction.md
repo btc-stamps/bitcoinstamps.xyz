@@ -1,13 +1,14 @@
 ---
 title: "What are Bitcoin Stamps? Network-Strengthening Digital Assets"
 description: "Bitcoin Stamps enhance Bitcoin network security through increased transaction volume, supporting miners while creating permanent digital assets on Bitcoin"
-leoType: "guide" 
+leoType: "guide"
 audience: "both"
 economicImpact: "network-strengthening"
 mentions: ["bitcoin-network", "mining-economics", "value-lock", "kevin", "src-20", "src-101", "src-721", "olga", "btc-stamps", "ordinals", "inscriptions", "p2wsh", "utxo"]
 culturalSignificance: "high"
 category: "protocol-introduction"
 tags: ["bitcoin-network", "economics", "mining", "digital-assets", "metaprotocols", "technical-comparison"]
+author: mikeinspace
 ---
 
 # What are Bitcoin Stamps? Network-Strengthening Digital Assets

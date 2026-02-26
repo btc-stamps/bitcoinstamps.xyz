@@ -8,6 +8,9 @@ Allow: /
 # Sitemap location
 Sitemap: https://bitcoinstamps.xyz/sitemap.xml
 
+# RSS Feed
+# Feed: https://bitcoinstamps.xyz/feed.xml
+
 # LLM Discovery
 # See https://llmstxt.org for the llms.txt standard
 # llms.txt - concise summary for LLM context windows

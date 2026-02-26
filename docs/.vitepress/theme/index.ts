@@ -4,6 +4,7 @@ import './style.css'
 // Import core LEO Components for i18n support
 import SmartStructuredData from './components/LEO/SmartStructuredData.vue'
 import EntityMention from './components/LEO/EntityMention.vue'
+import AuthorBio from './components/LEO/AuthorBio.vue'
 import LanguageSwitcher from './components/LanguageSwitcher.vue'
 import SipRegistry from './components/SipRegistry.vue'
 
@@ -13,6 +14,7 @@ export default {
     // Register LEO components with i18n support
     app.component('SmartStructuredData', SmartStructuredData)
     app.component('EntityMention', EntityMention)
+    app.component('AuthorBio', AuthorBio)
     app.component('LanguageSwitcher', LanguageSwitcher)
     app.component('SipRegistry', SipRegistry)
   }
