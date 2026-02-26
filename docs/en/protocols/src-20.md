@@ -8,6 +8,7 @@ blockHeight: 788041
 culturalSignificance: "high"
 tokenSymbol: "KEVIN"
 historicalContext: "Genesis at block 788,041 (KEVIN), Bitcoin-native encoding began at block 793,068, Counterparty cutoff at block 796,000"
+author: reinamora
 ---
 
 # SRC-20 Token Standard

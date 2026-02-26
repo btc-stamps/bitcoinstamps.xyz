@@ -7,6 +7,7 @@ audience: "both"
 mentions: ["kevin", "arwyn", "mikeinspace", "reinamora"]
 philosophy: "In Lak'ech Ala K'in - we are all Kevin"
 blockHeight: 788041
+author: arwyn
 ---
 
 # KEVIN's Origin Story: From Image to Ghost to Token to Legend
