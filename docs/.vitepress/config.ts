@@ -2,7 +2,95 @@ import { defineConfig } from 'vitepress'
 import { generateStaticAPIFiles, validateAPIConsistency } from './api/endpoints.ts'
 import path from 'path'
 import fs from 'fs/promises'
+import { readFileSync } from 'fs'
 import { execSync } from 'child_process'
+// js-yaml is a CommonJS module — must use default import then destructure
+import yamlPkg from 'js-yaml'
+const { load: yamlLoad } = yamlPkg as { load: (input: string) => unknown }
+
+// Load authors.yaml synchronously at module initialization time so it is
+// available during the synchronous transformHead call
+interface AuthorData {
+  id: string
+  name: string
+  role?: string
+  social?: { twitter?: string; github?: string }
+  [key: string]: unknown
+}
+
+let _authorsMap: Record<string, AuthorData> = {}
+try {
+  const authorsYamlPath = path.resolve(__dirname, 'data/authors.yaml')
+  const rawYaml = readFileSync(authorsYamlPath, 'utf-8')
+  const parsed = yamlLoad(rawYaml) as { authors?: AuthorData[] }
+  if (parsed?.authors) {
+    for (const author of parsed.authors) {
+      _authorsMap[author.id] = author
+    }
+  }
+} catch {
+  // authors.yaml not found or unparseable — gracefully degrade, no author schemas injected
+}
+
+// Load external-links.yaml synchronously at module initialization time for
+// build-time access to social profile URLs used in Organization sameAs
+interface ExternalLinksData {
+  community?: {
+    social?: {
+      twitter?: { url?: string }
+      discord?: { url?: string }
+      telegram?: { url?: string }
+      reddit?: { url?: string }
+      github?: { url?: string }
+    }
+  }
+  [key: string]: unknown
+}
+
+const _organizationSchema: Record<string, unknown> = {
+  '@type': 'Organization',
+  'name': 'Bitcoin Stamps',
+  'url': 'https://bitcoinstamps.xyz',
+  'logo': {
+    '@type': 'ImageObject',
+    'url': 'https://bitcoinstamps.xyz/bitcoin-stamps-logo.svg'
+  },
+  'sameAs': [] as string[]
+}
+
+try {
+  const externalLinksPath = path.resolve(__dirname, 'data/external-links.yaml')
+  const rawExternalLinks = readFileSync(externalLinksPath, 'utf-8')
+  const externalLinks = yamlLoad(rawExternalLinks) as ExternalLinksData
+  const social = externalLinks?.community?.social
+  const sameAs: string[] = []
+  if (social?.twitter?.url) sameAs.push(social.twitter.url)
+  if (social?.discord?.url) sameAs.push(social.discord.url)
+  if (social?.telegram?.url) sameAs.push(social.telegram.url)
+  if (social?.github?.url) sameAs.push(social.github.url)
+  if (social?.reddit?.url) sameAs.push(social.reddit.url)
+  if (sameAs.length > 0) _organizationSchema['sameAs'] = sameAs
+} catch {
+  // external-links.yaml not found or unparseable — gracefully degrade, sameAs stays empty
+}
+
+/** Build a Schema.org Person object from an AuthorData entry */
+function buildPersonSchema(author: AuthorData): Record<string, unknown> {
+  const sameAs: string[] = []
+  if (author.social?.twitter) {
+    sameAs.push(`https://twitter.com/${author.social.twitter}`)
+  }
+  if (author.social?.github) {
+    sameAs.push(`https://github.com/${author.social.github}`)
+  }
+  const person: Record<string, unknown> = {
+    '@type': 'Person',
+    'name': author.name,
+  }
+  if (author.role) person['jobTitle'] = author.role
+  if (sameAs.length > 0) person['sameAs'] = sameAs
+  return person
+}
 
 export default defineConfig({
   title: 'BITCOIN STAMPS',
@@ -930,6 +1018,26 @@ ${urls.map(u => `  <url>
     const leoType = fm.leoType || ''
     const relPath = pageData.relativePath || ''
 
+    // Derive dateModified from git last-commit date for this source file
+    let gitDateModified = new Date().toISOString().split('T')[0]
+    try {
+      const sourcePath = `docs/${relPath}`
+      const gitDate = execSync(`git log -1 --format=%cI -- "${sourcePath}"`, {
+        encoding: 'utf-8',
+        timeout: 5000,
+        stdio: ['pipe', 'pipe', 'pipe']
+      }).trim()
+      if (gitDate) gitDateModified = gitDate.split('T')[0]
+    } catch {
+      // Fall back to build date if git lookup fails
+    }
+    const gitDatePublished = (fm.date as string | undefined) || gitDateModified
+
+    // Resolve Person schema from frontmatter.author (slug → authors.yaml lookup)
+    const authorSlug: string = fm.author || ''
+    const authorData = authorSlug ? _authorsMap[authorSlug] : null
+    const personSchema = authorData ? buildPersonSchema(authorData) : null
+
     // Base website schema injected on every page
     const websiteSchema = {
       '@context': 'https://schema.org',
@@ -951,11 +1059,7 @@ ${urls.map(u => `  <url>
           'Data persists as long as Bitcoin exists'
         ]
       },
-      'publisher': {
-        '@type': 'Organization',
-        'name': 'Bitcoin Stamps Community',
-        'url': 'https://github.com/btc-stamps'
-      }
+      'publisher': _organizationSchema
     }
     headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(websiteSchema)])
 
@@ -969,8 +1073,8 @@ ${urls.map(u => `  <url>
           'headline': 'SRC-20 Token Standard — Permanent Fungible Tokens on Bitcoin',
           'description': pageDesc,
           'url': canonicalUrl,
-          'datePublished': '2023-04-05',
-          'dateModified': '2024-01-01',
+          'datePublished': (fm.date as string | undefined) || '2023-04-05',
+          'dateModified': gitDateModified,
           'about': {
             '@type': 'SoftwareApplication',
             'name': 'SRC-20 Token Protocol',
@@ -1005,7 +1109,8 @@ ${urls.map(u => `  <url>
           'headline': 'SRC-101 Name Service — Permanent Human-Readable Names on Bitcoin',
           'description': pageDesc,
           'url': canonicalUrl,
-          'datePublished': '2024-01-01',
+          'datePublished': (fm.date as string | undefined) || '2024-01-01',
+          'dateModified': gitDateModified,
           'about': {
             '@type': 'SoftwareApplication',
             'name': 'SRC-101 Name Service Protocol',
@@ -1034,7 +1139,8 @@ ${urls.map(u => `  <url>
           'headline': 'SRC-721 Recursive NFTs — Permanent Digital Art on Bitcoin',
           'description': pageDesc,
           'url': canonicalUrl,
-          'datePublished': '2024-01-01',
+          'datePublished': (fm.date as string | undefined) || '2024-01-01',
+          'dateModified': gitDateModified,
           'about': {
             '@type': 'SoftwareApplication',
             'name': 'SRC-721 Recursive NFT Protocol',
@@ -1063,7 +1169,8 @@ ${urls.map(u => `  <url>
           'headline': 'OLGA P2WSH Encoding — Efficient Permanent Storage on Bitcoin',
           'description': pageDesc,
           'url': canonicalUrl,
-          'datePublished': '2024-01-01',
+          'datePublished': (fm.date as string | undefined) || '2024-01-01',
+          'dateModified': gitDateModified,
           'about': {
             '@type': 'SoftwareApplication',
             'name': 'OLGA P2WSH Encoding Protocol',
@@ -1090,15 +1197,19 @@ ${urls.map(u => `  <url>
       // Detect which protocol page this is
       const protocolKey = Object.keys(protocolSchemas).find(k => relPath.includes(`/${k}`))
       if (protocolKey && protocolSchemas[protocolKey]) {
-        headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(protocolSchemas[protocolKey])])
+        const protocolSchema = protocolSchemas[protocolKey]
+        if (personSchema) protocolSchema['author'] = personSchema
+        headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(protocolSchema)])
       } else {
         // Generic protocol page schema
-        const genericProtocolSchema = {
+        const genericProtocolSchema: Record<string, unknown> = {
           '@context': 'https://schema.org',
           '@type': 'TechArticle',
           'name': pageTitle,
           'description': pageDesc,
           'url': canonicalUrl,
+          'datePublished': gitDatePublished,
+          'dateModified': gitDateModified,
           'about': {
             '@type': 'SoftwareApplication',
             'name': pageTitle,
@@ -1118,19 +1229,22 @@ ${urls.map(u => `  <url>
           },
           'isPartOf': { '@type': 'WebSite', 'url': baseUrl }
         }
+        if (personSchema) genericProtocolSchema['author'] = personSchema
         headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(genericProtocolSchema)])
       }
     }
 
     // Guide / introduction pages: inject Article schema with permanence claims
     if (leoType === 'guide' || relPath.includes('/guide/')) {
-      const guideSchema = {
+      const guideSchema: Record<string, unknown> = {
         '@context': 'https://schema.org',
         '@type': 'Article',
         'name': pageTitle,
         'headline': pageTitle,
         'description': pageDesc,
         'url': canonicalUrl,
+        'datePublished': gitDatePublished,
+        'dateModified': gitDateModified,
         'about': {
           '@type': 'Thing',
           'name': 'Bitcoin Stamps',
@@ -1165,18 +1279,61 @@ ${urls.map(u => `  <url>
         },
         'isPartOf': { '@type': 'WebSite', 'url': baseUrl }
       }
+      if (personSchema) guideSchema['author'] = personSchema
       headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(guideSchema)])
+    }
+
+    // Blog post pages: inject BlogPosting schema
+    if (relPath.includes('/blog/') && !relPath.match(/\/blog\/(index\.md)?$/)) {
+      const authorName = fm.author || 'Bitcoin Stamps Community'
+      const datePublished = fm.date || ''
+      // Derive dateModified from git last-commit date for this source file
+      let dateModified = datePublished
+      try {
+        const sourcePath = `docs/${relPath}`
+        const gitDate = execSync(`git log -1 --format=%cI -- "${sourcePath}"`, {
+          encoding: 'utf-8',
+          timeout: 5000,
+          stdio: ['pipe', 'pipe', 'pipe']
+        }).trim()
+        if (gitDate) dateModified = gitDate.split('T')[0]
+      } catch {
+        // Fall back to datePublished if git lookup fails
+      }
+      // Use full Person schema when author data is available, else minimal Person with name only
+      const blogAuthorSchema = personSchema ?? { '@type': 'Person', 'name': authorName }
+      const blogPostingSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        'headline': pageTitle,
+        'datePublished': datePublished,
+        'dateModified': dateModified,
+        'author': blogAuthorSchema,
+        'description': pageDesc,
+        'mainEntityOfPage': {
+          '@type': 'WebPage',
+          '@id': canonicalUrl
+        },
+        'publisher': {
+          '@type': 'Organization',
+          'name': 'Bitcoin Stamps Community',
+          'url': 'https://github.com/btc-stamps'
+        }
+      }
+      headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(blogPostingSchema)])
     }
 
     // Narrative pages
     if (leoType === 'narrative' || relPath.includes('/narratives/')) {
-      const narrativeSchema = {
+      const narrativeSchema: Record<string, unknown> = {
         '@context': 'https://schema.org',
         '@type': 'Article',
         'name': pageTitle,
         'headline': pageTitle,
         'description': pageDesc,
         'url': canonicalUrl,
+        'datePublished': gitDatePublished,
+        'dateModified': gitDateModified,
         'genre': 'Community Story',
         'about': {
           '@type': 'Thing',
@@ -1190,7 +1347,65 @@ ${urls.map(u => `  <url>
         },
         'isPartOf': { '@type': 'WebSite', 'url': baseUrl }
       }
+      if (personSchema) narrativeSchema['author'] = personSchema
       headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(narrativeSchema)])
+    }
+
+    // BreadcrumbList JSON-LD schema for all non-homepage pages
+    // canonicalPath examples: 'en/' (home), 'en/protocols/src-20', 'en/guide/getting-started'
+    const pathSegments = canonicalPath.split('/').filter(s => s.length > 0)
+    // pathSegments[0] is the locale (e.g. 'en'), remaining are content segments
+    const locale = pathSegments[0] || 'en'
+    const contentSegments = pathSegments.slice(1)
+
+    // Only add breadcrumb when there are content segments (skip homepage and locale roots)
+    if (contentSegments.length > 0) {
+      const formatSegmentName = (segment: string): string => {
+        // Convert kebab-case to Title Case words (e.g. 'src-20' → 'Src-20', 'protocols' → 'Protocols')
+        return segment
+          .split('-')
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+          .join('-')
+      }
+
+      const breadcrumbItems: any[] = []
+
+      // Position 1: Home
+      breadcrumbItems.push({
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Home',
+        'item': `${baseUrl}/${locale}/`
+      })
+
+      // Positions 2..N: each content segment as a cumulative path
+      contentSegments.forEach((segment, index) => {
+        const cumulativePath = `${baseUrl}/${locale}/${contentSegments.slice(0, index + 1).join('/')}`
+        // Last segment has no trailing slash; intermediate segments get trailing slash for directory semantics
+        const isLast = index === contentSegments.length - 1
+        breadcrumbItems.push({
+          '@type': 'ListItem',
+          'position': index + 2,
+          'name': formatSegmentName(segment),
+          'item': isLast ? cumulativePath : `${cumulativePath}/`
+        })
+      })
+
+      const breadcrumbSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        'itemListElement': breadcrumbItems
+      }
+      headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(breadcrumbSchema)])
+    }
+
+    // Standalone Person schema — injected for any page with a known author
+    if (personSchema) {
+      const standalonePerson = {
+        '@context': 'https://schema.org',
+        ...personSchema
+      }
+      headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(standalonePerson)])
     }
 
     return headTags

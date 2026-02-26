@@ -1,0 +1,87 @@
+# Bitcoin Stamps Trinity Authors
+# Structured author data for the founding members of the Bitcoin Stamps protocol
+# Cultural rules: mikeinspace is always lowercase, KEVIN always in ALL CAPS
+# Bios are factual and concise — community may refine over time
+
+authors:
+  # mikeinspace - Original dreamer and visionary founder
+  - id: mikeinspace
+    name: mikeinspace
+    role: "Founder & Protocol Visionary"
+    bio: "Original creator and dreamer behind the Bitcoin Stamps protocol. mikeinspace inscribed the first Bitcoin Stamp at block 779652 in March 2023, launching a new paradigm for permanent data storage on the Bitcoin blockchain using bare multisig outputs."
+    expertise:
+      - "Bitcoin Stamps protocol design"
+      - "SRC-20 token standard conception"
+      - "Bare multisig encoding"
+      - "Protocol architecture"
+      - "Community building"
+    social:
+      twitter: "mikeinspace"
+      github: "mikeinspace"
+    cultural:
+      significance: "highest"
+      role: "Trinity Founder"
+      narrative: "The original dreamer and visionary — conceived Bitcoin Stamps as permanent, uncensorable art on Bitcoin"
+
+  # Reinamora - Technical architect of protocols
+  - id: reinamora
+    name: Reinamora
+    role: "Technical Architect"
+    bio: "Technical architect of the Bitcoin Stamps protocol stack. Reinamora built the indexer infrastructure, API systems, and core tooling that power the stampchain.io ecosystem, translating the vision of permanent Bitcoin data storage into production-grade software."
+    expertise:
+      - "Indexer architecture"
+      - "SRC-20 consensus rules"
+      - "API development"
+      - "Bitcoin transaction parsing"
+      - "Protocol implementation"
+    social:
+      twitter: "reinamora137"
+      github: "reinamora"
+    cultural:
+      significance: "highest"
+      role: "Trinity Technical Architect"
+      narrative: "The builder who turned protocol vision into production infrastructure — indexers, APIs, and the stampchain.io stack"
+
+  # Arwyn - Orchestrator and creator of KEVIN
+  - id: arwyn
+    name: Arwyn
+    role: "Orchestrator & KEVIN Creator"
+    bio: "Orchestrator and magician of the Bitcoin Stamps ecosystem. Arwyn deployed KEVIN, the first SRC-20 token, at block 788041 on April 20, 2023, giving birth to the token economy within Bitcoin Stamps and creating the community's most beloved cultural icon."
+    expertise:
+      - "SRC-20 token deployment"
+      - "Community orchestration"
+      - "Cultural asset creation"
+      - "Rare Pepe heritage"
+      - "Token ecosystem development"
+    social:
+      twitter: "arwyn"
+      github: "arwyn"
+    cultural:
+      significance: "highest"
+      role: "Trinity Orchestrator"
+      narrative: "The magician who summoned KEVIN into existence — first SRC-20 token and cultural heart of the Bitcoin Stamps community"
+
+# Trinity Formation Context
+trinity:
+  formation: "Flooneybin"
+  formationNarrative: "The three founders met and collaborated to build something permanent on Bitcoin — mikeinspace with the vision, Reinamora with the technical foundation, and Arwyn with the cultural spark that became KEVIN"
+  values:
+    - "Permissionless creation"
+    - "Permanent on-chain storage"
+    - "Community cultural preservation"
+    - "Fair launch principles"
+    - "In Lak'ech Ala K'in"
+  firstStampBlock: 779652
+  firstTokenBlock: 788041
+  firstTokenTicker: "KEVIN"
+
+# Data Quality Metadata
+metadata:
+  lastUpdated: "2026-02-25"
+  dataVersion: "1.0.0"
+  validationStatus: "initial"
+  note: "Bios are factual and concise placeholders — community members may submit refinements via pull request"
+  sources:
+    - "protocol-milestones.yaml"
+    - "community-records"
+    - "founding-narrative"
