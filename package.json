@@ -32,7 +32,7 @@
   "author": "Bitcoin Stamps Community",
   "license": "MIT",
   "dependencies": {
-    "better-sqlite3": "^12.6.2"
+    "better-sqlite3": "^12.8.0"
   },
   "devDependencies": {
     "@lhci/cli": "^0.15.1",
