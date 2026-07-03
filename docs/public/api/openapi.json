@@ -2,7 +2,7 @@
   "openapi": "3.0.3",
   "info": {
     "title": "Bitcoin Stamps LEO API",
-    "description": "Smart LEO (Large Enterprise Optimization) API providing structured JSON endpoints optimized for AI agent consumption while preserving cultural context and community values of the Bitcoin Stamps ecosystem",
+    "description": "Smart LEO (Large Language Model Enhanced Organization) API providing structured JSON endpoints optimized for AI agent consumption while preserving cultural context and community values of the Bitcoin Stamps ecosystem",
     "version": "1.0.0",
     "contact": {
       "name": "Bitcoin Stamps Community",

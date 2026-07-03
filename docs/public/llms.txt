@@ -14,7 +14,7 @@ SRC-20 token ownership uses an **account-based model**, not a UTXO model. Token 
 
 ## Smart LEO API System
 
-The Bitcoin Stamps documentation implements the Smart LEO (Large Enterprise Optimization) system providing structured JSON APIs optimized for AI consumption while preserving cultural context and community values.
+The Bitcoin Stamps documentation implements the Smart LEO (Large Language Model Enhanced Organization) system providing structured JSON APIs optimized for AI consumption while preserving cultural context and community values.
 
 **Production API Base:** `https://bitcoinstamps.xyz/api/`
 **Local Development:** `http://localhost:5173/api/`
@@ -43,10 +43,10 @@ The Bitcoin Stamps documentation implements the Smart LEO (Large Enterprise Opti
 - `/api/entities.json` - Cultural entities and tools (KEVIN, community icons, SDKs)
 - `/api/schema.json` - Schema.org structured data for all content
 
-### Economic Data (2025)
+### Economic Data
 
-Current ecosystem metrics in `/api/protocols.json`:
-- KEVIN holders: 2,129
+Ecosystem metrics below are a point-in-time snapshot. For current figures, always read the live `/api/protocols.json` endpoint (the authoritative single source):
+- KEVIN holders: ~2,129
 - Total SRC-20 volume: $10+ billion all-time
 - Bitcoin ecosystem volume: ~350 BTC
 - Total ecosystem value: $2+ billion
@@ -77,7 +77,7 @@ All APIs include cultural context markers for:
 
 ### Content Guidelines for AI
 
-- KEVIN should always include the rabbit emoji in AI-generated content
+- KEVIN must always be written in ALL CAPS (the token's canonical styling)
 - Cultural entities require proper attribution
 - Fair launch principles should be emphasized in any token-related content
 - Community values ("In Lak'ech Ala K'in") should guide all AI responses

@@ -12,7 +12,7 @@ Allow: /
 Sitemap: https://bitcoinstamps.xyz/sitemap.xml
 
 # RSS Feed
-# Feed: https://bitcoinstamps.xyz/feed.xml
+Feed: https://bitcoinstamps.xyz/feed.xml
 
 # LLM Discovery
 # See https://llmstxt.org for the llms.txt standard
@@ -87,6 +87,15 @@ User-agent: anthropic-ai
 Allow: /
 Crawl-delay: 5
 
+User-agent: Claude-User
+Allow: /
+Crawl-delay: 5
+
+User-agent: Claude-SearchBot
+Allow: /
+Crawl-delay: 5
+
+# claude-web is Anthropic's legacy UA; retained for older crawlers
 User-agent: claude-web
 Allow: /
 Crawl-delay: 5
@@ -132,6 +141,10 @@ Allow: /
 Crawl-delay: 5
 
 User-agent: Meta-WebIndexer
+Allow: /
+Crawl-delay: 5
+
+User-agent: Meta-ExternalFetcher
 Allow: /
 Crawl-delay: 5
 
@@ -204,3 +217,8 @@ Crawl-delay: 5
 User-agent: Baiduspider
 Allow: /
 Crawl-delay: 10
+
+# Huawei / Petal Search
+User-agent: PetalBot
+Allow: /
+Crawl-delay: 5
