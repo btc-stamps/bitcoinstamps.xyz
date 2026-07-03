@@ -12,8 +12,6 @@ tags: ["tutorial", "bitcoin-network", "mining-support", "wallet-setup", "first-s
 
 # 比特币印章入门指南 - 加强比特币网络
 
-<SmartStructuredData />
-
 欢迎来到比特币印章的世界——创意表达与比特币网络加强的完美结合。本指南将帮助您开始为比特币矿业经济做出贡献，同时创造永久数字资产，这些资产将永远存在于世界上最安全的区块链上。
 
 ## 为什么比特币印章对比特币的未来至关重要

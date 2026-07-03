@@ -10,8 +10,6 @@ category: "protocols"
 
 # Protocolos Bitcoin Stamps
 
-<SmartStructuredData />
-
 Los Bitcoin Stamps utilizan varios metaprotocolos para crear diferentes tipos de activos digitales en Bitcoin. Cada protocolo sirve un propósito único, desde la creación de arte digital hasta sistemas sofisticados de tokens.
 
 ## Protocolos Principales

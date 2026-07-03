@@ -29,8 +29,6 @@ hero:
       link: /zh/tutorials/
 ---
 
-<SmartStructuredData />
-
 ## 比特币涂鸦运动
 
 Bitcoin Stamps 始于比特币上的涂鸦运动——无法被删除或审查的永久数字艺术。<EntityMention entity="mikeinspace">Mikeinspace</EntityMention> 在区块 779,652 创建了第一个 stamp，<EntityMention entity="arwyn">Arwyn</EntityMention> 在区块 788,041 创建了 <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention>，它既成为了文化图标，也是第一个 SRC-20 代币。

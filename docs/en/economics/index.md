@@ -8,8 +8,6 @@ mentions: ["economics", "utxo", "witness-data", "permanent-storage"]
 
 # Bitcoin Stamps Economics
 
-<SmartStructuredData />
-
 Understanding the cost difference between Bitcoin Stamps and other Bitcoin protocols.
 
 ## Storage Method Comparison

@@ -10,8 +10,6 @@ philosophy: "In Lak'ech Ala K'in - 颂扬集体创造力"
 
 # 社区展示：比特币印章艺术家与项目
 
-<SmartStructuredData />
-
 Bitcoin Stamps 社区代表着艺术愿景与技术创新的交汇，创作者在这里体现 **"In Lak'ech Ala K'in"** 的精神——我们都在这段创意旅程中紧密相连。从 <EntityMention entity="mikeinspace">Mikeinspace</EntityMention> 的奠基性工作，到 <EntityMention entity="arwyn">Arwyn</EntityMention> 创作的文化偶像 <EntityMention entity="kevin" variant="cultural">KEVIN </EntityMention>，我们的社区展示了去中心化创意的力量。
 
 ## 🎨 特色艺术家

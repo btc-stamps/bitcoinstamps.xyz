@@ -8,8 +8,6 @@ mentions: ["kevin", "bitcoin-stamps", "src-20", "community"]
 
 # Contribuir a Bitcoin Stamps
 
-<SmartStructuredData />
-
 La comunidad Bitcoin Stamps da la bienvenida a los colaboradores que abrazan **"In Lak'ech Ala K'in"** - construimos juntos como un solo ecosistema de arte descentralizado.
 
 ## Valores Fundamentales

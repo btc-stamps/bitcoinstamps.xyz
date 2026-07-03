@@ -29,8 +29,6 @@ hero:
       link: /es/tutorials/
 ---
 
-<SmartStructuredData />
-
 ## El Movimiento de Grafiti de Bitcoin
 
 Bitcoin Stamps comenzó como un movimiento de grafiti en Bitcoin - arte digital permanente que no puede ser removido o censurado. <EntityMention entity="mikeinspace">Mikeinspace</EntityMention> creó el primer stamp en el bloque 779,652, y <EntityMention entity="arwyn">Arwyn</EntityMention> creó <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> en el bloque 788,041, que se convirtió tanto en un ícono cultural como en el primer token SRC-20.

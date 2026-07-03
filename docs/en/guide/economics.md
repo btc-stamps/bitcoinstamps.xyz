@@ -9,8 +9,6 @@ economicImpact: "cost-analysis"
 
 # Bitcoin Stamps Economics
 
-<SmartStructuredData />
-
 Understanding the costs and practical considerations of using Bitcoin Stamps protocols.
 
 ## Transaction Costs

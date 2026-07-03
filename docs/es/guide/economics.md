@@ -9,8 +9,6 @@ economicImpact: "cost-analysis"
 
 # Economía de Bitcoin Stamps
 
-<SmartStructuredData />
-
 El ecosistema Bitcoin Stamps ha creado una economía digital única, respaldada por la **seguridad de Bitcoin**. Esta guía explica la estructura económica del ecosistema, los mecanismos de valor y el rol pionero del token <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention>.
 
 ## Costos de Transacción

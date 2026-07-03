@@ -12,8 +12,6 @@ tags: ["bitcoin-network", "economics", "mining", "digital-assets", "metaprotocol
 
 # 什么是比特币印章？加强网络的数字资产
 
-<SmartStructuredData />
-
 比特币印章是直接存储在比特币区块链上的**永久数字资产**。与依赖外部服务器的传统NFT不同，比特币印章将所有数据直接嵌入比特币交易中，使其真正不可变且独立。
 
 ## 比特币印章的特别之处

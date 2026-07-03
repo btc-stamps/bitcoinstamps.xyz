@@ -8,8 +8,6 @@ mentions: ["tx-builder", "kevin", "src-20", "sdk", "stampchain"]
 
 # @btc-stamps/tx-builder SDK
 
-<SmartStructuredData />
-
 **@btc-stamps/tx-builder**, Bitcoin Stamps protokollerine birinci sınıf destek sunan resmi Bitcoin işlem oluşturucusudur. Bitcoin Stamps kurucuları tarafından oluşturulan temel altyapı olan <EntityMention entity="stampchain">Stampchain</EntityMention> ile kusursuz entegrasyon için tasarlanmıştır.
 
 ## Stampchain ile Entegrasyon

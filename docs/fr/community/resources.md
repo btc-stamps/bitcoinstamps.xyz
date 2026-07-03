@@ -8,8 +8,6 @@ mentions: ["kevin", "bitcoin-stamps", "src-20", "stampchain", "community"]
 
 # Ressources Bitcoin Stamps
 
-<SmartStructuredData />
-
 Répertoire de ressources pour l'écosystème Bitcoin Stamps - de la création de votre premier stamp à la construction d'applications.
 
 ## Plateformes Officielles

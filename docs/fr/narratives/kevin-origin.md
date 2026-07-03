@@ -11,8 +11,6 @@ blockHeight: 788041
 
 # Histoire de l'Origine de KEVIN : D'Expérience Artistique à Icône Culturelle
 
-<SmartStructuredData />
-
 Au commencement, il y eut la vision d'un artiste. Le 5 avril 2023, au bloc 788,041, <EntityMention entity="arwyn">Arwyn</EntityMention> créa quelque chose d'extraordinaire qui deviendrait l'âme de la communauté Bitcoin Stamps : **<EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention>**.
 
 ## Le Moment Genèse : Bloc 788,041

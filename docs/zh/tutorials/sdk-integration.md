@@ -8,8 +8,6 @@ mentions: ["tx-builder", "kevin", "src-20", "sdk", "stampchain"]
 
 # @btc-stamps/tx-builder SDK
 
-<SmartStructuredData />
-
 **@btc-stamps/tx-builder** 是官方比特币交易构建器，对 Bitcoin Stamps 协议提供一流支持。其设计与 <EntityMention entity="stampchain">Stampchain</EntityMention> 无缝集成——这是由 Bitcoin Stamps 创始人构建的基础性基础设施。
 
 ## 与 Stampchain 的集成

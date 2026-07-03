@@ -11,8 +11,6 @@ tags: ["bitcoin-consensus", "data-storage", "technical-architecture", "blockchai
 
 # Bitcoin Stamps vs Ordinals/Inscriptions: Technical Architecture
 
-<SmartStructuredData />
-
 Bitcoin Stamps and Ordinals/Inscriptions represent two fundamentally different approaches to storing data on Bitcoin. Understanding these differences is crucial for developers and users who want to ensure their digital assets have the strongest possible permanence guarantees.
 
 ## Critical Technical Differences

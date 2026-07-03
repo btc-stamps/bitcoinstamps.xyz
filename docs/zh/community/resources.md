@@ -8,8 +8,6 @@ mentions: ["kevin", "bitcoin-stamps", "src-20", "stampchain", "community"]
 
 # 比特币印章资源
 
-<SmartStructuredData />
-
 比特币印章生态系统资源目录——从创建你的第一个印章到构建应用程序。
 
 ## 官方平台

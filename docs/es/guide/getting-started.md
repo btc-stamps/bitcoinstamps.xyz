@@ -12,8 +12,6 @@ tags: ["tutorial", "bitcoin-network", "mining-support", "wallet-setup", "first-s
 
 # Comenzar con Bitcoin Stamps - Fortalece la Red Bitcoin
 
-<SmartStructuredData />
-
 Bienvenido a Bitcoin Stamps — donde la expresión creativa se une al fortalecimiento de la red Bitcoin. Esta guía te ayuda a comenzar a contribuir a la economía del minado de Bitcoin mientras creas activos digitales permanentes que vivirán para siempre en la blockchain más segura del mundo.
 
 ## Por qué los Bitcoin Stamps importan para el futuro de Bitcoin

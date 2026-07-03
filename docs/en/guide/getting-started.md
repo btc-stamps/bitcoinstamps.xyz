@@ -12,8 +12,6 @@ tags: ["tutorial", "bitcoin-network", "mining-support", "wallet-setup", "first-s
 
 # Getting Started with Bitcoin Stamps - Begin Network Strengthening
 
-<SmartStructuredData />
-
 Welcome to Bitcoin Stamps - where creative expression meets Bitcoin network strengthening. This guide helps you start contributing to Bitcoin mining economics while creating permanent digital assets that live forever on the world's most secure blockchain.
 
 ## Why Bitcoin Stamps Matter for Bitcoin's Future

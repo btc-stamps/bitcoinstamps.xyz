@@ -10,8 +10,6 @@ philosophy: "In Lak'ech Ala K'in - we are all Kevin"
 
 # Community
 
-<SmartStructuredData />
-
 Join the Bitcoin Stamps community of developers, artists, and enthusiasts building the future of permanent Bitcoin digital art. Our community embodies the ancient wisdom of *"In Lak'ech Ala K'in"* - "I am you and you are me" - guided by <EntityMention entity="kevin" variant="cultural">KEVIN's</EntityMention> spirit of authentic creativity and fairness.
 
 Founded by <EntityMention entity="mikeinspace">mikeinspace</EntityMention>, <EntityMention entity="arwyn">Arwyn</EntityMention>, and <EntityMention entity="reinamora">Reinamora</EntityMention>, our community celebrates both technical excellence and artistic expression. We believe that **we are all Kevin** - united through this permanent art movement on Bitcoin.

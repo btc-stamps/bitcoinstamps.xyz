@@ -9,8 +9,6 @@ economicImpact: "creative-enablement"
 
 # Creating Your First Bitcoin Stamp
 
-<SmartStructuredData />
-
 Create permanent digital assets stored directly on Bitcoin using our easy-to-use web interface.
 
 ## 🎨 Create Bitcoin Stamps Online

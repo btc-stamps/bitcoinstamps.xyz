@@ -9,8 +9,6 @@ leoType: "blog"
 
 # Bitcoin Stamps Protocol Whitepaper Released
 
-<SmartStructuredData />
-
 After years of building, iterating, and refining the protocol that has made permanent digital assets on Bitcoin a reality, we are proud to announce the official release of the <EntityMention entity="bitcoin-stamps">Bitcoin Stamps</EntityMention> Protocol Technical Whitepaper.
 
 This document represents the culmination of work begun in block 779,652, when <EntityMention entity="mikeinspace">mikeinspace</EntityMention> inscribed the very first Bitcoin Stamp—a moment that started a movement none of us could fully predict.

@@ -12,8 +12,6 @@ historicalContext: "Migration de Counterparty vers l'encodage Bitcoin natif au b
 
 # Standard de Jetons SRC-20
 
-<SmartStructuredData />
-
 Le **Standard de Jetons SRC-20** permet la création de jetons fongibles directement sur Bitcoin. <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention>, créé par <EntityMention entity="arwyn">Arwyn</EntityMention> au bloc 788,041, était le premier jeton SRC-20 et devint la mascotte communautaire bien-aimée avec plus de 2 300 détenteurs.
 
 ## Caractéristiques Clés

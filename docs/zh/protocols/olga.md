@@ -11,8 +11,6 @@ protocolType: "optimization"
 
 # OLGA 存储协议
 
-<SmartStructuredData />
-
 **OLGA 存储协议**是一种先进的 P2WSH 数据存储方法，通过将昂贵的 2/3 多签方式替换为高效的见证脚本存储，为 Bitcoin Stamps 交易提供 **30-95% 的成本降低**。
 
 ## 核心特性

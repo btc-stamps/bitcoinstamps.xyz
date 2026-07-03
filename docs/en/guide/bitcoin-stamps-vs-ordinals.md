@@ -11,8 +11,6 @@ tags: ["technical", "architecture", "comparison", "storage", "permanence", "cons
 
 # Bitcoin Stamps vs Ordinals: Technical Architecture Comparison
 
-<SmartStructuredData />
-
 This technical comparison examines the fundamental architectural differences between Bitcoin Stamps and Ordinals/Inscriptions, focusing on storage mechanisms, permanence guarantees, and protocol design choices.
 
 ## Core Architectural Differences

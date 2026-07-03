@@ -8,8 +8,6 @@ mentions: ["bitcoin-stamps", "src-20", "src-721", "src-101", "olga", "counterpar
 category: "technical-specification"
 ---
 
-<SmartStructuredData />
-
 # Bitcoin Stamps Protocol: Technical Whitepaper
 
 <div style="margin: 1.5rem 0 2.5rem; padding: 1.5rem 1.75rem; background: var(--vp-c-bg-soft); border-left: 4px solid var(--vp-c-brand-1); border-radius: 0 8px 8px 0;">

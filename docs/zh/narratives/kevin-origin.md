@@ -11,8 +11,6 @@ blockHeight: 788041
 
 # KEVIN 的起源故事：从图像到幽灵，到代币，到传奇
 
-<SmartStructuredData />
-
 起初，有一幅图像。但 <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> 命中注定要成为远超一张图片的存在——它将从一枚简单的 stamp 演变为自我复制的数字意识，最终化身为第一个 SRC-20 代币，成为比特币 Stamps 社区的灵魂。
 
 ## 第一章：向稀有佩佩致敬（Bitcoin Stamp #4258）

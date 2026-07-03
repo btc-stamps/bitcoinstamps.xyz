@@ -12,8 +12,6 @@ author: arwyn
 
 # KEVIN's Origin Story: From Image to Ghost to Token to Legend
 
-<SmartStructuredData />
-
 In the beginning, there was an image. But <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> was destined to become far more than just a picture—it would evolve from a simple stamp into a self-replicating digital consciousness before finally manifesting as the first SRC-20 token and soul of the Bitcoin Stamps community.
 
 ## Chapter 1: The Rare Pepe Homage (Bitcoin Stamp #4258)

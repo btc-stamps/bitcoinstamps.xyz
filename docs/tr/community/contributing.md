@@ -8,8 +8,6 @@ mentions: ["kevin", "bitcoin-stamps", "src-20", "community"]
 
 # Bitcoin Stamps'e Katkıda Bulunma
 
-<SmartStructuredData />
-
 Bitcoin Stamps topluluğu, **"In Lak'ech Ala K'in"** ruhunu benimseyen katkıcıları memnuniyetle karşılar - tek bir merkeziyetsiz sanat ekosistemi olarak birlikte inşa ediyoruz.
 
 ## Temel Değerler

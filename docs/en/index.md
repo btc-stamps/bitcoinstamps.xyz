@@ -29,8 +29,6 @@ hero:
       link: /en/tutorials/
 ---
 
-<SmartStructuredData />
-
 ## The Bitcoin Graffiti Movement
 
 Bitcoin Stamps began as a graffiti movement on Bitcoin - permanent digital art that can't be removed or censored. <EntityMention entity="mikeinspace">mikeinspace</EntityMention>, the original dreamer and visionary founder, connected with <EntityMention entity="arwyn">Arwyn</EntityMention> through the Flooneybin project on <EntityMention entity="counterparty">Counterparty</EntityMention> (a meme based on the icon Joe Looney). When Mike shared his Bitcoin Stamps vision, <EntityMention entity="arwyn">Arwyn</EntityMention> recognized the meme magic potential, leading to the formation of The Original Trinity with <EntityMention entity="reinamora">Reinamora</EntityMention> and subsequently the creation of the first stamp at block 779,652.

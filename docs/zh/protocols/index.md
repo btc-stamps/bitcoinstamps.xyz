@@ -10,8 +10,6 @@ category: "protocols"
 
 # Bitcoin Stamps 协议
 
-<SmartStructuredData />
-
 Bitcoin Stamps 使用多个元协议来创建比特币上的不同类型数字资产。每个协议都有独特的用途，从创建数字艺术到复杂的代币系统。
 
 ## 主要协议
