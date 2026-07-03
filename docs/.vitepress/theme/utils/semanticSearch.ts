@@ -82,7 +82,7 @@ export class BitcoinStampsSearch {
         id: 'reinamora',
         name: 'Reinamora',
         type: 'cultural-figure',
-        description: 'Creator of Kevin token and cultural icon',
+        description: 'Technical architect of Bitcoin Stamps protocols and cultural icon',
         culturalSignificance: 'high' as const
       }
     ]
