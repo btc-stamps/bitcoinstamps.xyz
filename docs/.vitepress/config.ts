@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 import { generateStaticAPIFiles, validateAPIConsistency } from './api/endpoints.ts'
 import path from 'path'
 import fs from 'fs/promises'
-import { readFileSync } from 'fs'
+import { readFileSync, existsSync } from 'fs'
 import { execSync } from 'child_process'
 // js-yaml is a CommonJS module — must use default import then destructure
 import yamlPkg from 'js-yaml'
@@ -927,20 +927,35 @@ export default defineConfig({
       const baseUrl = 'https://bitcoinstamps.xyz'
       const urls: Array<{ loc: string; priority: string; lastmod: string; changefreq: string }> = []
 
+      // GEO #6 (sitemap hygiene): internal/build-only trees that must never
+      // enter the sitemap. `delegations` = PAOS internal docs, `seo` =
+      // JSON-LD validation artifacts, `public` = combined-html spillover.
+      const EXCLUDED_DIRS = new Set(['assets', 'node_modules', 'delegations', 'seo', 'public'])
+      // GEO #6: root-level legacy pages excluded from the sitemap.
+      const EXCLUDED_ROOT_FILES = new Set(['artists.html', 'developers.html'])
+
       async function scanDir(dir: string) {
         const entries = await fs.readdir(dir, { withFileTypes: true })
         for (const entry of entries) {
           const fullPath = path.join(dir, entry.name)
           if (entry.isDirectory()) {
-            // Skip hidden dirs, assets, node_modules
-            if (!entry.name.startsWith('.') && entry.name !== 'assets' && entry.name !== 'node_modules') {
+            // Skip hidden dirs, assets, node_modules, and internal/junk trees (GEO #6)
+            if (!entry.name.startsWith('.') && !EXCLUDED_DIRS.has(entry.name)) {
               await scanDir(fullPath)
             }
           } else if (entry.name.endsWith('.html') && entry.name !== '404.html') {
-            let urlPath = '/' + path.relative(outDir, fullPath).replace(/\\/g, '/')
-            // Convert index.html to directory path
+            const relFromOut = path.relative(outDir, fullPath).replace(/\\/g, '/')
+            // GEO #6: drop root-level legacy pages
+            if (EXCLUDED_ROOT_FILES.has(relFromOut)) continue
+            let urlPath = '/' + relFromOut
+            // Convert index.html to extensionless directory path (trailing slash)
             if (urlPath.endsWith('/index.html')) {
               urlPath = urlPath.replace(/index\.html$/, '')
+            } else {
+              // GEO #5: strip `.html` so sitemap URLs match the extensionless
+              // rel=canonical form emitted in transformHead (avoids split
+              // indexing signals from two names per page).
+              urlPath = urlPath.replace(/\.html$/, '')
             }
             // Determine priority
             let priority = '0.5'
@@ -1112,6 +1127,38 @@ ${posts.map(p => `    <item>
     const pageDesc = fm.description || pageData.description || 'Official documentation for Bitcoin Stamps metaprotocols and art platform'
     const leoType = fm.leoType || ''
     const relPath = pageData.relativePath || ''
+
+    // GEO #8: per-page Open Graph / Twitter tags. The site-wide homepage set was
+    // removed from the global `head:`; these carry THIS page's own title, desc,
+    // and canonical URL so deep-link shares and AI citations are accurate.
+    // og:image / twitter:image stay site-wide (no per-page image available).
+    headTags.push(['meta', { property: 'og:title', content: pageTitle }])
+    headTags.push(['meta', { property: 'og:description', content: pageDesc }])
+    headTags.push(['meta', { property: 'og:url', content: canonicalUrl }])
+    headTags.push(['meta', { name: 'twitter:title', content: pageTitle }])
+    headTags.push(['meta', { name: 'twitter:description', content: pageDesc }])
+
+    // GEO #8: per-page reciprocal hreflang. For a source at /{locale}/{sub},
+    // link the SAME {sub} across every locale (+ x-default → en), skipping any
+    // locale whose source .md is absent (file parity is ~30/32) so we never
+    // advertise a 404 alternate. Replaces the old site-wide links that pointed
+    // every page at the locale roots.
+    const HREFLANG_LOCALES: Record<string, string> = { en: 'en', es: 'es', fr: 'fr', zh: 'zh-CN', tr: 'tr' }
+    const pageLocale = relPath.split('/')[0]
+    if (pageLocale in HREFLANG_LOCALES) {
+      const sub = relPath.slice(pageLocale.length + 1) // e.g. "protocols/src-20.md" | "index.md"
+      let enHref: string | null = null
+      for (const loc of Object.keys(HREFLANG_LOCALES)) {
+        const srcFile = path.resolve(__dirname, '..', loc, sub)
+        if (!existsSync(srcFile)) continue
+        const locSub = sub.replace(/index\.md$/, '').replace(/\.md$/, '')
+        const href = `${baseUrl}/${loc}/${locSub}`
+        headTags.push(['link', { rel: 'alternate', hreflang: HREFLANG_LOCALES[loc], href }])
+        if (loc === 'en') enHref = href
+      }
+      // x-default → the English variant when it exists
+      if (enHref) headTags.push(['link', { rel: 'alternate', hreflang: 'x-default', href: enHref }])
+    }
 
     // Derive dateModified from git last-commit date for this source file
     let gitDateModified = new Date().toISOString().split('T')[0]
@@ -1544,11 +1591,11 @@ ${posts.map(p => `    <item>
     ['link', { rel: 'manifest', href: '/manifest.json' }],
     
     // Enhanced Open Graph meta tags
+    // NOTE (GEO #8): og:title / og:description / og:url are emitted PER PAGE in
+    // transformHead so deep-link shares & AI citations carry the correct page
+    // metadata (not the site-wide homepage set). Only site-wide OG tags remain here.
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:site_name', content: 'Bitcoin Stamps Documentation' }],
-    ['meta', { property: 'og:title', content: 'Bitcoin Stamps - Permanent Digital Assets on Bitcoin' }],
-    ['meta', { property: 'og:description', content: 'Official documentation for Bitcoin Stamps metaprotocols including SRC-20 tokens pioneered by KEVIN, SRC-101 names, SRC-721 NFTs, and OLGA P2WSH encoding' }],
-    ['meta', { property: 'og:url', content: 'https://bitcoinstamps.xyz/' }],
     ['meta', { property: 'og:image', content: 'https://bitcoinstamps.xyz/og-image.jpg' }],
     ['meta', { property: 'og:image:width', content: '1200' }],
     ['meta', { property: 'og:image:height', content: '630' }],
@@ -1564,8 +1611,7 @@ ${posts.map(p => `    <item>
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     ['meta', { name: 'twitter:site', content: '@BitcoinStamps' }],
     ['meta', { name: 'twitter:creator', content: '@BitcoinStamps' }],
-    ['meta', { name: 'twitter:title', content: 'Bitcoin Stamps - Permanent Digital Assets on Bitcoin' }],
-    ['meta', { name: 'twitter:description', content: 'Official documentation for Bitcoin Stamps metaprotocols including SRC-20 tokens pioneered by KEVIN, SRC-101 names, SRC-721 NFTs, and OLGA P2WSH encoding' }],
+    // NOTE (GEO #8): twitter:title / twitter:description are emitted PER PAGE in transformHead.
     ['meta', { name: 'twitter:image', content: 'https://bitcoinstamps.xyz/og-image.jpg' }],
     ['meta', { name: 'twitter:image:alt', content: 'Bitcoin Stamps Logo - Digital Assets on Bitcoin' }],
     
@@ -1583,12 +1629,9 @@ ${posts.map(p => `    <item>
     ['meta', { name: 'msapplication-config', content: '/browserconfig.xml' }],
     
     // Multilingual SEO support for custom domain
-    ['link', { rel: 'alternate', hreflang: 'en', href: 'https://bitcoinstamps.xyz/en/' }],
-    ['link', { rel: 'alternate', hreflang: 'fr', href: 'https://bitcoinstamps.xyz/fr/' }],
-    ['link', { rel: 'alternate', hreflang: 'es', href: 'https://bitcoinstamps.xyz/es/' }],
-    ['link', { rel: 'alternate', hreflang: 'zh-CN', href: 'https://bitcoinstamps.xyz/zh/' }],
-    ['link', { rel: 'alternate', hreflang: 'tr', href: 'https://bitcoinstamps.xyz/tr/' }],
-    ['link', { rel: 'alternate', hreflang: 'x-default', href: 'https://bitcoinstamps.xyz/en/' }],
+    // NOTE (GEO #8): hreflang links are emitted PER PAGE in transformHead as
+    // reciprocal alternates (same path across locales), replacing the old
+    // site-wide links that incorrectly pointed every page at the locale roots.
 
     // RSS Feed autodiscovery
     ['link', { rel: 'alternate', type: 'application/rss+xml', title: 'Bitcoin Stamps Updates', href: '/feed.xml' }],
