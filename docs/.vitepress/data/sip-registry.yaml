@@ -180,10 +180,9 @@ gating:
     condition: "SIP-0003 bridge operational, security audited"
     rationale: "Bridge custody is high-risk — requires validation"
 
-# Future SIPs not yet formally drafted
+# Future SIPs not yet formally drafted (unnumbered until a SIP issue is opened)
 future:
-  - number: "0007"
-    title: "Wrapped Asset Standard"
+  - title: "Wrapped Asset Standard"
     purpose: "wBTC/wUSDT mint/burn protocol, custody model"
     prerequisite: "SIP-0003 bridge architecture"
 
