@@ -153,8 +153,8 @@ roadmap:
   - name: "Wrapped Assets & BTC Pools"
     phase: 4
     weeks: "18-28"
-    sips: ["0007"]
-    description: "Wrapped asset standard enabling Bitcoin-native liquidity pools"
+    sips: []
+    description: "Wrapped asset standard enabling Bitcoin-native liquidity pools (not yet drafted or numbered)"
     futureSips: true
 
   - name: "Privacy"
