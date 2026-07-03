@@ -183,7 +183,7 @@ const structuredData = computed(() => {
         '@type': 'CreativeWork',
         creator: {
           '@type': 'Person',
-          name: 'Reinamora'
+          name: 'Arwyn'
         }
       }
     }
