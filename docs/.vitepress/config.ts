@@ -927,20 +927,35 @@ export default defineConfig({
       const baseUrl = 'https://bitcoinstamps.xyz'
       const urls: Array<{ loc: string; priority: string; lastmod: string; changefreq: string }> = []
 
+      // GEO #6 (sitemap hygiene): internal/build-only trees that must never
+      // enter the sitemap. `delegations` = PAOS internal docs, `seo` =
+      // JSON-LD validation artifacts, `public` = combined-html spillover.
+      const EXCLUDED_DIRS = new Set(['assets', 'node_modules', 'delegations', 'seo', 'public'])
+      // GEO #6: root-level legacy pages excluded from the sitemap.
+      const EXCLUDED_ROOT_FILES = new Set(['artists.html', 'developers.html'])
+
       async function scanDir(dir: string) {
         const entries = await fs.readdir(dir, { withFileTypes: true })
         for (const entry of entries) {
           const fullPath = path.join(dir, entry.name)
           if (entry.isDirectory()) {
-            // Skip hidden dirs, assets, node_modules
-            if (!entry.name.startsWith('.') && entry.name !== 'assets' && entry.name !== 'node_modules') {
+            // Skip hidden dirs, assets, node_modules, and internal/junk trees (GEO #6)
+            if (!entry.name.startsWith('.') && !EXCLUDED_DIRS.has(entry.name)) {
               await scanDir(fullPath)
             }
           } else if (entry.name.endsWith('.html') && entry.name !== '404.html') {
-            let urlPath = '/' + path.relative(outDir, fullPath).replace(/\\/g, '/')
-            // Convert index.html to directory path
+            const relFromOut = path.relative(outDir, fullPath).replace(/\\/g, '/')
+            // GEO #6: drop root-level legacy pages
+            if (EXCLUDED_ROOT_FILES.has(relFromOut)) continue
+            let urlPath = '/' + relFromOut
+            // Convert index.html to extensionless directory path (trailing slash)
             if (urlPath.endsWith('/index.html')) {
               urlPath = urlPath.replace(/index\.html$/, '')
+            } else {
+              // GEO #5: strip `.html` so sitemap URLs match the extensionless
+              // rel=canonical form emitted in transformHead (avoids split
+              // indexing signals from two names per page).
+              urlPath = urlPath.replace(/\.html$/, '')
             }
             // Determine priority
             let priority = '0.5'
