@@ -4,11 +4,10 @@
     :class="entityClasses"
     :itemscope="!inline"
     :itemtype="schemaType"
-    :title="entity?.description"
+    :title="description || undefined"
     :role="inline ? 'button' : undefined"
     :tabindex="inline ? '0' : undefined"
-    :aria-label="`Learn more about ${displayName}`"
-    :aria-describedby="entity?.description ? `${entityId}-desc` : undefined"
+    :aria-label="description ? `${displayName}: ${description}` : `Learn more about ${displayName}`"
     @click="handleClick"
     @keydown.enter="handleClick"
     @keydown.space.prevent="handleClick"
@@ -19,7 +18,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed, useSlots } from 'vue'
+import { computed } from 'vue'
+import { useData } from 'vitepress'
 import { useLEO } from '../../composables/useLEO'
 
 interface Props {
@@ -36,14 +36,44 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const { getEntity } = useLEO()
-const slots = useSlots()
+const { localeIndex } = useData()
+
+// Entity IDs whose display name must NEVER be upper-cased (cultural rule).
+// mikeinspace is always lowercase.
+const LOWERCASE_EXEMPT = new Set(['mikeinspace'])
+// Person entities that have dedicated community pages (English-only for now).
+const PERSON_ENTITIES = new Set(['arwyn', 'mikeinspace', 'reinamora'])
 
 const entityId = computed(() => props.entity.toLowerCase())
-const entity = computed(() => getEntity(entityId.value))
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const entity = computed<any>(() => getEntity(entityId.value))
+
+// Current locale key ('en' | 'fr' | 'es' | 'zh' | 'tr'); 'root'/undefined → 'en'.
+const locale = computed(() => {
+  const li = localeIndex.value
+  return li && li !== 'root' ? li : 'en'
+})
+
+// Resolve a localized value from an entity's { en, fr, es, zh, … } map.
+function localized(map?: Record<string, string>): string | undefined {
+  if (!map) return undefined
+  return map[locale.value] || map.en
+}
 
 const displayName = computed(() => {
-  return entity.value?.name || props.entity.toUpperCase()
+  // Entities carry a localized `names` map (not a flat `name`); resolve it.
+  const name = localized(entity.value?.names)
+  if (name) return name
+  // Unknown entity id (no store entry): fall back to the raw id, but never
+  // upper-case a lowercase-exempt id (e.g. mikeinspace → "mikeinspace",
+  // NOT "MIKEINSPACE"). KEVIN and other entities keep their canonical casing
+  // via the `names` map above.
+  if (LOWERCASE_EXEMPT.has(entityId.value)) return entityId.value
+  return props.entity.toUpperCase()
 })
+
+// Localized description used for the tooltip (title) + accessible label.
+const description = computed(() => localized(entity.value?.descriptions))
 
 const schemaType = computed(() => {
   const baseType = entity.value?.type || 'Thing'
@@ -63,34 +93,44 @@ const entityClasses = computed(() => [
 ])
 
 function handleClick() {
-  // Navigate to entity page or external URL
-  if (entity.value?.url) {
+  const id = entityId.value
+
+  // Person entities have dedicated community pages. Only English person pages
+  // exist today, so route to the /en/ canonical (localized person pages are a
+  // tracked i18n follow-up). Checked first so a person's external social `url`
+  // does not intercept the click.
+  if (PERSON_ENTITIES.has(id)) {
+    window.location.href = `/en/community/people/${id}`
+    return
+  }
+
+  // External links defined on the entity (e.g. kevinstamp.com, counterparty.io).
+  if (typeof entity.value?.url === 'string' && entity.value.url.startsWith('http')) {
     window.open(entity.value.url, '_blank')
-  } else {
-    // Generate entity page URL
-    const routes = {
-      'kevin': '/narratives/kevin-origin',
-      'arwyn': '/community/people/arwyn',
-      'mikeinspace': '/community/people/mikeinspace', 
-      'reinamora': '/community/people/reinamora',
-      'derpherpstein': '/protocols/src-721',
-      'src-20': '/protocols/src-20',
-      'src-721': '/protocols/src-721',
-      'src-101': '/protocols/src-101',
-      'olga': '/protocols/olga',
-      'bitcoin-stamps': '/',
-      'counterparty': 'https://counterparty.io',
-      'stampchain': '/tutorials/api-integration'
-    }
-    
-    const route = routes[entityId.value]
-    if (route) {
-      if (route.startsWith('http')) {
-        window.open(route, '_blank')
-      } else {
-        window.location.href = route
-      }
-    }
+    return
+  }
+
+  // Internal targets that exist under every locale — prefix with the current
+  // locale so links resolve instead of 404-ing (they previously lacked /{locale}/).
+  const l = locale.value
+  const internalRoutes: Record<string, string> = {
+    'kevin': `/${l}/narratives/kevin-origin`,
+    'derpherpstein': `/${l}/protocols/src-721`,
+    'src-20': `/${l}/protocols/src-20`,
+    'src-721': `/${l}/protocols/src-721`,
+    'src-101': `/${l}/protocols/src-101`,
+    'olga': `/${l}/protocols/olga`,
+    'bitcoin-stamps': `/${l}/`,
+    'stampchain': `/${l}/tutorials/api-integration`,
+    'tx-builder': `/${l}/tutorials/sdk-integration`
+  }
+
+  const route = internalRoutes[id]
+  if (route) {
+    window.location.href = route
+  } else if (typeof entity.value?.url === 'string' && entity.value.url.startsWith('/')) {
+    // Internal url defined on the entity data — prefix with the current locale.
+    window.location.href = `/${l}${entity.value.url}`
   }
 }
 </script>
