@@ -134,7 +134,7 @@ const structuredData = computed(() => {
       schema.about.description = (schema.about.description ? schema.about.description + ' ' : '') + 'Community Mascot and Pioneer Token'
       schema.about.creator = {
         '@type': 'Person',
-        name: 'Reinamora',
+        name: 'Arwyn',
         description: 'Bitcoin Stamps Artist and KEVIN Token Creator'
       }
     }
@@ -183,7 +183,7 @@ const structuredData = computed(() => {
         '@type': 'CreativeWork',
         creator: {
           '@type': 'Person',
-          name: 'Reinamora'
+          name: 'Arwyn'
         }
       }
     }

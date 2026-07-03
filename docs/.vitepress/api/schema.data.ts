@@ -89,9 +89,12 @@ async function extractStructuredData(language: SupportedLanguage = 'en'): Promis
     'description': getLocalizedText(KEVIN_MULTILINGUAL.description, language),
     'creator': {
       '@type': 'Person',
-      'name': 'Reinamora'
+      // Cultural attribution: KEVIN's creator is Arwyn (sourced from the
+      // canonical entity store). Reinamora deployed the token but the
+      // schema.org creator / artistic attribution is Arwyn.
+      'name': KEVIN_MULTILINGUAL.creator
     },
-    'dateCreated': '2023-04-05',
+    'dateCreated': KEVIN_MULTILINGUAL.creationDate,
     'about': {
       '@type': 'Concept',
       'name': 'Bitcoin Art Movement'

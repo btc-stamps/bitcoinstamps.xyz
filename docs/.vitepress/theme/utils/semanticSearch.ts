@@ -53,7 +53,7 @@ export class BitcoinStampsSearch {
         description: 'Beloved mascot of Bitcoin Stamps, first SRC-20 token',
         culturalSignificance: 'high' as const,
         stampNumber: 6878,
-        creator: 'Reinamora',
+        creator: 'Arwyn',
         blockIntroduced: 788041
       },
       {
@@ -82,7 +82,7 @@ export class BitcoinStampsSearch {
         id: 'reinamora',
         name: 'Reinamora',
         type: 'cultural-figure',
-        description: 'Creator of Kevin token and cultural icon',
+        description: 'Technical architect of Bitcoin Stamps protocols and cultural icon',
         culturalSignificance: 'high' as const
       }
     ]

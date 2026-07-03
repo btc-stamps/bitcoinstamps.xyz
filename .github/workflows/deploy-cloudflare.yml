@@ -72,6 +72,46 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist --project-name=bitcoinstamps-xyz
 
+      # Ping IndexNow (Bing/Yandex/Seznam + downstream AI search) after a
+      # successful production deploy so freshly-published URLs get re-indexed.
+      # Uses the verification key already deposited at
+      # docs/public/<key>.txt -> https://bitcoinstamps.xyz/<key>.txt
+      # Non-fatal: never fails the deploy if the ping errors.
+      - name: Submit URLs to IndexNow
+        continue-on-error: true
+        env:
+          INDEXNOW_KEY: '0969209b92a6412c950847099b3e62f2'
+          INDEXNOW_HOST: 'bitcoinstamps.xyz'
+        run: |
+          set +e
+          SITEMAP="dist/sitemap.xml"
+          if [ ! -f "$SITEMAP" ]; then
+            echo "::warning::sitemap.xml not found at $SITEMAP — skipping IndexNow submission"
+            exit 0
+          fi
+          # Extract <loc> URLs from the sitemap
+          URLS=$(grep -oE '<loc>[^<]+</loc>' "$SITEMAP" | sed -E 's#</?loc>##g')
+          if [ -z "$URLS" ]; then
+            echo "::warning::No URLs found in sitemap — skipping IndexNow submission"
+            exit 0
+          fi
+          COUNT=$(printf '%s\n' "$URLS" | grep -c .)
+          echo "Submitting $COUNT URLs to IndexNow..."
+          # Build the JSON payload (urlList as a JSON array of the sitemap URLs)
+          PAYLOAD=$(printf '%s\n' "$URLS" | jq -R -s -c \
+            --arg host "$INDEXNOW_HOST" \
+            --arg key "$INDEXNOW_KEY" \
+            --arg keyLocation "https://$INDEXNOW_HOST/$INDEXNOW_KEY.txt" \
+            '{host: $host, key: $key, keyLocation: $keyLocation, urlList: (split("\n") | map(select(length > 0)))}')
+          HTTP_CODE=$(curl -sS -o /tmp/indexnow_resp.txt -w '%{http_code}' \
+            -X POST 'https://api.indexnow.org/indexnow' \
+            -H 'Content-Type: application/json; charset=utf-8' \
+            --data "$PAYLOAD")
+          echo "IndexNow HTTP status: $HTTP_CODE"
+          cat /tmp/indexnow_resp.txt 2>/dev/null || true
+          # IndexNow returns 200/202 on success; never fail the deploy on this signal.
+          exit 0
+
   deploy-preview:
     name: Deploy Preview
     runs-on: ubuntu-latest
