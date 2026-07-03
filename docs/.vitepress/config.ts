@@ -1579,8 +1579,7 @@ ${posts.map(p => `    <item>
     ['meta', { name: 'twitter:card', content: 'summary_large_image' }],
     ['meta', { name: 'twitter:site', content: '@BitcoinStamps' }],
     ['meta', { name: 'twitter:creator', content: '@BitcoinStamps' }],
-    ['meta', { name: 'twitter:title', content: 'Bitcoin Stamps - Permanent Digital Assets on Bitcoin' }],
-    ['meta', { name: 'twitter:description', content: 'Official documentation for Bitcoin Stamps metaprotocols including SRC-20 tokens pioneered by KEVIN, SRC-101 names, SRC-721 NFTs, and OLGA P2WSH encoding' }],
+    // NOTE (GEO #8): twitter:title / twitter:description are emitted PER PAGE in transformHead.
     ['meta', { name: 'twitter:image', content: 'https://bitcoinstamps.xyz/og-image.jpg' }],
     ['meta', { name: 'twitter:image:alt', content: 'Bitcoin Stamps Logo - Digital Assets on Bitcoin' }],
     
