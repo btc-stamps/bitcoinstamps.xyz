@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 import { generateStaticAPIFiles, validateAPIConsistency } from './api/endpoints.ts'
 import path from 'path'
 import fs from 'fs/promises'
-import { readFileSync } from 'fs'
+import { readFileSync, existsSync } from 'fs'
 import { execSync } from 'child_process'
 // js-yaml is a CommonJS module — must use default import then destructure
 import yamlPkg from 'js-yaml'
