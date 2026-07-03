@@ -43,10 +43,10 @@ The Bitcoin Stamps documentation implements the Smart LEO (Large Language Model 
 - `/api/entities.json` - Cultural entities and tools (KEVIN, community icons, SDKs)
 - `/api/schema.json` - Schema.org structured data for all content
 
-### Economic Data (2025)
+### Economic Data
 
-Current ecosystem metrics in `/api/protocols.json`:
-- KEVIN holders: 2,129
+Ecosystem metrics below are a point-in-time snapshot. For current figures, always read the live `/api/protocols.json` endpoint (the authoritative single source):
+- KEVIN holders: ~2,129
 - Total SRC-20 volume: $10+ billion all-time
 - Bitcoin ecosystem volume: ~350 BTC
 - Total ecosystem value: $2+ billion
