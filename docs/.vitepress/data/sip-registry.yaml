@@ -76,6 +76,17 @@ sips:
     dependencies: []
     softDependencies: ["0005"]
 
+  - number: "0007"
+    title: "Probabilistic Atomic Swaps for SRC-20"
+    status: "draft"
+    issue: 735
+    author: "Reinamora"
+    created: "2026-05-09"
+    phase: 4
+    effort: "7-8 weeks"
+    dependencies: ["0001"]
+    softDependencies: ["0003"]
+
   - number: "0008"
     title: "Dual Transaction Parsing — Combined SRC-20 Transfer + Stamp Issuance"
     status: "draft"
@@ -87,6 +98,37 @@ sips:
     dependencies: []
     softDependencies: ["0005"]
     originIssue: 554
+
+  - number: "0009"
+    title: "On-Demand SRC-20 SVG Generation"
+    status: "draft"
+    issue: 725
+    author: "babalicious-io"
+    created: "2026-03-31"
+    phase: null
+    effort: null
+    dependencies: []
+
+  - number: "0010"
+    title: "Decentralised Stamp Relay Network"
+    status: "draft"
+    issue: 726
+    author: "babalicious-io"
+    created: "2026-03-31"
+    phase: null
+    effort: null
+    dependencies: []
+
+  - number: "0011"
+    title: "Batch Operations & State Channels for SRC-20"
+    status: "draft"
+    issue: 736
+    author: "Reinamora"
+    created: "2026-05-09"
+    phase: 4
+    effort: "3-4 weeks"
+    dependencies: ["0001"]
+    softDependencies: ["0005"]
 
 # Roadmap phases with strategic ordering
 roadmap:
