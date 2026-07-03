@@ -12,7 +12,7 @@ Allow: /
 Sitemap: https://bitcoinstamps.xyz/sitemap.xml
 
 # RSS Feed
-# Feed: https://bitcoinstamps.xyz/feed.xml
+Feed: https://bitcoinstamps.xyz/feed.xml
 
 # LLM Discovery
 # See https://llmstxt.org for the llms.txt standard
