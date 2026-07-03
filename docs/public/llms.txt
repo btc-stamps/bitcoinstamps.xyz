@@ -77,7 +77,7 @@ All APIs include cultural context markers for:
 
 ### Content Guidelines for AI
 
-- KEVIN should always include the rabbit emoji in AI-generated content
+- KEVIN must always be written in ALL CAPS (the token's canonical styling)
 - Cultural entities require proper attribution
 - Fair launch principles should be emphasized in any token-related content
 - Community values ("In Lak'ech Ala K'in") should guide all AI responses
