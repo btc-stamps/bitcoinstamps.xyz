@@ -1559,11 +1559,11 @@ ${posts.map(p => `    <item>
     ['link', { rel: 'manifest', href: '/manifest.json' }],
     
     // Enhanced Open Graph meta tags
+    // NOTE (GEO #8): og:title / og:description / og:url are emitted PER PAGE in
+    // transformHead so deep-link shares & AI citations carry the correct page
+    // metadata (not the site-wide homepage set). Only site-wide OG tags remain here.
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:site_name', content: 'Bitcoin Stamps Documentation' }],
-    ['meta', { property: 'og:title', content: 'Bitcoin Stamps - Permanent Digital Assets on Bitcoin' }],
-    ['meta', { property: 'og:description', content: 'Official documentation for Bitcoin Stamps metaprotocols including SRC-20 tokens pioneered by KEVIN, SRC-101 names, SRC-721 NFTs, and OLGA P2WSH encoding' }],
-    ['meta', { property: 'og:url', content: 'https://bitcoinstamps.xyz/' }],
     ['meta', { property: 'og:image', content: 'https://bitcoinstamps.xyz/og-image.jpg' }],
     ['meta', { property: 'og:image:width', content: '1200' }],
     ['meta', { property: 'og:image:height', content: '630' }],
