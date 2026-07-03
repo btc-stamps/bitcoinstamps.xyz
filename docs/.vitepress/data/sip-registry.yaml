@@ -130,6 +130,19 @@ sips:
     dependencies: ["0001"]
     softDependencies: ["0005"]
 
+  # SIP-0110 is INTENTIONALLY numbered out of sequence as a thematic mirror of BIP-110
+  # (a contested Bitcoin data-restriction proposal). 0012-0109 remain open for sequential
+  # assignment; the gap is deliberate, not an error. See SIP-0000 (#686).
+  - number: "0110"
+    title: "Ordinals Provenance Preservation (Stamp an Inscription)"
+    status: "draft"
+    issue: 878
+    author: "Reinamora"
+    created: "2026-07-03"
+    phase: null
+    effort: null
+    dependencies: []
+
 # Roadmap phases with strategic ordering
 roadmap:
   - name: "Foundation"
