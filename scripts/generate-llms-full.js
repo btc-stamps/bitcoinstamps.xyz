@@ -3,7 +3,7 @@
 /**
  * Generate docs/public/llms-full.txt
  *
- * Concatenates the English documentation corpus (docs/en/**\/*.md) into a single
+ * Concatenates the English documentation corpus (docs/en) into a single
  * plaintext reference following the llms.txt convention (https://llmstxt.org):
  * llms.txt is the concise summary; llms-full.txt is the full corpus for detailed
  * queries. This mirrors the concatenation pattern in generate-whitepaper-pdf.js.
@@ -20,9 +20,9 @@
  * source of truth; this corpus does not fossilize holder counts.
  */
 
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -152,7 +152,6 @@ function sourceUrl(relPath) {
   // en/foo/index.md -> /en/foo/ ; en/foo/bar.md -> /en/foo/bar
   let p = relPath.replace(/\\/g, '/').replace(/\.md$/, '');
   p = p.replace(/\/index$/, '/');
-  if (!p.endsWith('/')) p = p;
   return `${SITE}/en/${p}`.replace(/([^:])\/\//g, '$1/');
 }
 
