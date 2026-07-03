@@ -1128,6 +1128,38 @@ ${posts.map(p => `    <item>
     const leoType = fm.leoType || ''
     const relPath = pageData.relativePath || ''
 
+    // GEO #8: per-page Open Graph / Twitter tags. The site-wide homepage set was
+    // removed from the global `head:`; these carry THIS page's own title, desc,
+    // and canonical URL so deep-link shares and AI citations are accurate.
+    // og:image / twitter:image stay site-wide (no per-page image available).
+    headTags.push(['meta', { property: 'og:title', content: pageTitle }])
+    headTags.push(['meta', { property: 'og:description', content: pageDesc }])
+    headTags.push(['meta', { property: 'og:url', content: canonicalUrl }])
+    headTags.push(['meta', { name: 'twitter:title', content: pageTitle }])
+    headTags.push(['meta', { name: 'twitter:description', content: pageDesc }])
+
+    // GEO #8: per-page reciprocal hreflang. For a source at /{locale}/{sub},
+    // link the SAME {sub} across every locale (+ x-default → en), skipping any
+    // locale whose source .md is absent (file parity is ~30/32) so we never
+    // advertise a 404 alternate. Replaces the old site-wide links that pointed
+    // every page at the locale roots.
+    const HREFLANG_LOCALES: Record<string, string> = { en: 'en', es: 'es', fr: 'fr', zh: 'zh-CN', tr: 'tr' }
+    const pageLocale = relPath.split('/')[0]
+    if (pageLocale in HREFLANG_LOCALES) {
+      const sub = relPath.slice(pageLocale.length + 1) // e.g. "protocols/src-20.md" | "index.md"
+      let enHref: string | null = null
+      for (const loc of Object.keys(HREFLANG_LOCALES)) {
+        const srcFile = path.resolve(__dirname, '..', loc, sub)
+        if (!existsSync(srcFile)) continue
+        const locSub = sub.replace(/index\.md$/, '').replace(/\.md$/, '')
+        const href = `${baseUrl}/${loc}/${locSub}`
+        headTags.push(['link', { rel: 'alternate', hreflang: HREFLANG_LOCALES[loc], href }])
+        if (loc === 'en') enHref = href
+      }
+      // x-default → the English variant when it exists
+      if (enHref) headTags.push(['link', { rel: 'alternate', hreflang: 'x-default', href: enHref }])
+    }
+
     // Derive dateModified from git last-commit date for this source file
     let gitDateModified = new Date().toISOString().split('T')[0]
     try {
