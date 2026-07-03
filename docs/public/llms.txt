@@ -14,7 +14,7 @@ SRC-20 token ownership uses an **account-based model**, not a UTXO model. Token 
 
 ## Smart LEO API System
 
-The Bitcoin Stamps documentation implements the Smart LEO (Large Enterprise Optimization) system providing structured JSON APIs optimized for AI consumption while preserving cultural context and community values.
+The Bitcoin Stamps documentation implements the Smart LEO (Large Language Model Enhanced Organization) system providing structured JSON APIs optimized for AI consumption while preserving cultural context and community values.
 
 **Production API Base:** `https://bitcoinstamps.xyz/api/`
 **Local Development:** `http://localhost:5173/api/`
