@@ -247,3 +247,36 @@ jobs:
           name: lighthouse-reports
           path: .lighthouseci/
           retention-days: 30
+
+  jsonld-validation:
+    name: JSON-LD Structured Data Validation
+    runs-on: ubuntu-latest
+    needs: leo-validation
+
+    # Validates the *rendered* structured-data output (the gap the LEO/GEO audit
+    # flagged: existing CI only grep-counts coverage, so the KEVIN-creator
+    # misattribution and the missing Organization logo shipped undetected).
+    # Runs AFTER the build because it needs the built dist/ (HTML JSON-LD blocks
+    # + generated dist/api/*.json). Reuses the dist-full artifact — no rebuild.
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist-full
+          path: dist/
+
+      # scripts/validate-jsonld.mjs uses only Node built-ins (no npm install needed).
+      # BLOCKING checks (fail the build): invalid JSON-LD, unresolvable site-local
+      # logo/image URLs (e.g. missing bitcoin-stamps-logo.svg), and cultural
+      # invariants (KEVIN ALL-CAPS, KEVIN creator === Arwyn / never Reinamora,
+      # mikeinspace lowercase). Schema-completeness gaps are warn-only.
+      - name: Validate rendered JSON-LD structured data
+        run: npm run test:jsonld
