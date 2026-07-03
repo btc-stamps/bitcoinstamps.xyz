@@ -217,3 +217,8 @@ Crawl-delay: 5
 User-agent: Baiduspider
 Allow: /
 Crawl-delay: 10
+
+# Huawei / Petal Search
+User-agent: PetalBot
+Allow: /
+Crawl-delay: 5
