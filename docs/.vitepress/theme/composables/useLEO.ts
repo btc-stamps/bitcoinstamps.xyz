@@ -318,8 +318,40 @@ interface LEOFrontmatter {
 }
 
 export function useLEO() {
+  // ---------------------------------------------------------------------------
+  // ⚠️ NON-FUNCTIONAL CLIENT-SIDE LAYER — server-side JSON-LD is the source of truth.
+  //
+  // This composable does NOT work at runtime and cannot be cleanly repaired:
+  //
+  //   1. `inject('page')` never resolves. VitePress does not `provide('page', …)`
+  //      under a string key — page data is exposed via the `useData()` composable
+  //      (which reads a private Symbol internally). So `page` is always `undefined`
+  //      → `frontmatter` is `{}` and `currentLocale` is always `'en'`.
+  //
+  //   2. Even after switching to `useData().page`, `PageData` has NO `content`
+  //      field (verified against the VitePress runtime API: title, description,
+  //      relativePath, filePath, headers, frontmatter, params, isNotFound,
+  //      lastUpdated). The entity auto-detection below regexes over
+  //      `page.content`, which does not exist — so `detectedEntities` can never
+  //      populate. There is no public VitePress API that exposes rendered page
+  //      content to a theme component, so this cannot be fixed without inventing
+  //      an unsupported API.
+  //
+  //   3. Even if content were available, `SmartStructuredData.vue` injects the
+  //      resulting JSON-LD into the DOM client-side (onMounted + setTimeout),
+  //      which non-JS AI crawlers (GPTBot, ClaudeBot, CCBot, PerplexityBot, …)
+  //      never execute — so it would be invisible to the crawlers LEO targets.
+  //
+  // ✅ The LIVE structured-data surface that crawlers actually see is emitted
+  //    server-side in `docs/.vitepress/config.ts` `transformHead` (WebSite,
+  //    Organization, TechArticle, Article, BlogPosting, BreadcrumbList,
+  //    FAQPage, Person). Treat that as the source of truth. Reviving this client
+  //    layer would require moving entity/schema generation server-side (via
+  //    `transformHead` / `transformPageData` + frontmatter-driven mentions) —
+  //    tracked as a follow-up, not attempted here.
+  // ---------------------------------------------------------------------------
   const page = inject<{ value: PageData }>('page')
-  
+
   const frontmatter = computed(() => page?.value?.frontmatter as LEOFrontmatter || {})
   const currentLocale = computed(() => getCurrentLocale(page?.value?.relativePath || ''))
   

@@ -479,9 +479,21 @@ export async function validateAPIConsistency(): Promise<boolean> {
         }
       }
       
-      const kevinSchema = schemas.schemas.find(s => s.name === 'KEVIN Token')
+      // The KEVIN CreativeWork schema is named from KEVIN_MULTILINGUAL.name ('KEVIN').
+      const kevinSchema = schemas.schemas.find(
+        s => s['@type'] === 'CreativeWork' && (s.name === 'KEVIN' || s.name === 'KEVIN Token')
+      )
       if (!kevinSchema) {
-        validationWarnings.push('KEVIN Token schema is missing from Schema.org data')
+        validationWarnings.push('KEVIN schema is missing from Schema.org data')
+      } else {
+        // Cultural-accuracy gate: KEVIN's creator must be Arwyn in schema.json
+        // (this is the primary source AI agents are told to trust via llms.txt).
+        const creatorName = kevinSchema.creator?.name
+        if (creatorName !== 'Arwyn') {
+          validationErrors.push(
+            `KEVIN schema.json creator must be 'Arwyn' (found '${creatorName ?? 'undefined'}')`
+          )
+        }
       }
     }
 

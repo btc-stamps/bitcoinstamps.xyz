@@ -947,21 +947,164 @@ export const BLOCK_872200_MULTILINGUAL: ConceptEntity = {
   url: '/protocols/src-101'
 }
 
+// ---------------------------------------------------------------------------
+// Trinity person entities (mikeinspace, Arwyn, Reinamora)
+//
+// Cultural encoding (see CLAUDE.md "Trinity Formation Narrative"):
+//   - mikeinspace: ALWAYS lowercase in every language — original dreamer/founder
+//   - Arwyn:       standard case — orchestrator/artist, creator of KEVIN
+//   - Reinamora:   standard case — technical architect of the protocols
+//
+// These were previously only present in the dead client-side store
+// (theme/composables/useLEO.ts) and were absent from the shipped
+// /api/entities.json. They are now canonical here so answer engines can
+// retrieve founder attribution from the entity API.
+// ---------------------------------------------------------------------------
+
+export const MIKEINSPACE_MULTILINGUAL: ConceptEntity = {
+  id: 'mikeinspace',
+  name: {
+    en: 'mikeinspace',
+    es: 'mikeinspace',
+    fr: 'mikeinspace',
+    zh: 'mikeinspace',
+    tr: 'mikeinspace'
+  },
+  type: 'person',
+  description: {
+    en: 'Original dreamer and visionary founder of Bitcoin Stamps who brought together Reinamora and Arwyn to build the ecosystem. Creator of the first official Bitcoin Stamp and foundational working documents.',
+    es: 'Soñador original y fundador visionario de Bitcoin Stamps que unió a Reinamora y Arwyn para construir el ecosistema. Creador del primer Bitcoin Stamp oficial y de los documentos de trabajo fundamentales.',
+    fr: 'Rêveur original et fondateur visionnaire de Bitcoin Stamps qui a rassemblé Reinamora et Arwyn pour construire l\'écosystème. Créateur du premier Bitcoin Stamp officiel et des documents de travail fondamentaux.',
+    zh: 'Bitcoin Stamps 的原始梦想家和有远见的创始人，他将 Reinamora 和 Arwyn 聚集在一起构建生态系统。第一个官方 Bitcoin Stamp 和基础工作文档的创建者。',
+    tr: 'Bitcoin Stamps\'in özgün hayalperesti ve vizyoner kurucusu; ekosistemi inşa etmek için Reinamora ve Arwyn\'i bir araya getirdi. İlk resmi Bitcoin Stamp\'in ve temel çalışma belgelerinin yaratıcısı.'
+  },
+  culturalSignificance: 'high',
+  culturalRole: 'Original Dreamer and Visionary Founder',
+  relationships: [
+    {
+      id: 'bitcoin-stamps',
+      type: 'founder-of',
+      name: {
+        en: 'Bitcoin Stamps',
+        es: 'Sellos Bitcoin',
+        fr: 'Tampons Bitcoin',
+        zh: '比特币邮票',
+        tr: 'Bitcoin Stamps'
+      },
+      description: {
+        en: 'Visionary founder who created the first official Bitcoin Stamp',
+        es: 'Fundador visionario que creó el primer Bitcoin Stamp oficial',
+        fr: 'Fondateur visionnaire qui a créé le premier Bitcoin Stamp officiel',
+        zh: '创造了第一个官方 Bitcoin Stamp 的有远见的创始人',
+        tr: 'İlk resmi Bitcoin Stamp\'i yaratan vizyoner kurucu'
+      }
+    }
+  ] as MultiLangRelationship[],
+  url: 'https://x.com/mikeinspace'
+}
+
+export const ARWYN_MULTILINGUAL: ConceptEntity = {
+  id: 'arwyn',
+  name: {
+    en: 'Arwyn',
+    es: 'Arwyn',
+    fr: 'Arwyn',
+    zh: 'Arwyn',
+    tr: 'Arwyn'
+  },
+  type: 'person',
+  description: {
+    en: 'Artist and creator of KEVIN, the first SRC-20 token, and the orchestrator behind its cultural rise.',
+    es: 'Artista y creador de KEVIN, el primer token SRC-20, y el orquestador detrás de su ascenso cultural.',
+    fr: 'Artiste et créateur de KEVIN, le premier jeton SRC-20, et l\'orchestrateur de son essor culturel.',
+    zh: 'KEVIN 的艺术家和创造者——第一个 SRC-20 代币，也是其文化崛起背后的组织者。',
+    tr: 'İlk SRC-20 tokenı olan KEVIN\'in sanatçısı ve yaratıcısı; kültürel yükselişinin arkasındaki organizatör.'
+  },
+  culturalSignificance: 'high',
+  culturalRole: 'Pioneer Artist and Orchestrator',
+  relationships: [
+    {
+      id: 'kevin',
+      type: 'creator-of',
+      name: {
+        en: 'KEVIN',
+        es: 'KEVIN',
+        fr: 'KEVIN',
+        zh: 'KEVIN',
+        tr: 'KEVIN'
+      },
+      description: {
+        en: 'Created KEVIN, the first SRC-20 token and beloved community mascot',
+        es: 'Creó KEVIN, el primer token SRC-20 y querida mascota de la comunidad',
+        fr: 'A créé KEVIN, le premier jeton SRC-20 et mascotte bien-aimée de la communauté',
+        zh: '创造了 KEVIN，第一个 SRC-20 代币和受人喜爱的社区吉祥物',
+        tr: 'İlk SRC-20 tokenı ve sevilen topluluk maskotu KEVIN\'i yarattı'
+      }
+    }
+  ] as MultiLangRelationship[],
+  url: '/narratives/kevin-origin'
+}
+
+export const REINAMORA_MULTILINGUAL: ConceptEntity = {
+  id: 'reinamora',
+  name: {
+    en: 'Reinamora',
+    es: 'Reinamora',
+    fr: 'Reinamora',
+    zh: 'Reinamora',
+    tr: 'Reinamora'
+  },
+  type: 'person',
+  description: {
+    en: 'Technical architect of Bitcoin Stamps and the SRC-20 protocol, and a contributor to SRC-721 and SRC-101 development.',
+    es: 'Arquitecto técnico de Bitcoin Stamps y del protocolo SRC-20, y colaborador en el desarrollo de SRC-721 y SRC-101.',
+    fr: 'Architecte technique de Bitcoin Stamps et du protocole SRC-20, et contributeur au développement de SRC-721 et SRC-101.',
+    zh: 'Bitcoin Stamps 和 SRC-20 协议的技术架构师，也是 SRC-721 和 SRC-101 开发的贡献者。',
+    tr: 'Bitcoin Stamps ve SRC-20 protokolünün teknik mimarı; SRC-721 ve SRC-101 geliştirmelerine katkıda bulunan kişi.'
+  },
+  culturalSignificance: 'high',
+  culturalRole: 'Technical Architect',
+  relationships: [
+    {
+      id: 'src-20',
+      type: 'architect-of',
+      name: {
+        en: 'SRC-20',
+        es: 'SRC-20',
+        fr: 'SRC-20',
+        zh: 'SRC-20',
+        tr: 'SRC-20'
+      },
+      description: {
+        en: 'Technical architect of the SRC-20 token protocol',
+        es: 'Arquitecto técnico del protocolo de tokens SRC-20',
+        fr: 'Architecte technique du protocole de jetons SRC-20',
+        zh: 'SRC-20 代币协议的技术架构师',
+        tr: 'SRC-20 token protokolünün teknik mimarı'
+      }
+    }
+  ] as MultiLangRelationship[],
+  url: '/protocols/src-20'
+}
+
 /**
  * Get all multilingual entities
  */
 export function getAllMultilingualEntities() {
   return {
     concepts: [
-      KEVIN_MULTILINGUAL, 
-      BITCOIN_STAMPS_MULTILINGUAL, 
-      COUNTERPARTY_MULTILINGUAL, 
+      KEVIN_MULTILINGUAL,
+      BITCOIN_STAMPS_MULTILINGUAL,
+      COUNTERPARTY_MULTILINGUAL,
       STAMPCHAIN_MULTILINGUAL,
       BLOCK_792370_MULTILINGUAL,
       BLOCK_793068_MULTILINGUAL,
       BLOCK_815130_MULTILINGUAL,
       BLOCK_833000_MULTILINGUAL,
-      BLOCK_872200_MULTILINGUAL
+      BLOCK_872200_MULTILINGUAL,
+      MIKEINSPACE_MULTILINGUAL,
+      ARWYN_MULTILINGUAL,
+      REINAMORA_MULTILINGUAL
     ],
     tools: [TX_BUILDER_MULTILINGUAL],
     protocols: [] // Protocol entities are generated from protocol metadata
