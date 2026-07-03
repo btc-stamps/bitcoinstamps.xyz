@@ -1597,12 +1597,9 @@ ${posts.map(p => `    <item>
     ['meta', { name: 'msapplication-config', content: '/browserconfig.xml' }],
     
     // Multilingual SEO support for custom domain
-    ['link', { rel: 'alternate', hreflang: 'en', href: 'https://bitcoinstamps.xyz/en/' }],
-    ['link', { rel: 'alternate', hreflang: 'fr', href: 'https://bitcoinstamps.xyz/fr/' }],
-    ['link', { rel: 'alternate', hreflang: 'es', href: 'https://bitcoinstamps.xyz/es/' }],
-    ['link', { rel: 'alternate', hreflang: 'zh-CN', href: 'https://bitcoinstamps.xyz/zh/' }],
-    ['link', { rel: 'alternate', hreflang: 'tr', href: 'https://bitcoinstamps.xyz/tr/' }],
-    ['link', { rel: 'alternate', hreflang: 'x-default', href: 'https://bitcoinstamps.xyz/en/' }],
+    // NOTE (GEO #8): hreflang links are emitted PER PAGE in transformHead as
+    // reciprocal alternates (same path across locales), replacing the old
+    // site-wide links that incorrectly pointed every page at the locale roots.
 
     // RSS Feed autodiscovery
     ['link', { rel: 'alternate', type: 'application/rss+xml', title: 'Bitcoin Stamps Updates', href: '/feed.xml' }],
