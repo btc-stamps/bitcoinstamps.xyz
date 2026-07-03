@@ -9,8 +9,6 @@ philosophy: "In Lak'ech Ala K'in - tools that empower collective creativity"
 
 # Artist Tools & Creative Workflow
 
-<SmartStructuredData />
-
 Create permanent digital art on Bitcoin using our user-friendly creation tools and community-driven workflow.
 
 ## 🎨 Create Your First Bitcoin Stamp

@@ -10,8 +10,6 @@ philosophy: "In Lak'ech Ala K'in - kolektif yaratıcılığı kutlamak"
 
 # Topluluk Vitrini: Bitcoin Stamps Sanatçıları ve Projeleri
 
-<SmartStructuredData />
-
 Bitcoin Stamps topluluğu, sanatsal vizyonun ve teknolojik yeniliğin kesişimini temsil eder; burada yaratıcılar **"In Lak'ech Ala K'in"** ruhunu somutlaştırır – hepimiz bu yaratıcı yolculukta birbirimizle bağlantılıyız. <EntityMention entity="mikeinspace">Mikeinspace</EntityMention>'in temel çalışmasından <EntityMention entity="arwyn">Arwyn</EntityMention> tarafından yaratılan kültürel ikon <EntityMention entity="kevin" variant="cultural">KEVIN </EntityMention>'e kadar, topluluğumuz merkeziyetsiz yaratıcılığın gücünü sergilemektedir.
 
 ## 🎨 Öne Çıkan Sanatçılar

@@ -9,8 +9,6 @@ economicImpact: "educational-empowerment"
 
 # Visual Workflow Guide
 
-<SmartStructuredData />
-
 Learn the Bitcoin Stamps creation process through clear visual steps.
 
 ## Creation Process

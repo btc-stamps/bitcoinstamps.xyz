@@ -11,8 +11,6 @@ tags: ["sdk", "api", "protocols", "integration", "getting-started"]
 
 # Developers
 
-<SmartStructuredData />
-
 Comprehensive developer resources for building with Bitcoin Stamps protocols and integrating with the ecosystem.
 
 ## Quick Start for Developers

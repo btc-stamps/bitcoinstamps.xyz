@@ -29,8 +29,6 @@ hero:
       link: /tr/tutorials/
 ---
 
-<SmartStructuredData />
-
 ## Bitcoin Grafiti Hareketi
 
 Bitcoin Stamps, Bitcoin üzerinde bir grafiti hareketi olarak başladı — kaldırılamayan veya sansürlenemeyen kalıcı dijital sanat. <EntityMention entity="mikeinspace">mikeinspace</EntityMention>, orijinal hayalci ve vizyoner kurucu, <EntityMention entity="counterparty">Counterparty</EntityMention> üzerindeki Flooneybin projesi aracılığıyla <EntityMention entity="arwyn">Arwyn</EntityMention> ile tanıştı. Mike, Bitcoin Stamps vizyonunu paylaştığında, <EntityMention entity="arwyn">Arwyn</EntityMention> meme büyüsü potansiyelini fark etti ve <EntityMention entity="reinamora">Reinamora</EntityMention> ile birlikte Orijinal Üçlü'nün oluşmasına ve ardından blok 779,652'de ilk stamp'ın yaratılmasına yol açtı.

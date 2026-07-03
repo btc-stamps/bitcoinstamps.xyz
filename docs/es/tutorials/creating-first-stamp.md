@@ -9,8 +9,6 @@ economicImpact: "creative-enablement"
 
 # Crea Tu Primer Bitcoin Stamp
 
-<SmartStructuredData />
-
 Crea activos digitales permanentes almacenados directamente en Bitcoin usando nuestra interfaz web fácil de usar.
 
 ## 🎨 Crear Bitcoin Stamps en Línea

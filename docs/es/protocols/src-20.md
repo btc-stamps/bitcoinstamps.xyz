@@ -12,8 +12,6 @@ historicalContext: "Migración de Counterparty a codificación nativa de Bitcoin
 
 # Estándar de Tokens SRC-20
 
-<SmartStructuredData />
-
 El **Estándar de Tokens SRC-20** permite la creación de tokens fungibles directamente en Bitcoin. <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention>, creado por <EntityMention entity="arwyn">Arwyn</EntityMention> en el bloque 788,041, fue el primer token SRC-20 y se convirtió en la querida mascota comunitaria con más de 2,300 tenedores.
 
 ## Características Clave

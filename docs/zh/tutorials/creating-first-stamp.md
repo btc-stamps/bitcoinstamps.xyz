@@ -9,8 +9,6 @@ economicImpact: "creative-enablement"
 
 # 创建您的第一个 Bitcoin Stamp
 
-<SmartStructuredData />
-
 通过我们简单易用的网页界面，将永久数字资产直接存储在比特币区块链上。
 
 ## 🎨 在线创建 Bitcoin Stamps

@@ -7,8 +7,6 @@ layout: "page"
 
 # Blog
 
-<SmartStructuredData />
-
 Updates, announcements, and technical deep-dives from the Bitcoin Stamps community — the protocol builders, artists, and contributors shaping permanent digital assets on Bitcoin.
 
 <script setup>

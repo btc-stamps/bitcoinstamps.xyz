@@ -10,8 +10,6 @@ philosophy: "In Lak'ech Ala K'in - we are all Kevin"
 
 # Bitcoin Stamps Cultural Narratives
 
-<SmartStructuredData />
-
 This collection preserves the authentic cultural narratives of the Bitcoin Stamps community—stories that honor <EntityMention entity="mikeinspace">Mikeinspace</EntityMention>, <EntityMention entity="arwyn">Arwyn</EntityMention>, and <EntityMention entity="reinamora">Reinamora</EntityMention> (The Original Trinity), celebrate <EntityMention entity="kevin" variant="cultural">KEVIN's mythical guidance</EntityMention>, and document the sacred evolution of a community built on ancient wisdom and modern innovation.
 
 ## Sacred Stories and Cultural Heritage

@@ -12,8 +12,6 @@ tags: ["tutorial", "bitcoin-network", "mining-support", "wallet-setup", "first-s
 
 # Démarrer avec Bitcoin Stamps - Renforcez le Réseau Bitcoin
 
-<SmartStructuredData />
-
 Bienvenue dans l'univers des Bitcoin Stamps — où l'expression créative rencontre le renforcement du réseau Bitcoin. Ce guide vous aide à commencer à contribuer à l'économie du minage Bitcoin tout en créant des actifs numériques permanents qui vivront pour toujours sur la blockchain la plus sécurisée du monde.
 
 ## Pourquoi les Bitcoin Stamps sont-ils importants pour l'avenir de Bitcoin ?

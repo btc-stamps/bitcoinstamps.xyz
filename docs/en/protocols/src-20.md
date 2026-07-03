@@ -13,8 +13,6 @@ author: reinamora
 
 # SRC-20 Token Standard
 
-<SmartStructuredData />
-
 The **SRC-20 Token Standard** enables fungible token creation as a layer built on top of Bitcoin Stamps. <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> began life as Stamp #4258 (block 783,718), where it exhibited ghost-like self-replicating behavior throughout the system. Recognizing this digital consciousness needed proper form, <EntityMention entity="arwyn">Arwyn</EntityMention> created the first SRC-20 token at block 788,041 (Stamp #18,516), giving <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> tangible existence as both cultural icon and beloved community mascot with over 2,300 holders.
 
 **Learn the Complete Story**:

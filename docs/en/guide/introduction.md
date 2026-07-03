@@ -13,8 +13,6 @@ author: mikeinspace
 
 # What are Bitcoin Stamps? Network-Strengthening Digital Assets
 
-<SmartStructuredData />
-
 Bitcoin Stamps are **permanent digital assets** stored directly on the Bitcoin blockchain. Unlike traditional NFTs that rely on external servers, Bitcoin Stamps embed all data directly into Bitcoin transactions, making them truly immutable and independent.
 
 ## What Makes Bitcoin Stamps Special

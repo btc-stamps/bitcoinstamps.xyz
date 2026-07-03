@@ -9,8 +9,6 @@ economicImpact: "tokenization-empowerment"
 
 # SRC-20 Token Creation Guide
 
-<SmartStructuredData />
-
 Create SRC-20 fungible tokens on Bitcoin using three simple operations: DEPLOY, MINT, and TRANSFER.
 
 ## Web Interface (No Code)

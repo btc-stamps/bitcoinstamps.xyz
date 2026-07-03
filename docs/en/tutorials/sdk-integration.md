@@ -8,8 +8,6 @@ mentions: ["tx-builder", "kevin", "src-20", "sdk", "stampchain"]
 
 # @btc-stamps/tx-builder SDK
 
-<SmartStructuredData />
-
 The **@btc-stamps/tx-builder** is the official Bitcoin transaction builder with first-class support for Bitcoin Stamps protocols. Built to integrate seamlessly with <EntityMention entity="stampchain">Stampchain</EntityMention>, the foundational infrastructure created by the Bitcoin Stamps founders.
 
 ## Integration with Stampchain

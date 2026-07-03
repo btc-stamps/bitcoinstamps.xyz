@@ -12,8 +12,6 @@ author: reinamora
 
 # OLGA Storage Protocol
 
-<SmartStructuredData />
-
 The **OLGA Storage Protocol** is an advanced P2WSH data storage method that provides **30-95% cost reductions** for Bitcoin Stamps transactions by replacing the costly 2/3 multisig approach with efficient witness script storage.
 
 ## Key Features

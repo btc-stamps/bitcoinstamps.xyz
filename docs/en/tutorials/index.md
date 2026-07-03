@@ -9,8 +9,6 @@ economicImpact: "educational-empowerment"
 
 # Bitcoin Stamps Tutorials
 
-<SmartStructuredData />
-
 Learn to create permanent digital assets on Bitcoin through practical, step-by-step guides.
 
 ## Getting Started

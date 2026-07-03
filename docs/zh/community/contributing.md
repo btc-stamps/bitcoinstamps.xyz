@@ -8,8 +8,6 @@ mentions: ["kevin", "bitcoin-stamps", "src-20", "community"]
 
 # 为 Bitcoin Stamps 做贡献
 
-<SmartStructuredData />
-
 Bitcoin Stamps 社区欢迎秉持 **"In Lak'ech Ala K'in"** 精神的贡献者——我们作为一个去中心化艺术生态系统共同建设。
 
 ## 核心价值观

@@ -1,17 +1,22 @@
 /**
- * Smart LEO System - Intelligent Schema.org Generation with i18n Support
- * Enhanced with multi-language support and locale-aware content generation
+ * LEO entity lookup for the EntityMention component.
+ *
+ * NOTE: The former client-side detection + structured-data pipeline
+ * (`inject('page')`, `detectedEntities`, `structuredData`, and the
+ * `SmartStructuredData.vue` consumer) was RETIRED. It never functioned at
+ * runtime — VitePress exposes page data under a private `Symbol()`, not
+ * `inject('page')`, and `PageData` has no `content` field, so detection could
+ * never fire; and being DOM-injected client-side (onMounted + setTimeout) it
+ * was invisible to non-JS AI crawlers anyway. The LIVE structured-data surface
+ * that crawlers actually see is emitted server-side in `config.ts`
+ * `transformHead` — treat that as the source of truth.
+ *
+ * What remains: `getEntity(id)`, consumed by `EntityMention.vue` for entity
+ * `type` / `culturalSignificance` / `url` metadata. It reads the local entity
+ * maps below. Folding these into the canonical `api/multilingual-data.ts`
+ * store (removing this duplicate) is a follow-up (audit rec #3), out of scope
+ * for the dead-code removal that produced this file.
  */
-import { computed, inject } from 'vue'
-import type { PageData } from 'vitepress'
-
-// Locale detection utility
-function getCurrentLocale(relativePath: string): string {
-  if (relativePath.startsWith('fr/')) return 'fr'
-  if (relativePath.startsWith('es/')) return 'es'
-  if (relativePath.startsWith('zh/')) return 'zh'
-  return 'en'
-}
 
 // Localized cultural entities
 const CULTURAL_ENTITIES = {
@@ -298,241 +303,13 @@ const PROTOCOL_ENTITIES = {
   }
 }
 
-interface LEOFrontmatter {
-  // Core identification
-  leoType?: 'protocol' | 'narrative' | 'tutorial' | 'entity' | 'historical-event'
-  entityId?: string
-  culturalSignificance?: 'high' | 'medium' | 'low'
-  
-  // Protocol-specific
-  protocols?: string[]
-  blockHeight?: number
-  
-  // Content metadata
-  audience?: 'developer' | 'artist' | 'both'
-  difficulty?: 'beginner' | 'intermediate' | 'advanced'
-  
-  // Relationships
-  relatedEntities?: string[]
-  mentions?: string[]
-}
-
 export function useLEO() {
-  // ---------------------------------------------------------------------------
-  // ⚠️ NON-FUNCTIONAL CLIENT-SIDE LAYER — server-side JSON-LD is the source of truth.
-  //
-  // This composable does NOT work at runtime and cannot be cleanly repaired:
-  //
-  //   1. `inject('page')` never resolves. VitePress does not `provide('page', …)`
-  //      under a string key — page data is exposed via the `useData()` composable
-  //      (which reads a private Symbol internally). So `page` is always `undefined`
-  //      → `frontmatter` is `{}` and `currentLocale` is always `'en'`.
-  //
-  //   2. Even after switching to `useData().page`, `PageData` has NO `content`
-  //      field (verified against the VitePress runtime API: title, description,
-  //      relativePath, filePath, headers, frontmatter, params, isNotFound,
-  //      lastUpdated). The entity auto-detection below regexes over
-  //      `page.content`, which does not exist — so `detectedEntities` can never
-  //      populate. There is no public VitePress API that exposes rendered page
-  //      content to a theme component, so this cannot be fixed without inventing
-  //      an unsupported API.
-  //
-  //   3. Even if content were available, `SmartStructuredData.vue` injects the
-  //      resulting JSON-LD into the DOM client-side (onMounted + setTimeout),
-  //      which non-JS AI crawlers (GPTBot, ClaudeBot, CCBot, PerplexityBot, …)
-  //      never execute — so it would be invisible to the crawlers LEO targets.
-  //
-  // ✅ The LIVE structured-data surface that crawlers actually see is emitted
-  //    server-side in `docs/.vitepress/config.ts` `transformHead` (WebSite,
-  //    Organization, TechArticle, Article, BlogPosting, BreadcrumbList,
-  //    FAQPage, Person). Treat that as the source of truth. Reviving this client
-  //    layer would require moving entity/schema generation server-side (via
-  //    `transformHead` / `transformPageData` + frontmatter-driven mentions) —
-  //    tracked as a follow-up, not attempted here.
-  // ---------------------------------------------------------------------------
-  const page = inject<{ value: PageData }>('page')
-
-  const frontmatter = computed(() => page?.value?.frontmatter as LEOFrontmatter || {})
-  const currentLocale = computed(() => getCurrentLocale(page?.value?.relativePath || ''))
-  
-  // Smart entity detection from content with locale awareness
-  const detectedEntities = computed(() => {
-    const content = page?.value?.content || ''
-    const locale = currentLocale.value
-    const detected = []
-    
-    // Auto-detect cultural entities
-    for (const [key, entity] of Object.entries(CULTURAL_ENTITIES)) {
-      const entityName = entity.names?.[locale] || entity.names?.en || entity.name || key
-      const patterns = [
-        new RegExp(`\\b${entityName}\\b`, 'i'),
-        new RegExp(`\\b${key}\\b`, 'i')
-      ]
-      
-      if (patterns.some(pattern => pattern.test(content))) {
-        detected.push({ 
-          id: key, 
-          ...entity,
-          localizedName: entityName,
-          localizedDescription: entity.descriptions?.[locale] || entity.descriptions?.en || entity.description
-        })
-      }
-    }
-    
-    // Auto-detect protocol entities
-    for (const [key, entity] of Object.entries(PROTOCOL_ENTITIES)) {
-      const entityName = entity.names?.[locale] || entity.names?.en || entity.name || key
-      const patterns = [
-        new RegExp(`\\b${entityName}\\b`, 'i'),
-        new RegExp(`\\b${key.replace('-', '[-\\s]?')}\\b`, 'i')
-      ]
-      
-      if (patterns.some(pattern => pattern.test(content))) {
-        detected.push({ 
-          id: key, 
-          ...entity,
-          localizedName: entityName,
-          localizedDescription: entity.descriptions?.[locale] || entity.descriptions?.en || entity.description
-        })
-      }
-    }
-    
-    return detected
-  })
-  
-  // Generate Schema.org structured data intelligently with i18n
-  const structuredData = computed(() => {
-    const baseUrl = 'https://bitcoinstamps.xyz'
-    const locale = currentLocale.value
-    const currentUrl = `${baseUrl}${page?.value?.relativePath?.replace(/\.md$/, '') || ''}`
-    
-    const organizationNames = {
-      en: 'Bitcoin Stamps Community',
-      fr: 'Communauté Bitcoin Stamps',
-      es: 'Comunidad Bitcoin Stamps',
-      zh: 'Bitcoin Stamps 社区'
-    }
-    
-    const schema: any = {
-      '@context': 'https://schema.org',
-      '@type': getSchemaType(),
-      name: frontmatter.value.title || page?.value?.title || 'Bitcoin Stamps Documentation',
-      description: frontmatter.value.description || page?.value?.description,
-      url: currentUrl,
-      inLanguage: locale,
-      dateModified: new Date().toISOString(),
-      publisher: {
-        '@type': 'Organization',
-        name: organizationNames[locale] || organizationNames.en,
-        url: 'https://github.com/btc-stamps'
-      }
-    }
-    
-    // Add cultural significance if detected
-    if (detectedEntities.value.some(e => e.id === 'kevin')) {
-      schema.about = {
-        '@type': 'Person',
-        name: 'KEVIN',
-        description: 'Community mascot and first SRC-20 token',
-        url: 'https://kevinstamp.com'
-      }
-    }
-    
-    // Add protocol context
-    if (frontmatter.value.protocols?.length) {
-      schema.mentions = frontmatter.value.protocols.map(id => ({
-        '@type': 'SoftwareApplication',
-        name: PROTOCOL_ENTITIES[id]?.name || id.toUpperCase(),
-        applicationCategory: 'Bitcoin Metaprotocol'
-      }))
-    }
-    
-    // Add detected entities as mentions
-    if (detectedEntities.value.length > 0) {
-      schema.mentions = [
-        ...(schema.mentions || []),
-        ...detectedEntities.value.map(entity => ({
-          '@type': entity.type,
-          name: entity.name,
-          description: entity.description
-        }))
-      ]
-    }
-    
-    // Historical events
-    if (frontmatter.value.blockHeight) {
-      schema.temporal = {
-        '@type': 'Event',
-        name: `Block ${frontmatter.value.blockHeight} Event`,
-        startDate: getBlockDate(frontmatter.value.blockHeight)
-      }
-    }
-    
-    // Audience targeting
-    schema.audience = getAudienceSchema(frontmatter.value.audience || 'both')
-    
-    return schema
-  })
-  
-  function getSchemaType(): string {
-    switch (frontmatter.value.leoType) {
-      case 'protocol': return 'TechArticle'
-      case 'tutorial': return 'HowTo'
-      case 'entity': return 'DefinedTerm'
-      case 'narrative': return 'Article'
-      case 'historical-event': return 'Event'
-      default: return 'Article'
-    }
-  }
-  
-  function getAudienceSchema(audience: string) {
-    if (audience === 'both') {
-      return [
-        { '@type': 'Audience', audienceType: 'Software Developer' },
-        { '@type': 'Audience', audienceType: 'Digital Artist' }
-      ]
-    }
-    
-    return {
-      '@type': 'Audience',
-      audienceType: audience === 'developer' ? 'Software Developer' : 'Digital Artist'
-    }
-  }
-  
-  function getBlockDate(blockHeight: number): string {
-    const knownBlocks = {
-      779652: '2023-04-01', // First Bitcoin Stamp by Mikeinspace
-      788041: '2023-04-20', // KEVIN deployment by Arwyn
-      796000: '2023-06-15'  // SRC-20 migration
-    }
-    
-    return knownBlocks[blockHeight] || new Date().toISOString().split('T')[0]
-  }
-  
-  // Entity helper functions
+  // Entity lookup consumed by EntityMention.vue (type / culturalSignificance / url).
   function getEntity(id: string) {
     return CULTURAL_ENTITIES[id] || PROTOCOL_ENTITIES[id] || null
   }
-  
-  function isKevinMentioned() {
-    return detectedEntities.value.some(e => e.id === 'kevin')
-  }
-  
-  function getCulturalContext() {
-    const culturalEntities = detectedEntities.value.filter(e => 
-      CULTURAL_ENTITIES[e.id] && CULTURAL_ENTITIES[e.id].significance === 'high'
-    )
-    
-    return culturalEntities.length > 0 ? 'high' : 'medium'
-  }
-  
+
   return {
-    frontmatter,
-    structuredData,
-    detectedEntities,
-    currentLocale,
-    getEntity,
-    isKevinMentioned,
-    getCulturalContext
+    getEntity
   }
 }

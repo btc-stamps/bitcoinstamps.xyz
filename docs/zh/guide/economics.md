@@ -9,8 +9,6 @@ economicImpact: "cost-analysis"
 
 # 比特币印章经济学
 
-<SmartStructuredData />
-
 比特币印章生态系统创造了一种独特的数字经济，由**比特币的安全性**提供支撑。本指南解释了生态系统的经济结构、价值机制以及 <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> 代币的先驱角色。
 
 ## 交易成本

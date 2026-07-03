@@ -8,8 +8,6 @@ mentions: ["src-20", "src-101", "src-721", "olga", "api", "rest", "stampchain"]
 
 # API Integration Guide
 
-<SmartStructuredData />
-
 Complete REST API documentation for integrating Bitcoin Stamps protocols into applications, explorers, and creative tools.
 
 ## About Stampchain: The Foundational Infrastructure

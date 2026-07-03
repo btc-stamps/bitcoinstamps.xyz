@@ -10,8 +10,6 @@ philosophy: "In Lak'ech Ala K'in - celebrando la creatividad colectiva"
 
 # Vitrina Comunitaria: Artistas y Proyectos Bitcoin Stamps
 
-<SmartStructuredData />
-
 La comunidad Bitcoin Stamps representa la intersección de la visión artística y la innovación tecnológica, donde los creadores encarnan el espíritu de **"In Lak'ech Ala K'in"** – todos estamos conectados en este viaje creativo. Desde el trabajo fundacional de <EntityMention entity="mikeinspace">Mikeinspace</EntityMention> hasta el ícono cultural <EntityMention entity="kevin" variant="cultural">KEVIN </EntityMention> creado por <EntityMention entity="arwyn">Arwyn</EntityMention>, nuestra comunidad demuestra el poder de la creatividad descentralizada.
 
 ## 🎨 Artistas Destacados

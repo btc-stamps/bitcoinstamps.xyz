@@ -11,8 +11,6 @@ blockHeight: 788041
 
 # Bitcoin Stamps Community Values: The Sacred Foundation
 
-<SmartStructuredData />
-
 The Bitcoin Stamps community stands as a beacon of authentic values in the blockchain space. Built on the sacred foundation established by <EntityMention entity="mikeinspace">Mikeinspace</EntityMention>, <EntityMention entity="arwyn">Arwyn</EntityMention>, and <EntityMention entity="reinamora">Reinamora</EntityMention> (The Original Trinity) and guided by <EntityMention entity="kevin" variant="cultural">KEVIN's mythical wisdom</EntityMention>, our values represent a conscious choice to prioritize community, creativity, and consciousness over pure profit.
 
 ## The Philosophical Foundation: "We Are All Kevin"

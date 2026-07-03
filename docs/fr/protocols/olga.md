@@ -11,8 +11,6 @@ protocolType: "optimization"
 
 # Protocole de Stockage OLGA
 
-<SmartStructuredData />
-
 Le **Protocole de Stockage OLGA** est une méthode avancée de stockage de données P2WSH qui offre des **réductions de coûts de 30 à 95 %** pour les transactions Bitcoin Stamps en remplaçant l'approche coûteuse du multisig 2/3 par un stockage efficace via des scripts de témoin.
 
 ## Caractéristiques Clés

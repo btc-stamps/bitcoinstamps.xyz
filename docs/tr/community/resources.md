@@ -8,8 +8,6 @@ mentions: ["kevin", "bitcoin-stamps", "src-20", "stampchain", "community"]
 
 # Bitcoin Stamps Kaynakları
 
-<SmartStructuredData />
-
 Bitcoin Stamps ekosistemi için kaynak dizini - ilk stampinizi oluşturmaktan uygulama geliştirmeye kadar.
 
 ## Resmi Platformlar
