@@ -144,6 +144,10 @@ User-agent: Meta-WebIndexer
 Allow: /
 Crawl-delay: 5
 
+User-agent: Meta-ExternalFetcher
+Allow: /
+Crawl-delay: 5
+
 # ByteDance
 User-agent: Bytespider
 Allow: /
