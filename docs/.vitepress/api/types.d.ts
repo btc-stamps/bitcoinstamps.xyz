@@ -134,9 +134,11 @@ export interface ProtocolEntity extends BaseEntity {
  * Concept entity representing cultural icons and ecosystem concepts with multi-language support
  */
 export interface ConceptEntity extends BaseEntity {
-  type: 'cultural-icon' | 'protocol-ecosystem' | 'protocol-foundation' | 'foundational-infrastructure' | 'indexer-service' | 'consensus-milestone'
+  type: 'cultural-icon' | 'protocol-ecosystem' | 'protocol-foundation' | 'foundational-infrastructure' | 'indexer-service' | 'consensus-milestone' | 'person'
   /** Stamp number for cultural icons like KEVIN */
   stampNumber?: number
+  /** Cultural role for person entities (e.g. Trinity founders) */
+  culturalRole?: string
   /** Creator of the concept or cultural icon */
   creator?: string
   /** Creation date in ISO format */
