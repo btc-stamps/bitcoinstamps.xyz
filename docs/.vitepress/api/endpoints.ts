@@ -488,10 +488,7 @@ export async function validateAPIConsistency(): Promise<boolean> {
       } else {
         // Cultural-accuracy gate: KEVIN's creator must be Arwyn in schema.json
         // (this is the primary source AI agents are told to trust via llms.txt).
-        const creatorName =
-          typeof kevinSchema.creator === 'object' && kevinSchema.creator !== null
-            ? (kevinSchema.creator as { name?: string }).name
-            : (kevinSchema.creator as unknown as string | undefined)
+        const creatorName = kevinSchema.creator?.name
         if (creatorName !== 'Arwyn') {
           validationErrors.push(
             `KEVIN schema.json creator must be 'Arwyn' (found '${creatorName ?? 'undefined'}')`
