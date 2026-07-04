@@ -1,6 +1,6 @@
 ---
 title: "La Historia de Bitcoin Stamps"
-description: "Historia completa del protocolo Bitcoin Stamps: desde el concepto original de Mikeinspace hasta el fenómeno cultural global con KEVIN y la comunidad"
+description: "Historia completa del protocolo Bitcoin Stamps: desde el concepto original de mikeinspace hasta el fenómeno cultural global con KEVIN y la comunidad"
 leoType: "narrative"
 audience: "both"
 mentions: ["mikeinspace", "arwyn", "reinamora", "kevin", "counterparty", "stampchain", "src-20"]
@@ -15,7 +15,7 @@ Una crónica de cómo Bitcoin Stamps pasó de ser una idea experimental a un mov
 
 ### La Visión Original
 
-En enero de 2023, **Mikeinspace** propuso el concepto de Bitcoin Stamps: almacenar datos de imagen directamente en el conjunto UTXO de Bitcoin usando salidas multisig. El objetivo era crear activos digitales verdaderamente permanentes — imposibles de eliminar incluso si los nodos decidían podar datos de transacciones.
+En enero de 2023, **mikeinspace** propuso el concepto de Bitcoin Stamps: almacenar datos de imagen directamente en el conjunto UTXO de Bitcoin usando salidas multisig. El objetivo era crear activos digitales verdaderamente permanentes — imposibles de eliminar incluso si los nodos decidían podar datos de transacciones.
 
 La idea fue radicalmente diferente de los enfoques existentes:
 - No dependía de datos witness (podables)
@@ -25,7 +25,7 @@ La idea fue radicalmente diferente de los enfoques existentes:
 ### La Trinidad Original
 
 Tres personas construyeron el protocolo desde el principio:
-- **Mikeinspace**: Creador del concepto original y diseñador del protocolo
+- **mikeinspace**: Creador del concepto original y diseñador del protocolo
 - **Arwyn**: Desarrollo técnico e implementación
 - **Reinamora**: Infraestructura, Stampchain.io y el primer sitio público
 

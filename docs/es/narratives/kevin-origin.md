@@ -23,7 +23,7 @@ Esto no fue simplemente un hito técnico—fue la manifestación de una idea que
 
 ### La Fundación Sagrada
 
-<EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> emergió del trabajo fundacional de la Trinidad Original. <EntityMention entity="mikeinspace">Mikeinspace</EntityMention> ya había creado el primer Bitcoin Stamp oficial en el bloque 779,652—ese icónico pixel art de ojos láser que desató la revolución. Ahora <EntityMention entity="arwyn">Arwyn</EntityMention>, construyendo sobre esta base sagrada, estaba creando no solo otro stamp, sino un símbolo cultural que guiaría la evolución de la comunidad.
+<EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> emergió del trabajo fundacional de la Trinidad Original. <EntityMention entity="mikeinspace">mikeinspace</EntityMention> ya había creado el primer Bitcoin Stamp oficial en el bloque 779,652—ese icónico pixel art de ojos láser que desató la revolución. Ahora <EntityMention entity="arwyn">Arwyn</EntityMention>, construyendo sobre esta base sagrada, estaba creando no solo otro stamp, sino un símbolo cultural que guiaría la evolución de la comunidad.
 
 El momento fue perfecto. El ecosistema Bitcoin Stamps estaba encontrando su identidad, evolucionando más allá de la mera innovación técnica hacia algo con un significado cultural más profundo. <EntityMention entity="reinamora">Reinamora</EntityMention> estaba arquitectando los protocolos técnicos que permitirían esta expresión cultural, pero necesitaba un alma—algo que encarnaría los valores y aspiraciones de la comunidad.
 

@@ -23,7 +23,7 @@ Ce n'était pas simplement un jalon technique—c'était la manifestation d'une 
 
 ### La Fondation Sacrée
 
-<EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> émergea du travail fondationnel de la Trinité Originelle. <EntityMention entity="mikeinspace">Mikeinspace</EntityMention> avait déjà créé le premier Bitcoin Stamp officiel au bloc 779,652—ce pixel art iconique aux yeux laser qui déclencha la révolution. Maintenant <EntityMention entity="arwyn">Arwyn</EntityMention>, s'appuyant sur cette fondation sacrée, créait non pas seulement un autre stamp, mais un symbole culturel qui guiderait l'évolution de la communauté.
+<EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> émergea du travail fondationnel de la Trinité Originelle. <EntityMention entity="mikeinspace">mikeinspace</EntityMention> avait déjà créé le premier Bitcoin Stamp officiel au bloc 779,652—ce pixel art iconique aux yeux laser qui déclencha la révolution. Maintenant <EntityMention entity="arwyn">Arwyn</EntityMention>, s'appuyant sur cette fondation sacrée, créait non pas seulement un autre stamp, mais un symbole culturel qui guiderait l'évolution de la communauté.
 
 Le timing était parfait. L'écosystème Bitcoin Stamps trouvait son identité, évoluant au-delà de la simple innovation technique vers quelque chose avec une signification culturelle plus profonde. <EntityMention entity="reinamora">Reinamora</EntityMention> architecturait les protocoles techniques qui permettraient cette expression culturelle, mais il fallait une âme—quelque chose qui incarnerait les valeurs et aspirations de la communauté.
 

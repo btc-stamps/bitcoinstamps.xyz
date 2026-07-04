@@ -10,13 +10,13 @@ philosophy: "In Lak'ech Ala K'in - kolektif yaratıcılığı kutlamak"
 
 # Topluluk Vitrini: Bitcoin Stamps Sanatçıları ve Projeleri
 
-Bitcoin Stamps topluluğu, sanatsal vizyonun ve teknolojik yeniliğin kesişimini temsil eder; burada yaratıcılar **"In Lak'ech Ala K'in"** ruhunu somutlaştırır – hepimiz bu yaratıcı yolculukta birbirimizle bağlantılıyız. <EntityMention entity="mikeinspace">Mikeinspace</EntityMention>'in temel çalışmasından <EntityMention entity="arwyn">Arwyn</EntityMention> tarafından yaratılan kültürel ikon <EntityMention entity="kevin" variant="cultural">KEVIN </EntityMention>'e kadar, topluluğumuz merkeziyetsiz yaratıcılığın gücünü sergilemektedir.
+Bitcoin Stamps topluluğu, sanatsal vizyonun ve teknolojik yeniliğin kesişimini temsil eder; burada yaratıcılar **"In Lak'ech Ala K'in"** ruhunu somutlaştırır – hepimiz bu yaratıcı yolculukta birbirimizle bağlantılıyız. <EntityMention entity="mikeinspace">mikeinspace</EntityMention>'in temel çalışmasından <EntityMention entity="arwyn">Arwyn</EntityMention> tarafından yaratılan kültürel ikon <EntityMention entity="kevin" variant="cultural">KEVIN </EntityMention>'e kadar, topluluğumuz merkeziyetsiz yaratıcılığın gücünü sergilemektedir.
 
 ## 🎨 Öne Çıkan Sanatçılar
 
 ### Özgün Üçlü
 
-**<EntityMention entity="mikeinspace">Mikeinspace</EntityMention>** - *Başlangıç Yaratıcısı*
+**<EntityMention entity="mikeinspace">mikeinspace</EntityMention>** - *Başlangıç Yaratıcısı*
 - **Blok 779.652**: İkonik lazer gözlü piksel sanatıyla ilk resmi Bitcoin Stamp'i oluşturdu
 - **Miras**: Tüm Bitcoin Stamps devrimini başlattı
 - **Felsefe**: Sanatın Bitcoin'in değiştirilemez defterine ait olduğunu kanıtlamak

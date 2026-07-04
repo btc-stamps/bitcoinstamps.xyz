@@ -51,7 +51,7 @@ Bitcoin Stamps birden fazla özel protokolü destekler:
 Bitcoin Stamps, 2023 yılında **blok 788,041**'de tanıtıldı ve hızla önemli bir kültürel hareket haline geldi:
 
 - **KEVIN**: İlk SRC-20 token ve topluluk maskotu
-- **Mike in Space**: Ekosistemin yaratıcısı
+- **mikeinspace**: Ekosistemin yaratıcısı
 - **Topluluk odaklı**: Açık kaynak geliştirme modeli
 
 ## Başlarken

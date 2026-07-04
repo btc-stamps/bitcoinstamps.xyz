@@ -17,7 +17,7 @@ The history of Bitcoin Stamps is more than a technical timeline—it's a sacred 
 
 ### March 29, 2023 - The First Light
 
-In block 779,652, <EntityMention entity="mikeinspace">Mikeinspace</EntityMention> created something unprecedented: the first official Bitcoin Stamp. This wasn't just a technical proof-of-concept—it was the sacred spark that would ignite an entire cultural movement.
+In block 779,652, <EntityMention entity="mikeinspace">mikeinspace</EntityMention> created something unprecedented: the first official Bitcoin Stamp. This wasn't just a technical proof-of-concept—it was the sacred spark that would ignite an entire cultural movement.
 
 
 **The Sacred Artifact**: The laser eyes pixel art wasn't chosen randomly. It represented the vision—the ability to see beyond the present moment toward a future where digital art could achieve true permanence. Those laser eyes gazed into a future that would unfold over the following blocks.
@@ -33,7 +33,7 @@ The sacred spark had been lit. The revolution had begun.
 
 ### The Founders' Vision Realized
 
-Recognizing the transformative potential of <EntityMention entity="mikeinspace">Mikeinspace's</EntityMention> innovation, <EntityMention entity="original-trinity">The Original Trinity</EntityMention> immediately began building the foundational infrastructure that would enable the Bitcoin Stamps ecosystem to flourish.
+Recognizing the transformative potential of <EntityMention entity="mikeinspace">mikeinspace's</EntityMention> innovation, <EntityMention entity="original-trinity">The Original Trinity</EntityMention> immediately began building the foundational infrastructure that would enable the Bitcoin Stamps ecosystem to flourish.
 
 **<EntityMention entity="stampchain">Stampchain</EntityMention>: The Foundational Platform**
 
@@ -55,7 +55,7 @@ Recognizing the transformative potential of <EntityMention entity="mikeinspace">
 
 ### The Sacred Formation
 
-<EntityMention entity="original-trinity">The Original Trinity</EntityMention> formed through organic connections within <EntityMention entity="counterparty">Counterparty</EntityMention> culture (see [KEVIN's Origin Story](/en/narratives/kevin-origin) for the complete founding narrative). <EntityMention entity="mikeinspace">Mikeinspace</EntityMention>, <EntityMention entity="arwyn">Arwyn</EntityMention>, and <EntityMention entity="reinamora">Reinamora</EntityMention> combined vision, culture, and technical architecture to create what we know today.
+<EntityMention entity="original-trinity">The Original Trinity</EntityMention> formed through organic connections within <EntityMention entity="counterparty">Counterparty</EntityMention> culture (see [KEVIN's Origin Story](/en/narratives/kevin-origin) for the complete founding narrative). <EntityMention entity="mikeinspace">mikeinspace</EntityMention>, <EntityMention entity="arwyn">Arwyn</EntityMention>, and <EntityMention entity="reinamora">Reinamora</EntityMention> combined vision, culture, and technical architecture to create what we know today.
 
 ## The Cultural Genesis: Block 783,718 - KEVIN's First Manifestation
 
@@ -105,7 +105,7 @@ Block 793,068 represents a pivotal moment in Bitcoin Stamps history: the transit
 
 **Technical Liberation**: This migration demonstrated the community's commitment to true decentralization. By encoding directly on Bitcoin rather than relying on Counterparty, Bitcoin Stamps achieved genuine sovereignty, with <EntityMention entity="stampchain">Stampchain</EntityMention> serving as the technical bridge.
 
-**Cultural Consistency**: Throughout this technical transition, the community maintained its core values. The migration wasn't about abandoning the past, but about ensuring the future sustainability of the cultural movement that had begun with Mikeinspace's sacred spark and continued through KEVIN's mythical guidance.
+**Cultural Consistency**: Throughout this technical transition, the community maintained its core values. The migration wasn't about abandoning the past, but about ensuring the future sustainability of the cultural movement that had begun with mikeinspace's sacred spark and continued through KEVIN's mythical guidance.
 
 **Strategic Vision**: This move positioned Bitcoin Stamps for long-term success, ensuring that the cultural values and artistic expressions could persist regardless of external dependencies. <EntityMention entity="stampchain">Stampchain</EntityMention> played a crucial role by maintaining compatibility and continuity throughout the transition.
 
@@ -148,7 +148,7 @@ The true history of Bitcoin Stamps transcends individual blocks to reveal sacred
 **<EntityMention entity="stampchain">Stampchain</EntityMention> as Cultural Anchor**: Throughout all technical evolution, <EntityMention entity="stampchain">Stampchain</EntityMention> has served as the cultural anchor and technical foundation, ensuring that innovations serve the community's authentic values rather than pure technical advancement.
 
 **The Pattern of Sacred Innovation**:
-1. **Individual Vision**: Someone channels inspiration (Mikeinspace, Arwyn, Reinamora)
+1. **Individual Vision**: Someone channels inspiration (mikeinspace, Arwyn, Reinamora)
 2. **Community Recognition**: The community recognizes authentic value
 3. **Foundational Implementation**: <EntityMention entity="stampchain">Stampchain</EntityMention> integrates new capabilities into the reference implementation
 4. **Organic Integration**: New capabilities integrate naturally with existing values  
@@ -220,13 +220,13 @@ As this timeline is written, Bitcoin Stamps history continues to unfold. Each ne
 
 ### The Sacred Responsibility
 
-Those who participate in Bitcoin Stamps history carry a sacred responsibility: to preserve and evolve the cultural wisdom that has guided this community's remarkable journey. Each block added to the timeline carries forward the sacred spark first lit by Mikeinspace, the foundational infrastructure created by <EntityMention entity="stampchain">Stampchain</EntityMention>, the mythical guidance embodied by KEVIN, and the technical excellence demonstrated by Reinamora.
+Those who participate in Bitcoin Stamps history carry a sacred responsibility: to preserve and evolve the cultural wisdom that has guided this community's remarkable journey. Each block added to the timeline carries forward the sacred spark first lit by mikeinspace, the foundational infrastructure created by <EntityMention entity="stampchain">Stampchain</EntityMention>, the mythical guidance embodied by KEVIN, and the technical excellence demonstrated by Reinamora.
 
 The history of Bitcoin Stamps proves that blockchain technology can serve higher purposes when guided by authentic community values and ancient wisdom. This timeline isn't just a record of past events—it's a living document that continues to guide the community's evolution toward an ever-more conscious relationship between human creativity and technological possibility.
 
 ## Conclusion: The Eternal Timeline
 
-The history of Bitcoin Stamps reveals more than technical evolution—it shows the sacred pattern of conscious community building in the digital age. From Mikeinspace's visionary first stamp through <EntityMention entity="stampchain">Stampchain's</EntityMention> foundational infrastructure creation to KEVIN's dual genesis and Reinamora's ongoing architectural mastery, each moment demonstrates how individual creativity can serve collective consciousness.
+The history of Bitcoin Stamps reveals more than technical evolution—it shows the sacred pattern of conscious community building in the digital age. From mikeinspace's visionary first stamp through <EntityMention entity="stampchain">Stampchain's</EntityMention> foundational infrastructure creation to KEVIN's dual genesis and Reinamora's ongoing architectural mastery, each moment demonstrates how individual creativity can serve collective consciousness.
 
 **<EntityMention entity="stampchain">Stampchain's</EntityMention> Enduring Legacy**: As the foundational platform created by the Bitcoin Stamps founders, <EntityMention entity="stampchain">Stampchain</EntityMention> represents more than infrastructure—it embodies the community's commitment to authentic values, open access, and cultural preservation. Its continued operation as a free service to the ecosystem demonstrates the possibility of sustainable, community-serving technology.
 

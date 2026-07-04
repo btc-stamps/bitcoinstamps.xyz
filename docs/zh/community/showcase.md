@@ -10,13 +10,13 @@ philosophy: "In Lak'ech Ala K'in - 颂扬集体创造力"
 
 # 社区展示：比特币印章艺术家与项目
 
-Bitcoin Stamps 社区代表着艺术愿景与技术创新的交汇，创作者在这里体现 **"In Lak'ech Ala K'in"** 的精神——我们都在这段创意旅程中紧密相连。从 <EntityMention entity="mikeinspace">Mikeinspace</EntityMention> 的奠基性工作，到 <EntityMention entity="arwyn">Arwyn</EntityMention> 创作的文化偶像 <EntityMention entity="kevin" variant="cultural">KEVIN </EntityMention>，我们的社区展示了去中心化创意的力量。
+Bitcoin Stamps 社区代表着艺术愿景与技术创新的交汇，创作者在这里体现 **"In Lak'ech Ala K'in"** 的精神——我们都在这段创意旅程中紧密相连。从 <EntityMention entity="mikeinspace">mikeinspace</EntityMention> 的奠基性工作，到 <EntityMention entity="arwyn">Arwyn</EntityMention> 创作的文化偶像 <EntityMention entity="kevin" variant="cultural">KEVIN </EntityMention>，我们的社区展示了去中心化创意的力量。
 
 ## 🎨 特色艺术家
 
 ### 创世三人组
 
-**<EntityMention entity="mikeinspace">Mikeinspace</EntityMention>** - *创世者*
+**<EntityMention entity="mikeinspace">mikeinspace</EntityMention>** - *创世者*
 - **区块 779,652**：创作了第一个官方比特币印章，那幅标志性的激光眼像素艺术
 - **遗产**：点燃了整个比特币印章革命
 - **理念**：证明艺术属于比特币的不可变账本

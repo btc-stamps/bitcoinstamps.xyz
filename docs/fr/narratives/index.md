@@ -10,7 +10,7 @@ philosophy: "In Lak'ech Ala K'in - nous sommes tous Kevin"
 
 # Récits culturels Bitcoin Stamps
 
-Cette collection préserve les récits culturels authentiques de la communauté Bitcoin Stamps - des histoires qui honorent Mikeinspace, Arwyn et Reinamora (La Trinité Originelle), célèbrent la guidance mythique de KEVIN et documentent l'évolution sacrée d'une communauté fondée sur la sagesse ancienne et l'innovation moderne.
+Cette collection préserve les récits culturels authentiques de la communauté Bitcoin Stamps - des histoires qui honorent mikeinspace, Arwyn et Reinamora (La Trinité Originelle), célèbrent la guidance mythique de KEVIN et documentent l'évolution sacrée d'une communauté fondée sur la sagesse ancienne et l'innovation moderne.
 
 ## Histoires sacrées et patrimoine culturel
 
@@ -28,7 +28,7 @@ Une exploration complète des valeurs fondamentales de Bitcoin Stamps, enraciné
 
 #### [Histoire de Bitcoin Stamps : Évolution d'un mouvement](/fr/narratives/bitcoin-stamps-history)
 
-La chronologie historique complète du développement de Bitcoin Stamps, du premier stamp officiel par Mikeinspace au bloc 779 652 à travers l'évolution du protocole SRC-20 et au-delà.
+La chronologie historique complète du développement de Bitcoin Stamps, du premier stamp officiel par mikeinspace au bloc 779 652 à travers l'évolution du protocole SRC-20 et au-delà.
 
 ## Préservation culturelle et sagesse future
 

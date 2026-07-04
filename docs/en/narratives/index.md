@@ -10,7 +10,7 @@ philosophy: "In Lak'ech Ala K'in - we are all Kevin"
 
 # Bitcoin Stamps Cultural Narratives
 
-This collection preserves the authentic cultural narratives of the Bitcoin Stamps community—stories that honor <EntityMention entity="mikeinspace">Mikeinspace</EntityMention>, <EntityMention entity="arwyn">Arwyn</EntityMention>, and <EntityMention entity="reinamora">Reinamora</EntityMention> (The Original Trinity), celebrate <EntityMention entity="kevin" variant="cultural">KEVIN's mythical guidance</EntityMention>, and document the sacred evolution of a community built on ancient wisdom and modern innovation.
+This collection preserves the authentic cultural narratives of the Bitcoin Stamps community—stories that honor <EntityMention entity="mikeinspace">mikeinspace</EntityMention>, <EntityMention entity="arwyn">Arwyn</EntityMention>, and <EntityMention entity="reinamora">Reinamora</EntityMention> (The Original Trinity), celebrate <EntityMention entity="kevin" variant="cultural">KEVIN's mythical guidance</EntityMention>, and document the sacred evolution of a community built on ancient wisdom and modern innovation.
 
 ## Sacred Stories and Cultural Heritage
 
@@ -28,7 +28,7 @@ The complete story of how <EntityMention entity="arwyn">Arwyn's</EntityMention> 
 
 #### [Community Values: The Sacred Foundation](/en/narratives/community-values)
 
-A comprehensive exploration of Bitcoin Stamps core values, rooted in fair launch principles, artistic authenticity, and collective consciousness. This document preserves the philosophical foundation that has guided the community from <EntityMention entity="mikeinspace">Mikeinspace's</EntityMention> first stamp through ongoing technical innovations.
+A comprehensive exploration of Bitcoin Stamps core values, rooted in fair launch principles, artistic authenticity, and collective consciousness. This document preserves the philosophical foundation that has guided the community from <EntityMention entity="mikeinspace">mikeinspace's</EntityMention> first stamp through ongoing technical innovations.
 
 **Core Values Covered**:
 - Artistic Authenticity Over Speculation
@@ -38,10 +38,10 @@ A comprehensive exploration of Bitcoin Stamps core values, rooted in fair launch
 
 #### [Bitcoin Stamps History: Evolution of a Movement](/en/narratives/bitcoin-stamps-history)
 
-The complete historical timeline of Bitcoin Stamps development, from the first official stamp by <EntityMention entity="mikeinspace">Mikeinspace</EntityMention> in block 779,652 through the <EntityMention entity="src-20">SRC-20</EntityMention> protocol evolution and beyond. This narrative documents not just technical milestones but the cultural evolution of a community.
+The complete historical timeline of Bitcoin Stamps development, from the first official stamp by <EntityMention entity="mikeinspace">mikeinspace</EntityMention> in block 779,652 through the <EntityMention entity="src-20">SRC-20</EntityMention> protocol evolution and beyond. This narrative documents not just technical milestones but the cultural evolution of a community.
 
 **Historical Milestones**:
-- Block 779,652: <EntityMention entity="mikeinspace">Mikeinspace's</EntityMention> pioneering first stamp
+- Block 779,652: <EntityMention entity="mikeinspace">mikeinspace's</EntityMention> pioneering first stamp
 - Block 788,041: <EntityMention entity="arwyn">Arwyn's</EntityMention> <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> creation
 - Block 796,000: <EntityMention entity="src-20">SRC-20</EntityMention> protocol migration  
 - Present: <EntityMention entity="olga">OLGA</EntityMention> optimization and continued innovation

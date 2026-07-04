@@ -11,7 +11,7 @@ blockHeight: 788041
 
 # Bitcoin Stamps 社区价值观：神圣基础
 
-Bitcoin Stamps 社区是区块链领域真实价值观的灯塔。建立在由 Mikeinspace、Arwyn 和 Reinamora（原始三位一体）建立的神圣基础上，并由 KEVIN 的神话智慧引导，我们的价值观代表了一种有意识的选择，将社区、创意和意识置于纯粹利润之上。
+Bitcoin Stamps 社区是区块链领域真实价值观的灯塔。建立在由 mikeinspace、Arwyn 和 Reinamora（原始三位一体）建立的神圣基础上，并由 KEVIN 的神话智慧引导，我们的价值观代表了一种有意识的选择，将社区、创意和意识置于纯粹利润之上。
 
 ## 哲学基础："我们都是 Kevin"
 
