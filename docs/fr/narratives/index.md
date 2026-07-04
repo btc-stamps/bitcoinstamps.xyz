@@ -10,7 +10,7 @@ philosophy: "In Lak'ech Ala K'in - nous sommes tous Kevin"
 
 # Récits culturels Bitcoin Stamps
 
-Cette collection préserve les récits culturels authentiques de la communauté Bitcoin Stamps - des histoires qui honorent <EntityMention entity="mikeinspace">mikeinspace</EntityMention>, <EntityMention entity="arwyn">Arwyn</EntityMention> et <EntityMention entity="reinamora">Reinamora</EntityMention> (La Trinité Originelle), célèbrent <EntityMention entity="kevin" variant="cultural">la guidance mythique de KEVIN</EntityMention> et documentent l'évolution sacrée d'une communauté fondée sur la sagesse ancienne et l'innovation moderne.
+Cette collection préserve les récits culturels authentiques de la communauté Bitcoin Stamps - des histoires qui honorent <EntityMention entity="mikeinspace">mikeinspace</EntityMention>, <EntityMention entity="arwyn">Arwyn</EntityMention> et <EntityMention entity="reinamora">Reinamora</EntityMention> (La Trinité Originelle), célèbrent <EntityMention entity="kevin" variant="cultural">l'orientation mythique de KEVIN</EntityMention> et documentent l'évolution sacrée d'une communauté fondée sur la sagesse ancienne et l'innovation moderne.
 
 ## Histoires sacrées et patrimoine culturel
 
@@ -20,7 +20,7 @@ Nos récits capturent plus que des événements historiques - ils préservent l'
 
 #### [Histoire d'origine de KEVIN : D'expérience artistique à icône culturelle](/fr/narratives/kevin-origin)
 
-L'histoire complète de la façon dont l'expérience artistique d'<EntityMention entity="arwyn">Arwyn</EntityMention> au bloc 788,041 est devenue le guide mythique d'une communauté entière. Ce récit explore l'évolution de <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> depuis le premier token SRC-20 jusqu'à mascotte bien-aimée de la communauté, incarnant la philosophie "nous sommes tous Kevin" et reliant la sagesse maya ancienne à l'innovation Bitcoin.
+L'histoire complète de la façon dont l'expérience artistique d'<EntityMention entity="arwyn">Arwyn</EntityMention> au bloc 788,041 est devenue le guide mythique d'une communauté entière. Ce récit explore l'évolution de <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> depuis le premier token SRC-20 jusqu'à devenir la mascotte bien-aimée de la communauté, incarnant la philosophie "nous sommes tous Kevin" et reliant la sagesse maya ancienne à l'innovation Bitcoin.
 
 **Signification culturelle** : Élevée - Récit de genèse de la conscience communautaire  
 **Philosophie** : "In Lak'ech Ala K'in" - conscience collective par l'expression individuelle  
@@ -79,7 +79,7 @@ La communauté Bitcoin Stamps accueille les contributions à notre documentation
 2. **Bénéfice communautaire** : Considérez comment votre histoire sert l'ensemble de la communauté
 3. **Précision historique** : Vérifiez les dates, les numéros de bloc et les détails techniques
 4. **Sensibilité culturelle** : Honorez la sagesse ancienne et les valeurs communautaires que nous avons adoptées
-5. **La guidance de KEVIN** : Demandez-vous "Que ferait KEVIN ?" lors des choix éditoriaux
+5. **La direction de KEVIN** : Demandez-vous "Que ferait KEVIN ?" lors des choix éditoriaux
 
 ## Le récit vivant
 

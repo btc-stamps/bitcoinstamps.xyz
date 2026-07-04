@@ -34,7 +34,7 @@ El **Estándar de Tokens SRC-20** permite la creación de tokens fungibles como 
 - **Integración Bitcoin Verdadera**: Tokens almacenados directamente en Bitcoin, no en sidechains
 - **Lanzamiento Justo**: Sin pre-minados ni ventajas privilegiadas, siguiendo el ejemplo de <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention>
 - **Almacenamiento Permanente**: Registros de tokens inmutables en la blockchain más segura del mundo
-- **Impulsado por la Comunidad**: Protocolo evolucionado a través de colaboración grassroots de desarrolladores
+- **Impulsado por la Comunidad**: Protocolo evolucionado a través de colaboración de base entre desarrolladores
 
 ## Creando Tu Token SRC-20
 

@@ -33,8 +33,8 @@ Le **Standard de Jetons SRC-20** permet la création de jetons fongibles en tant
 
 - **Intégration Bitcoin Véritable** : Jetons stockés directement sur Bitcoin, non sur des sidechains
 - **Lancement Équitable** : Pas de pré-minage ou d'avantages privilégiés, suivant l'exemple de <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention>
-- **Stockage Permanent** : Registres de jetons immutables sur la blockchain la plus sécurisée au monde
-- **Communautaire** : Protocole évolué grâce à la collaboration développeur grassroots
+- **Stockage Permanent** : Registres de jetons immuables sur la blockchain la plus sécurisée au monde
+- **Communautaire** : Protocole évolué grâce à la collaboration entre développeurs, issue de la base
 
 ## Créer Votre Jeton SRC-20
 

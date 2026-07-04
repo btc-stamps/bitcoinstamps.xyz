@@ -148,7 +148,7 @@ interface OrdinalSat {
 ## Philosophie de conception du protocole
 
 ### Bitcoin Stamps : Approche conservatrice
-- **Fondation éprouvée** : <EntityMention entity="counterparty">Protocole Counterparty</EntityMention> testé au combat depuis 2014
+- **Fondation éprouvée** : <EntityMention entity="counterparty">Protocole Counterparty</EntityMention> éprouvé depuis 2014
 - **Natif de Bitcoin** : Fonctionne dans le modèle économique et technique existant de Bitcoin
 - **Croissance durable** : Conçu pour l'évolution du protocole à long terme
 - **Valeurs communautaires** : Illustrées par les principes de lancement équitable de <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention>
@@ -156,7 +156,7 @@ interface OrdinalSat {
 ### Ordinals : L'innovation à un coût
 - **Approche novatrice** : Usage créatif de l'espace des données témoins
 - **Cadre théorique** : Superposition du système de numérotation des satoshis
-- **Adoption rapide** : Prise en main rapide du marché malgré les limites techniques
+- **Adoption rapide** : Adoption rapide par le marché malgré les limites techniques
 - **Dépendances externes** : Nécessite une infrastructure spécialisée
 
 ## Analyse de la décentralisation
