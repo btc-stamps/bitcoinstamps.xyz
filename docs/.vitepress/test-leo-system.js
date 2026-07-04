@@ -38,9 +38,11 @@ async function testLEOSystem() {
     const languagePaths = [
       join(distPath, 'api', 'entities.json'), // English (default)
       join(distPath, 'es', 'api', 'entities.json'),
-      join(distPath, 'fr', 'api', 'entities.json'), 
+      join(distPath, 'fr', 'api', 'entities.json'),
       join(distPath, 'zh', 'api', 'entities.json'),
-      join(distPath, 'tr', 'api', 'entities.json')
+      join(distPath, 'tr', 'api', 'entities.json'),
+      join(distPath, 'pt', 'api', 'entities.json'),
+      join(distPath, 'cs', 'api', 'entities.json')
     ]
     
     for (const apiPath of languagePaths) {
