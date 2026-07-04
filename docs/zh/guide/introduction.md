@@ -48,7 +48,7 @@ author: mikeinspace
 ## 比特币印章协议
 
 ### SRC-20 代币
-比特币上的同质代币。<EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention>是第一个<EntityMention entity="src-20" variant="technical">SRC-20代币</EntityMention>，展示了社区驱动的开发和公平启动原则。
+比特币上的同质化代币。<EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention>是第一个<EntityMention entity="src-20" variant="technical">SRC-20代币</EntityMention>，展示了社区驱动的开发和公平启动原则。
 
 ### SRC-101 名称  
 为比特币地址和资源提供人类可读名称，使用<EntityMention entity="src-101" variant="technical">SRC-101</EntityMention>使生态系统更加易用。

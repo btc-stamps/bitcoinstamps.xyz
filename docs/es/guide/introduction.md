@@ -71,7 +71,7 @@ Cada transacción de Bitcoin Stamp:
 
 Los Bitcoin Stamps están construidos sobre el probado <EntityMention entity="counterparty">protocolo Counterparty</EntityMention> (establecido en 2014), lo que proporciona:
 
-- **Arquitectura Probada en Batalla**: Más de 10 años de funcionamiento confiable
+- **Arquitectura Probada con los Años**: Más de 10 años de funcionamiento confiable
 - **Modelo de Activos Basado en Cuentas**: Más simple que los enfoques de seguimiento de UTXO
 - **Herramientas Estándar de Bitcoin**: No requiere infraestructura especializada
 - **Camino de Evolución Natural**: Capacidad de mejora continua del protocolo

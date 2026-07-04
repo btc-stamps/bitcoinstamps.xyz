@@ -1,7 +1,7 @@
 ---
 layout: home
 title: "Documentation du Métaprotocole Bitcoin Stamps"
-description: "Documentation officielle pour les actifs numériques immutables stockés directement sur la blockchain Bitcoin en utilisant les métaprotocoles SRC-20, SRC-101, SRC-721, guidés par la sagesse mythique de KEVIN et les valeurs communautaires"
+description: "Documentation officielle pour les actifs numériques immuables stockés directement sur la blockchain Bitcoin en utilisant les métaprotocoles SRC-20, SRC-101, SRC-721, guidés par la sagesse mythique de KEVIN et les valeurs communautaires"
 leoType: "homepage"
 culturalSignificance: "high"
 audience: "both"
