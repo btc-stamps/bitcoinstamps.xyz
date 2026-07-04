@@ -53,7 +53,7 @@ const REPO_ROOT = resolve(__dirname, '..')
 const DIST_DIR = resolve(process.argv[2] || process.env.DIST_DIR || join(REPO_ROOT, 'dist'))
 
 const SITE_ORIGIN = 'https://bitcoinstamps.xyz'
-const LOCALES = ['en', 'es', 'fr', 'zh', 'tr']
+const LOCALES = ['en', 'es', 'fr', 'zh', 'tr', 'pt', 'cs']
 
 // ---------------------------------------------------------------------------
 // Diagnostics accumulators
