@@ -11,7 +11,7 @@ description: İlk SRC-20 token'ının doğuşu ve Bitcoin Stamps topluluk maskot
 
 ### Protokol Öncesi Dönem
 
-2023'ün başında, Bitcoin ekosistemi **NFT ve token konularında** sınırlı seçeneklere sahipti. Ethereum'daki ERC-20 ve ERC-721 standartlarının Bitcoin karşılığı henüz mature değildi. **Mike in Space** ve ekibi, bu boşluğu fark etti.
+2023'ün başında, Bitcoin ekosistemi **NFT ve token konularında** sınırlı seçeneklere sahipti. Ethereum'daki ERC-20 ve ERC-721 standartlarının Bitcoin karşılığı henüz mature değildi. **mikeinspace** ve ekibi, bu boşluğu fark etti.
 
 **Temel İhtiyaç**:
 - Bitcoin'in güvenliği ile **kalıcı dijital varlıklar**
@@ -35,7 +35,7 @@ description: İlk SRC-20 token'ının doğuşu ve Bitcoin Stamps topluluk maskot
 13 Mart: Genesis block execution
 ```
 
-**Mike in Space'in Günlüğünden** *(Discord archive - 11 Mart 2023)*:
+**mikeinspace'in Günlüğünden** *(Discord archive - 11 Mart 2023)*:
 > "Yarın Bitcoin'de bir şeyler deneyeceğiz. Sadece technical bir test değil - kültürel bir moment olabilir. İlk SRC-20 token hangi ismi taşımalı?"
 
 ## KEVIN İsminin Doğuşu
@@ -48,7 +48,7 @@ description: İlk SRC-20 token'ının doğuşu ve Bitcoin Stamps topluluk maskot
 - **GENESIS** - "Başlangıç reference'ı için"
 - **KEVIN** - "Random but memorable"
 
-**Mike in Space'in Açıklaması** *(Twitter - 12 Mart 2023)*:
+**mikeinspace'in Açıklaması** *(Twitter - 12 Mart 2023)*:
 > "KEVIN neden? Çünkü bazen en sıradan isimler en büyük hikayeleri yaratır. Kevin bir everyman - bizim her birimizi temsil eder."
 
 ### Kültürel Referanslar
@@ -97,7 +97,7 @@ description: İlk SRC-20 token'ının doğuşu ve Bitcoin Stamps topluluk maskot
 
 **Discord Chat Explosion** *(13 Mart 2023, 21:42-22:00)*:
 ```
-[21:42:16] MikeInSpace: "IT'S ALIVE! KEVIN is born!"
+[21:42:16] mikeinspace: "IT'S ALIVE! KEVIN is born!"
 [21:42:18] ArtistAnon: "FIRST MINT ATTEMPT GO!"
 [21:42:22] DevUser: "Transaction confirmed, we did it!"
 [21:42:35] CryptoKat: "History in the making!"

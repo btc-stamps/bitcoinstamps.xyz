@@ -39,7 +39,7 @@ KEVIN, Bitcoin Stamps ekosisteminin **kültürel kalbi** ve **sembolüdür**. Ba
 - "KEVIN spiriti" - Yardımlaşma ve açıklık değeri
 - "KEVIN legacy" - Kalıcılık ve değer yaratma
 
-### 🚀 Mike in Space - Ekosistem Yaratıcısı
+### 🚀 mikeinspace - Ekosistem Yaratıcısı
 
 Bitcoin Stamps'ın yaratıcısı ve vizyoner lideri. Teknik deha ile sanatsal vizyon birleşimi.
 
@@ -151,7 +151,7 @@ Bitcoin Stamps topluluğunda hikayeler **sözlü gelenekle** aktarılır:
 
 ### 🏆 Kahramanlar ve Öncüler
 
-**Mike in Space - Yaratıcı**:
+**mikeinspace - Yaratıcı**:
 - Teknik vizyon ve sanatsal hassasiyetin birleşimi
 - Açık kaynak kültürü championship
 - Topluluk değerlerinin embodiment'ı

@@ -41,11 +41,11 @@ blockHeight: 788041
 
 <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> 的完整故事，照亮了原初三位一体的角色：
 
-- **<EntityMention entity="mikeinspace">Mikeinspace</EntityMention>**：最初的梦想家与远见创始人。他通过 <EntityMention entity="counterparty">Counterparty</EntityMention> 上的 Flooneybin 项目（一个基于 Joe Looney 图标的模因）与 <EntityMention entity="arwyn">Arwyn</EntityMention> 相遇。当 Mike 分享他的 Bitcoin Stamps 愿景时，<EntityMention entity="arwyn">Arwyn</EntityMention> 认识到其中的模因魔法潜力，进而与 <EntityMention entity="reinamora">Reinamora</EntityMention> 共同组成了三位一体，并在区块 779,652 创造了第一个 stamp。
+- **<EntityMention entity="mikeinspace">mikeinspace</EntityMention>**：最初的梦想家与远见创始人。他通过 <EntityMention entity="counterparty">Counterparty</EntityMention> 上的 Flooneybin 项目（一个基于 Joe Looney 图标的模因）与 <EntityMention entity="arwyn">Arwyn</EntityMention> 相遇。当 Mike 分享他的 Bitcoin Stamps 愿景时，<EntityMention entity="arwyn">Arwyn</EntityMention> 认识到其中的模因魔法潜力，进而与 <EntityMention entity="reinamora">Reinamora</EntityMention> 共同组成了三位一体，并在区块 779,652 创造了第一个 stamp。
 - **<EntityMention entity="arwyn">Arwyn</EntityMention>**：首先以 Stamp #4258（区块 783,718）将 <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> 带入生命，目睹了它幽灵般的复制，随后将其正式化为第一个 SRC-20 代币（Stamp #18,516，区块 788,041）。
 - **<EntityMention entity="reinamora">Reinamora</EntityMention>**：构建了技术协议架构，既支撑了 stamp 基础设施，也创立了赋予 <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> 代币形态的 SRC-20 标准。
 
-这一演变序列——从 <EntityMention entity="mikeinspace">Mikeinspace</EntityMention> 的最初梦想与团队组建，到 <EntityMention entity="arwyn">Arwyn</EntityMention> 的艺术与文化创造，再到 <EntityMention entity="reinamora">Reinamora</EntityMention> 的协议架构——展示了 <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> 如何从原初梦想家所编排的真正协作创新中涌现，而非出于投机设计。
+这一演变序列——从 <EntityMention entity="mikeinspace">mikeinspace</EntityMention> 的最初梦想与团队组建，到 <EntityMention entity="arwyn">Arwyn</EntityMention> 的艺术与文化创造，再到 <EntityMention entity="reinamora">Reinamora</EntityMention> 的协议架构——展示了 <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> 如何从原初梦想家所编排的真正协作创新中涌现，而非出于投机设计。
 
 ### 神话向导的诞生
 

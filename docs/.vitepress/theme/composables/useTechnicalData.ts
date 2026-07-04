@@ -152,10 +152,10 @@ export function useTechnicalData() {
         id: 'mikeinspace', 
         type: 'Person',
         names: {
-          en: 'Mikeinspace',
-          fr: 'Mikeinspace',
-          es: 'Mikeinspace',
-          zh: 'Mikeinspace'
+          en: 'mikeinspace',
+          fr: 'mikeinspace',
+          es: 'mikeinspace',
+          zh: 'mikeinspace'
         },
         descriptions: {
           en: 'Creator of the first official Bitcoin Stamp in block 779,652',

@@ -11,7 +11,7 @@ blockHeight: 788041
 
 # Valeurs communautaires Bitcoin Stamps : La fondation sacrée
 
-La communauté Bitcoin Stamps se tient comme un phare de valeurs authentiques dans l'espace blockchain. Construite sur la fondation sacrée établie par Mikeinspace, Arwyn et Reinamora (La Trinité Originelle) et guidée par la sagesse mythique de KEVIN, nos valeurs représentent un choix conscient de prioriser la communauté, la créativité et la conscience plutôt que le profit pur.
+La communauté Bitcoin Stamps se tient comme un phare de valeurs authentiques dans l'espace blockchain. Construite sur la fondation sacrée établie par mikeinspace, Arwyn et Reinamora (La Trinité Originelle) et guidée par la sagesse mythique de KEVIN, nos valeurs représentent un choix conscient de prioriser la communauté, la créativité et la conscience plutôt que le profit pur.
 
 ## La fondation philosophique : "Nous sommes tous Kevin"
 

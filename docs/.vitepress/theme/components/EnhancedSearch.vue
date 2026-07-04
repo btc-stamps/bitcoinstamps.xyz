@@ -117,7 +117,7 @@ const culturalEntities = [
   },
   {
     id: 'mikeinspace',
-    name: 'Mikeinspace',
+    name: 'mikeinspace',
     culturalSignificance: 'high',
     blockIntroduced: null
   }

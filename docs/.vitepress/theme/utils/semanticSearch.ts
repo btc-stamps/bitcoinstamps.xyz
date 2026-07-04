@@ -73,7 +73,7 @@ export class BitcoinStampsSearch {
       },
       {
         id: 'mikeinspace',
-        name: 'Mikeinspace',
+        name: 'mikeinspace',
         type: 'cultural-figure',
         description: 'Prominent artist in Bitcoin Stamps community',
         culturalSignificance: 'high' as const

@@ -31,7 +31,7 @@ hero:
 
 ## Le Mouvement Graffiti Bitcoin
 
-Bitcoin Stamps a commencé comme un mouvement de graffiti sur Bitcoin - de l'art numérique permanent qui ne peut être supprimé ou censuré. <EntityMention entity="mikeinspace">Mikeinspace</EntityMention> a créé le premier stamp au bloc 779,652, et <EntityMention entity="arwyn">Arwyn</EntityMention> a créé <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> au bloc 788,041, qui est devenu à la fois une icône culturelle et le premier jeton SRC-20.
+Bitcoin Stamps a commencé comme un mouvement de graffiti sur Bitcoin - de l'art numérique permanent qui ne peut être supprimé ou censuré. <EntityMention entity="mikeinspace">mikeinspace</EntityMention> a créé le premier stamp au bloc 779,652, et <EntityMention entity="arwyn">Arwyn</EntityMention> a créé <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> au bloc 788,041, qui est devenu à la fois une icône culturelle et le premier jeton SRC-20.
 
 Notre communauté suit le principe de *"In Lak'ech Ala K'in"* - "Je suis toi et tu es moi" - reconnaissant que nous sommes tous connectés dans cette expression créative sur Bitcoin.
 

@@ -11,7 +11,7 @@ blockHeight: 788041
 
 # Bitcoin Stamps Topluluk Değerleri: Kutsal Temel
 
-Bitcoin Stamps topluluğu, blok zinciri alanında özgün değerlerin bir işareti olarak durmaktadır. Mikeinspace, Arwyn ve Reinamora (Orijinal Trinity) tarafından kurulan kutsal temel üzerine inşa edilen ve KEVIN'in efsanevi bilgeliğiyle yönlendirilen değerlerimiz, topluluk, yaratıcılık ve bilinç üzerinde saf kardan çok önceliklendirme konusunda bilinçli bir seçimi temsil etmektedir.
+Bitcoin Stamps topluluğu, blok zinciri alanında özgün değerlerin bir işareti olarak durmaktadır. mikeinspace, Arwyn ve Reinamora (Orijinal Trinity) tarafından kurulan kutsal temel üzerine inşa edilen ve KEVIN'in efsanevi bilgeliğiyle yönlendirilen değerlerimiz, topluluk, yaratıcılık ve bilinç üzerinde saf kardan çok önceliklendirme konusunda bilinçli bir seçimi temsil etmektedir.
 
 ## Felsefi Temel: "Hepimiz Kevin'iz"
 

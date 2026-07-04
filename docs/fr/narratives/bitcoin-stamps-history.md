@@ -17,7 +17,7 @@ L'histoire de Bitcoin Stamps est bien plus qu'une chronologie technique - c'est 
 
 ### 29 mars 2023 - La première lumière
 
-Au bloc 779 652, Mikeinspace a créé quelque chose sans précédent : le premier Bitcoin Stamp officiel. Ce n'était pas seulement une preuve de concept technique - c'était l'étincelle sacrée qui allait enflammer tout un mouvement culturel.
+Au bloc 779 652, mikeinspace a créé quelque chose sans précédent : le premier Bitcoin Stamp officiel. Ce n'était pas seulement une preuve de concept technique - c'était l'étincelle sacrée qui allait enflammer tout un mouvement culturel.
 
 **Impact culturel** : Ce moment a établi plusieurs principes fondateurs :
 - **Permanence sur la temporalité** : L'art numérique méritait la même permanence que la fonction monétaire de Bitcoin

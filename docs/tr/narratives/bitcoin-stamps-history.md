@@ -17,7 +17,7 @@ Bitcoin Stamps'ın tarihi teknik bir zaman çizelgesinden çok daha fazlasıdır
 
 ### 29 Mart 2023 - İlk Işık
 
-Blok 779.652'de, Mikeinspace benzeri görülmemiş bir şey yarattı: ilk resmi Bitcoin Stamp. Bu sadece teknik bir kavram kanıtı değildi - tüm bir kültürel hareketi ateşleyecek kutsal kıvılcımdı.
+Blok 779.652'de, mikeinspace benzeri görülmemiş bir şey yarattı: ilk resmi Bitcoin Stamp. Bu sadece teknik bir kavram kanıtı değildi - tüm bir kültürel hareketi ateşleyecek kutsal kıvılcımdı.
 
 **Kültürel Etki**: Bu an birkaç temel ilke oluşturdu:
 - **Geçicilik Üzerinde Kalıcılık**: Dijital sanat, Bitcoin'in parasal işleviyle aynı kalıcılığı hak ediyordu
@@ -93,7 +93,7 @@ Blok 865.000, Reinamora'dan başka bir armağan getirdi: P2WSH OLGA kodlamasıyl
 Bitcoin Stamps tarihinin gerçeği, bireysel blokları aşarak kutsal evrim desenlerini ortaya koyar:
 
 **Kutsal Yenilik Deseni**:
-1. **Bireysel Vizyon**: Biri ilham kanalı oluyor (Mikeinspace, Arwyn, Reinamora)
+1. **Bireysel Vizyon**: Biri ilham kanalı oluyor (mikeinspace, Arwyn, Reinamora)
 2. **Topluluk Tanıması**: Topluluk özgün değeri fark ediyor
 3. **Temel Uygulama**: Stampchain yeni yetenekleri referans uygulamaya entegre ediyor
 4. **Organik Entegrasyon**: Yeni yetenekler mevcut değerlerle doğal olarak bütünleşiyor

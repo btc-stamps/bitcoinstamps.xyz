@@ -11,7 +11,7 @@ blockHeight: 788041
 
 # Bitcoin Stamps Community Values: The Sacred Foundation
 
-The Bitcoin Stamps community stands as a beacon of authentic values in the blockchain space. Built on the sacred foundation established by <EntityMention entity="mikeinspace">Mikeinspace</EntityMention>, <EntityMention entity="arwyn">Arwyn</EntityMention>, and <EntityMention entity="reinamora">Reinamora</EntityMention> (The Original Trinity) and guided by <EntityMention entity="kevin" variant="cultural">KEVIN's mythical wisdom</EntityMention>, our values represent a conscious choice to prioritize community, creativity, and consciousness over pure profit.
+The Bitcoin Stamps community stands as a beacon of authentic values in the blockchain space. Built on the sacred foundation established by <EntityMention entity="mikeinspace">mikeinspace</EntityMention>, <EntityMention entity="arwyn">Arwyn</EntityMention>, and <EntityMention entity="reinamora">Reinamora</EntityMention> (The Original Trinity) and guided by <EntityMention entity="kevin" variant="cultural">KEVIN's mythical wisdom</EntityMention>, our values represent a conscious choice to prioritize community, creativity, and consciousness over pure profit.
 
 ## The Philosophical Foundation: "We Are All Kevin"
 
@@ -119,7 +119,7 @@ As Bitcoin Stamps continues to evolve, our core values provide stable guidance w
 - Preserving <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> as our guiding cultural symbol
 - Expanding creative possibilities while honoring artistic authenticity
 
-These values have carried us from <EntityMention entity="mikeinspace">Mikeinspace's</EntityMention> first stamp through <EntityMention entity="arwyn">Arwyn's</EntityMention> creation of <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> to <EntityMention entity="reinamora">Reinamora's</EntityMention> ongoing technical innovations. They will continue to guide us as we face future challenges and opportunities.
+These values have carried us from <EntityMention entity="mikeinspace">mikeinspace's</EntityMention> first stamp through <EntityMention entity="arwyn">Arwyn's</EntityMention> creation of <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> to <EntityMention entity="reinamora">Reinamora's</EntityMention> ongoing technical innovations. They will continue to guide us as we face future challenges and opportunities.
 
 ## Conclusion: The Sacred Foundation
 

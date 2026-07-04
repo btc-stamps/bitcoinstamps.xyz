@@ -10,13 +10,13 @@ philosophy: "In Lak'ech Ala K'in - celebrating collective creativity"
 
 # Community Showcase: Bitcoin Stamps Artists & Projects
 
-The Bitcoin Stamps community represents the intersection of artistic vision and technological innovation, where creators embody the spirit of **"In Lak'ech Ala K'in"** – we are all connected in this creative journey. From the foundational work of <EntityMention entity="mikeinspace">Mikeinspace</EntityMention> to the cultural icon <EntityMention entity="kevin" variant="cultural">KEVIN </EntityMention> created by <EntityMention entity="arwyn">Arwyn</EntityMention>, our community showcases the power of decentralized creativity.
+The Bitcoin Stamps community represents the intersection of artistic vision and technological innovation, where creators embody the spirit of **"In Lak'ech Ala K'in"** – we are all connected in this creative journey. From the foundational work of <EntityMention entity="mikeinspace">mikeinspace</EntityMention> to the cultural icon <EntityMention entity="kevin" variant="cultural">KEVIN </EntityMention> created by <EntityMention entity="arwyn">Arwyn</EntityMention>, our community showcases the power of decentralized creativity.
 
 ## 🎨 Featured Artists
 
 ### The Original Trinity
 
-**<EntityMention entity="mikeinspace">Mikeinspace</EntityMention>** - *The Genesis Creator*
+**<EntityMention entity="mikeinspace">mikeinspace</EntityMention>** - *The Genesis Creator*
 - **Block 779,652**: Created the first official Bitcoin Stamp with iconic laser eyes pixel art
 - **Legacy**: Sparked the entire Bitcoin Stamps revolution
 - **Philosophy**: Proving that art belongs on Bitcoin's immutable ledger
