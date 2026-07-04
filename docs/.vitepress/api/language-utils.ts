@@ -20,17 +20,19 @@ import type {
  * Default language fallback order
  */
 export const LANGUAGE_FALLBACK: Record<SupportedLanguage, SupportedLanguage[]> = {
-  en: ['en', 'es', 'fr', 'zh', 'tr'],
-  es: ['es', 'en', 'fr', 'zh', 'tr'],
-  fr: ['fr', 'en', 'es', 'zh', 'tr'],
-  zh: ['zh', 'en', 'es', 'fr', 'tr'],
-  tr: ['tr', 'en', 'es', 'fr', 'zh']
+  en: ['en', 'es', 'fr', 'zh', 'tr', 'pt', 'cs'],
+  es: ['es', 'en', 'fr', 'zh', 'tr', 'pt', 'cs'],
+  fr: ['fr', 'en', 'es', 'zh', 'tr', 'pt', 'cs'],
+  zh: ['zh', 'en', 'es', 'fr', 'tr', 'pt', 'cs'],
+  tr: ['tr', 'en', 'es', 'fr', 'zh', 'pt', 'cs'],
+  pt: ['pt', 'en', 'es', 'fr', 'zh', 'tr', 'cs'],
+  cs: ['cs', 'en', 'es', 'fr', 'zh', 'tr', 'pt']
 }
 
 /**
  * Supported languages for the API
  */
-export const SUPPORTED_LANGUAGES: SupportedLanguage[] = ['en', 'es', 'fr', 'zh', 'tr']
+export const SUPPORTED_LANGUAGES: SupportedLanguage[] = ['en', 'es', 'fr', 'zh', 'tr', 'pt', 'cs']
 
 /**
  * Language names in their native script
@@ -40,7 +42,9 @@ export const LANGUAGE_NAMES: Record<SupportedLanguage, string> = {
   es: 'Español',
   fr: 'Français',
   zh: '中文',
-  tr: 'Türkçe'
+  tr: 'Türkçe',
+  pt: 'Português',
+  cs: 'Čeština'
 }
 
 /**
