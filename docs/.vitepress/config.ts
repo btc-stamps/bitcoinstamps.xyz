@@ -1459,7 +1459,7 @@ ${posts.map(p => `    <item>
       'name': 'Bitcoin Stamps Documentation',
       'url': baseUrl,
       'inLanguage': inLanguage, // GEO rec #4: per-page locale
-      'description': 'Official documentation for Bitcoin Stamps metaprotocols — permanent digital assets stored immutably on the Bitcoin UTXO set',
+      'description': 'Official documentation for Bitcoin Stamps metaprotocols: permanent digital assets stored immutably on the Bitcoin UTXO set',
       'about': {
         '@type': 'SoftwareApplication',
         'name': 'Bitcoin Stamps Metaprotocol',
@@ -1468,7 +1468,7 @@ ${posts.map(p => `    <item>
         'description': 'Bitcoin Stamps embed digital asset data directly into Bitcoin UTXO bare multisig outputs, ensuring permanent and immutable storage guaranteed by Bitcoin\'s global consensus',
         'featureList': [
           'Permanent storage in Bitcoin UTXO set',
-          'Immutable data — cannot be pruned or deleted',
+          'Immutable data that cannot be pruned or deleted',
           'Guaranteed availability through Bitcoin full nodes',
           'No reliance on external servers or IPFS',
           'Data persists as long as Bitcoin exists'
@@ -1940,6 +1940,17 @@ ${posts.map(p => `    <item>
   ignoreDeadLinks: true,
 
   head: [
+    // Typography: Geist Sans + Geist Mono (design/dark-tech homepage). Loaded
+    // additively via jsDelivr @fontsource CDN so no package.json dep is required;
+    // used by the custom StampsHome layout and the global --vp-font-family-* set
+    // in theme/style.css.
+    ['link', { rel: 'preconnect', href: 'https://cdn.jsdelivr.net', crossorigin: '' }],
+    ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.0.3/index.min.css' }],
+    ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.0.3/600.min.css' }],
+    ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/@fontsource/geist-sans@5.0.3/700.min.css' }],
+    ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/@fontsource/geist-mono@5.0.3/index.min.css' }],
+    ['link', { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/@fontsource/geist-mono@5.0.3/500.min.css' }],
+
     // Basic meta tags
     ['meta', { name: 'generator', content: 'LEO API System - Dynamic Bitcoin Stamps Documentation' }],
     ['meta', { name: 'keywords', content: 'bitcoin stamps, src-20, kevin token, metaprotocols, digital art, blockchain, nft, olga, src-101, src-721' }],

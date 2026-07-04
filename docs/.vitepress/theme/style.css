@@ -1,4 +1,10 @@
 :root {
+  /* Typography — Geist Sans + Geist Mono (design/dark-tech). Loaded via the
+     @fontsource CDN links added in config.ts head. Applied globally so the
+     VitePress navbar/shell match the custom homepage. */
+  --vp-font-family-base: "Geist Sans", "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --vp-font-family-mono: "Geist Mono", "JetBrains Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+
   /* Bitcoin Brand Colors - WCAG AA compliant */
   --vp-c-brand-1: #F7931A;              /* Bitcoin orange - primary */
   --vp-c-brand-2: #FFD700;              /* Bitcoin gold - secondary */
@@ -1368,10 +1374,37 @@ a:hover {
     border-top-width: 3px;
     border-top-style: solid;
   }
-  
+
   .VPFooter .message,
   .VPFooter .copyright {
     font-weight: 600;
   }
 }
+
+/* ===========================================================================
+   design/dark-tech homepage (layout: StampsHome, pageClass: stamps-home-page)
+   Blend the sticky VitePress navbar with the custom deep-black hero so there
+   is no color seam. Scoped to the homepage only; every other page keeps the
+   default shell. Both appearance modes stay clean. */
+.stamps-home-page {
+  --vp-c-bg: #FAFAFA;
+  --vp-c-bg-alt: #FFFFFF;
+  --vp-nav-bg-color: rgba(250, 250, 250, 0.82);
+}
+.dark .stamps-home-page {
+  --vp-c-bg: #0A0A0A;
+  --vp-c-bg-alt: #111111;
+  --vp-nav-bg-color: rgba(10, 10, 10, 0.82);
+}
+.stamps-home-page .VPNavBar {
+  background-color: var(--vp-nav-bg-color);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid #E5E5E5;
+}
+.dark .stamps-home-page .VPNavBar {
+  border-bottom: 1px solid #262626;
+}
+/* the custom layout renders its own footer; hide any default gutter */
+.stamps-home-page .VPContent { padding-bottom: 0; }
 
