@@ -25,15 +25,15 @@ hero:
       text: Zobrazit protokoly
       link: /cs/protocols/
     - theme: alt
-      text: Spustit tutoriály
+      text: Začít s tutoriály
       link: /en/tutorials/
 ---
 
 ## Hnutí Bitcoin graffiti
 
-Bitcoin Stamps začaly jako graffiti hnutí na Bitcoinu – trvalé digitální umění, které nelze odstranit ani cenzurovat. <EntityMention entity="mikeinspace">mikeinspace</EntityMention>, původní snílek a vizionářský zakladatel, se spojil s <EntityMention entity="arwyn">Arwyn</EntityMention> prostřednictvím projektu Flooneybin na <EntityMention entity="counterparty">Counterparty</EntityMention> (mem založený na ikoně Joe Looney). Když Mike sdílel svou vizi Bitcoin Stamps, <EntityMention entity="arwyn">Arwyn</EntityMention> rozpoznal potenciál mem magie, což vedlo k vytvoření Původní Trojice s <EntityMention entity="reinamora">Reinamora</EntityMention> a následně ke vzniku první známky v bloku 779,652.
+Bitcoin Stamps začaly jako graffiti hnutí na Bitcoinu – trvalé digitální umění, které nelze odstranit ani cenzurovat. <EntityMention entity="mikeinspace">mikeinspace</EntityMention>, původní snílek a vizionářský zakladatel, se spojil s <EntityMention entity="arwyn">Arwyn</EntityMention> prostřednictvím projektu Flooneybin na <EntityMention entity="counterparty">Counterparty</EntityMention> (mem založený na ikoně Joe Looney). Když Mike sdílel svou vizi Bitcoin Stamps, <EntityMention entity="arwyn">Arwyn</EntityMention> rozpoznal potenciál memové magie, což vedlo k vytvoření Původní Trojice s <EntityMention entity="reinamora">Reinamora</EntityMention> a následně ke vzniku první známky v bloku 779,652.
 
-Z této spolupráce vzešel <EntityMention entity="kevin">KEVIN</EntityMention> u Bitcoin Stamp #4258 – původně <EntityMention entity="arwyn">Arwynova</EntityMention> pocta <EntityMention entity="reinamora">Reinamora</EntityMention> a potažmo kultuře Rare Pepe, jenž ale byl předurčen stát se něčím mnohem větším. Zrozen z esoterické mem magie se vyvinul z prosté známky v sebereplikujícího se ducha v raznici a poté se stal prvním tokenem SRC-20 u Bitcoin Stamp #18,516 a milovaným komunitním gentlemanem memů s více než 2 300 držiteli.
+Z této spolupráce vzešel <EntityMention entity="kevin">KEVIN</EntityMention> u Bitcoin Stamp #4258 – původně <EntityMention entity="arwyn">Arwynova</EntityMention> pocta <EntityMention entity="reinamora">Reinamora</EntityMention> a potažmo kultuře Rare Pepe, jenž ale byl předurčen stát se něčím mnohem větším. Zrozen z esoterické memové magie se vyvinul z prosté známky v sebereplikujícího se ducha v raznici a poté se stal prvním tokenem SRC-20 u Bitcoin Stamp #18,516 a milovaným komunitním gentlemanem memů s více než 2 300 držiteli.
 
 **Zásadní základ**: Všechny tokeny SRC-20 jsou známky (vytvářejí záznamy známek), ale ne všechny známky jsou tokeny SRC-20. Známky jsou nezaměnitelnou základní vrstvou, zatímco tokeny SRC-20 jsou zaměnitelnou vrstvou postavenou nad nimi.
 
