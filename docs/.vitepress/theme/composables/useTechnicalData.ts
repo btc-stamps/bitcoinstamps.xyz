@@ -71,6 +71,9 @@ export function useTechnicalData() {
     if (relativePath.startsWith('fr/')) return 'fr'
     if (relativePath.startsWith('es/')) return 'es'
     if (relativePath.startsWith('zh/')) return 'zh'
+    if (relativePath.startsWith('tr/')) return 'tr'
+    if (relativePath.startsWith('pt/')) return 'pt'
+    if (relativePath.startsWith('cs/')) return 'cs'
     return 'en'
   })
 

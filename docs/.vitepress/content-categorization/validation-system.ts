@@ -509,7 +509,7 @@ export class ConsistencyValidator {
   private languages: string[];
   private results: ValidationResult;
 
-  constructor(languages: string[] = ['en', 'es', 'fr', 'zh']) {
+  constructor(languages: string[] = ['en', 'es', 'fr', 'zh', 'tr', 'pt', 'cs']) {
     this.languages = languages;
     this.results = this.initializeResults();
   }

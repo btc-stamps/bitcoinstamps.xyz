@@ -52,7 +52,7 @@ export type EntityRelationshipType =
 /**
  * Supported languages for multi-language API responses
  */
-export type SupportedLanguage = 'en' | 'es' | 'fr' | 'zh' | 'tr'
+export type SupportedLanguage = 'en' | 'es' | 'fr' | 'zh' | 'tr' | 'pt' | 'cs'
 
 /**
  * Multi-language text content interface
@@ -63,6 +63,8 @@ export interface MultiLangText {
   fr: string
   zh: string
   tr: string
+  pt: string
+  cs: string
 }
 
 /**
@@ -74,6 +76,8 @@ export interface MultiLangOptionalText {
   fr?: string
   zh?: string
   tr?: string
+  pt?: string
+  cs?: string
 }
 
 /**

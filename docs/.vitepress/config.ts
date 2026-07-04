@@ -99,8 +99,8 @@ function buildPersonSchema(author: AuthorData): Record<string, unknown> {
 // GEO rec #4 helpers (server-side schema enhancement)
 // ---------------------------------------------------------------------------
 
-/** Locale directory (en/es/fr/zh/tr) → BCP-47 tag for schema.org `inLanguage`. */
-const LOCALE_TO_BCP47: Record<string, string> = { en: 'en', es: 'es', fr: 'fr', zh: 'zh-CN', tr: 'tr' }
+/** Locale directory (en/es/fr/zh/tr/pt/cs) → BCP-47 tag for schema.org `inLanguage`. */
+const LOCALE_TO_BCP47: Record<string, string> = { en: 'en', es: 'es', fr: 'fr', zh: 'zh-CN', tr: 'tr', pt: 'pt', cs: 'cs' }
 
 /**
  * Breadcrumb slug → culturally-correct display casing. Breadcrumb names are
@@ -307,6 +307,46 @@ export default defineConfig({
         footer: {
           message: 'Bitcoin üzerinde dijital kültürü koruyan topluluk sahipli açık kaynak projesi',
           copyright: '© 2023-2026 Bitcoin Stamps Topluluğu. Dokümantasyon MIT lisansı altında.'
+        }
+      }
+    },
+    pt: {
+      label: 'Português',
+      lang: 'pt',
+      title: 'BITCOIN STAMPS',
+      description: 'Documentação oficial dos metaprotocolos Bitcoin Stamps e da plataforma de arte',
+      themeConfig: {
+        nav: [
+          { text: 'Guia', link: '/pt/guide/introduction' },
+          { text: 'Protocolos', link: '/pt/protocols/' },
+          { text: 'Whitepaper', link: '/en/whitepaper/' },
+          { text: 'Tutoriais', link: '/en/tutorials/' },
+          { text: 'Histórias', link: '/pt/narratives/' },
+          { text: 'Comunidade', link: '/en/community/' }
+        ],
+        footer: {
+          message: 'Projeto de código aberto pertencente à comunidade que preserva a cultura digital no Bitcoin',
+          copyright: '© 2023-2026 Comunidade Bitcoin Stamps. Documentação sob licença MIT.'
+        }
+      }
+    },
+    cs: {
+      label: 'Čeština',
+      lang: 'cs',
+      title: 'BITCOIN STAMPS',
+      description: 'Oficiální dokumentace metaprotokolů Bitcoin Stamps a umělecké platformy',
+      themeConfig: {
+        nav: [
+          { text: 'Průvodce', link: '/cs/guide/introduction' },
+          { text: 'Protokoly', link: '/cs/protocols/' },
+          { text: 'Whitepaper', link: '/en/whitepaper/' },
+          { text: 'Návody', link: '/en/tutorials/' },
+          { text: 'Příběhy', link: '/cs/narratives/' },
+          { text: 'Komunita', link: '/en/community/' }
+        ],
+        footer: {
+          message: 'Komunitní open-source projekt zachovávající digitální kulturu na Bitcoinu',
+          copyright: '© 2023-2026 Komunita Bitcoin Stamps. Dokumentace pod licencí MIT.'
         }
       }
     }
@@ -541,6 +581,40 @@ export default defineConfig({
                   selectText: 'seçmek için',
                   navigateText: 'gezinmek için',
                   closeText: 'kapatmak için'
+                }
+              }
+            }
+          },
+          pt: {
+            translations: {
+              button: {
+                buttonText: 'Pesquisar',
+                buttonAriaLabel: 'Pesquisar na documentação'
+              },
+              modal: {
+                noResultsText: 'Sem resultados para',
+                resetButtonTitle: 'Limpar pesquisa',
+                footer: {
+                  selectText: 'para selecionar',
+                  navigateText: 'para navegar',
+                  closeText: 'para fechar'
+                }
+              }
+            }
+          },
+          cs: {
+            translations: {
+              button: {
+                buttonText: 'Hledat',
+                buttonAriaLabel: 'Hledat v dokumentaci'
+              },
+              modal: {
+                noResultsText: 'Žádné výsledky pro',
+                resetButtonTitle: 'Vymazat hledání',
+                footer: {
+                  selectText: 'pro výběr',
+                  navigateText: 'pro navigaci',
+                  closeText: 'pro zavření'
                 }
               }
             }
@@ -965,6 +1039,88 @@ export default defineConfig({
         }
       ],
 
+      // Portuguese sidebar (pilot: core pages localized, others link to English)
+      '/pt/guide/': [
+        {
+          text: 'Primeiros passos',
+          items: [
+            { text: 'Introdução', link: '/pt/guide/introduction' },
+            { text: 'Começar', link: '/pt/guide/getting-started' },
+            { text: 'Economia (em inglês)', link: '/en/guide/economics' }
+          ]
+        }
+      ],
+      '/pt/protocols/': [
+        {
+          text: 'Visão geral dos protocolos',
+          items: [
+            { text: 'Todos os protocolos', link: '/pt/protocols/' }
+          ]
+        },
+        {
+          text: 'Protocolos principais',
+          items: [
+            { text: 'Tokens SRC-20 (em inglês)', link: '/en/protocols/src-20' },
+            { text: 'Nomes SRC-101 (em inglês)', link: '/en/protocols/src-101' },
+            { text: 'NFTs SRC-721 (em inglês)', link: '/en/protocols/src-721' },
+            { text: 'Codificação OLGA (em inglês)', link: '/en/protocols/olga' },
+            { text: 'Propostas de melhoria (em inglês)', link: '/en/protocols/sips' }
+          ]
+        }
+      ],
+      '/pt/narratives/': [
+        {
+          text: 'Histórias e Cultura',
+          items: [
+            { text: 'Visão geral das Histórias (em inglês)', link: '/en/narratives/' },
+            { text: 'História do Bitcoin Stamps (em inglês)', link: '/en/narratives/bitcoin-stamps-history' },
+            { text: 'A Origem de KEVIN', link: '/pt/narratives/kevin-origin' },
+            { text: 'Valores da Comunidade (em inglês)', link: '/en/narratives/community-values' }
+          ]
+        }
+      ],
+
+      // Czech sidebar (pilot: core pages localized, others link to English)
+      '/cs/guide/': [
+        {
+          text: 'Začínáme',
+          items: [
+            { text: 'Úvod', link: '/cs/guide/introduction' },
+            { text: 'Začínáme', link: '/cs/guide/getting-started' },
+            { text: 'Ekonomika (anglicky)', link: '/en/guide/economics' }
+          ]
+        }
+      ],
+      '/cs/protocols/': [
+        {
+          text: 'Přehled protokolů',
+          items: [
+            { text: 'Všechny protokoly', link: '/cs/protocols/' }
+          ]
+        },
+        {
+          text: 'Hlavní protokoly',
+          items: [
+            { text: 'Tokeny SRC-20 (anglicky)', link: '/en/protocols/src-20' },
+            { text: 'Názvy SRC-101 (anglicky)', link: '/en/protocols/src-101' },
+            { text: 'NFT SRC-721 (anglicky)', link: '/en/protocols/src-721' },
+            { text: 'Kódování OLGA (anglicky)', link: '/en/protocols/olga' },
+            { text: 'Návrhy na vylepšení (anglicky)', link: '/en/protocols/sips' }
+          ]
+        }
+      ],
+      '/cs/narratives/': [
+        {
+          text: 'Příběhy a Kultura',
+          items: [
+            { text: 'Přehled příběhů (anglicky)', link: '/en/narratives/' },
+            { text: 'Historie Bitcoin Stamps (anglicky)', link: '/en/narratives/bitcoin-stamps-history' },
+            { text: 'Původ KEVINa', link: '/cs/narratives/kevin-origin' },
+            { text: 'Hodnoty komunity (anglicky)', link: '/en/narratives/community-values' }
+          ]
+        }
+      ],
+
     },
 
     socialLinks: [
@@ -1025,7 +1181,7 @@ export default defineConfig({
       if (urlPath.includes('/protocols/')) return 'weekly'
       if (urlPath.includes('/guide/') || urlPath.includes('/tutorials/')) return 'monthly'
       if (urlPath.includes('/narratives/') || urlPath.includes('/community/')) return 'monthly'
-      if (urlPath === '/' || urlPath.match(/^\/(en|es|fr|zh|tr)\/$/)) return 'weekly'
+      if (urlPath === '/' || urlPath.match(/^\/(en|es|fr|zh|tr|pt|cs)\/$/)) return 'weekly'
       return 'monthly'
     }
 
@@ -1068,7 +1224,7 @@ export default defineConfig({
             // Determine priority
             let priority = '0.5'
             if (urlPath === '/') priority = '1.0'
-            else if (urlPath.match(/^\/(en|es|fr|zh|tr)\/$/)) priority = '0.9'
+            else if (urlPath.match(/^\/(en|es|fr|zh|tr|pt|cs)\/$/)) priority = '0.9'
             else if (urlPath.includes('/protocols/')) priority = '0.8'
             else if (urlPath.includes('/whitepaper/')) priority = '0.8'
             else if (urlPath.includes('/guide/')) priority = '0.7'
@@ -1251,7 +1407,7 @@ ${posts.map(p => `    <item>
     // locale whose source .md is absent (file parity is ~30/32) so we never
     // advertise a 404 alternate. Replaces the old site-wide links that pointed
     // every page at the locale roots.
-    const HREFLANG_LOCALES: Record<string, string> = { en: 'en', es: 'es', fr: 'fr', zh: 'zh-CN', tr: 'tr' }
+    const HREFLANG_LOCALES: Record<string, string> = { en: 'en', es: 'es', fr: 'fr', zh: 'zh-CN', tr: 'tr', pt: 'pt', cs: 'cs' }
     const pageLocale = relPath.split('/')[0]
     // GEO rec #4: BCP-47 language tag for this page, used as `inLanguage` on the
     // per-page schemas below (falls back to English for non-locale-rooted paths).
