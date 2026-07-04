@@ -237,6 +237,19 @@ export function validateAndNormalizeLanguage(lang: unknown): SupportedLanguage {
       case 'french':
       case 'français':
         return 'fr'
+      case 'tr-tr':
+      case 'turkish':
+      case 'türkçe':
+        return 'tr'
+      case 'pt-pt':
+      case 'pt-br':
+      case 'portuguese':
+      case 'português':
+        return 'pt'
+      case 'cs-cz':
+      case 'czech':
+      case 'čeština':
+        return 'cs'
       case 'english':
         return 'en'
       default:
