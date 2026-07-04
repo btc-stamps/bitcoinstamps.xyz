@@ -92,7 +92,9 @@ async function testLEOSystem() {
       join(__dirname, '../../dist/es/api/entities.json'),
       join(__dirname, '../../dist/fr/api/entities.json'),
       join(__dirname, '../../dist/zh/api/entities.json'),
-      join(__dirname, '../../dist/tr/api/entities.json')
+      join(__dirname, '../../dist/tr/api/entities.json'),
+      join(__dirname, '../../dist/pt/api/entities.json'),
+      join(__dirname, '../../dist/cs/api/entities.json')
     ]
     const entityCounts = []
     
