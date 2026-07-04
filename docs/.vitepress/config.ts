@@ -309,6 +309,46 @@ export default defineConfig({
           copyright: '© 2023-2026 Bitcoin Stamps Topluluğu. Dokümantasyon MIT lisansı altında.'
         }
       }
+    },
+    pt: {
+      label: 'Português',
+      lang: 'pt',
+      title: 'BITCOIN STAMPS',
+      description: 'Documentação oficial dos metaprotocolos Bitcoin Stamps e da plataforma de arte',
+      themeConfig: {
+        nav: [
+          { text: 'Guia', link: '/pt/guide/introduction' },
+          { text: 'Protocolos', link: '/pt/protocols/' },
+          { text: 'Whitepaper', link: '/en/whitepaper/' },
+          { text: 'Tutoriais', link: '/en/tutorials/' },
+          { text: 'Histórias', link: '/pt/narratives/' },
+          { text: 'Comunidade', link: '/en/community/' }
+        ],
+        footer: {
+          message: 'Projeto de código aberto pertencente à comunidade que preserva a cultura digital no Bitcoin',
+          copyright: '© 2023-2026 Comunidade Bitcoin Stamps. Documentação sob licença MIT.'
+        }
+      }
+    },
+    cs: {
+      label: 'Čeština',
+      lang: 'cs',
+      title: 'BITCOIN STAMPS',
+      description: 'Oficiální dokumentace metaprotokolů Bitcoin Stamps a umělecké platformy',
+      themeConfig: {
+        nav: [
+          { text: 'Průvodce', link: '/cs/guide/introduction' },
+          { text: 'Protokoly', link: '/cs/protocols/' },
+          { text: 'Whitepaper', link: '/en/whitepaper/' },
+          { text: 'Návody', link: '/en/tutorials/' },
+          { text: 'Příběhy', link: '/cs/narratives/' },
+          { text: 'Komunita', link: '/en/community/' }
+        ],
+        footer: {
+          message: 'Komunitní open-source projekt zachovávající digitální kulturu na Bitcoinu',
+          copyright: '© 2023-2026 Komunita Bitcoin Stamps. Dokumentace pod licencí MIT.'
+        }
+      }
     }
   },
   
