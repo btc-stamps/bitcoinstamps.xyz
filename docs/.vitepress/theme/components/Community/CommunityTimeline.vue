@@ -41,7 +41,7 @@
             </div>
             <div class="event-details" v-show="activeEvent === 'genesis'">
               <p class="event-description">
-                <strong>Mikeinspace</strong> creates the first Bitcoin Stamp, proving that Bitcoin 
+                <strong>mikeinspace</strong> creates the first Bitcoin Stamp, proving that Bitcoin 
                 could serve as an eternal canvas for artistic expression. This moment marks 
                 the birth of immutable art storage directly on the Bitcoin blockchain.
               </p>

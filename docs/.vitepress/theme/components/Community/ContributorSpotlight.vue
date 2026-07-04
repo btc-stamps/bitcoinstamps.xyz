@@ -197,14 +197,14 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 const contributors = [
   {
     id: 'mikeinspace',
-    name: 'Mikeinspace',
+    name: 'mikeinspace',
     title: 'The Genesis Creator',
     icon: '🎨',
     role: 'genesis',
     avatarClass: 'genesis-avatar',
     bgPattern: 'linear-gradient(135deg, rgba(247, 147, 26, 0.1) 0%, transparent 70%)',
     quote: 'Art should be eternal, not ephemeral. Bitcoin is the perfect canvas.',
-    story: 'In block 779,652, <strong>Mikeinspace</strong> proved that Bitcoin could be more than digital gold - it could be an eternal canvas for human creativity. This Genesis moment established the sacred foundation that every Bitcoin Stamp builds upon.',
+    story: 'In block 779,652, <strong>mikeinspace</strong> proved that Bitcoin could be more than digital gold - it could be an eternal canvas for human creativity. This Genesis moment established the sacred foundation that every Bitcoin Stamp builds upon.',
     badges: ['Genesis Creator', 'Protocol Pioneer', 'Visionary'],
     impact: [
       { label: 'Cultural Shift', value: 'Immense' },
@@ -286,7 +286,7 @@ const valueEmbodiments = [
     value: 'Artistic Authenticity',
     icon: '🎨',
     examples: [
-      { contributor: 'Mikeinspace', manifestation: 'Proved Bitcoin could be an eternal canvas' },
+      { contributor: 'mikeinspace', manifestation: 'Proved Bitcoin could be an eternal canvas' },
       { contributor: 'Arwyn', manifestation: 'Created art that became sacred community symbol' },
       { contributor: 'Community Artists', manifestation: 'Choose expression over speculation' }
     ]

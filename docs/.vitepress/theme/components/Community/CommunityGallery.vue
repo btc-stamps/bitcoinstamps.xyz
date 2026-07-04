@@ -47,7 +47,7 @@
               <span class="avatar-icon">🎨</span>
             </div>
             <div class="contributor-info">
-              <h3 class="contributor-name">Mikeinspace</h3>
+              <h3 class="contributor-name">mikeinspace</h3>
               <p class="contributor-role">The Innovator</p>
               <p class="contributor-significance">First Bitcoin Stamp • Block 779,652</p>
             </div>

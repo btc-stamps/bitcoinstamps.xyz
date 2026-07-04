@@ -266,7 +266,7 @@
             <span class="avatar-icon" aria-hidden="true">🎨</span>
           </div>
           <div class="contributor-info">
-            <h4 class="contributor-name">Mikeinspace</h4>
+            <h4 class="contributor-name">mikeinspace</h4>
             <p class="contributor-role">Genesis Creator</p>
             <div class="contribution-metric">
               <span class="metric-value">∞</span>
