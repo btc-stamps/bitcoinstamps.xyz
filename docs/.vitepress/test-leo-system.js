@@ -143,6 +143,8 @@ async function testLEOSystem() {
       { locale: 'es', path: join(__dirname, '../../dist/es/api/entities.json'), markers: ['querida', 'mascota', 'comunidad'] },
       { locale: 'fr', path: join(__dirname, '../../dist/fr/api/entities.json'), markers: ['mascotte', 'communautaire', 'culturel'] },
       { locale: 'zh', path: join(__dirname, '../../dist/zh/api/entities.json'), markers: ['吉祥物', '社区', '文化'] },
+      { locale: 'pt', path: join(__dirname, '../../dist/pt/api/entities.json'), markers: ['mascote', 'querida', 'comunidade'] },
+      { locale: 'cs', path: join(__dirname, '../../dist/cs/api/entities.json'), markers: ['maskot', 'komunit', 'kulturní'] },
     ]
 
     for (const { locale, path: filePath, markers } of checks) {
