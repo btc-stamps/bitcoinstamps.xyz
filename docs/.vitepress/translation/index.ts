@@ -31,7 +31,7 @@ const DEFAULT_CONFIG: TranslationManagementConfig = {
     'docs/.vitepress/api/',
     'docs/.vitepress/theme/composables/'
   ],
-  supportedLanguages: ['fr', 'es', 'zh', 'tr'],
+  supportedLanguages: ['fr', 'es', 'zh', 'tr', 'pt', 'cs'],
   culturalValidationLevel: 'strict',
   autoStart: true,
   apiEndpoints: true,
