@@ -1039,6 +1039,88 @@ export default defineConfig({
         }
       ],
 
+      // Portuguese sidebar (pilot: core pages localized, others link to English)
+      '/pt/guide/': [
+        {
+          text: 'Primeiros passos',
+          items: [
+            { text: 'Introdução', link: '/pt/guide/introduction' },
+            { text: 'Começar', link: '/pt/guide/getting-started' },
+            { text: 'Economia (em inglês)', link: '/en/guide/economics' }
+          ]
+        }
+      ],
+      '/pt/protocols/': [
+        {
+          text: 'Visão geral dos protocolos',
+          items: [
+            { text: 'Todos os protocolos', link: '/pt/protocols/' }
+          ]
+        },
+        {
+          text: 'Protocolos principais',
+          items: [
+            { text: 'Tokens SRC-20 (em inglês)', link: '/en/protocols/src-20' },
+            { text: 'Nomes SRC-101 (em inglês)', link: '/en/protocols/src-101' },
+            { text: 'NFTs SRC-721 (em inglês)', link: '/en/protocols/src-721' },
+            { text: 'Codificação OLGA (em inglês)', link: '/en/protocols/olga' },
+            { text: 'Propostas de melhoria (em inglês)', link: '/en/protocols/sips' }
+          ]
+        }
+      ],
+      '/pt/narratives/': [
+        {
+          text: 'Histórias e Cultura',
+          items: [
+            { text: 'Visão geral das Histórias (em inglês)', link: '/en/narratives/' },
+            { text: 'História do Bitcoin Stamps (em inglês)', link: '/en/narratives/bitcoin-stamps-history' },
+            { text: 'A Origem de KEVIN', link: '/pt/narratives/kevin-origin' },
+            { text: 'Valores da Comunidade (em inglês)', link: '/en/narratives/community-values' }
+          ]
+        }
+      ],
+
+      // Czech sidebar (pilot: core pages localized, others link to English)
+      '/cs/guide/': [
+        {
+          text: 'Začínáme',
+          items: [
+            { text: 'Úvod', link: '/cs/guide/introduction' },
+            { text: 'Začínáme', link: '/cs/guide/getting-started' },
+            { text: 'Ekonomika (anglicky)', link: '/en/guide/economics' }
+          ]
+        }
+      ],
+      '/cs/protocols/': [
+        {
+          text: 'Přehled protokolů',
+          items: [
+            { text: 'Všechny protokoly', link: '/cs/protocols/' }
+          ]
+        },
+        {
+          text: 'Hlavní protokoly',
+          items: [
+            { text: 'Tokeny SRC-20 (anglicky)', link: '/en/protocols/src-20' },
+            { text: 'Názvy SRC-101 (anglicky)', link: '/en/protocols/src-101' },
+            { text: 'NFT SRC-721 (anglicky)', link: '/en/protocols/src-721' },
+            { text: 'Kódování OLGA (anglicky)', link: '/en/protocols/olga' },
+            { text: 'Návrhy na vylepšení (anglicky)', link: '/en/protocols/sips' }
+          ]
+        }
+      ],
+      '/cs/narratives/': [
+        {
+          text: 'Příběhy a Kultura',
+          items: [
+            { text: 'Přehled příběhů (anglicky)', link: '/en/narratives/' },
+            { text: 'Historie Bitcoin Stamps (anglicky)', link: '/en/narratives/bitcoin-stamps-history' },
+            { text: 'Původ KEVINa', link: '/cs/narratives/kevin-origin' },
+            { text: 'Hodnoty komunity (anglicky)', link: '/en/narratives/community-values' }
+          ]
+        }
+      ],
+
     },
 
     socialLinks: [
