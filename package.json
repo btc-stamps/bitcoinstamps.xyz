@@ -11,6 +11,7 @@
     "lighthouse": "lhci autorun --config .lighthouserc.cjs",
     "test:leo-api": "node docs/.vitepress/test-leo-system.js",
     "test:jsonld": "node scripts/validate-jsonld.mjs",
+    "i18n:freshness": "node scripts/check-i18n-freshness.mjs",
     "test:translation": "node docs/.vitepress/test-translation-system.js",
     "test:comparisons-api": "node docs/.vitepress/test-comparisons-api.js",
     "build:with-test": "npm run test:leo-api && npm run test:translation && npm run test:comparisons-api && npm run docs:build",

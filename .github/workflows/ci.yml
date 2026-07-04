@@ -280,3 +280,51 @@ jobs:
       # mikeinspace lowercase). Schema-completeness gaps are warn-only.
       - name: Validate rendered JSON-LD structured data
         run: npm run test:jsonld
+
+  i18n-freshness:
+    name: i18n Freshness / Drift Gate (warn-only)
+    runs-on: ubuntu-latest
+
+    # WARN-ONLY, non-blocking. Surfaces localization drift — pages that fell behind the
+    # en source (MISSING / ABRIDGED / STALE / DIVERGENT) — so the silent freeze the i18n
+    # audit found (es/fr/zh/tr frozen at 2026-02-17 while en kept growing) cannot recur
+    # undetected. It NEVER fails the build: translations legitimately lag en, so a hard
+    # fail would block every PR. Reads source Markdown + git history only (no build), so
+    # it runs standalone and needs full history (fetch-depth: 0) for the staleness signal.
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      # scripts/check-i18n-freshness.mjs uses only Node built-ins + git (no npm install).
+      # Locales are auto-discovered from docs/<loc>/index.md, so pt/cs are covered the
+      # moment they land — no change to this job required.
+      - name: Check i18n freshness (warn-only)
+        run: |
+          set -o pipefail
+          # Human-readable report to the CI log.
+          npm run --silent i18n:freshness | tee i18n-freshness.txt
+
+          # Machine-readable pass for the annotation + job summary.
+          npm run --silent i18n:freshness -- --json > i18n-freshness.json
+          DRIFT=$(jq -r '.totalDrift' i18n-freshness.json)
+
+          {
+            echo "## 🌍 i18n freshness / drift gate (warn-only)"
+            echo ""
+            echo '```'
+            cat i18n-freshness.txt
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          if [ "$DRIFT" -gt 0 ]; then
+            echo "::warning title=i18n drift::${DRIFT} localized page(s) have drifted from the en source (MISSING/ABRIDGED/STALE/DIVERGENT). See the job summary. Non-blocking."
+          else
+            echo "✅ No i18n drift detected."
+          fi

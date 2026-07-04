@@ -67,6 +67,26 @@ This documentation features a custom VitePress theme with Bitcoin-inspired aesth
 - **SRC-721** - Recursion standard allowing stamps to reference and combine multiple stamps
 - **OLGA** - P2WSH encoding optimization for all protocols
 
+## 🌍 Translation Freshness Gate
+
+Non-English locales (`docs/es`, `docs/fr`, `docs/zh`, `docs/tr`, …) can silently
+fall behind the `docs/en` source as en is enriched. To surface that drift, CI runs a
+**warn-only** freshness gate:
+
+```bash
+npm run i18n:freshness          # human-readable per-locale drift report
+npm run i18n:freshness -- --json  # machine-readable report
+```
+
+For each en page it checks every locale counterpart and classifies it as `OK`,
+`MISSING`, `ABRIDGED` (materially fewer sections), `STALE` (abridged **and** en was
+git-modified much more recently), or `DIVERGENT` (a structurally different, usually
+much larger, tree). Locales are auto-discovered from `docs/<loc>/index.md`, so new
+languages are covered automatically. The gate (`scripts/check-i18n-freshness.mjs`,
+the `i18n-freshness` CI job) is **non-blocking** — translations legitimately lag the
+source, so it reports drift as a CI `::warning::` + job summary rather than failing
+the build.
+
 ## 🤝 Contributing
 
 We welcome contributions from both developers and artists! See our [contribution guidelines](/en/community/contributing) for details.
