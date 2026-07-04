@@ -1181,7 +1181,7 @@ export default defineConfig({
       if (urlPath.includes('/protocols/')) return 'weekly'
       if (urlPath.includes('/guide/') || urlPath.includes('/tutorials/')) return 'monthly'
       if (urlPath.includes('/narratives/') || urlPath.includes('/community/')) return 'monthly'
-      if (urlPath === '/' || urlPath.match(/^\/(en|es|fr|zh|tr)\/$/)) return 'weekly'
+      if (urlPath === '/' || urlPath.match(/^\/(en|es|fr|zh|tr|pt|cs)\/$/)) return 'weekly'
       return 'monthly'
     }
 
@@ -1224,7 +1224,7 @@ export default defineConfig({
             // Determine priority
             let priority = '0.5'
             if (urlPath === '/') priority = '1.0'
-            else if (urlPath.match(/^\/(en|es|fr|zh|tr)\/$/)) priority = '0.9'
+            else if (urlPath.match(/^\/(en|es|fr|zh|tr|pt|cs)\/$/)) priority = '0.9'
             else if (urlPath.includes('/protocols/')) priority = '0.8'
             else if (urlPath.includes('/whitepaper/')) priority = '0.8'
             else if (urlPath.includes('/guide/')) priority = '0.7'
