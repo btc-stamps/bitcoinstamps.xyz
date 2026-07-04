@@ -1407,7 +1407,7 @@ ${posts.map(p => `    <item>
     // locale whose source .md is absent (file parity is ~30/32) so we never
     // advertise a 404 alternate. Replaces the old site-wide links that pointed
     // every page at the locale roots.
-    const HREFLANG_LOCALES: Record<string, string> = { en: 'en', es: 'es', fr: 'fr', zh: 'zh-CN', tr: 'tr' }
+    const HREFLANG_LOCALES: Record<string, string> = { en: 'en', es: 'es', fr: 'fr', zh: 'zh-CN', tr: 'tr', pt: 'pt', cs: 'cs' }
     const pageLocale = relPath.split('/')[0]
     // GEO rec #4: BCP-47 language tag for this page, used as `inLanguage` on the
     // per-page schemas below (falls back to English for non-locale-rooted paths).
