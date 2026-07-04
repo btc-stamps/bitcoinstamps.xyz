@@ -362,6 +362,34 @@ export const CRYPTO_TERMINOLOGY: Record<SupportedLanguage, Record<string, string
     block: 'Blok',
     address: 'Adres',
     wallet: 'Cüzdan'
+  },
+  pt: {
+    bitcoin: 'Bitcoin',
+    blockchain: 'Blockchain',
+    token: 'Token',
+    stamps: 'Stamps',
+    protocol: 'Protocolo',
+    nft: 'NFT',
+    holder: 'Detentor',
+    transaction: 'Transação',
+    utxo: 'UTXO',
+    block: 'Bloco',
+    address: 'Endereço',
+    wallet: 'Carteira'
+  },
+  cs: {
+    bitcoin: 'Bitcoin',
+    blockchain: 'Blockchain',
+    token: 'Token',
+    stamps: 'Stamps',
+    protocol: 'Protokol',
+    nft: 'NFT',
+    holder: 'Držitel',
+    transaction: 'Transakce',
+    utxo: 'UTXO',
+    block: 'Blok',
+    address: 'Adresa',
+    wallet: 'Peněženka'
   }
 }
 
