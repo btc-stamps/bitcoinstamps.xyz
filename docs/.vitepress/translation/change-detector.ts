@@ -373,16 +373,16 @@ export class ChangeDetector {
   private determineAffectedLanguages(filePath: string): string[] {
     // If it's an English source file, all other languages are affected
     if (filePath.startsWith('docs/en/')) {
-      return ['fr', 'es', 'zh', 'tr']
+      return ['fr', 'es', 'zh', 'tr', 'pt', 'cs']
     }
 
     // If it's a system file or API, all languages are affected
     if (filePath.includes('.vitepress/') || filePath.includes('config.')) {
-      return ['en', 'fr', 'es', 'zh', 'tr']
+      return ['en', 'fr', 'es', 'zh', 'tr', 'pt', 'cs']
     }
 
     // Default to common languages
-    return ['fr', 'es', 'zh', 'tr']
+    return ['fr', 'es', 'zh', 'tr', 'pt', 'cs']
   }
 
   /**
