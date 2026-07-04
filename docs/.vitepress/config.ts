@@ -1,5 +1,8 @@
 import { defineConfig } from 'vitepress'
 import { generateStaticAPIFiles, validateAPIConsistency } from './api/endpoints.ts'
+// GEO rec #4: canonical entity data (single source) for server-side DefinedTerm
+// glossary + entity `mentions` — never duplicate/hardcode entity text here.
+import { getAllMultilingualProtocols, getAllMultilingualEntities } from './api/multilingual-data.ts'
 import path from 'path'
 import fs from 'fs/promises'
 import { readFileSync, existsSync } from 'fs'
@@ -90,6 +93,111 @@ function buildPersonSchema(author: AuthorData): Record<string, unknown> {
   if (author.role) person['jobTitle'] = author.role
   if (sameAs.length > 0) person['sameAs'] = sameAs
   return person
+}
+
+// ---------------------------------------------------------------------------
+// GEO rec #4 helpers (server-side schema enhancement)
+// ---------------------------------------------------------------------------
+
+/** Locale directory (en/es/fr/zh/tr) → BCP-47 tag for schema.org `inLanguage`. */
+const LOCALE_TO_BCP47: Record<string, string> = { en: 'en', es: 'es', fr: 'fr', zh: 'zh-CN', tr: 'tr' }
+
+/**
+ * Breadcrumb slug → culturally-correct display casing. Breadcrumb names are
+ * derived by title-casing URL slugs, which would otherwise render the founder
+ * slug as "Mikeinspace" (violates the always-lowercase rule) and "Kevin" instead
+ * of the required "KEVIN". These entity slugs keep their canonical casing.
+ */
+const BREADCRUMB_SEGMENT_CASING: Record<string, string> = {
+  mikeinspace: 'mikeinspace',
+  kevin: 'KEVIN',
+}
+
+/** Pick localized text from a MultiLangText-like value, falling back to English. */
+function pickLang(value: unknown, locale: string): string {
+  if (typeof value === 'string') return value
+  if (value && typeof value === 'object') {
+    const m = value as Record<string, string>
+    return m[locale] || m.en || ''
+  }
+  return ''
+}
+
+/**
+ * Build DefinedTerm entries for the protocol/entity glossary, sourced from the
+ * canonical multilingual entity data (never hardcoded), localized to `locale`.
+ * Includes the four protocols (SRC-20/721/101/OLGA) plus core ecosystem concepts
+ * (Bitcoin Stamps/STAMP, KEVIN, Counterparty, Stampchain) and tools; person and
+ * block-milestone entities are surfaced elsewhere (mentions), not as glossary terms.
+ */
+function buildGlossaryTerms(locale: string, termSetUrl: string): Record<string, unknown>[] {
+  const terms: Record<string, unknown>[] = []
+  const seen = new Set<string>()
+  const push = (id: string, name: unknown, description: unknown) => {
+    const nm = pickLang(name, locale)
+    if (!nm || seen.has(id)) return
+    seen.add(id)
+    const term: Record<string, unknown> = {
+      '@type': 'DefinedTerm',
+      'name': nm,
+      'inDefinedTermSet': termSetUrl,
+    }
+    const desc = pickLang(description, locale)
+    if (desc) term['description'] = desc
+    terms.push(term)
+  }
+  try {
+    for (const p of getAllMultilingualProtocols()) push(p.id, p.name, p.description)
+    const ents = getAllMultilingualEntities()
+    const conceptTerms = (ents.concepts || []).filter(
+      (e: any) => e && e.type !== 'person' && !String(e.id).startsWith('block-'),
+    )
+    for (const e of [...conceptTerms, ...(ents.tools || [])]) push((e as any).id, (e as any).name, (e as any).description)
+  } catch {
+    // entity data unavailable — emit an empty glossary rather than failing the build
+  }
+  return terms
+}
+
+/**
+ * Build schema.org entity `mentions` from a page's frontmatter (`relatedEntities`
+ * or `mentions` — a list of entity ids). Ids that resolve to canonical entity data
+ * carry the correct localized name + type + URL; unresolved ids degrade to a plain
+ * Thing. This is fully server-side (frontmatter is available in transformHead — no
+ * page-content regex needed) and reuses the canonical store (no duplication).
+ */
+function buildMentions(ids: unknown, locale: string, baseUrl: string): Record<string, unknown>[] {
+  if (!Array.isArray(ids) || ids.length === 0) return []
+  const lookup: Record<string, { name: string; url?: string; type: string }> = {}
+  try {
+    for (const p of getAllMultilingualProtocols()) {
+      lookup[p.id] = { name: pickLang(p.name, locale), url: `${baseUrl}/${locale}/protocols/${p.id}`, type: 'DefinedTerm' }
+    }
+    const ents = getAllMultilingualEntities()
+    for (const e of [...(ents.concepts || []), ...(ents.tools || [])]) {
+      const ent = e as any
+      const isPerson = ent.type === 'person'
+      const url = typeof ent.url === 'string' ? `${baseUrl}/${locale}${ent.url}` : undefined
+      lookup[ent.id] = { name: pickLang(ent.name, locale), url, type: isPerson ? 'Person' : 'Thing' }
+    }
+  } catch {
+    // fall through — unresolved ids become plain Things below
+  }
+  const out: Record<string, unknown>[] = []
+  const seen = new Set<string>()
+  for (const raw of ids) {
+    const id = String(raw)
+    if (seen.has(id)) continue
+    seen.add(id)
+    const hit = lookup[id]
+    const mention: Record<string, unknown> = {
+      '@type': hit?.type || 'Thing',
+      'name': hit?.name || id,
+    }
+    if (hit?.url) mention['url'] = hit.url
+    out.push(mention)
+  }
+  return out
 }
 
 export default defineConfig({
@@ -1145,6 +1253,9 @@ ${posts.map(p => `    <item>
     // every page at the locale roots.
     const HREFLANG_LOCALES: Record<string, string> = { en: 'en', es: 'es', fr: 'fr', zh: 'zh-CN', tr: 'tr' }
     const pageLocale = relPath.split('/')[0]
+    // GEO rec #4: BCP-47 language tag for this page, used as `inLanguage` on the
+    // per-page schemas below (falls back to English for non-locale-rooted paths).
+    const inLanguage = LOCALE_TO_BCP47[pageLocale] || 'en'
     if (pageLocale in HREFLANG_LOCALES) {
       const sub = relPath.slice(pageLocale.length + 1) // e.g. "protocols/src-20.md" | "index.md"
       let enHref: string | null = null
@@ -1180,12 +1291,18 @@ ${posts.map(p => `    <item>
     const authorData = authorSlug ? _authorsMap[authorSlug] : null
     const personSchema = authorData ? buildPersonSchema(authorData) : null
 
+    // GEO rec #4: entity `mentions` from frontmatter (`relatedEntities` or `mentions`),
+    // resolved against the canonical entity store. Fully server-side (no page-content
+    // regex). Attached to the primary content schema for each page type below.
+    const pageMentions = buildMentions(fm.relatedEntities ?? fm.mentions, pageLocale, baseUrl)
+
     // Base website schema injected on every page
     const websiteSchema = {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
       'name': 'Bitcoin Stamps Documentation',
       'url': baseUrl,
+      'inLanguage': inLanguage, // GEO rec #4: per-page locale
       'description': 'Official documentation for Bitcoin Stamps metaprotocols — permanent digital assets stored immutably on the Bitcoin UTXO set',
       'about': {
         '@type': 'SoftwareApplication',
@@ -1324,6 +1441,8 @@ ${posts.map(p => `    <item>
       const protocolKey = Object.keys(protocolSchemas).find(k => relPath.includes(`/${k}`))
       if (protocolKey && protocolSchemas[protocolKey]) {
         const protocolSchema = protocolSchemas[protocolKey]
+        protocolSchema['inLanguage'] = inLanguage // GEO rec #4
+        if (pageMentions.length > 0) protocolSchema['mentions'] = pageMentions // GEO rec #4
         if (personSchema) protocolSchema['author'] = personSchema
         headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(protocolSchema)])
       } else {
@@ -1351,8 +1470,31 @@ ${posts.map(p => `    <item>
           'publisher': _organizationSchema,
           'isPartOf': { '@type': 'WebSite', 'url': baseUrl }
         }
+        genericProtocolSchema['inLanguage'] = inLanguage // GEO rec #4
+        if (pageMentions.length > 0) genericProtocolSchema['mentions'] = pageMentions // GEO rec #4
         if (personSchema) genericProtocolSchema['author'] = personSchema
         headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(genericProtocolSchema)])
+      }
+    }
+
+    // GEO rec #4: DefinedTermSet glossary for protocol-overview / glossary pages.
+    // Terms (SRC-20/721/101/OLGA + STAMP and core ecosystem concepts) are sourced
+    // from the canonical multilingual entity data, localized to the page — never
+    // hardcoded. Gives answer engines a machine-readable protocol glossary.
+    if (leoType === 'protocol-overview' || leoType === 'glossary') {
+      const glossaryTerms = buildGlossaryTerms(pageLocale, canonicalUrl)
+      if (glossaryTerms.length > 0) {
+        const definedTermSetSchema: Record<string, unknown> = {
+          '@context': 'https://schema.org',
+          '@type': 'DefinedTermSet',
+          'name': pageTitle,
+          'description': pageDesc,
+          'url': canonicalUrl,
+          'inLanguage': inLanguage,
+          'hasDefinedTerm': glossaryTerms
+        }
+        if (pageMentions.length > 0) definedTermSetSchema['mentions'] = pageMentions
+        headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(definedTermSetSchema)])
       }
     }
 
@@ -1397,6 +1539,8 @@ ${posts.map(p => `    <item>
         'publisher': _organizationSchema,
         'isPartOf': { '@type': 'WebSite', 'url': baseUrl }
       }
+      guideSchema['inLanguage'] = inLanguage // GEO rec #4
+      if (pageMentions.length > 0) guideSchema['mentions'] = pageMentions // GEO rec #4
       if (personSchema) guideSchema['author'] = personSchema
       headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(guideSchema)])
     }
@@ -1420,7 +1564,7 @@ ${posts.map(p => `    <item>
       }
       // Use full Person schema when author data is available, else minimal Person with name only
       const blogAuthorSchema = personSchema ?? { '@type': 'Person', 'name': authorName }
-      const blogPostingSchema = {
+      const blogPostingSchema: Record<string, unknown> = {
         '@context': 'https://schema.org',
         '@type': 'BlogPosting',
         'headline': pageTitle,
@@ -1428,12 +1572,14 @@ ${posts.map(p => `    <item>
         'dateModified': dateModified,
         'author': blogAuthorSchema,
         'description': pageDesc,
+        'inLanguage': inLanguage, // GEO rec #4
         'mainEntityOfPage': {
           '@type': 'WebPage',
           '@id': canonicalUrl
         },
         'publisher': _organizationSchema
       }
+      if (pageMentions.length > 0) blogPostingSchema['mentions'] = pageMentions // GEO rec #4
       headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(blogPostingSchema)])
     }
 
@@ -1457,8 +1603,63 @@ ${posts.map(p => `    <item>
         'publisher': _organizationSchema,
         'isPartOf': { '@type': 'WebSite', 'url': baseUrl }
       }
+      narrativeSchema['inLanguage'] = inLanguage // GEO rec #4
+      if (pageMentions.length > 0) narrativeSchema['mentions'] = pageMentions // GEO rec #4
       if (personSchema) narrativeSchema['author'] = personSchema
       headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(narrativeSchema)])
+    }
+
+    // GEO rec #4: HowTo schema for tutorial pages. Steps are derived server-side
+    // from the source markdown's level-2 (## ) headings (frontmatter carries no
+    // explicit step list); estimated time is emitted from frontmatter
+    // (estimatedTime / totalTime / timeRequired) when present. Index/listing pages
+    // are skipped. Tutorials previously received only WebSite + BreadcrumbList.
+    if ((leoType === 'tutorial' || relPath.includes('/tutorials/')) && !relPath.endsWith('/index.md')) {
+      let howToSteps: Record<string, unknown>[] = []
+      try {
+        const md = readFileSync(path.resolve(__dirname, '..', relPath), 'utf-8')
+        const body = md.replace(/^---[\s\S]*?\n---\s*/, '') // strip frontmatter
+        const headings = [...body.matchAll(/^##\s+(.+?)\s*$/gm)].map(h => h[1])
+        howToSteps = headings
+          .map((rawHeading, i) => {
+            const name = rawHeading
+              .replace(/<[^>]+>/g, '')                // strip HTML / EntityMention tags
+              .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1') // markdown links → text
+              .replace(/[*_`#]/g, '')                  // markdown emphasis / code
+              .replace(/[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}\u{2190}-\u{21FF}\u{2B00}-\u{2BFF}]/gu, '') // emoji/symbols
+              .replace(/\bkevin\b/gi, 'KEVIN')         // cultural rule: KEVIN ALL-CAPS
+              .replace(/\bMikeinspace\b/g, 'mikeinspace') // cultural rule: lowercase founder
+              .trim()
+            const anchor = name.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, '-').replace(/^-+|-+$/g, '')
+            return {
+              '@type': 'HowToStep',
+              'position': i + 1,
+              'name': name,
+              'url': anchor ? `${canonicalUrl}#${anchor}` : canonicalUrl
+            }
+          })
+          .filter(s => (s.name as string).length > 0)
+      } catch {
+        // source markdown unreadable — emit HowTo without steps rather than failing
+      }
+      const howToSchema: Record<string, unknown> = {
+        '@context': 'https://schema.org',
+        '@type': 'HowTo',
+        'name': pageTitle,
+        'description': pageDesc,
+        'url': canonicalUrl,
+        'inLanguage': inLanguage,
+        'datePublished': gitDatePublished,
+        'dateModified': gitDateModified,
+        'publisher': _organizationSchema,
+        'isPartOf': { '@type': 'WebSite', 'url': baseUrl }
+      }
+      const estTime = (fm.estimatedTime || fm.totalTime || fm.timeRequired) as string | undefined
+      if (estTime) howToSchema['totalTime'] = estTime // ISO-8601 duration when authored
+      if (howToSteps.length > 0) howToSchema['step'] = howToSteps
+      if (pageMentions.length > 0) howToSchema['mentions'] = pageMentions
+      if (personSchema) howToSchema['author'] = personSchema
+      headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(howToSchema)])
     }
 
     // BreadcrumbList JSON-LD schema for all non-homepage pages
@@ -1471,6 +1672,10 @@ ${posts.map(p => `    <item>
     // Only add breadcrumb when there are content segments (skip homepage and locale roots)
     if (contentSegments.length > 0) {
       const formatSegmentName = (segment: string): string => {
+        // Cultural rule: entity slugs keep their canonical casing (mikeinspace stays
+        // lowercase, kevin → KEVIN) instead of being title-cased from the URL slug.
+        const culturalOverride = BREADCRUMB_SEGMENT_CASING[segment.toLowerCase()]
+        if (culturalOverride) return culturalOverride
         // Convert kebab-case to Title Case words (e.g. 'src-20' → 'Src-20', 'protocols' → 'Protocols')
         return segment
           .split('-')
@@ -1536,6 +1741,7 @@ ${posts.map(p => `    <item>
           'name': pageTitle,
           'description': pageDesc,
           'url': canonicalUrl,
+          'inLanguage': inLanguage, // GEO rec #4
           'mainEntity': faqMainEntity
         }
         headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(faqPageSchema)])
@@ -1547,7 +1753,8 @@ ${posts.map(p => `    <item>
         '@type': 'FAQPage',
         'name': pageTitle,
         'description': pageDesc,
-        'url': canonicalUrl
+        'url': canonicalUrl,
+        'inLanguage': inLanguage // GEO rec #4
       }
       headTags.push(['script', { type: 'application/ld+json' }, JSON.stringify(faqPageSchema)])
     }
