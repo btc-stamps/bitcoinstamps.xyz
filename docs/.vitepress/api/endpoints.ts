@@ -175,7 +175,7 @@ export async function generateStaticAPIFiles(outDir: string) {
   const fs = await import('fs/promises')
   const path = await import('path')
   
-  const locales: SupportedLanguage[] = ['en', 'fr', 'es', 'zh', 'tr']
+  const locales: SupportedLanguage[] = ['en', 'fr', 'es', 'zh', 'tr', 'pt', 'cs']
   
   try {
     // Generate main API directory (English/default)
