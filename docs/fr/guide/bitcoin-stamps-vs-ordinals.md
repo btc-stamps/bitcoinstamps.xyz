@@ -21,7 +21,7 @@ Cette comparaison technique examine les différences architecturales fondamental
 Bitcoin Stamps utilise **l'encodage P2WSH (Pay-to-Witness-Script-Hash)** et les sorties de transactions Bitcoin traditionnelles :
 
 - **Emplacement de stockage** : Données intégrées directement dans l'ensemble UTXO
-- **Critique au consensus** : Fait partie des exigences de validation centrale de Bitcoin
+- **Critique pour le consensus** : Fait partie des exigences de validation centrale de Bitcoin
 - **Exigences des nœuds** : TOUS les nœuds complets doivent stocker ces données en permanence
 - **Élagage** : Impossible à élaguer - requis pour la validation des transactions
 - **Base du protocole** : Construit sur le <EntityMention entity="counterparty">protocole Counterparty</EntityMention> (établi en 2014)
@@ -67,7 +67,7 @@ Superposition de la théorie ordinale (pas du consensus) :
 Chaque nœud complet Bitcoin stocke les données Bitcoin Stamps parce que :
 
 1. **Exigence de l'ensemble UTXO** : Nécessaire à la validation des transactions
-2. **Critique au consensus** : Requis pour déterminer les transactions valides
+2. **Critique pour le consensus** : Requis pour déterminer les transactions valides
 3. **Fonctionnement du réseau** : Essentiel au fonctionnement du réseau Bitcoin
 4. **Archive permanente** : Survit indéfiniment avec le réseau Bitcoin
 

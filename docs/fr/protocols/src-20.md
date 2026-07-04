@@ -131,7 +131,7 @@ Les Bitcoin Stamps adoptent l'approche inverse. En intégrant les données dans 
 
 ### Implication Pratique
 
-N'importe quel registre de jeton SRC-20 peut être récupéré depuis **n'importe quel nœud complet Bitcoin, indéfiniment**. Il n'y a aucune dépendance à une infrastructure d'archives spécialisée, à des services de pinning IPFS ou à des couches de disponibilité de données tierces. Le réseau Bitcoin lui-même sert de couche de stockage permanente et incensurable pour toutes les données de jetons SRC-20.
+N'importe quel registre de jeton SRC-20 peut être récupéré depuis **n'importe quel nœud complet Bitcoin, indéfiniment**. Il n'y a aucune dépendance à une infrastructure d'archives spécialisée, à des services de pinning IPFS ou à des couches de disponibilité de données tierces. Le réseau Bitcoin lui-même sert de couche de stockage permanente et non censurable pour toutes les données de jetons SRC-20.
 
 ## Ressources
 

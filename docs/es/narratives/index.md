@@ -5,7 +5,7 @@ leoType: "narrative"
 culturalSignificance: "high"
 audience: "both"
 mentions: ["kevin", "community-values", "original-trinity", "cultural-heritage"]
-philosophy: "In Lak'ech Ala K'in - somos todos Kevin"
+philosophy: "In Lak'ech Ala K'in - todos somos Kevin"
 ---
 
 # Narrativas Culturales de Bitcoin Stamps

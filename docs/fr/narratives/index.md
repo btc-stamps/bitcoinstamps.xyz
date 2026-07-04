@@ -75,7 +75,7 @@ La communauté Bitcoin Stamps accueille les contributions à notre documentation
 - **Visions d'avenir** : Idées sur la façon dont notre culture peut continuer à évoluer
 
 ### Lignes directrices pour les contributions culturelles
-1. **L'authenticité d'abord** : Partagez des expériences et des perspectives genuines
+1. **L'authenticité d'abord** : Partagez des expériences et des perspectives authentiques
 2. **Bénéfice communautaire** : Considérez comment votre histoire sert l'ensemble de la communauté
 3. **Précision historique** : Vérifiez les dates, les numéros de bloc et les détails techniques
 4. **Sensibilité culturelle** : Honorez la sagesse ancienne et les valeurs communautaires que nous avons adoptées

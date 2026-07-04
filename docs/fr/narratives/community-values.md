@@ -98,7 +98,7 @@ Lorsque des désaccords surviennent - et ils surviennent, comme dans toute commu
 
 La réflexion économique de Bitcoin Stamps priorise la durabilité plutôt que la spéculation :
 
-- **Création de valeur** : Se concentrer sur la construction d'une utilité genuine plutôt que sur une rareté artificielle
+- **Création de valeur** : Se concentrer sur la construction d'une utilité authentique plutôt que sur une rareté artificielle
 - **Distribution équitable** : Les opportunités doivent être accessibles à tous les membres de la communauté
 - **Prospérité à long terme** : La croissance durable bénéficie à tous plus que les cycles d'expansion et de récession
 - **Richesse communautaire** : Le succès individuel doit contribuer à la prospérité collective
