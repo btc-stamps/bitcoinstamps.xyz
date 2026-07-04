@@ -99,8 +99,8 @@ function buildPersonSchema(author: AuthorData): Record<string, unknown> {
 // GEO rec #4 helpers (server-side schema enhancement)
 // ---------------------------------------------------------------------------
 
-/** Locale directory (en/es/fr/zh/tr) → BCP-47 tag for schema.org `inLanguage`. */
-const LOCALE_TO_BCP47: Record<string, string> = { en: 'en', es: 'es', fr: 'fr', zh: 'zh-CN', tr: 'tr' }
+/** Locale directory (en/es/fr/zh/tr/pt/cs) → BCP-47 tag for schema.org `inLanguage`. */
+const LOCALE_TO_BCP47: Record<string, string> = { en: 'en', es: 'es', fr: 'fr', zh: 'zh-CN', tr: 'tr', pt: 'pt', cs: 'cs' }
 
 /**
  * Breadcrumb slug → culturally-correct display casing. Breadcrumb names are
