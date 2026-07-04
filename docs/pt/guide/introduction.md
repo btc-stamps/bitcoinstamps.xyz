@@ -20,7 +20,7 @@ Os Bitcoin Stamps são **ativos digitais permanentes** armazenados diretamente n
 - **Verdadeira Permanência**: Os dados vivem para sempre no Bitcoin, a rede mais segura do mundo
 - **Sem Dependências**: Não depende de sites, servidores ou armazenamento de terceiros
 - **Fortalecimento da Rede**: Cada transação de stamp apoia os mineradores do Bitcoin através das taxas
-- **Valores da Comunidade**: Orientado pelos princípios de justiça e criatividade autêntica do <EntityMention entity="kevin" variant="cultural">KEVIN's</EntityMention>
+- **Valores da Comunidade**: Orientado pelos princípios de justiça e criatividade autêntica do <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention>
 - **Inovação Técnica**: Metaprotocolos avançados construídos sobre o sólido fundamento do Bitcoin
 
 ## Arquitetura Técnica: Permanência Baseada em UTXO
@@ -94,4 +94,4 @@ Ligue-se a outros criadores e programadores do ecossistema Bitcoin Stamps
 
 ---
 
-*Bitcoin Stamps: Onde a arte permanente se encontra com a força da rede Bitcoin, orientada pelo espírito de criatividade autêntica e valores comunitários do <EntityMention entity="kevin" variant="cultural">KEVIN's</EntityMention>.*
+*Bitcoin Stamps: Onde a arte permanente se encontra com a força da rede Bitcoin, orientada pelo espírito de criatividade autêntica e valores comunitários do <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention>.*

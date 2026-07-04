@@ -38,7 +38,7 @@ Zaměnitelné tokeny na Bitcoinu. <EntityMention entity="kevin" variant="cultura
 ### Jména SRC-101
 Lidsky čitelná jména pro bitcoinové adresy a zdroje pomocí <EntityMention entity="src-101" variant="technical">protokolu SRC-101</EntityMention>.
 
-**Vlastnosti**: Decentralizovaná resoluce, mapování adres, čitelný systém identity
+**Vlastnosti**: Decentralizovaný překlad jmen, mapování adres, čitelný systém identity
 
 **[Zjistěte více o SRC-101 →](/en/protocols/src-101)**
 

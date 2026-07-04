@@ -94,7 +94,7 @@ Quando cria Bitcoin Stamps, não está apenas a fazer arte — está a participa
 - **Paga aos Mineradores do Bitcoin**: A sua criatividade financia diretamente a segurança da rede
 - **Vive para Sempre**: A sua arte torna-se parte da história permanente do Bitcoin
 - **Fortalece o Bitcoin**: A sua participação ajuda a proteger a rede para todos
-- **Constrói Comunidade**: Junte-se à família de artistas de Bitcoin do <EntityMention entity="kevin" variant="cultural">KEVIN's</EntityMention>
+- **Constrói Comunidade**: Junte-se à família de artistas de Bitcoin do <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention>
 
 ### Fluxo de Trabalho Simples para Artistas
 1. **Prepare a Sua Arte**: 24x24 píxeis, formato PNG/GIF para uma eficiência de rede ótima
@@ -222,7 +222,7 @@ Cada Bitcoin Stamp que cria proporciona benefícios mensuráveis:
 4. **Legitimidade Profissional**: A utilidade real contraria as críticas de "inchaço da blockchain"
 
 ### Impacto Comunitário e Cultural
-- **Valores do <EntityMention entity="kevin" variant="cultural">KEVIN's</EntityMention>**: Justiça, descentralização e expressão criativa
+- **Valores do <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention>**: Justiça, descentralização e expressão criativa
 - **Consciência da Rede**: Comunidade instruída sobre a economia e a segurança do Bitcoin
 - **Reconhecimento Profissional**: Os Bitcoin Stamps a ganhar aceitação institucional
 - **Crescimento Futuro**: Modelo sustentável para a saúde da comunidade e da rede a longo prazo
@@ -232,7 +232,7 @@ Cada Bitcoin Stamp que cria proporciona benefícios mensuráveis:
 ### Caminho de Aprendizagem para um Impacto Contínuo
 1. **[Guia de Economia do Bitcoin](/en/guide/economics)** → Compreenda o seu impacto na rede
 2. **[Integração para Programadores](/en/tutorials/api-integration)** → Construa aplicações que fortalecem a rede com a <EntityMention entity="stampchain">Stampchain</EntityMention>
-3. **[Comunidade de Artistas](/en/community/)** → Junte-se à família criativa e consciente da rede do <EntityMention entity="kevin" variant="cultural">KEVIN's</EntityMention>
+3. **[Comunidade de Artistas](/en/community/)** → Junte-se à família criativa e consciente da rede do <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention>
 4. **[Recursos da Comunidade](/en/community/resources)** → Aceda a ferramentas para programadores e a dados de rede
 
 ### Envolvimento Comunitário com Consciência Económica
@@ -264,6 +264,6 @@ Está agora pronto para participar nos Bitcoin Stamps — onde cada ato criativo
 
 **O seu primeiro stamp não é apenas arte — é a sua contribuição para a segurança, a força económica e o futuro cultural do Bitcoin.**
 
-Através da infraestrutura fundacional da <EntityMention entity="stampchain">Stampchain's</EntityMention>, está ligado à visão original dos criadores dos Bitcoin Stamps e ao ecossistema autêntico que eles construíram para apoiar artistas, programadores e a comunidade Bitcoin em geral.
+Através da infraestrutura fundacional da <EntityMention entity="stampchain">Stampchain</EntityMention>, está ligado à visão original dos criadores dos Bitcoin Stamps e ao ecossistema autêntico que eles construíram para apoiar artistas, programadores e a comunidade Bitcoin em geral.
 
 Comece a criar, comece a contribuir, comece a fortalecer o fundamento do Bitcoin para as gerações vindouras.

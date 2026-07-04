@@ -10,7 +10,7 @@ protocols: ["src-20", "src-101", "src-721", "olga"]
 
 # Protocolos do Bitcoin Stamps
 
-Suite completa de metaprotocolos que permitem ativos digitais permanentes, tokens e serviços diretamente no Bitcoin. Começou com o primeiro stamp do <EntityMention entity="mikeinspace">mikeinspace's</EntityMention> no bloco 779,652 e com o <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> como o primeiro token SRC-20 no bloco 788,041.
+Suite completa de metaprotocolos que permitem ativos digitais permanentes, tokens e serviços diretamente no Bitcoin. Começou com o primeiro stamp do <EntityMention entity="mikeinspace">mikeinspace</EntityMention> no bloco 779,652 e com o <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> como o primeiro token SRC-20 no bloco 788,041.
 
 ## Arquitetura do Protocolo
 

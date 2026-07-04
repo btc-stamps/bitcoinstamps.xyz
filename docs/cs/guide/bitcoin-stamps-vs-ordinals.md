@@ -40,7 +40,7 @@ Ordinals/Inscriptions používají **segmenty svědeckých dat** transakcí SegW
 ### Účetní model Bitcoinu
 Bitcoin funguje na **modelu UTXO (Unspent Transaction Output)**, nikoli na sledování jednotlivých satoshi:
 
-- **UTXO jsou kontejnery**: Uchovávají množství bitcoinu (měřená v satoshi)
+- **UTXO jsou kontejnery**: Uchovávají množství bitcoinu (měřené v satoshi)
 - **Žádné jednotlivé saty**: Satoshi jsou účetní jednotky, nikoli samostatné sledovatelné objekty  
 - **Validace sítě**: Uzly Bitcoinu validují částky UTXO, nikoli „historie satů“
 - **Omezení teorie Ordinals**: Přisuzuje umělý význam neexistujícím jednotlivým satům
@@ -117,7 +117,7 @@ interface OrdinalSat {
 **Výzvy:**
 - Složité sledování stavu napříč všemi transakcemi
 - Problémy s fragmentací UTXO
-- Nejednoznačnost „umístění“ satu ve víc­evstupových transakcích
+- Nejednoznačnost „umístění“ satu ve vícevstupových transakcích
 - Nekonsensuální požadavky na sledování
 
 ## Analýza nákladů a efektivity

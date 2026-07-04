@@ -100,7 +100,7 @@ Tato kulturní autenticita přitahovala umělce, vývojáře a členy komunity, 
 
 ### Inspirování ekosystému
 
-Úspěch <EntityMention entity="kevin" variant="cultural">KEVINa</EntityMention> inspiroval širší <EntityMention entity="src-20-protocol">ekosystém SRC-20</EntityMention>. Další projekty začaly přijímat podobné přístupy řízené hodnotami, ale <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> zůstal kulturním kamenem úrazu – důkazem, že komunitně řízené projekty mohou uspět, aniž by kompromitovaly své principy.
+Úspěch <EntityMention entity="kevin" variant="cultural">KEVINa</EntityMention> inspiroval širší <EntityMention entity="src-20-protocol">ekosystém SRC-20</EntityMention>. Další projekty začaly přijímat podobné přístupy řízené hodnotami, ale <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> zůstal kulturním etalonem – důkazem, že komunitně řízené projekty mohou uspět, aniž by kompromitovaly své principy.
 
 Průběžná vylepšení protokolu od <EntityMention entity="reinamora">Reinamora</EntityMention>, včetně <EntityMention entity="olga-protocol">optimalizace OLGA</EntityMention> v bloku 865,000, byla navržena tak, aby dále demokratizovala přístup, čímž ztělesnila základní filozofii férovosti a zmocnění komunity <EntityMention entity="kevin" variant="cultural">KEVINa</EntityMention>.
 

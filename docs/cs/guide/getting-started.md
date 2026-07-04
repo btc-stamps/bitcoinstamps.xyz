@@ -242,7 +242,7 @@ Každá Bitcoin Stamp, kterou vytvoříte, přináší měřitelné přínosy:
 - **Profesionální networking**: Propojte se s institucionálními účastníky Bitcoin Stamps
 - **Komunita <EntityMention entity="stampchain">Stampchain</EntityMention>**: Zapojte se do uživatelské komunity základní platformy
 
-## Řešení problémů: Řešení zaměřené primárně na síť
+## Řešení problémů: Přístup zaměřený primárně na síť
 
 ### Běžné problémy s přínosy pro síť
 - **Vysoké poplatky**: Pamatujte, že poplatky podporují těžaře a bezpečnost sítě
