@@ -1946,7 +1946,18 @@ ${posts.map(p => `    <item>
     ['meta', { name: 'author', content: 'Bitcoin Stamps Community' }],
     ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }],
     ['meta', { name: 'theme-color', content: '#ff6b35' }],
-    
+
+    // Editorial typography (design/homepage-spike): served via Google Fonts,
+    // already allowlisted by the site CSP (style-src fonts.googleapis.com,
+    // font-src fonts.gstatic.com). Fraunces = display serif for hero/headings,
+    // Manrope = geometric sans body/UI, JetBrains Mono = meta/numeric (tabular).
+    ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
+    ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
+    ['link', {
+      rel: 'stylesheet',
+      href: 'https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap'
+    }],
+
     // Favicon and PWA manifest
     ['link', { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],

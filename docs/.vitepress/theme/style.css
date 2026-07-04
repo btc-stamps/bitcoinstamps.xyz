@@ -557,12 +557,9 @@ h4, h5, h6 {
   position: relative;
 }
 
+/* design/homepage-spike: emoji decoration removed (editorial no-emoji rule). */
 .kevin-wisdom-text::before {
-  content: '🦆';
-  position: absolute;
-  left: -2rem;
-  opacity: 0.6;
-  animation: globalKevinPulse 3s ease-in-out infinite;
+  content: none;
 }
 
 /* Community card base styles */
@@ -650,14 +647,10 @@ h4, h5, h6 {
   position: relative;
 }
 
+/* design/homepage-spike: emoji decoration removed (editorial no-emoji rule).
+ * The left accent border already communicates "sacred" significance. */
 .cultural-significance-sacred::before {
-  content: '✨';
-  position: absolute;
-  left: -0.5rem;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.2rem;
-  animation: globalKevinPulse 2s ease-in-out infinite;
+  content: none;
 }
 
 /* Bitcoin Stamps community timeline styling */
@@ -1313,11 +1306,16 @@ a:hover {
   flex-wrap: wrap;
 }
 
-/* Community badge in footer */
+/* Community badge in footer — design/homepage-spike: emoji heart replaced with
+ * a small squared accent mark in the single brand accent (editorial no-emoji rule). */
 .VPFooter .copyright::before {
-  content: '🧡';
-  font-size: 1rem;
-  filter: brightness(1.2);
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--vp-c-brand-1);
+  opacity: 0.85;
 }
 
 /* Footer links styling */
@@ -1373,5 +1371,442 @@ a:hover {
   .VPFooter .copyright {
     font-weight: 600;
   }
+}
+
+/* ==========================================================================
+ * EDITORIAL HOMEPAGE REDESIGN  (branch: design/homepage-spike)
+ * --------------------------------------------------------------------------
+ * Premium editorial minimalism: warm monochrome canvas, serif display type
+ * paired with a geometric sans body, a single considered accent (the existing
+ * Bitcoin orange), an asymmetric bento grid, and subtle scroll-entry motion.
+ *
+ * Scope discipline:
+ *   - Font-family + warm light-canvas tokens are set globally (lowest-risk,
+ *     highest-impact upgrade; applies to all 7 locales automatically).
+ *   - All heavier editorial treatment is scoped under `.VPHome` so interior
+ *     documentation pages are untouched.
+ *   - EN-only `.home-*` structure lives in docs/en/index.md; other locales get
+ *     the same restyled hero + warm canvas and fall back cleanly to the
+ *     default home-doc rendering (no bento markup required).
+ * ========================================================================== */
+
+:root {
+  /* Editorial type stacks. Manrope (geometric sans) deliberately avoids the
+   * banned Inter/Roboto/Open Sans defaults; Fraunces is the display serif. */
+  --vp-font-family-base: 'Manrope', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --vp-font-family-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --ed-font-display: 'Fraunces', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+
+  /* Warm monochrome neutrals. */
+  --ed-canvas: #FBFBFA;
+  --ed-canvas-2: #F7F6F3;
+  --ed-surface: #FFFFFF;
+  --ed-surface-2: #F9F9F8;
+  --ed-border: #EAEAEA;
+  --ed-border-soft: rgba(0, 0, 0, 0.06);
+  --ed-ink: #1A1A1A;      /* off-black, never pure #000 */
+  --ed-ink-2: #2F3437;
+  --ed-muted: #6B6864;    /* warm secondary — AA on the warm canvas */
+  --ed-accent: var(--vp-c-brand-1);   /* Bitcoin orange, the ONE accent */
+
+  /* Muted / desaturated pastel used for tags + the foundation callout. */
+  --ed-pastel-amber-bg: #FBF3DB;
+  --ed-pastel-amber-tx: #8A5A00;
+}
+
+/* Warm the light canvas globally (subtle; keeps WCAG AA). Dark mode is left
+ * intentionally on its existing neutral palette per the brief. */
+:root {
+  --vp-c-bg: var(--ed-canvas);
+  --vp-c-bg-alt: var(--ed-canvas-2);
+  --vp-c-bg-elv: var(--ed-surface);
+  --vp-c-divider: var(--ed-border);
+  --vp-c-text-2: #55524E;   /* warm charcoal, ~7:1 on canvas */
+  --vp-c-text-3: #6B6864;   /* warm muted, ~4.6:1 on canvas */
+}
+
+/* --------------------------------------------------------------------------
+ * HERO  (applies to all locales — same hero frontmatter shape)
+ * ------------------------------------------------------------------------ */
+
+/* Generous macro-whitespace + max-width container. */
+.VPHome .VPHero {
+  padding-top: clamp(48px, 8vw, 104px);
+  padding-bottom: clamp(40px, 6vw, 80px);
+}
+.VPHome .VPHero .container {
+  max-width: 1200px;
+}
+
+/* Display headline: retire the gold gradient in favour of a solid editorial
+ * serif in warm off-black. Higher specificity beats the base `.VPHero .name`. */
+.VPHome .VPHero .name.clip,
+.VPHome .VPHero .name {
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  -webkit-text-fill-color: currentColor;
+  color: var(--ed-ink);
+  font-family: var(--ed-font-display);
+  font-weight: 600;
+  font-optical-sizing: auto;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+}
+.dark .VPHome .VPHero .name.clip,
+.dark .VPHome .VPHero .name {
+  color: #F4F1EC;
+}
+
+.VPHome .VPHero .text {
+  font-family: var(--ed-font-display);
+  font-weight: 400;
+  color: var(--ed-muted);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  margin-top: 0.15em;
+}
+.dark .VPHome .VPHero .text { color: #B8B4AD; }
+
+.VPHome .VPHero .tagline {
+  font-family: var(--vp-font-family-base);
+  color: var(--vp-c-text-2);
+  font-weight: 450;
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  line-height: 1.6;
+  max-width: 46ch;
+  text-wrap: pretty;
+  margin-top: 1.25rem;
+}
+
+/* A single restrained accent detail: a short orange rule above the headline. */
+.VPHome .VPHero .main::before {
+  content: '';
+  display: block;
+  width: 44px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--ed-accent);
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+
+/* Buttons — flat, crisp, editorial. Primary = solid ink; accent reserved for
+ * the alt button's hover. Scoped to home so interior CTAs keep brand orange. */
+.VPHome .VPButton.brand {
+  background: var(--ed-ink);
+  border-color: var(--ed-ink);
+  color: #FFFFFF;
+  font-weight: 600;
+  border-radius: 6px;
+  box-shadow: none;
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), background 0.2s ease, box-shadow 0.2s ease;
+}
+.VPHome .VPButton.brand:hover {
+  background: #333333;
+  border-color: #333333;
+  color: #FFFFFF;
+  transform: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+.VPHome .VPButton.brand:active { transform: scale(0.98); }
+.dark .VPHome .VPButton.brand {
+  background: #F4F1EC;
+  border-color: #F4F1EC;
+  color: #1A1A1A;
+}
+.dark .VPHome .VPButton.brand:hover {
+  background: #FFFFFF;
+  border-color: #FFFFFF;
+  color: #1A1A1A;
+}
+
+.VPHome .VPButton.alt {
+  background: transparent;
+  border: 1px solid var(--ed-border);
+  color: var(--ed-ink-2);
+  font-weight: 550;
+  border-radius: 6px;
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, color 0.2s ease;
+}
+.VPHome .VPButton.alt:hover {
+  border-color: var(--ed-accent);
+  color: var(--ed-accent);
+  background: transparent;
+}
+.VPHome .VPButton.alt:active { transform: scale(0.98); }
+.dark .VPHome .VPButton.alt {
+  border-color: rgba(255, 255, 255, 0.16);
+  color: #D8D4CD;
+}
+
+/* Warm ambient depth behind the hero: static, low-opacity, non-interactive. */
+.VPHome {
+  position: relative;
+}
+.VPHome::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 620px;
+  background:
+    radial-gradient(60% 60% at 78% 8%, rgba(247, 147, 26, 0.05), transparent 70%),
+    radial-gradient(50% 50% at 12% 4%, rgba(247, 147, 26, 0.035), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.dark .VPHome::before {
+  background:
+    radial-gradient(60% 60% at 78% 8%, rgba(247, 147, 26, 0.10), transparent 70%),
+    radial-gradient(50% 50% at 12% 4%, rgba(247, 147, 26, 0.06), transparent 70%);
+}
+.VPHome .VPHero,
+.VPHome .vp-doc { position: relative; z-index: 1; }
+
+/* --------------------------------------------------------------------------
+ * HOME DOCUMENT CONTENT  (scoped; EN carries the richer `.home-*` structure)
+ * ------------------------------------------------------------------------ */
+
+.VPHome .vp-doc.container {
+  max-width: 1200px;
+  padding-top: 8px;
+}
+
+/* Editorial headings on the home doc: serif, tight, warm ink (not orange). */
+.VPHome .vp-doc h2 {
+  font-family: var(--ed-font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--ed-ink);
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  border-top: none;
+  margin-top: 0;
+  padding-top: 0;
+  text-wrap: balance;
+}
+.dark .VPHome .vp-doc h2 { color: #F4F1EC; }
+
+.VPHome .vp-doc h3 {
+  font-family: var(--vp-font-family-base);
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--ed-ink-2);
+  font-size: 1.15rem;
+}
+.dark .VPHome .vp-doc h3 { color: #E7E3DC; }
+
+.VPHome .vp-doc p { line-height: 1.7; }
+
+/* Section rhythm: large, optically-balanced vertical spacing. */
+.VPHome .home-section {
+  padding: clamp(40px, 6vw, 76px) 0 clamp(8px, 1vw, 16px);
+  border-top: 1px solid var(--ed-border);
+}
+.dark .VPHome .home-section { border-top-color: rgba(255, 255, 255, 0.08); }
+.VPHome .home-section:first-of-type { border-top: none; }
+
+.VPHome .home-eyebrow {
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ed-muted);
+  margin: 0 0 0.75rem;
+}
+
+.VPHome .home-lede {
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+  line-height: 1.65;
+  color: var(--vp-c-text-1);
+  max-width: 62ch;
+  text-wrap: pretty;
+}
+
+/* Foundation callout — desaturated pale-amber, left accent rule, flat. */
+.VPHome .home-callout {
+  margin: 1.75rem 0 0;
+  padding: 1.25rem 1.5rem;
+  background: var(--ed-pastel-amber-bg);
+  border: 1px solid rgba(138, 90, 0, 0.15);
+  border-left: 3px solid var(--ed-accent);
+  border-radius: 10px;
+  color: #4a4a4a;
+  line-height: 1.65;
+}
+.VPHome .home-callout strong { color: var(--ed-pastel-amber-tx); }
+.dark .VPHome .home-callout {
+  background: rgba(247, 147, 26, 0.07);
+  border-color: rgba(247, 147, 26, 0.22);
+  border-left-color: var(--ed-accent);
+  color: var(--vp-c-text-2);
+}
+.dark .VPHome .home-callout strong { color: var(--vp-c-brand-2-dark); }
+
+/* Monospace facts strip — verified block heights / stamp numbers, tabular. */
+.VPHome .home-facts {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  background: var(--ed-border);
+  border: 1px solid var(--ed-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.dark .VPHome .home-facts {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+.VPHome .home-fact {
+  background: var(--ed-surface);
+  padding: 1.25rem 1.25rem 1.15rem;
+}
+.dark .VPHome .home-fact { background: var(--vp-c-bg-elv); }
+.VPHome .home-fact-num {
+  display: block;
+  font-family: var(--vp-font-family-mono);
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
+  color: var(--ed-ink);
+}
+.dark .VPHome .home-fact-num { color: #F4F1EC; }
+.VPHome .home-fact-label {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: var(--ed-muted);
+}
+
+/* Asymmetric bento grid (6-col). Not three equal cards: rows mix span-3 and
+ * span-6 to break the generic feature-row rhythm. */
+.VPHome .home-bento {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+  margin: 1.75rem 0 0;
+}
+.VPHome .home-card {
+  grid-column: span 3;
+  border: 1px solid var(--ed-border);
+  border-radius: 12px;
+  padding: clamp(24px, 3vw, 34px);
+  background: var(--ed-surface);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.dark .VPHome .home-card {
+  background: var(--vp-c-bg-elv);
+  border-color: rgba(255, 255, 255, 0.09);
+}
+.VPHome .home-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border-color: var(--ed-border);
+}
+.VPHome .home-card--full { grid-column: span 6; }
+.VPHome .home-card > h3:first-child { margin-top: 0; }
+
+/* Clean editorial link rows inside cards. */
+.VPHome .home-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+}
+.VPHome .home-card li {
+  padding: 0.6rem 0;
+  border-top: 1px solid var(--ed-border-soft);
+  line-height: 1.5;
+  color: var(--vp-c-text-2);
+}
+.dark .VPHome .home-card li { border-top-color: rgba(255, 255, 255, 0.07); }
+.VPHome .home-card li:first-child { border-top: none; }
+.VPHome .home-card li a {
+  text-decoration: none;
+  color: var(--ed-ink-2);
+  font-weight: 550;
+}
+.dark .VPHome .home-card li a { color: #E7E3DC; }
+.VPHome .home-card li a:hover { color: var(--ed-accent); }
+
+/* Closing community block. */
+.VPHome .home-closing {
+  padding: clamp(40px, 6vw, 76px) 0 clamp(48px, 7vw, 88px);
+  border-top: 1px solid var(--ed-border);
+}
+.dark .VPHome .home-closing { border-top-color: rgba(255, 255, 255, 0.08); }
+.VPHome .home-motto {
+  font-family: var(--ed-font-display);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.5rem, 3.2vw, 2.1rem);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--ed-ink);
+  max-width: 24ch;
+}
+.dark .VPHome .home-motto { color: #F4F1EC; }
+.VPHome .home-motto-gloss {
+  margin-top: 0.5rem;
+  color: var(--ed-muted);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 860px) {
+  .VPHome .home-bento { gap: 14px; }
+  .VPHome .home-card,
+  .VPHome .home-card--full { grid-column: span 6; }
+  .VPHome .home-facts { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* --------------------------------------------------------------------------
+ * SCROLL-ENTRY MOTION  (progressive enhancement)
+ * Markup ships visible. Only `html.reveal-enabled` (set by JS when motion is
+ * allowed) arms the hidden start state, so no-JS / reduced-motion users always
+ * see content. Animates transform + opacity only.
+ * ------------------------------------------------------------------------ */
+html.reveal-enabled .home-reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+html.reveal-enabled .home-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+/* Staggered cascade for grid children. */
+html.reveal-enabled .home-reveal .home-card,
+html.reveal-enabled .home-reveal .home-fact {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+html.reveal-enabled .home-reveal.is-visible .home-card,
+html.reveal-enabled .home-reveal.is-visible .home-fact {
+  opacity: 1;
+  transform: none;
+}
+html.reveal-enabled .home-reveal.is-visible .home-card:nth-child(2),
+html.reveal-enabled .home-reveal.is-visible .home-fact:nth-child(2) { transition-delay: 80ms; }
+html.reveal-enabled .home-reveal.is-visible .home-card:nth-child(3),
+html.reveal-enabled .home-reveal.is-visible .home-fact:nth-child(3) { transition-delay: 160ms; }
+html.reveal-enabled .home-reveal.is-visible .home-fact:nth-child(4) { transition-delay: 240ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  html.reveal-enabled .home-reveal,
+  html.reveal-enabled .home-reveal .home-card,
+  html.reveal-enabled .home-reveal .home-fact {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .VPHome::before { display: none; }
 }
 
