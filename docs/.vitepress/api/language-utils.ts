@@ -276,6 +276,16 @@ export const CULTURAL_SIGNIFICANCE_LABELS: Record<SupportedLanguage, Record<stri
     low: 'Düşük kültürel önem',
     medium: 'Orta düzeyde kültürel önem',
     high: 'Yüksek kültürel önem'
+  },
+  pt: {
+    low: 'Baixa significância cultural',
+    medium: 'Significância cultural média',
+    high: 'Elevada significância cultural'
+  },
+  cs: {
+    low: 'Nízký kulturní význam',
+    medium: 'Střední kulturní význam',
+    high: 'Vysoký kulturní význam'
   }
 }
 
