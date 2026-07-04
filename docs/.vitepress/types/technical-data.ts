@@ -772,5 +772,5 @@ export interface ComponentDataProps {
   api?: APIKey;
   format?: 'short' | 'long' | 'detailed';
   showLabel?: boolean;
-  locale?: 'en' | 'fr' | 'es' | 'zh';
+  locale?: 'en' | 'fr' | 'es' | 'zh' | 'tr' | 'pt' | 'cs';
 }
