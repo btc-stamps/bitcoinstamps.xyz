@@ -584,6 +584,40 @@ export default defineConfig({
                 }
               }
             }
+          },
+          pt: {
+            translations: {
+              button: {
+                buttonText: 'Pesquisar',
+                buttonAriaLabel: 'Pesquisar na documentação'
+              },
+              modal: {
+                noResultsText: 'Sem resultados para',
+                resetButtonTitle: 'Limpar pesquisa',
+                footer: {
+                  selectText: 'para selecionar',
+                  navigateText: 'para navegar',
+                  closeText: 'para fechar'
+                }
+              }
+            }
+          },
+          cs: {
+            translations: {
+              button: {
+                buttonText: 'Hledat',
+                buttonAriaLabel: 'Hledat v dokumentaci'
+              },
+              modal: {
+                noResultsText: 'Žádné výsledky pro',
+                resetButtonTitle: 'Vymazat hledání',
+                footer: {
+                  selectText: 'pro výběr',
+                  navigateText: 'pro navigaci',
+                  closeText: 'pro zavření'
+                }
+              }
+            }
           }
         },
         miniSearch: {
