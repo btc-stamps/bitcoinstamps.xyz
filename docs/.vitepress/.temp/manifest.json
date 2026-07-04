@@ -1,0 +1,99 @@
+{
+  "name": "Bitcoin Stamps Documentation",
+  "short_name": "Bitcoin Stamps",
+  "description": "Official documentation for Bitcoin Stamps metaprotocols and art platform including SRC-20, SRC-101, SRC-721, and OLGA protocols",
+  "start_url": "/en/",
+  "display": "standalone",
+  "background_color": "#1a1a1a",
+  "theme_color": "#ff6b35",
+  "orientation": "portrait-primary",
+  "lang": "en",
+  "categories": ["documentation", "blockchain", "bitcoin", "education"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/desktop-home.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide"
+    },
+    {
+      "src": "/screenshots/mobile-protocols.png",
+      "sizes": "375x812",
+      "type": "image/png",
+      "platform": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "SRC-20 Protocol",
+      "short_name": "SRC-20",
+      "description": "Learn about SRC-20 tokens and KEVIN",
+      "url": "/en/protocols/src-20",
+      "icons": [{ "src": "/favicon-32x32.png", "sizes": "32x32" }]
+    },
+    {
+      "name": "Create First Stamp",
+      "short_name": "Tutorial",
+      "description": "Step-by-step guide to creating stamps",
+      "url": "/en/tutorials/creating-first-stamp",
+      "icons": [{ "src": "/favicon-32x32.png", "sizes": "32x32" }]
+    },
+    {
+      "name": "KEVIN Origin Story",
+      "short_name": "KEVIN",
+      "description": "Discover the cultural history of KEVIN",
+      "url": "/en/narratives/kevin-origin",
+      "icons": [{ "src": "/favicon-32x32.png", "sizes": "32x32" }]
+    }
+  ],
+  "protocol_handlers": [
+    {
+      "protocol": "bitcoin",
+      "url": "/en/protocols/?bitcoin=%s"
+    }
+  ],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "scope": "/",
+  "id": "bitcoin-stamps-docs"
+}

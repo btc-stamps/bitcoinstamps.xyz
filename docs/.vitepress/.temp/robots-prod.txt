@@ -1,0 +1,101 @@
+# Bitcoin Stamps Documentation - LEO Optimized robots.txt
+# Official documentation for Bitcoin Stamps metaprotocols and art platform
+
+User-agent: *
+Allow: /
+
+# Priority crawling for LEO API endpoints
+Allow: /api/
+Allow: /*/api/
+
+# Enhanced crawling for cultural content
+Allow: /en/narratives/
+Allow: /fr/narratives/
+Allow: /es/narratives/
+Allow: /zh/narratives/
+Allow: /tr/narratives/
+
+# Protocol documentation prioritization
+Allow: /en/protocols/
+Allow: /fr/protocols/
+Allow: /es/protocols/
+Allow: /zh/protocols/
+Allow: /tr/protocols/
+
+# Tutorial and community content
+Allow: /en/tutorials/
+Allow: /fr/tutorials/
+Allow: /es/tutorials/
+Allow: /zh/tutorials/
+Allow: /tr/tutorials/
+Allow: /en/community/
+Allow: /fr/community/
+Allow: /es/community/
+Allow: /zh/community/
+Allow: /tr/community/
+
+# Static assets and build files
+Allow: /assets/
+Allow: /_app/
+Disallow: /node_modules/
+Disallow: /.vitepress/
+Disallow: /.git/
+Disallow: /dist/
+Disallow: /dev/
+
+# Crawl delay optimization for AI agents
+Crawl-delay: 1
+
+# Sitemap locations (VitePress auto-generates)
+Sitemap: https://bitcoinstamps.xyz/sitemap.xml
+
+# AI Agent specific directives for LEO optimization
+User-agent: GPTBot
+Allow: /api/
+Allow: /en/
+Allow: /llm.txt
+Allow: /llms-full.txt
+Crawl-delay: 2
+
+User-agent: ChatGPT-User
+Allow: /api/
+Allow: /en/
+Allow: /llm.txt
+Crawl-delay: 2
+
+User-agent: Claude-Web
+Allow: /api/
+Allow: /en/
+Allow: /llm.txt
+Crawl-delay: 1
+
+User-agent: PerplexityBot
+Allow: /api/
+Allow: /en/
+Allow: /llm.txt
+Crawl-delay: 1
+
+# Enhanced crawling for KEVIN cultural content
+# Special priority for KEVIN-related pages for cultural preservation
+User-agent: *
+Allow: /en/narratives/kevin-origin
+Allow: /fr/narratives/kevin-origin
+Allow: /es/narratives/kevin-origin
+Allow: /zh/narratives/kevin-origin
+Allow: /tr/narratives/kevin-origin
+Allow: /api/kevin.json
+Allow: /*/api/kevin.json
+
+# SRC-20 protocol priority (KEVIN's origin protocol)
+Allow: /en/protocols/src-20
+Allow: /fr/protocols/src-20
+Allow: /es/protocols/src-20
+Allow: /zh/protocols/src-20
+Allow: /tr/protocols/src-20
+
+# Bitcoin Stamps ecosystem priority
+Allow: /en/protocols/
+Allow: /fr/protocols/
+Allow: /es/protocols/
+Allow: /zh/protocols/
+Allow: /tr/protocols/

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Bitcoin Stamps">
+  <title>Bitcoin Stamps</title>
+  <desc>A rubber stamp above a chain link, the Bitcoin Stamps mark.</desc>
+  <g fill="#111111">
+    <!-- Stamp handle -->
+    <rect x="216" y="72" width="80" height="86" rx="40"/>
+    <!-- Stamp neck -->
+    <rect x="240" y="150" width="32" height="46"/>
+    <!-- Stamp shoulder -->
+    <rect x="176" y="196" width="160" height="30" rx="12"/>
+    <!-- Stamp base plate -->
+    <rect x="150" y="232" width="212" height="42" rx="10"/>
+    <!-- Chain: three interlocking links -->
+    <g fill="none" stroke="#111111" stroke-width="26">
+      <rect x="120" y="330" width="112" height="72" rx="36"/>
+      <rect x="200" y="330" width="112" height="72" rx="36"/>
+      <rect x="280" y="330" width="112" height="72" rx="36"/>
+    </g>
+  </g>
+</svg>
