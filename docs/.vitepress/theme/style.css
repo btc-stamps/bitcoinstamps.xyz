@@ -1431,3 +1431,13 @@ html.dark .stamps-home {
 html.dark .stamps-home-page,
 html.dark .stamps-home-page .VPContent { background: #0A0A0A; }
 
+/* ---------------------------------------------------------------------------
+   Dark-mode DIMMING fix: StampsHome's scoped `:global(.dark) .sh-hero::before
+   { opacity: 0.25 }` mis-compiled to a bare `.dark{opacity:.25}`, dropping the
+   descendant/pseudo and applying 25% opacity to the whole <html.dark> — dimming
+   all of dark mode. Neutralize it here (higher specificity), and restore the
+   intended hero-grid dim via a correctly-scoped global rule.
+   --------------------------------------------------------------------------- */
+html.dark { opacity: 1 !important; }
+html.dark .sh-hero::before { opacity: 0.25; }
+
