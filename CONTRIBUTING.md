@@ -17,13 +17,12 @@ The Bitcoin Stamps community welcomes contributors who embrace **"In Lak'ech Ala
 
 This project powers [bitcoinstamps.xyz](https://bitcoinstamps.xyz). The biggest need right now is **translation help** — English content is complete (28 pages) but other languages need contributors:
 
-| Language | Coverage | Help Needed |
-|----------|----------|-------------|
-| English | 100% | Review & updates |
-| Turkish | 43% | Translation |
-| Chinese | 21% | Translation |
-| Spanish | 18% | Translation |
-| French | 18% | Translation |
+| Language | Status | Help Needed |
+|----------|--------|-------------|
+| English | Complete (source of truth) | Review & updates |
+| Spanish, French, Chinese, Turkish, Portuguese, Czech | Homepage, Updates, and key narrative/protocol pages localized (native-reviewed) | Deeper tutorial & reference pages |
+
+Translations are reviewed by native speakers before they ship. Keep technical tokens (SRC-20, OLGA, P2WSH, block heights, KEVIN) verbatim, keep `mikeinspace` lowercase and KEVIN in ALL CAPS, and avoid em dashes (use commas, colons, or parentheses).
 
 To contribute translations:
 1. Fork this repository
