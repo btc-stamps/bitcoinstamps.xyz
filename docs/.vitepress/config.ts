@@ -284,7 +284,8 @@ export default defineConfig({
           { text: '白皮书', link: '/en/whitepaper/' },
           { text: '教程', link: '/zh/tutorials/' },
           { text: '故事', link: '/zh/narratives/' },
-          { text: '社区', link: '/zh/community/' }
+          { text: '社区', link: '/zh/community/' },
+          { text: '更新', link: '/zh/blog/' }
         ],
         footer: {
           message: '社区拥有的开源项目，在比特币上保存数字文化',
