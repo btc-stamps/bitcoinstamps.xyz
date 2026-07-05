@@ -13,7 +13,7 @@ Recognition for <EntityMention entity="bitcoin-stamps">Bitcoin Stamps</EntityMen
 
 ## Native marketplaces come first
 
-The tokens are traded and indexed natively where the protocol lives. [OpenStamp](https://docs.openstamp.io/) and Stampscan are the SRC-20-native venues: they read the tokens directly from Bitcoin, so what you see there is the chain's own state, not a third party's ledger. If you want the canonical view of an SRC-20 token, that's the layer to trust.
+The tokens are traded and indexed natively where the protocol lives. [OpenStamp](https://docs.openstamp.io/) and [Stampscan](https://stampscan.xyz) are the SRC-20-native venues: they read the tokens directly from Bitcoin, so what you see there is the chain's own state, not a third party's ledger. If you want the canonical view of an SRC-20 token, that's the layer to trust.
 
 ## OKX: wallet indexing (2024)
 
