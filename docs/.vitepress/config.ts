@@ -1349,6 +1349,74 @@ ${posts.map(p => `    <item>
       console.warn('⚠️ RSS feed generation failed (non-critical):', error)
     }
 
+    // Generate per-locale RSS feeds (/<lang>/feed.xml) from each locale's blog posts
+    try {
+      const baseUrl = 'https://bitcoinstamps.xyz'
+      const escapeXmlL = (str: string): string => str
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&apos;')
+      const FEED_LOCALES = [
+        { code: 'es', lang: 'es', title: 'Bitcoin Stamps Novedades', desc: 'Noticias, actualizaciones del protocolo e historias del ecosistema Bitcoin Stamps' },
+        { code: 'fr', lang: 'fr', title: 'Bitcoin Stamps Actualités', desc: 'Actualités, mises à jour du protocole et récits de l’écosystème Bitcoin Stamps' },
+        { code: 'zh', lang: 'zh-cn', title: 'Bitcoin Stamps 更新', desc: 'Bitcoin Stamps 生态系统的新闻、协议更新和故事' },
+        { code: 'tr', lang: 'tr', title: 'Bitcoin Stamps Güncellemeler', desc: 'Bitcoin Stamps ekosisteminden haberler, protokol güncellemeleri ve hikayeler' },
+        { code: 'pt', lang: 'pt', title: 'Bitcoin Stamps Novidades', desc: 'Notícias, atualizações do protocolo e histórias do ecossistema Bitcoin Stamps' },
+        { code: 'cs', lang: 'cs', title: 'Bitcoin Stamps Novinky', desc: 'Novinky, aktualizace protokolu a příběhy z ekosystému Bitcoin Stamps' },
+      ]
+      for (const loc of FEED_LOCALES) {
+        const blogDir = path.join(process.cwd(), `docs/${loc.code}/blog`)
+        let blogFiles: string[] = []
+        try {
+          const entries = await fs.readdir(blogDir, { withFileTypes: true })
+          blogFiles = entries.filter(e => e.isFile() && e.name.endsWith('.md') && e.name !== 'index.md').map(e => e.name)
+        } catch { continue }
+        const localePosts: { title: string; link: string; description: string; pubDate: string; author: string }[] = []
+        for (const fileName of blogFiles) {
+          const raw = readFileSync(path.join(blogDir, fileName), 'utf-8')
+          const fmMatch = raw.match(/^---\r?\n([\s\S]*?)\r?\n---/)
+          if (!fmMatch) continue
+          const fm = yamlLoad(fmMatch[1]) as Record<string, unknown>
+          const title = typeof fm.title === 'string' ? fm.title : ''
+          const description = typeof fm.description === 'string' ? fm.description : ''
+          const author = typeof fm.author === 'string' ? fm.author : ''
+          const dateRaw = typeof fm.date === 'string' ? fm.date : ''
+          if (!title || !dateRaw) continue
+          const slug = fileName.replace(/\.md$/, '')
+          const link = `${baseUrl}/${loc.code}/blog/${slug}`
+          localePosts.push({ title, link, description, pubDate: new Date(dateRaw + 'T00:00:00Z').toUTCString(), author })
+        }
+        if (!localePosts.length) continue
+        localePosts.sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime())
+        const idxHtml = path.join(outDir, `${loc.code}/blog/index.html`)
+        const lastBuildDateRFC = new Date(getGitLastmod(idxHtml) + 'T00:00:00Z').toUTCString()
+        const rssFeedL = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>${escapeXmlL(loc.title)}</title>
+    <link>${baseUrl}/${loc.code}/blog/</link>
+    <description>${escapeXmlL(loc.desc)}</description>
+    <language>${loc.lang}</language>
+    <lastBuildDate>${lastBuildDateRFC}</lastBuildDate>
+    <atom:link href="${baseUrl}/${loc.code}/feed.xml" rel="self" type="application/rss+xml" />
+${localePosts.map(p => `    <item>
+      <title>${escapeXmlL(p.title)}</title>
+      <link>${p.link}</link>
+      <description>${escapeXmlL(p.description)}</description>
+      <pubDate>${p.pubDate}</pubDate>
+      <guid isPermaLink="true">${p.link}</guid>
+      <author>${escapeXmlL(p.author)}</author>
+    </item>`).join('\n')}
+  </channel>
+</rss>
+`
+        await fs.mkdir(path.join(outDir, loc.code), { recursive: true })
+        await fs.writeFile(path.join(outDir, `${loc.code}/feed.xml`), rssFeedL, 'utf-8')
+        console.log(`✅ RSS feed (${loc.code}) generated with ${localePosts.length} posts`)
+      }
+    } catch (error) {
+      console.warn('⚠️ Per-locale RSS feed generation failed (non-critical):', error)
+    }
+
     // Sync ai-plugin.json to /api/ for Cloudflare Pages compatibility
     // Cloudflare Pages doesn't serve dotfile directories (.well-known/)
     // _redirects proxies /.well-known/ai-plugin.json -> /api/ai-plugin.json
