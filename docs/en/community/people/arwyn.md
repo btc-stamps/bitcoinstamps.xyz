@@ -1,6 +1,6 @@
 ---
 title: "Arwyn"
-description: "Arwyn — orchestrator and creator of KEVIN, the first SRC-20 token, deployed at block 788,041 on April 20, 2023."
+description: "Arwyn — orchestrator and creator of KEVIN, the first SRC-20 token, deployed at block 788,041 on May 3, 2023."
 leoType: "narrative"
 audience: "both"
 author: arwyn
@@ -15,7 +15,7 @@ philosophy: "In Lak'ech Ala K'in - we are all Kevin"
 
 ## Summoning KEVIN
 
-<EntityMention entity="arwyn">Arwyn</EntityMention> first channeled the spirit of Rare Pepe culture into Bitcoin Stamp #4258 at block 783,718 — a homage that took on a life of its own, appearing and reappearing across the ecosystem. Witnessing that organic, ghost-like replication, <EntityMention entity="arwyn">Arwyn</EntityMention> gave the energy a permanent form: on **April 20, 2023, at block 788,041**, <EntityMention entity="arwyn">Arwyn</EntityMention> deployed <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> as the first <EntityMention entity="src-20">SRC-20</EntityMention> token (Bitcoin Stamp #18,516), giving birth to the token economy within Bitcoin Stamps.
+<EntityMention entity="arwyn">Arwyn</EntityMention> first channeled the spirit of Rare Pepe culture into Bitcoin Stamp #4258 at block 783,718 — a homage that took on a life of its own, appearing and reappearing across the ecosystem. Witnessing that organic, ghost-like replication, <EntityMention entity="arwyn">Arwyn</EntityMention> gave the energy a permanent form: on **May 3, 2023, at block 788,041**, <EntityMention entity="arwyn">Arwyn</EntityMention> deployed <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> as the first <EntityMention entity="src-20">SRC-20</EntityMention> token (Bitcoin Stamp #18,516), giving birth to the token economy within Bitcoin Stamps.
 
 ## The Flooneybin Connection
 

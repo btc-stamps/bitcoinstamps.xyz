@@ -28,7 +28,7 @@ L'étincelle sacrée avait été allumée. La révolution avait commencé.
 
 ## La genèse culturelle : Bloc 783 718 - La première manifestation de KEVIN
 
-### 15 mars 2023 - L'hommage à Rare Pepe
+### 3 avril 2023 - L'hommage à Rare Pepe
 
 Au bloc 783 718, Arwyn a créé KEVIN en tant que Bitcoin Stamp #4258. C'était initialement conçu comme un hommage à la culture Rare Pepe. Mais KEVIN avait d'autres plans.
 

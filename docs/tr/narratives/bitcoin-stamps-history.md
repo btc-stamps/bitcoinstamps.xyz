@@ -40,7 +40,7 @@ Orijinal Trinity, Bitcoin Stamps ekosisteminin gelişmesini sağlayacak temel al
 
 ## Kültürel Köken: Blok 783.718 - KEVIN'in İlk Tezahürü
 
-### 15 Mart 2023 - Nadir Kurbağa Saygısı
+### 3 Nisan 2023 - Nadir Kurbağa Saygısı
 
 Blok 783.718'de, Arwyn Bitcoin Stamp #4258 olarak KEVIN'i yarattı. Bu başlangıçta Nadir Kurbağa kültürüne bir saygı olarak tasarlanmıştı. Ama KEVIN'in başka planları vardı.
 
