@@ -20,7 +20,7 @@ Cada mudança que afeta o consenso é condicionada por ativação ou por uma fla
 - **Dados de mercado e histórico de vendas**: um cache multifonte (KuCoin, StampScan) com média ponderada por confiança, caches de detentores (holders) e um pipeline de histórico de vendas que abrange dispensadores, trocas atómicas (atomic swaps), OTC e leilões.
 - **Webhooks em tempo real** para novos blocos e reorganizações (reorgs), com proteção contra SSRF, e não bloqueantes por design, de modo que as notificações nunca afetam a indexação.
 - **Desempenho**: um caminho de parsing acelerado em Rust no ciclo principal de blocos, além de uma otimização de omissão de CP que evita chamadas à API da Counterparty em blocos sem dados da Counterparty (validada idêntica em hash).
-- **Um novo snapshot de bootstrap até o bloco 956,000** é publicado para sincronização rápida.
+- **Um novo snapshot de bootstrap até ao bloco 956,000** é publicado para sincronização rápida.
 
 ## Validação de consenso
 
@@ -34,6 +34,6 @@ Execute o indexador em **Python 3.10, 3.11 ou 3.12**. O consenso está comprovad
 
 - **Requer Counterparty `v11.0.1+`** (para a correção do endpoint da API CP V2).
 - Aplique o novo esquema (tabelas de dados de mercado, cache de detentores e histórico de vendas, além de uma coluna `fee_rate_sat_vb` e novos índices).
-- Use o snapshot de bootstrap até o bloco 956,000 no S3 para uma sincronização inicial rápida.
+- Use o snapshot de bootstrap até ao bloco 956,000 no S3 para uma sincronização inicial rápida.
 
 Esta versão mantém a mesma disciplina que define o <EntityMention entity="bitcoin-stamps">Bitcoin Stamps</EntityMention> desde o bloco 779,652 em diante: as novas funcionalidades entram atrás de alturas de ativação, e o consenso é comprovado contra a cadeia real antes de qualquer coisa ser publicada.
