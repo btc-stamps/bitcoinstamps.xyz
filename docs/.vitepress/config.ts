@@ -326,7 +326,8 @@ export default defineConfig({
           { text: 'Whitepaper', link: '/en/whitepaper/' },
           { text: 'Tutoriais', link: '/en/tutorials/' },
           { text: 'Histórias', link: '/pt/narratives/' },
-          { text: 'Comunidade', link: '/en/community/' }
+          { text: 'Comunidade', link: '/en/community/' },
+          { text: 'Novidades', link: '/pt/blog/' }
         ],
         footer: {
           message: 'Projeto de código aberto pertencente à comunidade que preserva a cultura digital no Bitcoin',
