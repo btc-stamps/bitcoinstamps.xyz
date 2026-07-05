@@ -305,7 +305,8 @@ export default defineConfig({
           { text: 'Beyaz kitap', link: '/en/whitepaper/' },
           { text: 'Eğitimler', link: '/tr/tutorials/' },
           { text: 'Hikayeler', link: '/tr/narratives/' },
-          { text: 'Topluluk', link: '/tr/community/' }
+          { text: 'Topluluk', link: '/tr/community/' },
+          { text: 'Güncellemeler', link: '/tr/blog/' }
         ],
         footer: {
           message: 'Bitcoin üzerinde dijital kültürü koruyan topluluk sahipli açık kaynak projesi',
