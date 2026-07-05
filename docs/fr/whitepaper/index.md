@@ -48,12 +48,12 @@ Bitcoin Stamps est un métaprotocole pour créer des actifs numériques permanen
 
 | Bloc | Date | Étape |
 |-----:|------|-------|
-| 779 652 | 29 mars 2023 | Premier Bitcoin Stamp par mikeinspace |
-| 788 041 | 20 avril 2023 | Premier token SRC-20 (KEVIN) déployé par Arwyn |
-| 793 068 | 20 avril 2023 | Premier encodage natif Bitcoin (sans Counterparty) |
-| 796 000 | 15 août 2023 | Coupure Counterparty — règle de consensus SRC-20 |
+| 779 652 | 7 mars 2023 | Premier Bitcoin Stamp par mikeinspace |
+| 788 041 | 3 mai 2023 | Premier token SRC-20 (KEVIN) déployé par Arwyn |
+| 793 068 | 6 juin 2023 | Premier encodage natif Bitcoin (sans Counterparty) |
+| 796 000 | 26 juin 2023 | Coupure Counterparty — règle de consensus SRC-20 |
 | 833 000 | — | Transactions P2WSH activées sur les stamps |
-| 865 000 | 15 octobre 2023 | Activation OLGA — optimisation P2WSH pour SRC-20 |
+| 865 000 | 10 octobre 2024 | Activation OLGA — optimisation P2WSH pour SRC-20 |
 
 ---
 
