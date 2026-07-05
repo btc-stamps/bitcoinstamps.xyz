@@ -396,9 +396,9 @@ const es: HomeContent = {
       '. Datos grabados en el propio conjunto UTXO, imposibles de podar mientras Bitcoin siga funcionando.',
     ],
     ctaPrimary: 'Comenzar',
-    ctaPrimaryHref: '/en/guide/introduction',
+    ctaPrimaryHref: '/es/guide/introduction',
     ctaGhost: '$ ver protocolos →',
-    ctaGhostHref: '/en/protocols/',
+    ctaGhostHref: '/es/protocols/',
     terminal: {
       ariaLabel: 'ejemplo de comando de acuñación',
       barLabel: 'stampchain · mainnet',
@@ -447,13 +447,13 @@ const es: HomeContent = {
         p: [
           'Los bytes del activo se empaquetan en salidas ',
           { text: 'P2WSH', tag: 'code' },
-          ' mediante una codificación de estilo multisig simple. Transacciones estándar, retransmisión estándar, cero cambios de protocolo.',
+          ' mediante una codificación al estilo bare multisig. Transacciones estándar, retransmisión estándar, cero cambios de protocolo.',
         ],
       },
       {
         id: '03 / CONFIANZA',
         h3: 'No se requieren indexadores externos',
-        p: 'Reconstruyes un stamp solo desde la cadena. Los indexadores aportan comodidad, se quedan en comodidad y nunca se convierten en una dependencia de confianza para lo que un stamp es.',
+        p: 'Reconstruyes un stamp solo desde la cadena. Los indexadores aportan comodidad, no son más que eso, y nunca se convierten en una dependencia de confianza para definir qué es un stamp.',
       },
       {
         id: '04 / VERIFICABILIDAD',
@@ -480,9 +480,9 @@ const es: HomeContent = {
           '. No necesitas código para empezar.',
         ],
         links: [
-          { ref: '01', text: 'Crea tu primer stamp', href: '/en/tutorials/creating-first-stamp' },
-          { ref: '02', text: 'Herramientas y flujos para artistas', href: '/en/tutorials/artist-tools' },
-          { ref: '03', text: 'Lanza un token SRC-20', href: '/en/tutorials/src20-token-creation' },
+          { ref: '01', text: 'Crea tu primer stamp', href: '/es/tutorials/creating-first-stamp' },
+          { ref: '02', text: 'Herramientas y flujos para artistas', href: '/es/tutorials/artist-tools' },
+          { ref: '03', text: 'Lanza un token SRC-20', href: '/es/tutorials/src20-token-creation' },
         ],
       },
       {
@@ -490,9 +490,9 @@ const es: HomeContent = {
         h3: 'Construye sobre el metaprotocolo.',
         p: 'Indexación determinista, construcción de transacciones y una superficie de API completa.',
         links: [
-          { ref: 'docs', text: 'Especificaciones del protocolo', href: '/en/protocols/' },
-          { ref: 'sdk', text: 'SDK constructor de transacciones', href: '/en/tutorials/sdk-integration' },
-          { ref: 'api', text: 'Referencia de la API de Stampchain', href: '/en/tutorials/api-integration' },
+          { ref: 'docs', text: 'Especificaciones del protocolo', href: '/es/protocols/' },
+          { ref: 'sdk', text: 'SDK constructor de transacciones', href: '/es/tutorials/sdk-integration' },
+          { ref: 'api', text: 'Referencia de la API de Stampchain', href: '/es/tutorials/api-integration' },
         ],
       },
     ],
@@ -558,8 +558,8 @@ const es: HomeContent = {
       { text: '"In Lak\'ech Ala K\'in"', tag: 'em' },
       ', yo soy otro tú. Tu creatividad fortalece nuestra expresión colectiva.',
     ],
-    body: 'Llevamos adelante la tradición Rare Pepe mientras abrazamos la permanencia de Bitcoin. Este movimiento surgió de artistas y creadores, no de una planificación corporativa, y se sostiene sobre lanzamientos justos y la creatividad compartida.',
-    link: { text: 'Conoce a la comunidad →', href: '/en/community/' },
+    body: 'Llevamos adelante la tradición Rare Pepe mientras abrazamos la permanencia de Bitcoin. Este movimiento surgió de artistas y builders, no de una planificación corporativa, y se sostiene sobre lanzamientos justos y la creatividad compartida.',
+    link: { text: 'Conoce a la comunidad →', href: '/es/community/' },
   },
   footer: {
     brand: 'Bitcoin Stamps',
@@ -570,27 +570,27 @@ const es: HomeContent = {
       {
         title: 'Protocolo',
         links: [
-          { text: 'Whitepaper', href: '/en/whitepaper/' },
-          { text: 'Especificación SRC-20', href: '/en/protocols/src-20' },
-          { text: 'Especificación SRC-721', href: '/en/protocols/src-721' },
-          { text: 'Registro SIP', href: '/en/protocols/sips' },
+          { text: 'Whitepaper', href: '/es/whitepaper/' },
+          { text: 'Especificación SRC-20', href: '/es/protocols/src-20' },
+          { text: 'Especificación SRC-721', href: '/es/protocols/src-721' },
+          { text: 'Registro SIP', href: '/es/protocols/sips' },
         ],
       },
       {
         title: 'Construir',
         links: [
-          { text: 'Primeros pasos', href: '/en/guide/introduction' },
-          { text: 'Tutoriales', href: '/en/tutorials/' },
-          { text: 'Referencia de API', href: '/en/tutorials/api-integration' },
-          { text: 'SDK tx-builder', href: '/en/tutorials/sdk-integration' },
+          { text: 'Primeros pasos', href: '/es/guide/introduction' },
+          { text: 'Tutoriales', href: '/es/tutorials/' },
+          { text: 'Referencia de API', href: '/es/tutorials/api-integration' },
+          { text: 'SDK tx-builder', href: '/es/tutorials/sdk-integration' },
         ],
       },
       {
         title: 'Comunidad',
         links: [
-          { text: 'Historias', href: '/en/narratives/' },
-          { text: 'Centro comunitario', href: '/en/community/' },
-          { text: 'Economía', href: '/en/guide/economics' },
+          { text: 'Historias', href: '/es/narratives/' },
+          { text: 'Centro comunitario', href: '/es/community/' },
+          { text: 'Economía', href: '/es/guide/economics' },
           { text: 'Novedades', href: '/en/blog/' },
         ],
       },
@@ -614,18 +614,18 @@ const fr: HomeContent = {
       '. Des données gravées dans l\'ensemble des UTXO lui-même, impossibles à élaguer tant que Bitcoin tourne.',
     ],
     ctaPrimary: 'Commencer',
-    ctaPrimaryHref: '/en/guide/introduction',
+    ctaPrimaryHref: '/fr/guide/introduction',
     ctaGhost: '$ voir les protocoles →',
-    ctaGhostHref: '/en/protocols/',
+    ctaGhostHref: '/fr/protocols/',
     terminal: {
       ariaLabel: 'exemple de commande de frappe',
       barLabel: 'stampchain · mainnet',
       prompt: '$',
       cmd: 'stamp mint',
       flag: '--file kevin.png --encoding p2wsh',
-      out1: '→ écriture de 2,832 octets dans l\'ensemble des UTXO...',
+      out1: '→ écriture de 2 832 octets dans l\'ensemble des UTXO...',
       ok: '✓ gravé',
-      out2: 'tx confirmée · bloc 779,652 · permanence : pour toujours',
+      out2: 'tx confirmée · bloc 779 652 · permanence : pour toujours',
     },
     stampAlt: 'Illustration Bitcoin Stamp : un tampon en caoutchouc au-dessus de maillons de chaîne',
     stampMeta: [
@@ -650,7 +650,7 @@ const fr: HomeContent = {
     lead: {
       id: 'MODÈLE DE STOCKAGE',
       h3: 'Les données vivent dans l\'ensemble des UTXO, le seul endroit que Bitcoin ne peut jamais élaguer.',
-      p: 'Les stamps écrivent les données de l\'actif directement dans les sorties de transaction non dépensées. Chaque nœud complet conserve l\'ensemble des UTXO comme état critique pour le consensus, donc les données du stamp survivent aussi longtemps que Bitcoin lui-même. Pas de rabais de témoin, pas d\'annexe élaguable.',
+      p: 'Les stamps écrivent les données de l\'actif directement dans les sorties de transaction non dépensées. Chaque nœud complet conserve l\'ensemble des UTXO comme état critique pour le consensus, donc les données du stamp survivent aussi longtemps que Bitcoin lui-même. Pas de remise SegWit sur les données de témoin, pas d\'annexe élaguable.',
       compareAriaLabel: 'comparaison de stockage',
       compare: [
         { key: 'données de témoin', value: 'élaguables, facultatives pour la validation' },
@@ -665,7 +665,7 @@ const fr: HomeContent = {
         p: [
           'Les octets de l\'actif s\'empaquettent dans des sorties ',
           { text: 'P2WSH', tag: 'code' },
-          ' via un encodage de style multisig simple. Transactions standard, relais standard, zéro changement de protocole.',
+          ' via un encodage de style bare multisig. Transactions standard, relais standard, zéro changement de protocole.',
         ],
       },
       {
@@ -698,9 +698,9 @@ const fr: HomeContent = {
           '. Aucun code requis pour débuter.',
         ],
         links: [
-          { ref: '01', text: 'Créez votre premier stamp', href: '/en/tutorials/creating-first-stamp' },
-          { ref: '02', text: 'Outils et flux pour artistes', href: '/en/tutorials/artist-tools' },
-          { ref: '03', text: 'Lancez un jeton SRC-20', href: '/en/tutorials/src20-token-creation' },
+          { ref: '01', text: 'Créez votre premier stamp', href: '/fr/tutorials/creating-first-stamp' },
+          { ref: '02', text: 'Outils et flux pour artistes', href: '/fr/tutorials/artist-tools' },
+          { ref: '03', text: 'Lancez un jeton SRC-20', href: '/fr/tutorials/src20-token-creation' },
         ],
       },
       {
@@ -708,9 +708,9 @@ const fr: HomeContent = {
         h3: 'Construisez sur le métaprotocole.',
         p: 'Indexation déterministe, construction de transactions et une surface d\'API complète.',
         links: [
-          { ref: 'docs', text: 'Spécifications du protocole', href: '/en/protocols/' },
-          { ref: 'sdk', text: 'SDK constructeur de transactions', href: '/en/tutorials/sdk-integration' },
-          { ref: 'api', text: 'Référence de l\'API Stampchain', href: '/en/tutorials/api-integration' },
+          { ref: 'docs', text: 'Spécifications du protocole', href: '/fr/protocols/' },
+          { ref: 'sdk', text: 'SDK constructeur de transactions', href: '/fr/tutorials/sdk-integration' },
+          { ref: 'api', text: 'Référence de l\'API Stampchain', href: '/fr/tutorials/api-integration' },
         ],
       },
     ],
@@ -718,11 +718,11 @@ const fr: HomeContent = {
   origin: {
     index: '03',
     title: 'Le mouvement graffiti Bitcoin',
-    aside: '// depuis le bloc 779,652',
-    big: 'Bitcoin Stamps a débuté comme un acte de graffiti : de l\'art projeté sur le mur le plus permanent que l\'humanité ait jamais bâti.',
+    aside: '// depuis le bloc 779 652',
+    big: 'Bitcoin Stamps a débuté comme un acte de graffiti : de l\'art peint à la bombe sur le mur le plus permanent que l\'humanité ait jamais bâti.',
     p2: [
       { text: 'mikeinspace', entity: 'mikeinspace' },
-      ', le rêveur original, a rencontré ',
+      ', le rêveur originel, a rencontré ',
       { text: 'Arwyn', entity: 'arwyn' },
       ' via le projet Flooneybin sur ',
       { text: 'Counterparty', entity: 'counterparty' },
@@ -762,7 +762,7 @@ const fr: HomeContent = {
       },
       {
         block: 'AUJOURD\'HUI',
-        h4: '2,300+ détenteurs de KEVIN',
+        h4: '2 300+ détenteurs de KEVIN',
         p: 'Le graffiti est devenu un protocole. Le protocole reste graffiti dans l\'âme.',
       },
     ],
@@ -774,41 +774,41 @@ const fr: HomeContent = {
     lead: [
       'La communauté Bitcoin Stamps vit selon ',
       { text: '"In Lak\'ech Ala K\'in"', tag: 'em' },
-      ', je suis un autre toi. Votre créativité renforce notre expression collective.',
+      ', Je suis toi et tu es moi. Votre créativité renforce notre expression collective.',
     ],
-    body: 'Nous perpétuons la tradition Rare Pepe tout en embrassant la permanence de Bitcoin. Ce mouvement est né d\'artistes et de bâtisseurs, pas d\'une planification corporative, et il repose sur des lancements équitables et une créativité partagée.',
-    link: { text: 'Rencontrez la communauté →', href: '/en/community/' },
+    body: 'Nous perpétuons la tradition Rare Pepe tout en embrassant la permanence de Bitcoin. Ce mouvement est né d\'artistes et de bâtisseurs, pas d\'une planification d\'entreprise, et il repose sur des lancements équitables et une créativité partagée.',
+    link: { text: 'Rencontrez la communauté →', href: '/fr/community/' },
   },
   footer: {
     brand: 'Bitcoin Stamps',
     brandDesc: 'Documentation détenue par la communauté pour le métaprotocole Bitcoin Stamps. Pas d\'entreprise, pas de fondation. Juste la chaîne et les gens qui gravent dessus.',
     motto: '"In Lak\'ech Ala K\'in"',
-    mottoSmall: 'je suis un autre toi',
+    mottoSmall: 'Je suis toi et tu es moi',
     columns: [
       {
         title: 'Protocole',
         links: [
-          { text: 'Whitepaper', href: '/en/whitepaper/' },
-          { text: 'Spécification SRC-20', href: '/en/protocols/src-20' },
-          { text: 'Spécification SRC-721', href: '/en/protocols/src-721' },
-          { text: 'Registre SIP', href: '/en/protocols/sips' },
+          { text: 'Livre blanc', href: '/fr/whitepaper/' },
+          { text: 'Spécification SRC-20', href: '/fr/protocols/src-20' },
+          { text: 'Spécification SRC-721', href: '/fr/protocols/src-721' },
+          { text: 'Registre SIP', href: '/fr/protocols/sips' },
         ],
       },
       {
         title: 'Construire',
         links: [
-          { text: 'Bien démarrer', href: '/en/guide/introduction' },
-          { text: 'Tutoriels', href: '/en/tutorials/' },
-          { text: 'Référence API', href: '/en/tutorials/api-integration' },
-          { text: 'SDK tx-builder', href: '/en/tutorials/sdk-integration' },
+          { text: 'Bien démarrer', href: '/fr/guide/introduction' },
+          { text: 'Tutoriels', href: '/fr/tutorials/' },
+          { text: 'Référence API', href: '/fr/tutorials/api-integration' },
+          { text: 'SDK tx-builder', href: '/fr/tutorials/sdk-integration' },
         ],
       },
       {
         title: 'Communauté',
         links: [
-          { text: 'Récits', href: '/en/narratives/' },
-          { text: 'Hub communautaire', href: '/en/community/' },
-          { text: 'Économie', href: '/en/guide/economics' },
+          { text: 'Récits', href: '/fr/narratives/' },
+          { text: 'Hub communautaire', href: '/fr/community/' },
+          { text: 'Économie', href: '/fr/guide/economics' },
           { text: 'Actualités', href: '/en/blog/' },
         ],
       },
@@ -832,9 +832,9 @@ const zh: HomeContent = {
       ' 指引。数据被镌刻进 UTXO 集合本身，只要比特币运行就永不可修剪。',
     ],
     ctaPrimary: '开始使用',
-    ctaPrimaryHref: '/en/guide/introduction',
+    ctaPrimaryHref: '/zh/guide/introduction',
     ctaGhost: '$ 查看协议 →',
-    ctaGhostHref: '/en/protocols/',
+    ctaGhostHref: '/zh/protocols/',
     terminal: {
       ariaLabel: '铸造命令示例',
       barLabel: 'stampchain · mainnet',
@@ -911,14 +911,14 @@ const zh: HomeContent = {
         tag: '面向创作者',
         h3: '将艺术永久刻在比特币上。',
         p: [
-          '从你的第一个 stamp 到发行一枚 ',
+          '从你的第一个 stamp 到发行自己的 ',
           { text: 'SRC-20', entity: 'src-20' },
           ' 代币。起步无需代码。',
         ],
         links: [
-          { ref: '01', text: '创建你的第一个 stamp', href: '/en/tutorials/creating-first-stamp' },
-          { ref: '02', text: '艺术家工具与工作流', href: '/en/tutorials/artist-tools' },
-          { ref: '03', text: '发行 SRC-20 代币', href: '/en/tutorials/src20-token-creation' },
+          { ref: '01', text: '创建你的第一个 stamp', href: '/zh/tutorials/creating-first-stamp' },
+          { ref: '02', text: '艺术家工具与工作流', href: '/zh/tutorials/artist-tools' },
+          { ref: '03', text: '发行 SRC-20 代币', href: '/zh/tutorials/src20-token-creation' },
         ],
       },
       {
@@ -926,9 +926,9 @@ const zh: HomeContent = {
         h3: '在元协议之上构建。',
         p: '确定性索引、交易构建，以及完整的 API 接口。',
         links: [
-          { ref: 'docs', text: '协议规范', href: '/en/protocols/' },
-          { ref: 'sdk', text: '交易构建器 SDK', href: '/en/tutorials/sdk-integration' },
-          { ref: 'api', text: 'Stampchain API 参考', href: '/en/tutorials/api-integration' },
+          { ref: 'docs', text: '协议规范', href: '/zh/protocols/' },
+          { ref: 'sdk', text: '交易构建器 SDK', href: '/zh/tutorials/sdk-integration' },
+          { ref: 'api', text: 'Stampchain API 参考', href: '/zh/tutorials/api-integration' },
         ],
       },
     ],
@@ -992,10 +992,10 @@ const zh: HomeContent = {
     lead: [
       'Bitcoin Stamps 社区秉持 ',
       { text: '"In Lak\'ech Ala K\'in"', tag: 'em' },
-      '，我是另一个你。你的创造力增强了我们的集体表达。',
+      '，我是另一个你。你的创造力让我们的集体表达更加有力。',
     ],
     body: '我们将 Rare Pepe 的传统传承下去，同时拥抱比特币的永久性。这场运动源自艺术家与建设者，而非企业规划，它立足于公平发行与共享的创造力。',
-    link: { text: '认识社区 →', href: '/en/community/' },
+    link: { text: '认识社区 →', href: '/zh/community/' },
   },
   footer: {
     brand: 'Bitcoin Stamps',
@@ -1006,27 +1006,27 @@ const zh: HomeContent = {
       {
         title: '协议',
         links: [
-          { text: '白皮书', href: '/en/whitepaper/' },
-          { text: 'SRC-20 规范', href: '/en/protocols/src-20' },
-          { text: 'SRC-721 规范', href: '/en/protocols/src-721' },
-          { text: 'SIP 注册表', href: '/en/protocols/sips' },
+          { text: '白皮书', href: '/zh/whitepaper/' },
+          { text: 'SRC-20 规范', href: '/zh/protocols/src-20' },
+          { text: 'SRC-721 规范', href: '/zh/protocols/src-721' },
+          { text: 'SIP 注册表', href: '/zh/protocols/sips' },
         ],
       },
       {
         title: '构建',
         links: [
-          { text: '入门指南', href: '/en/guide/introduction' },
-          { text: '教程', href: '/en/tutorials/' },
-          { text: 'API 参考', href: '/en/tutorials/api-integration' },
-          { text: 'tx-builder SDK', href: '/en/tutorials/sdk-integration' },
+          { text: '入门指南', href: '/zh/guide/introduction' },
+          { text: '教程', href: '/zh/tutorials/' },
+          { text: 'API 参考', href: '/zh/tutorials/api-integration' },
+          { text: 'tx-builder SDK', href: '/zh/tutorials/sdk-integration' },
         ],
       },
       {
         title: '社区',
         links: [
-          { text: '故事', href: '/en/narratives/' },
-          { text: '社区中心', href: '/en/community/' },
-          { text: '经济模型', href: '/en/guide/economics' },
+          { text: '故事', href: '/zh/narratives/' },
+          { text: '社区中心', href: '/zh/community/' },
+          { text: '经济模型', href: '/zh/guide/economics' },
           { text: '动态', href: '/en/blog/' },
         ],
       },
@@ -1050,9 +1050,9 @@ const tr: HomeContent = {
       ' tarafından yönlendirilir. Veriler doğrudan UTXO kümesine kazınır, Bitcoin çalıştığı sürece budanamaz.',
     ],
     ctaPrimary: 'Başla',
-    ctaPrimaryHref: '/en/guide/introduction',
+    ctaPrimaryHref: '/tr/guide/introduction',
     ctaGhost: '$ protokolleri görüntüle →',
-    ctaGhostHref: '/en/protocols/',
+    ctaGhostHref: '/tr/protocols/',
     terminal: {
       ariaLabel: 'örnek mint komutu',
       barLabel: 'stampchain · mainnet',
@@ -1074,7 +1074,7 @@ const tr: HomeContent = {
     ariaLabel: 'protokol kilometre taşları',
     items: [
       { num: [{ text: '779,652' }], label: 'İlk stamp · blok yüksekliği' },
-      { num: [{ text: 'KEVIN', accent: true }, { text: ' #4258' }], label: 'İlk KEVIN stamp' },
+      { num: [{ text: 'KEVIN', accent: true }, { text: ' #4258' }], label: 'İlk KEVIN stamp\'i' },
       { num: [{ text: '#18,516' }], label: 'İlk SRC-20 tokenı' },
       { num: [{ text: '2,300' }, { text: '+', accent: true }], label: 'KEVIN sahipleri' },
     ],
@@ -1099,7 +1099,7 @@ const tr: HomeContent = {
         id: '02 / KODLAMA',
         h3: 'P2WSH kodlaması',
         p: [
-          'Varlık baytları, çıplak çok imzalı tarzı kodlama kullanılarak ',
+          'Varlık baytları, bare multisig tarzı bir kodlamayla ',
           { text: 'P2WSH', tag: 'code' },
           ' çıktılarına paketlenir. Standart işlemler, standart aktarım, sıfır protokol değişikliği.',
         ],
@@ -1111,7 +1111,7 @@ const tr: HomeContent = {
       },
       {
         id: '04 / DOĞRULANABİLİRLİK',
-        h3: 'Düğümler arasında belirlenimci',
+        h3: 'Düğümler arasında deterministik',
         p: [
           'Her düğüme aynı zinciri ver, aynı stamp\'leri aynı sırayla türetsin. Numaralandırma, sahiplik ve ',
           { text: 'SRC-20', entity: 'src-20' },
@@ -1131,22 +1131,22 @@ const tr: HomeContent = {
         p: [
           'İlk stamp\'inden bir ',
           { text: 'SRC-20', entity: 'src-20' },
-          ' tokenı çıkarmaya kadar git. Başlamak için kod gerekmez.',
+          ' tokenı çıkarmaya kadar ilerle. Başlamak için kod gerekmez.',
         ],
         links: [
-          { ref: '01', text: 'İlk stamp\'ini oluştur', href: '/en/tutorials/creating-first-stamp' },
-          { ref: '02', text: 'Sanatçı araçları ve iş akışları', href: '/en/tutorials/artist-tools' },
-          { ref: '03', text: 'SRC-20 tokenı çıkar', href: '/en/tutorials/src20-token-creation' },
+          { ref: '01', text: 'İlk stamp\'ini oluştur', href: '/tr/tutorials/creating-first-stamp' },
+          { ref: '02', text: 'Sanatçı araçları ve iş akışları', href: '/tr/tutorials/artist-tools' },
+          { ref: '03', text: 'SRC-20 tokenı çıkar', href: '/tr/tutorials/src20-token-creation' },
         ],
       },
       {
         tag: 'Geliştiriciler için',
         h3: 'Metaprotokolün üzerine inşa et.',
-        p: 'Belirlenimci indeksleme, işlem oluşturma ve eksiksiz bir API yüzeyi.',
+        p: 'Deterministik indeksleme, işlem oluşturma ve eksiksiz bir API yüzeyi.',
         links: [
-          { ref: 'docs', text: 'Protokol spesifikasyonları', href: '/en/protocols/' },
-          { ref: 'sdk', text: 'İşlem oluşturucu SDK', href: '/en/tutorials/sdk-integration' },
-          { ref: 'api', text: 'Stampchain API referansı', href: '/en/tutorials/api-integration' },
+          { ref: 'docs', text: 'Protokol spesifikasyonları', href: '/tr/protocols/' },
+          { ref: 'sdk', text: 'İşlem oluşturucu SDK', href: '/tr/tutorials/sdk-integration' },
+          { ref: 'api', text: 'Stampchain API referansı', href: '/tr/tutorials/api-integration' },
         ],
       },
     ],
@@ -1155,7 +1155,7 @@ const tr: HomeContent = {
     index: '03',
     title: 'Bitcoin Grafiti Hareketi',
     aside: '// blok 779,652\'den beri',
-    big: 'Bitcoin Stamps bir grafiti eylemi olarak başladı: insanlığın inşa ettiği en kalıcı duvara sıkılan sanat.',
+    big: 'Bitcoin Stamps bir grafiti eylemi olarak başladı: insanlığın inşa ettiği en kalıcı duvara püskürtülen sanat.',
     p2: [
       { text: 'mikeinspace', entity: 'mikeinspace' },
       ', asıl hayalperest, ',
@@ -1166,7 +1166,7 @@ const tr: HomeContent = {
       { text: 'Arwyn', entity: 'arwyn' },
       ' meme büyüsünü gördü ve ',
       { text: 'Reinamora', entity: 'reinamora' },
-      '\'yı işe kattı. Birlikte Orijinal Üçlü\'yü kurdular ve blok 779,652\'de ilk stamp\'i kazıdılar.',
+      '\'yı da aralarına kattı. Birlikte Orijinal Üçlü\'yü kurdular ve blok 779,652\'de ilk stamp\'i kazıdılar.',
     ],
     p3: [
       'Sonra ',
@@ -1184,7 +1184,7 @@ const tr: HomeContent = {
       {
         block: 'BLOK 779,652',
         h4: 'İlk stamp',
-        p: 'Görüntü verisi UTXO kümesine iner. Duvar işaretlenir. Hareket başlar.',
+        p: 'Görüntü verisi UTXO kümesine yerleşir. Duvar işaretlenir. Hareket başlar.',
       },
       {
         block: 'STAMP #4258',
@@ -1212,8 +1212,8 @@ const tr: HomeContent = {
       { text: '"In Lak\'ech Ala K\'in"', tag: 'em' },
       ' ilkesiyle yaşar: ben bir başka senim. Yaratıcılığın kolektif ifademizi güçlendirir.',
     ],
-    body: 'Rare Pepe geleneğini ileriye taşırken Bitcoin\'in kalıcılığını benimsiyoruz. Bu hareket, kurumsal planlamadan değil, sanatçılardan ve inşacılardan doğdu; adil lansmanların ve paylaşılan yaratıcılığın üzerinde duruyor.',
-    link: { text: 'Toplulukla tanış →', href: '/en/community/' },
+    body: 'Rare Pepe geleneğini ileriye taşırken Bitcoin\'in kalıcılığını benimsiyoruz. Bu hareket, kurumsal planlamadan değil, sanatçılardan ve inşa edenlerden doğdu; adil lansmanlar ve paylaşılan yaratıcılık üzerine kuruludur.',
+    link: { text: 'Toplulukla tanış →', href: '/tr/community/' },
   },
   footer: {
     brand: 'Bitcoin Stamps',
@@ -1224,27 +1224,27 @@ const tr: HomeContent = {
       {
         title: 'Protokol',
         links: [
-          { text: 'Teknik Doküman', href: '/en/whitepaper/' },
-          { text: 'SRC-20 spesifikasyonu', href: '/en/protocols/src-20' },
-          { text: 'SRC-721 spesifikasyonu', href: '/en/protocols/src-721' },
-          { text: 'SIP kaydı', href: '/en/protocols/sips' },
+          { text: 'Whitepaper', href: '/tr/whitepaper/' },
+          { text: 'SRC-20 spesifikasyonu', href: '/tr/protocols/src-20' },
+          { text: 'SRC-721 spesifikasyonu', href: '/tr/protocols/src-721' },
+          { text: 'SIP kaydı', href: '/tr/protocols/sips' },
         ],
       },
       {
         title: 'İnşa',
         links: [
-          { text: 'Başlangıç', href: '/en/guide/introduction' },
-          { text: 'Eğitimler', href: '/en/tutorials/' },
-          { text: 'API referansı', href: '/en/tutorials/api-integration' },
-          { text: 'SDK tx-builder', href: '/en/tutorials/sdk-integration' },
+          { text: 'Başlangıç', href: '/tr/guide/introduction' },
+          { text: 'Eğitimler', href: '/tr/tutorials/' },
+          { text: 'API referansı', href: '/tr/tutorials/api-integration' },
+          { text: 'tx-builder SDK', href: '/tr/tutorials/sdk-integration' },
         ],
       },
       {
         title: 'Topluluk',
         links: [
-          { text: 'Hikâyeler', href: '/en/narratives/' },
-          { text: 'Topluluk merkezi', href: '/en/community/' },
-          { text: 'Ekonomi', href: '/en/guide/economics' },
+          { text: 'Hikâyeler', href: '/tr/narratives/' },
+          { text: 'Topluluk merkezi', href: '/tr/community/' },
+          { text: 'Ekonomi', href: '/tr/guide/economics' },
           { text: 'Güncellemeler', href: '/en/blog/' },
         ],
       },
@@ -1268,9 +1268,9 @@ const pt: HomeContent = {
       '. Dados gravados no próprio conjunto de UTXO, impossíveis de podar enquanto o Bitcoin funcionar.',
     ],
     ctaPrimary: 'Começar',
-    ctaPrimaryHref: '/en/guide/introduction',
+    ctaPrimaryHref: '/pt/guide/introduction',
     ctaGhost: '$ ver protocolos →',
-    ctaGhostHref: '/en/protocols/',
+    ctaGhostHref: '/pt/protocols/',
     terminal: {
       ariaLabel: 'exemplo de comando de cunhagem',
       barLabel: 'stampchain · mainnet',
@@ -1362,7 +1362,7 @@ const pt: HomeContent = {
         h3: 'Construa sobre o metaprotocolo.',
         p: 'Indexação determinística, construção de transações e uma superfície de API completa.',
         links: [
-          { ref: 'docs', text: 'Especificações do protocolo', href: '/en/protocols/' },
+          { ref: 'docs', text: 'Especificações do protocolo', href: '/pt/protocols/' },
           { ref: 'sdk', text: 'SDK construtor de transações', href: '/en/tutorials/sdk-integration' },
           { ref: 'api', text: 'Referência da API Stampchain', href: '/en/tutorials/api-integration' },
         ],
@@ -1451,7 +1451,7 @@ const pt: HomeContent = {
       {
         title: 'Construir',
         links: [
-          { text: 'Primeiros passos', href: '/en/guide/introduction' },
+          { text: 'Primeiros passos', href: '/pt/guide/introduction' },
           { text: 'Tutoriais', href: '/en/tutorials/' },
           { text: 'Referência da API', href: '/en/tutorials/api-integration' },
           { text: 'SDK tx-builder', href: '/en/tutorials/sdk-integration' },
@@ -1486,9 +1486,9 @@ const cs: HomeContent = {
       '. Data vyražená přímo do samotné množiny UTXO, neprořezatelná po celou dobu, co Bitcoin běží.',
     ],
     ctaPrimary: 'Začít',
-    ctaPrimaryHref: '/en/guide/introduction',
+    ctaPrimaryHref: '/cs/guide/introduction',
     ctaGhost: '$ zobrazit protokoly →',
-    ctaGhostHref: '/en/protocols/',
+    ctaGhostHref: '/cs/protocols/',
     terminal: {
       ariaLabel: 'příklad příkazu pro ražbu',
       barLabel: 'stampchain · mainnet',
@@ -1512,7 +1512,7 @@ const cs: HomeContent = {
       { num: [{ text: '779,652' }], label: 'První známka · výška bloku' },
       { num: [{ text: 'KEVIN', accent: true }, { text: ' #4258' }], label: 'První známka KEVIN' },
       { num: [{ text: '#18,516' }], label: 'První token SRC-20' },
-      { num: [{ text: '2,300' }, { text: '+', accent: true }], label: 'Držitelé KEVIN' },
+      { num: [{ text: '2,300' }, { text: '+', accent: true }], label: 'Držitelé KEVINa' },
     ],
   },
   why: {
@@ -1522,10 +1522,10 @@ const cs: HomeContent = {
     lead: {
       id: 'MODEL ÚLOŽIŠTĚ',
       h3: 'Data žijí v množině UTXO, na jediném místě, které Bitcoin nikdy nemůže prořezat.',
-      p: 'Známky zapisují data aktiva přímo do neutracených transakčních výstupů. Každý plný uzel nese množinu UTXO jako stav kritický pro konsenzus, takže data známky přežívají stejně dlouho jako samotný Bitcoin. Žádná sleva za svědka, žádný prořezatelný přívěsek.',
+      p: 'Známky zapisují data aktiva přímo do neutracených transakčních výstupů. Každý plný uzel nese množinu UTXO jako stav kritický pro konsenzus, takže data známky přežívají stejně dlouho jako samotný Bitcoin. Žádná sleva na witness data, žádná prořezatelná příloha.',
       compareAriaLabel: 'srovnání úložišť',
       compare: [
-        { key: 'data svědka', value: 'prořezatelná, volitelná pro validaci' },
+        { key: 'witness data', value: 'prořezatelná, volitelná pro validaci' },
         { key: 'odkazy mimo řetěz', value: 'závisí na tom, zda externí servery zůstanou naživu' },
         { key: 'množina UTXO', value: 'stav konsenzu, každý uzel, navždy', hot: true },
       ],
@@ -1537,19 +1537,19 @@ const cs: HomeContent = {
         p: [
           'Bajty aktiva se balí do výstupů ',
           { text: 'P2WSH', tag: 'code' },
-          ' pomocí kódování ve stylu holého multisigu. Standardní transakce, standardní přenos, nula změn protokolu.',
+          ' pomocí kódování ve stylu bare multisig. Standardní transakce, standardní relay, nula změn protokolu.',
         ],
       },
       {
         id: '03 / DŮVĚRA',
         h3: 'Bez externích indexerů',
-        p: 'Známku znovu sestavíš pouze z řetězu. Indexery přidávají pohodlí, zůstávají pohodlím a nikdy se nestanou závislostí na důvěře pro to, čím známka je.',
+        p: 'Známku znovu sestavíte pouze z řetězu. Indexery přidávají pohodlí, zůstávají pohodlím a nikdy se nestanou otázkou důvěry v tom, čím známka je.',
       },
       {
         id: '04 / OVĚŘITELNOST',
         h3: 'Deterministické napříč uzly',
         p: [
-          'Dej každému uzlu stejný řetěz a odvodí stejné známky ve stejném pořadí. Číslování, vlastnictví a zůstatky ',
+          'Dejte každému uzlu stejný řetěz a odvodí stejné známky ve stejném pořadí. Číslování, vlastnictví a zůstatky ',
           { text: 'SRC-20', entity: 'src-20' },
           ' zůstávají čistými funkcemi historie Bitcoinu.',
         ],
@@ -1580,7 +1580,7 @@ const cs: HomeContent = {
         h3: 'Stavějte na metaprotokolu.',
         p: 'Deterministické indexování, konstrukce transakcí a kompletní rozhraní API.',
         links: [
-          { ref: 'docs', text: 'Specifikace protokolu', href: '/en/protocols/' },
+          { ref: 'docs', text: 'Specifikace protokolu', href: '/cs/protocols/' },
           { ref: 'sdk', text: 'SDK pro tvorbu transakcí', href: '/en/tutorials/sdk-integration' },
           { ref: 'api', text: 'Reference API Stampchain', href: '/en/tutorials/api-integration' },
         ],
@@ -1595,13 +1595,13 @@ const cs: HomeContent = {
     p2: [
       { text: 'mikeinspace', entity: 'mikeinspace' },
       ', původní snílek, se seznámil s ',
-      { text: 'Arwyn', entity: 'arwyn' },
+      { text: 'Arwynem', entity: 'arwyn' },
       ' prostřednictvím projektu Flooneybin na ',
       { text: 'Counterparty', entity: 'counterparty' },
       '. Když Mike sdílel vizi Bitcoin Stamps, ',
       { text: 'Arwyn', entity: 'arwyn' },
       ' uviděl memovou magii a přizval ',
-      { text: 'Reinamora', entity: 'reinamora' },
+      { text: 'Reinamoru', entity: 'reinamora' },
       '. Společně vytvořili Původní Trojici a vyrazili první známku v bloku 779,652.',
     ],
     p3: [
@@ -1609,7 +1609,7 @@ const cs: HomeContent = {
       { text: 'KEVIN', entity: 'kevin', variant: 'cultural' },
       '. Vyražený jako #4258 a znovuzrozený jako první token ',
       { text: 'SRC-20', entity: 'src-20' },
-      ' u #18,516, KEVIN vyrostl z interního vtipu na patrona protokolu. Komunita rozhoduje, na čem na Bitcoinu záleží, aniž by velela jakákoli firma.',
+      ' u #18,516, KEVIN vyrostl z interního vtipu v patrona protokolu. Komunita rozhoduje, na čem na Bitcoinu záleží, aniž by tomu velela jakákoli firma.',
     ],
     trinity: [
       'mikeinspace: otázka',
@@ -1620,21 +1620,21 @@ const cs: HomeContent = {
       {
         block: 'BLOK 779,652',
         h4: 'První známka',
-        p: 'Obrazová data dopadají do množiny UTXO. Zeď je označena. Hnutí začíná.',
+        p: 'Obrazová data se zapisují do množiny UTXO. Zeď je označena. Hnutí začíná.',
       },
       {
-        block: 'ZNÁMKA #4258',
+        block: 'STAMP #4258',
         h4: 'KEVIN se objevuje',
         p: 'Pixelová tvář se stává tepem komunity i jejím svědomím.',
       },
       {
-        block: 'ZNÁMKA #18,516',
+        block: 'STAMP #18,516',
         h4: 'Zrození SRC-20',
         p: 'KEVIN se nasazuje jako první token SRC-20: zaměnitelná aktiva, vyražená pravidla, nula prostředníků.',
       },
       {
         block: 'DNES',
-        h4: '2,300+ držitelů KEVIN',
+        h4: '2,300+ držitelů KEVINa',
         p: 'Z graffiti se stal protokol. Protokol zůstává v jádru graffiti.',
       },
     ],
@@ -1646,16 +1646,16 @@ const cs: HomeContent = {
     lead: [
       'Komunita Bitcoin Stamps žije podle ',
       { text: '"In Lak\'ech Ala K\'in"', tag: 'em' },
-      ', jsem další ty. Tvá tvořivost posiluje náš společný výraz.',
+      ', jsem druhé ty. Vaše tvořivost posiluje naši společnou tvorbu.',
     ],
     body: 'Neseme dál tradici Rare Pepe a zároveň přijímáme trvalost Bitcoinu. Toto hnutí vzešlo z umělců a stavitelů, ne z korporátního plánování, a stojí na férových spuštěních a sdílené tvořivosti.',
     link: { text: 'Poznejte komunitu →', href: '/en/community/' },
   },
   footer: {
     brand: 'Bitcoin Stamps',
-    brandDesc: 'Komunitně vlastněná dokumentace metaprotokolu Bitcoin Stamps. Žádná firma, žádná nadace. Jen řetěz a lidé, kteří na něj razí.',
+    brandDesc: 'Komunitně vlastněná dokumentace metaprotokolu Bitcoin Stamps. Žádná firma, žádná nadace. Jen řetěz a lidé, kteří na něj razí známky.',
     motto: '"In Lak\'ech Ala K\'in"',
-    mottoSmall: 'jsem další ty',
+    mottoSmall: 'jsem druhé ty',
     columns: [
       {
         title: 'Protokol',
@@ -1669,7 +1669,7 @@ const cs: HomeContent = {
       {
         title: 'Stavět',
         links: [
-          { text: 'Začínáme', href: '/en/guide/introduction' },
+          { text: 'Začínáme', href: '/cs/guide/introduction' },
           { text: 'Tutoriály', href: '/en/tutorials/' },
           { text: 'Reference API', href: '/en/tutorials/api-integration' },
           { text: 'SDK tx-builder', href: '/en/tutorials/sdk-integration' },
