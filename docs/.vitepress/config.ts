@@ -347,7 +347,8 @@ export default defineConfig({
           { text: 'Whitepaper', link: '/en/whitepaper/' },
           { text: 'Návody', link: '/en/tutorials/' },
           { text: 'Příběhy', link: '/cs/narratives/' },
-          { text: 'Komunita', link: '/en/community/' }
+          { text: 'Komunita', link: '/en/community/' },
+          { text: 'Novinky', link: '/cs/blog/' }
         ],
         footer: {
           message: 'Komunitní open-source projekt zachovávající digitální kulturu na Bitcoinu',
