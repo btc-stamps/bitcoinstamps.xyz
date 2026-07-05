@@ -27,4 +27,4 @@ Tokeny, které trvale žijí na Bitcoinu, se teď dají kupovat a prodávat na b
 
 - KEVIN na BitMartu: [bitmart.com/crypto/KEVIN](https://www.bitmart.com/crypto/KEVIN)
 - STAMP na BitMartu: [bitmart.com/crypto/STAMP](https://www.bitmart.com/crypto/STAMP)
-- Úplnou mapu toho, kde se stampy obchodují, indexují a sledují, najdete v článku [Kde Bitcoin Stamps žijí napříč burzami](/en/blog/2026-07-stamps-across-exchanges).
+- Úplnou mapu toho, kde se stampy obchodují, indexují a sledují, najdete v článku [Kde Bitcoin Stamps žijí napříč burzami](/cs/blog/2026-07-stamps-across-exchanges).

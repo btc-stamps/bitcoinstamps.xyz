@@ -2,7 +2,7 @@
 title: "Bitcoin Stamps 在各交易所的落脚点"
 date: "2026-07-05"
 author: "reinamora"
-description: "Bitcoin Stamps 与 SRC-20 代币遍布整个市场：原生市场、OKX 钱包支持、区块浏览器解码、聚合器追踪，以及 KEVIN 与 STAMP 在 BitMart 的现货交易。"
+description: "Bitcoin Stamps 与 SRC-20 代币遍及整个市场的各个层面：原生市场、OKX 钱包支持、区块浏览器解码、聚合器追踪，以及 KEVIN 与 STAMP 在 BitMart 的现货交易。"
 tags: ["exchanges", "src-20", "kevin", "adoption"]
 leoType: "blog"
 ---
@@ -15,9 +15,9 @@ leoType: "blog"
 
 最深的一层是协议本身。[OpenStamp](https://docs.openstamp.io/) 和 [Stampscan](https://stampscan.xyz) 原生地交易并索引 SRC-20 代币：它们直接从 Bitcoin 读取代币，所以你在那里看到的是链本身的状态，而不是第三方的账本。要查看任何 SRC-20 代币的规范视图，请从这里开始。
 
-## OKX：自 2024 年起提供钱包支持
+## OKX：自 2024年起提供钱包支持
 
-2024 年 2 月，OKX Web3 Wallet [新增了对 Stamps SRC-20 标准的支持](https://www.globenewswire.com/news-release/2024/02/14/2828748/0/en/Flash-News-OKX-Wallet-Launches-Support-for-Stamps-SRC-20-Bitcoin-Inscriptions-Standard-Enhancing-User-Experience-with-Viewing-and-Transfer-Capabilities.html)，让用户可以持有、查看和转移 SRC-20 代币。这是主流平台开始认真对待该标准的最早的明确信号。
+2024年2月，OKX Web3 Wallet [新增了对 Stamps SRC-20 标准的支持](https://www.globenewswire.com/news-release/2024/02/14/2828748/0/en/Flash-News-OKX-Wallet-Launches-Support-for-Stamps-SRC-20-Bitcoin-Inscriptions-Standard-Enhancing-User-Experience-with-Viewing-and-Transfer-Capabilities.html)，让用户可以持有、查看和转移 SRC-20 代币。这是主流平台开始认真对待该标准的最早的明确信号。
 
 需要说清楚的范围：这是钱包支持，而不是交易上市。OKX 尚未开设 SRC-20 现货市场，其零手续费铭文市场覆盖的是其他标准，而不是 SRC-20。你可以在 OKX 上持有和转移你的 Stamps 代币；交易则发生在这张地图上其余的场所。
 
@@ -33,13 +33,13 @@ leoType: "blog"
 
 ## BitMart：KEVIN 与 STAMP 的现货交易
 
-中心化交易所方面最清晰的一步出现在 2025 年 12 月 23 日，当天 BitMart 为两个代币开放了现货交易：[KEVIN/USDT](https://www.bitmart.com/crypto/KEVIN) 和 [STAMP/USDT](https://www.bitmart.com/crypto/STAMP)，位于其 Meme 与创新专区（[KEVIN](https://bitmart.zendesk.com/hc/en-us/articles/44674823250971--Primary-Listing-BitMart-Will-List-Bitcoin-Stamps-SRC-20-KEVIN-2025-12-23) 和 [STAMP](https://bitmart.zendesk.com/hc/en-us/articles/44675420348827--Primary-Listing-BitMart-Will-List-Bitcoin-Stamps-SRC-20-STAMP-2025-12-23) 的首次上市公告）。
+中心化交易所方面最清晰的一步出现在 2025年12月23日，当天 BitMart 为两个代币开放了现货交易：[KEVIN/USDT](https://www.bitmart.com/crypto/KEVIN) 和 [STAMP/USDT](https://www.bitmart.com/crypto/STAMP)，位于其 Meme 与创新专区（[KEVIN](https://bitmart.zendesk.com/hc/en-us/articles/44674823250971--Primary-Listing-BitMart-Will-List-Bitcoin-Stamps-SRC-20-KEVIN-2025-12-23) 和 [STAMP](https://bitmart.zendesk.com/hc/en-us/articles/44675420348827--Primary-Listing-BitMart-Will-List-Bitcoin-Stamps-SRC-20-STAMP-2025-12-23) 的首次上市公告）。
 
-两个 Bitcoin Stamps SRC-20 代币，其中一个是协议的创始代币，如今在一家中心化交易所交易，与从一开始就承载它们的原生市场并肩而立。完整的故事见 [KEVIN 与 STAMP 登陆 BitMart](/en/blog/2025-12-kevin-stamp-bitmart-listing)。
+两个 Bitcoin Stamps SRC-20 代币，其中一个是协议的创始代币，如今在一家中心化交易所交易，与从一开始就承载它们的原生市场并肩而立。完整的故事见 [KEVIN 与 STAMP 登陆 BitMart](/zh/blog/2025-12-kevin-stamp-bitmart-listing)。
 
 ## 为什么由 KEVIN 来讲这个故事
 
-<EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> 是第一个 SRC-20 代币，它的历史就是整个生态的缩影。它起初是艺术：2023 年 4 月 3 日、在区块 783,718 上的 Stamp #4258，一份向 Rare Pepe 文化致敬之作，随后开始在系统中自行复制传播。<EntityMention entity="arwyn">Arwyn</EntityMention> 随后为这股能量赋予了永久的形态，于 2023 年 5 月 3 日、在区块 788,041 上将 <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> 部署为第一个 SRC-20 代币（Stamp #18,516）。如今它拥有超过 2,300 名持有者。
+<EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> 是第一个 SRC-20 代币，它的历史就是整个生态的缩影。它起初是艺术：2023年4月3日、在区块 783,718 上的 Stamp #4258，一件向 Rare Pepe 文化致敬之作，随后开始在系统中自行复制传播。<EntityMention entity="arwyn">Arwyn</EntityMention> 随后为这股能量赋予了永久的形态，于 2023年5月3日、在区块 788,041 上将 <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> 部署为第一个 SRC-20 代币（Stamp #18,516）。如今它拥有超过 2,300 名持有者。
 
 ## 长线博弈
 

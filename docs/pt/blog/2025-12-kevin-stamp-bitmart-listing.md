@@ -15,7 +15,7 @@ A negociação abriu às 09:00 UTC de 23 de dezembro, com os levantamentos a seg
 
 ## Porque é que isto importa
 
-Os tokens <EntityMention entity="src-20">SRC-20</EntityMention> guardam os seus dados no conjunto UTXO do Bitcoin, o que é o que os torna permanentes e impossíveis de podar. Sempre foram negociados nos venues nativos que leem a cadeia diretamente. Agora uma exchange centralizada abriu livros de ordens para dois deles ao mesmo tempo: o token fundador do protocolo e o token STAMP.
+Os tokens <EntityMention entity="src-20">SRC-20</EntityMention> guardam os seus dados no conjunto UTXO do Bitcoin, o que é o que os torna permanentes e impossíveis de podar. Sempre foram negociados nos mercados nativos que leem a cadeia diretamente. Agora uma exchange centralizada abriu livros de ordens para dois deles ao mesmo tempo: o token fundador do protocolo e o token STAMP.
 
 Tokens que vivem permanentemente no Bitcoin podem agora ser comprados e vendidos numa exchange de referência, ao lado dos mercados nativos onde já são negociados.
 
@@ -27,4 +27,4 @@ Tokens que vivem permanentemente no Bitcoin podem agora ser comprados e vendidos
 
 - KEVIN na BitMart: [bitmart.com/crypto/KEVIN](https://www.bitmart.com/crypto/KEVIN)
 - STAMP na BitMart: [bitmart.com/crypto/STAMP](https://www.bitmart.com/crypto/STAMP)
-- Para o mapa completo de onde os stamps são negociados, indexados e seguidos, veja [Onde vivem os Bitcoin Stamps nas exchanges](/en/blog/2026-07-stamps-across-exchanges).
+- Para o mapa completo de onde os stamps são negociados, indexados e seguidos, veja [Onde vivem os Bitcoin Stamps nas exchanges](/pt/blog/2026-07-stamps-across-exchanges).

@@ -27,4 +27,4 @@ Des tokens qui vivent en permanence sur Bitcoin peuvent maintenant s'acheter et 
 
 - KEVIN sur BitMart : [bitmart.com/crypto/KEVIN](https://www.bitmart.com/crypto/KEVIN)
 - STAMP sur BitMart : [bitmart.com/crypto/STAMP](https://www.bitmart.com/crypto/STAMP)
-- Pour la carte complète des endroits où les stamps se négocient, s'indexent et sont suivis, voir [Où vivent les Bitcoin Stamps sur les exchanges](/en/blog/2026-07-stamps-across-exchanges).
+- Pour la carte complète des endroits où les stamps se négocient, s'indexent et sont suivis, voir [Où vivent les Bitcoin Stamps sur les exchanges](/fr/blog/2026-07-stamps-across-exchanges).

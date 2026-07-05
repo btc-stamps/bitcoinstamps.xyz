@@ -23,7 +23,7 @@ O âmbito exato: isto é suporte de carteira, não uma listagem de negociação.
 
 ## Os exploradores de blocos descodificam os stamps de forma nativa
 
-Alguns exploradores de Bitcoin de uso geral leem os stamps como stamps, não como outputs em bruto. O explorador da Blockchain.com descodifica os Bitcoin Stamps clássicos (da Counterparty) e renderiza a imagem de forma nativa: deteta os dados `STAMP:base64` na transação, etiqueta-a como um Bitcoin Stamp e mostra a imagem juntamente com as suas dimensões, tipo de média e asset ID. Abra uma [transação de stamp em direto](https://www.blockchain.com/explorer/transactions/btc/176a5d0329a8b48d5f86bcaf0078ccc3a57d50013744f4af3ea0c827347520ce) e a arte está mesmo ali.
+Alguns exploradores de Bitcoin de uso geral leem os stamps como stamps, não como outputs em bruto. O explorador da Blockchain.com descodifica os Bitcoin Stamps clássicos (da Counterparty) e renderiza a imagem de forma nativa: deteta os dados `STAMP:base64` na transação, etiqueta-a como um Bitcoin Stamp e mostra a imagem juntamente com as suas dimensões, tipo de media e asset ID. Abra uma [transação de stamp em direto](https://www.blockchain.com/explorer/transactions/btc/176a5d0329a8b48d5f86bcaf0078ccc3a57d50013744f4af3ea0c827347520ce) e a arte está mesmo ali.
 
 Esse suporte chegou cedo na história do protocolo: um explorador de referência escolheu compreender o formato. A descodificação nativa da codificação mais recente, <EntityMention entity="olga">OLGA</EntityMention> (P2WSH), em todos os exploradores de uso geral ainda está a recuperar o atraso, por isso o [stampchain.io](https://stampchain.io) continua a ser a vista mais completa de cada stamp.
 
@@ -35,7 +35,7 @@ A descoberta também funciona. A CoinGecko mantém uma [categoria Top SRC-20 Coi
 
 O passo mais claro do lado de uma exchange centralizada chegou a 23 de dezembro de 2025, quando a BitMart abriu a negociação à vista de ambos os tokens: [KEVIN/USDT](https://www.bitmart.com/crypto/KEVIN) e [STAMP/USDT](https://www.bitmart.com/crypto/STAMP), na sua zona Meme e Inovação (anúncios de listagem primária para [KEVIN](https://bitmart.zendesk.com/hc/en-us/articles/44674823250971--Primary-Listing-BitMart-Will-List-Bitcoin-Stamps-SRC-20-KEVIN-2025-12-23) e [STAMP](https://bitmart.zendesk.com/hc/en-us/articles/44675420348827--Primary-Listing-BitMart-Will-List-Bitcoin-Stamps-SRC-20-STAMP-2025-12-23)).
 
-Dois tokens SRC-20 Bitcoin Stamps, um deles o token fundador do protocolo, são agora negociados numa exchange centralizada, ao lado dos mercados nativos que os sustentam desde o início. A história completa está em [KEVIN e STAMP listam na BitMart](/en/blog/2025-12-kevin-stamp-bitmart-listing).
+Dois tokens SRC-20 Bitcoin Stamps, um deles o token fundador do protocolo, são agora negociados numa exchange centralizada, ao lado dos mercados nativos que os sustentam desde o início. A história completa está em [KEVIN e STAMP listam na BitMart](/pt/blog/2025-12-kevin-stamp-bitmart-listing).
 
 ## Porque é KEVIN quem carrega a história
 

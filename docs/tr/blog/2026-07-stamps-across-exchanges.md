@@ -35,7 +35,7 @@ Keşif de işliyor. CoinGecko bir [Top SRC-20 Coins kategorisi](https://www.coin
 
 Merkezi borsa cephesindeki en net adım 23 Aralık 2025'te geldi; o gün BitMart iki token için de spot işlemi açtı: [KEVIN/USDT](https://www.bitmart.com/crypto/KEVIN) ve [STAMP/USDT](https://www.bitmart.com/crypto/STAMP), kendi Meme ve İnovasyon bölgesinde ([KEVIN](https://bitmart.zendesk.com/hc/en-us/articles/44674823250971--Primary-Listing-BitMart-Will-List-Bitcoin-Stamps-SRC-20-KEVIN-2025-12-23) ve [STAMP](https://bitmart.zendesk.com/hc/en-us/articles/44675420348827--Primary-Listing-BitMart-Will-List-Bitcoin-Stamps-SRC-20-STAMP-2025-12-23) için birincil listeleme duyuruları).
 
-İki Bitcoin Stamps SRC-20 token'ı, biri protokolün kurucu token'ı, artık bir merkezi borsada, onları en baştan taşıyan yerel piyasaların yanında işlem görüyor. Hikâyenin tamamı [KEVIN ve STAMP BitMart'ta listeleniyor](/en/blog/2025-12-kevin-stamp-bitmart-listing) yazısında.
+İki Bitcoin Stamps SRC-20 token'ı, biri protokolün kurucu token'ı, artık bir merkezi borsada, onları en baştan taşıyan yerel piyasaların yanında işlem görüyor. Hikâyenin tamamı [KEVIN ve STAMP BitMart'ta listeleniyor](/tr/blog/2025-12-kevin-stamp-bitmart-listing) yazısında.
 
 ## Hikâyeyi neden KEVIN taşıyor
 

@@ -35,7 +35,7 @@ La découverte fonctionne aussi. CoinGecko maintient une [catégorie Top SRC-20 
 
 L'étape la plus claire du côté d'un exchange centralisé est arrivée le 23 décembre 2025, quand BitMart a ouvert le trading au comptant des deux tokens : [KEVIN/USDT](https://www.bitmart.com/crypto/KEVIN) et [STAMP/USDT](https://www.bitmart.com/crypto/STAMP), dans sa zone Meme et Innovation (annonces de listing primaire pour [KEVIN](https://bitmart.zendesk.com/hc/en-us/articles/44674823250971--Primary-Listing-BitMart-Will-List-Bitcoin-Stamps-SRC-20-KEVIN-2025-12-23) et [STAMP](https://bitmart.zendesk.com/hc/en-us/articles/44675420348827--Primary-Listing-BitMart-Will-List-Bitcoin-Stamps-SRC-20-STAMP-2025-12-23)).
 
-Deux tokens SRC-20 Bitcoin Stamps, dont l'un est le token fondateur du protocole, se négocient désormais sur un exchange centralisé, aux côtés des marchés natifs qui les portent depuis le début. L'histoire complète est dans [KEVIN et STAMP arrivent sur BitMart](/en/blog/2025-12-kevin-stamp-bitmart-listing).
+Deux tokens SRC-20 Bitcoin Stamps, dont l'un est le token fondateur du protocole, se négocient désormais sur un exchange centralisé, aux côtés des marchés natifs qui les portent depuis le début. L'histoire complète est dans [KEVIN et STAMP arrivent sur BitMart](/fr/blog/2025-12-kevin-stamp-bitmart-listing).
 
 ## Pourquoi KEVIN porte l'histoire
 

@@ -35,7 +35,7 @@ Objevování funguje také. CoinGecko udržuje [kategorii Top SRC-20 Coins](http
 
 Nejjasnější krok na straně centralizované burzy přišel 23. prosince 2025, kdy BitMart otevřel spotové obchodování obou tokenů: [KEVIN/USDT](https://www.bitmart.com/crypto/KEVIN) a [STAMP/USDT](https://www.bitmart.com/crypto/STAMP), ve své zóně Meme a Innovation (oznámení o primárním listingu pro [KEVIN](https://bitmart.zendesk.com/hc/en-us/articles/44674823250971--Primary-Listing-BitMart-Will-List-Bitcoin-Stamps-SRC-20-KEVIN-2025-12-23) a [STAMP](https://bitmart.zendesk.com/hc/en-us/articles/44675420348827--Primary-Listing-BitMart-Will-List-Bitcoin-Stamps-SRC-20-STAMP-2025-12-23)).
 
-Dva tokeny SRC-20 Bitcoin Stamps, jeden z nich zakládající token protokolu, se teď obchodují na centralizované burze, po boku nativních trhů, které je nesou od úplného začátku. Celý příběh je v článku [KEVIN a STAMP se listují na BitMartu](/en/blog/2025-12-kevin-stamp-bitmart-listing).
+Dva tokeny SRC-20 Bitcoin Stamps, jeden z nich zakládající token protokolu, se teď obchodují na centralizované burze, po boku nativních trhů, které je nesou od úplného začátku. Celý příběh je v článku [KEVIN a STAMP se listují na BitMartu](/cs/blog/2025-12-kevin-stamp-bitmart-listing).
 
 ## Proč příběh nese KEVIN
 
