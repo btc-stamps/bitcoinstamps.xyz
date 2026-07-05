@@ -1408,3 +1408,26 @@ a:hover {
 /* the custom layout renders its own footer; hide any default gutter */
 .stamps-home-page .VPContent { padding-bottom: 0; }
 
+/* ---------------------------------------------------------------------------
+   Dark-mode fix: the StampsHome SFC's scoped `:global(.dark) .stamps-home`
+   token override did not apply in the build (scope-attribute mismatch), so
+   dark mode kept the light tokens. This GLOBAL, unscoped override reliably
+   matches html.dark and wins on specificity. Deep-black + light text.
+   --------------------------------------------------------------------------- */
+html.dark .stamps-home {
+  --sh-bg: #0A0A0A;
+  --sh-raise: #111111;
+  --sh-panel: #1A1A1A;
+  --sh-line: #262626;
+  --sh-text: #EDEDED;
+  --sh-dim: #8A8A8A;
+  --sh-faint: #5C5C5C;
+  --sh-orange: #F7931A;
+  --sh-orange-solid: #F7931A;
+  --sh-orange-ink: #0A0A0A;
+  --sh-orange-soft: rgba(247, 147, 26, 0.12);
+}
+/* keep the page shell behind the layout deep-black too (not VitePress #1a1a1a) */
+html.dark .stamps-home-page,
+html.dark .stamps-home-page .VPContent { background: #0A0A0A; }
+
