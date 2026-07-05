@@ -9,7 +9,7 @@ leoType: "blog"
 
 # Bitcoin Stamps Protokolü Teknik Raporu (Whitepaper) Yayınlandı
 
-Bitcoin üzerinde kalıcı dijital varlıkları gerçeğe dönüştüren protokolü yıllarca inşa ettikten, üzerinde yineledikten ve inceltirdikten sonra, <EntityMention entity="bitcoin-stamps">Bitcoin Stamps</EntityMention> Protokolü teknik raporunun (whitepaper) resmî olarak yayımlandığını gururla duyuruyoruz.
+Bitcoin üzerinde kalıcı dijital varlıkları gerçeğe dönüştüren protokolü yıllarca inşa ettikten, üzerinde yineledikten ve olgunlaştırdıktan sonra, <EntityMention entity="bitcoin-stamps">Bitcoin Stamps</EntityMention> Protokolü teknik raporunun (whitepaper) resmî olarak yayımlandığını gururla duyuruyoruz.
 
 Bu belge, 779,652 numaralı blokta <EntityMention entity="mikeinspace">mikeinspace</EntityMention>'in ilk Bitcoin Stamp'i işlediği anda başlayan çalışmanın doruk noktasını temsil ediyor; hiçbirimizin tam olarak öngöremeyeceği bir hareketi başlatan bir an.
 
@@ -19,7 +19,7 @@ Whitepaper, <EntityMention entity="bitcoin-stamps">Bitcoin Stamps</EntityMention
 
 **Protokol mimarisi.** Bitcoin Stamps'in, konsensüs açısından kritik verilerin kalıcı depolanması için UTXO kümesinden nasıl yararlandığı. Tam düğümlerin budayabildiği witness data yaklaşımlarının aksine, stamp verisi harcanabilir işlem çıktılarında yaşar. Her tam düğüm onu saklamak zorundadır. Bu kalıcılık garantisi temeldir.
 
-**Token standartları.** <EntityMention entity="src-20">SRC-20</EntityMention> değiştirilebilir token'ların (DEPLOY, MINT, TRANSFER işlemleri), SRC-721 değiştirilemez varlıkların, SRC-101 merkeziyetsiz adlandırmanın ve SRC-721r bileştirilebilir özyinelemenin tam spesifikasyonu. <EntityMention entity="src-20">SRC-20</EntityMention>'nin temelini oluşturan hesap tabanlı bakiye modeli ayrıntılı olarak belgelenir ve UTXO'ya bağlı token şemalarından neden farklı olduğunu açıkça ortaya koyar.
+**Token standartları.** <EntityMention entity="src-20">SRC-20</EntityMention> değiştirilebilir token'ların (DEPLOY, MINT, TRANSFER işlemleri), SRC-721 değiştirilemez varlıkların, SRC-101 merkeziyetsiz adlandırmanın ve SRC-721r birleştirilebilir özyinelemenin tam spesifikasyonu. <EntityMention entity="src-20">SRC-20</EntityMention>'nin temelini oluşturan hesap tabanlı bakiye modeli ayrıntılı olarak belgelenir ve UTXO'ya bağlı token şemalarından neden farklı olduğunu açıkça ortaya koyar.
 
 **Ekonomik model.** Ücret yapıları ve 865,000 numaralı blokta etkinleşen OLGA P2WSH optimizasyonunun (bare multisig'e kıyasla %30-95 azalma) sağladığı gerçek maliyet tasarrufları.
 

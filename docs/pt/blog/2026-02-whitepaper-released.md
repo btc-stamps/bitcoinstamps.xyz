@@ -37,7 +37,7 @@ Arwyn deu a essa visão a sua primeira expressão cultural, criando o Bitcoin St
 
 Reinamora arquitetou os protocolos técnicos que transformaram a visão em infraestrutura funcional: o indexador, os esquemas de codificação, as regras de consenso e, por fim, a otimização OLGA que tornou o protocolo economicamente acessível a todos.
 
-O próprio <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> continua a ser a prova viva de que o protocolo funciona como pretendido: o primeiro token <EntityMention entity="src-20">SRC-20</EntityMention> de lançamento justo, com mais de 2,300 detentores que aderiram não pelo alarido, mas pelo reconhecimento daquilo que o protocolo representa.
+O próprio <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> continua a ser a prova viva de que o protocolo funciona como pretendido: o primeiro token <EntityMention entity="src-20">SRC-20</EntityMention> de lançamento justo, com mais de 2300 detentores que aderiram não pelo alarido, mas pelo reconhecimento daquilo que o protocolo representa.
 
 ## Ler o whitepaper
 
@@ -65,12 +65,12 @@ O whitepaper documenta a evolução completa do protocolo:
 
 Um whitepaper é documentação, não um destino. O protocolo continua a evoluir através do processo SIP. As propostas ativas estão a abordar a otimização de taxas, novas capacidades de tokens e casos de uso alargados para dados permanentes on-chain.
 
-Se estás a construir sobre <EntityMention entity="bitcoin-stamps">Bitcoin Stamps</EntityMention>, o whitepaper é a tua referência canónica. Se és novo no protocolo, é o melhor documento único para compreender por que esta abordagem aos ativos digitais permanentes no Bitcoin é diferente, e por que essa diferença importa.
+Se está a construir sobre <EntityMention entity="bitcoin-stamps">Bitcoin Stamps</EntityMention>, o whitepaper é a sua referência canónica. Se é novo no protocolo, é o melhor documento único para compreender por que esta abordagem aos ativos digitais permanentes no Bitcoin é diferente, e por que essa diferença importa.
 
 ---
 
 *O whitepaper já está disponível em [bitcoinstamps.xyz/en/whitepaper/](/en/whitepaper/).*
 
-*Junta-te à comunidade no [Telegram](https://t.me/BitcoinStamps) e explora o ecossistema em [stampchain.io](https://stampchain.io).*
+*Junte-se à comunidade no [Telegram](https://t.me/BitcoinStamps) e explore o ecossistema em [stampchain.io](https://stampchain.io).*
 
 *In Lak'ech Ala K'in, somos todos <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention>.*
