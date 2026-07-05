@@ -67,12 +67,12 @@ Read individual sections on GitHub (canonical source):
 
 | Block | Date | Milestone |
 |------:|------|-----------|
-| 779,652 | March 29, 2023 | First Bitcoin Stamp by <EntityMention entity="mikeinspace">mikeinspace</EntityMention> |
-| 788,041 | April 20, 2023 | First SRC-20 token (KEVIN) deployed by <EntityMention entity="arwyn">Arwyn</EntityMention> |
-| 793,068 | April 20, 2023 | First native Bitcoin encoding (no Counterparty) |
-| 796,000 | August 15, 2023 | Counterparty cutoff &mdash; SRC-20 consensus rule |
-| 833,000 | &mdash; | P2WSH transactions enabled on stamps |
-| 865,000 | October 15, 2023 | OLGA activation &mdash; P2WSH optimization for SRC-20 |
+| 779,652 | March 7, 2023 | First Bitcoin Stamp by <EntityMention entity="mikeinspace">mikeinspace</EntityMention> |
+| 788,041 | May 3, 2023 | First SRC-20 token (KEVIN) deployed by <EntityMention entity="arwyn">Arwyn</EntityMention> |
+| 793,068 | June 6, 2023 | First native Bitcoin encoding (no Counterparty) |
+| 796,000 | June 26, 2023 | Counterparty cutoff &mdash; SRC-20 consensus rule |
+| 833,000 | March 3, 2024 | P2WSH transactions enabled on stamps |
+| 865,000 | October 10, 2024 | OLGA activation &mdash; P2WSH optimization for SRC-20 |
 
 ---
 
