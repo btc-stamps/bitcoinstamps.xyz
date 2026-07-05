@@ -1,5 +1,7 @@
 ---
-layout: home
+layout: StampsHome
+footer: false
+pageClass: stamps-home-page
 title: "Dokumentace metaprotokolu Bitcoin Stamps"
 description: "Oficiální dokumentace k neměnným digitálním aktivům uloženým přímo v blockchainu Bitcoinu pomocí SRC-20, SRC-101, SRC-721, metaprotokolů, vedená moudrostí a hodnotami komunity"
 leoType: "homepage"

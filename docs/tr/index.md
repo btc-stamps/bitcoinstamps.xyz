@@ -1,7 +1,9 @@
 ---
-layout: home
+layout: StampsHome
+footer: false
+pageClass: stamps-home-page
 title: "Bitcoin Stamps Metaprotokol Dokümantasyonu"
-description: "Bitcoin blok zinciri üzerinde doğrudan saklanan değişmez dijital varlıklar için resmi dokümantasyon — SRC-20, SRC-101, SRC-721 metaprotokolleri, topluluk bilgeliği ve değerleriyle rehberlik edilir"
+description: "Bitcoin blok zinciri üzerinde doğrudan saklanan değişmez dijital varlıklar için resmi dokümantasyon: SRC-20, SRC-101, SRC-721 metaprotokolleri, topluluk bilgeliği ve değerleriyle rehberlik edilir"
 leoType: "homepage"
 culturalSignificance: "high"
 audience: "both"
