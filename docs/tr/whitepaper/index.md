@@ -67,12 +67,12 @@ GitHub'da bireysel bölümleri okuyun (kanonik kaynak):
 
 | Blok | Tarih | Kilometre Taşı |
 |------:|------|-----------|
-| 779.652 | 29 Mart 2023 | mikeinspace tarafından ilk Bitcoin Stamp |
-| 788.041 | 20 Nisan 2023 | Arwyn tarafından ilk SRC-20 token (KEVIN) dağıtımı |
-| 793.068 | 20 Nisan 2023 | İlk yerel Bitcoin kodlaması (Counterparty yok) |
-| 796.000 | 15 Ağustos 2023 | Counterparty kesimi &mdash; SRC-20 uzlaşı kuralı |
+| 779.652 | 7 Mart 2023 | mikeinspace tarafından ilk Bitcoin Stamp |
+| 788.041 | 3 Mayıs 2023 | Arwyn tarafından ilk SRC-20 token (KEVIN) dağıtımı |
+| 793.068 | 6 Haziran 2023 | İlk yerel Bitcoin kodlaması (Counterparty yok) |
+| 796.000 | 26 Haziran 2023 | Counterparty kesimi &mdash; SRC-20 uzlaşı kuralı |
 | 833.000 | &mdash; | Stamplarda P2WSH işlemleri etkinleştirildi |
-| 865.000 | 15 Ekim 2023 | OLGA aktivasyonu &mdash; SRC-20 için P2WSH optimizasyonu |
+| 865.000 | 10 Ekim 2024 | OLGA aktivasyonu &mdash; SRC-20 için P2WSH optimizasyonu |
 
 <div style="margin: 1rem 0; padding: 1rem 1.5rem; background: var(--vp-c-bg-soft); border-radius: 8px;">
 

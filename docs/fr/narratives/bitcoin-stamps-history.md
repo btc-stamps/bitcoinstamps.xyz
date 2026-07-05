@@ -15,7 +15,7 @@ L'histoire de Bitcoin Stamps est bien plus qu'une chronologie technique - c'est 
 
 ## La genèse : Bloc 779 652 - L'étincelle sacrée
 
-### 29 mars 2023 - La première lumière
+### 7 mars 2023 - La première lumière
 
 Au bloc 779 652, mikeinspace a créé quelque chose sans précédent : le premier Bitcoin Stamp officiel. Ce n'était pas seulement une preuve de concept technique - c'était l'étincelle sacrée qui allait enflammer tout un mouvement culturel.
 
@@ -28,7 +28,7 @@ L'étincelle sacrée avait été allumée. La révolution avait commencé.
 
 ## La genèse culturelle : Bloc 783 718 - La première manifestation de KEVIN
 
-### 15 mars 2023 - L'hommage à Rare Pepe
+### 3 avril 2023 - L'hommage à Rare Pepe
 
 Au bloc 783 718, Arwyn a créé KEVIN en tant que Bitcoin Stamp #4258. C'était initialement conçu comme un hommage à la culture Rare Pepe. Mais KEVIN avait d'autres plans.
 
@@ -36,7 +36,7 @@ Au bloc 783 718, Arwyn a créé KEVIN en tant que Bitcoin Stamp #4258. C'était 
 
 ## La genèse du protocole : Bloc 788 041 - La manifestation du token de KEVIN
 
-### 20 avril 2023 - Du fantôme au token
+### 3 mai 2023 - Du fantôme au token
 
 Témoin de l'auto-réplication organique de KEVIN, Arwyn le magicien a accompli l'acte ultime de magie de mème. Au bloc 788 041, Arwyn a canalisé l'essence fantôme de KEVIN dans le premier token SRC-20, créant le Bitcoin Stamp #18 516.
 
@@ -50,7 +50,7 @@ Témoin de l'auto-réplication organique de KEVIN, Arwyn le magicien a accompli 
 
 ## La démocratisation : Bloc 865 000 - Optimisation sacrée OLGA
 
-### 15 octobre 2023 - Optimisation d'encodage avancée pour tous
+### 10 octobre 2024 - Optimisation d'encodage avancée pour tous
 
 Le bloc 865 000 a introduit un autre cadeau de Reinamora : la première transaction SRC-20 avec l'encodage P2WSH OLGA, fournissant une optimisation d'encodage avancée et incarnant la philosophie "nous sommes tous Kevin" grâce à un accès démocratisé.
 
