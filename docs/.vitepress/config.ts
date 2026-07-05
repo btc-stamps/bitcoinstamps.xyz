@@ -242,7 +242,8 @@ export default defineConfig({
           { text: 'Livre blanc', link: '/en/whitepaper/' },
           { text: 'Tutoriels', link: '/fr/tutorials/' },
           { text: 'Histoires', link: '/fr/narratives/' },
-          { text: 'Communauté', link: '/fr/community/' }
+          { text: 'Communauté', link: '/fr/community/' },
+          { text: 'Actualités', link: '/fr/blog/' }
         ],
         footer: {
           message: 'Projet open source communautaire préservant la culture numérique sur Bitcoin',
