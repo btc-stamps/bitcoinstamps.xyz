@@ -4,13 +4,30 @@
 // unknown layout string to a globally-registered component). The VitePress navbar,
 // search, locale switcher and theme toggle stay intact around this component.
 //
-// Design tokens live in scoped CSS as --sh-* variables with a light default and a
-// `.dark .stamps-home` deep-black override, so both appearance modes stay clean.
-// Content is real site content; EntityMention components carry the LEO entity links.
+// i18n: all user-facing copy lives in `stampsHomeContent.ts`, keyed by locale.
+// The active VitePress locale (`useData().lang`) selects the content object and
+// falls back to `en`, so the template holds zero hardcoded prose. English copy
+// is byte-for-byte the original design; other locales render English until
+// their translations land in the content module.
+//
+// Design tokens live in scoped CSS as --sh-* variables with a light default.
+// The dark-mode overrides (token block + hero-grid overlay opacity) live in the
+// GLOBAL theme/style.css as `html.dark ...` rules, because scoped
+// `:global(.dark) <descendant>` selectors mis-compile in the VitePress build
+// (they drop the descendant / pseudo-element and re-target bare `.dark`).
+//
+// Content is real site content; EntityMention components carry the LEO entity
+// links (rendered via <RichText> for prose that mixes text + entities).
 // Voice-DNA: no em-dashes, no "not X / it's Y" negations, active voice, digits.
-import { withBase } from 'vitepress'
+import { withBase, useData } from 'vitepress'
+import { computed } from 'vue'
+import RichText from './RichText.vue'
+import { getHomeContent } from './stampsHomeContent'
 
 const stampImg = withBase('/bitcoin-stamp-hero-light.png')
+
+const { lang } = useData()
+const c = computed(() => getHomeContent(lang.value))
 </script>
 
 <template>
@@ -19,27 +36,23 @@ const stampImg = withBase('/bitcoin-stamp-hero-light.png')
     <section class="sh-hero">
       <div class="sh-wrap sh-hero-grid">
         <div class="sh-hero-copy">
-          <div class="sh-eyebrow">Metaprotocol Documentation</div>
-          <h1 class="sh-h1">Bitcoin Stamps<span class="sh-sub">Permanent by consensus.</span></h1>
-          <p class="sh-tagline">
-            Permanent digital assets on Bitcoin, guided by community wisdom and the
-            ancient truth <em>"In Lak'ech Ala K'in"</em>. Data stamped into the UTXO
-            set itself, unprunable for as long as Bitcoin runs.
-          </p>
+          <div class="sh-eyebrow">{{ c.hero.eyebrow }}</div>
+          <h1 class="sh-h1">{{ c.hero.h1 }}<span class="sh-sub">{{ c.hero.sub }}</span></h1>
+          <p class="sh-tagline"><RichText :nodes="c.hero.tagline" /></p>
           <div class="sh-cta-row">
-            <a class="sh-btn sh-btn-primary" href="/en/guide/introduction">Get Started</a>
-            <a class="sh-btn sh-btn-ghost mono" href="/en/protocols/">$ view protocols →</a>
+            <a class="sh-btn sh-btn-primary" :href="c.hero.ctaPrimaryHref">{{ c.hero.ctaPrimary }}</a>
+            <a class="sh-btn sh-btn-ghost mono" :href="c.hero.ctaGhostHref">{{ c.hero.ctaGhost }}</a>
           </div>
 
-          <div class="sh-term mono" aria-label="example mint command">
+          <div class="sh-term mono" :aria-label="c.hero.terminal.ariaLabel">
             <div class="sh-term-bar">
               <span class="sh-term-dot"></span><span class="sh-term-dot"></span><span class="sh-term-dot"></span>
-              <span>stampchain · mainnet</span>
+              <span>{{ c.hero.terminal.barLabel }}</span>
             </div>
             <div class="sh-term-body">
-              <div><span class="sh-p">$</span> <span class="sh-cmd">stamp mint</span> <span class="sh-flag">--file kevin.png --encoding p2wsh</span></div>
-              <div class="sh-out">→ writing 2,832 bytes into the UTXO set...</div>
-              <div><span class="sh-ok">✓ stamped</span> <span class="sh-out">tx confirmed · block 779,652 · permanence: forever</span> <span class="sh-cursor"></span></div>
+              <div><span class="sh-p">{{ c.hero.terminal.prompt }}</span> <span class="sh-cmd">{{ c.hero.terminal.cmd }}</span> <span class="sh-flag">{{ c.hero.terminal.flag }}</span></div>
+              <div class="sh-out">{{ c.hero.terminal.out1 }}</div>
+              <div><span class="sh-ok">{{ c.hero.terminal.ok }}</span> <span class="sh-out">{{ c.hero.terminal.out2 }}</span> <span class="sh-cursor"></span></div>
             </div>
           </div>
         </div>
@@ -47,34 +60,20 @@ const stampImg = withBase('/bitcoin-stamp-hero-light.png')
         <figure class="sh-stamp-frame">
           <span class="sh-tick tl"></span><span class="sh-tick tr"></span>
           <span class="sh-tick bl"></span><span class="sh-tick br"></span>
-          <img :src="stampImg" alt="Bitcoin Stamp artwork: a rubber stamp above chain links" />
+          <img :src="stampImg" :alt="c.hero.stampAlt" />
           <figcaption class="sh-stamp-meta mono">
-            <span>stamp:<b>genesis</b></span>
-            <span>enc:<b>P2WSH</b></span>
-            <span>block:<b>779652</b></span>
+            <span v-for="(m, i) in c.hero.stampMeta" :key="i">{{ m.label }}<b>{{ m.value }}</b></span>
           </figcaption>
         </figure>
       </div>
     </section>
 
     <!-- ===================== STATS ===================== -->
-    <section class="sh-stats" aria-label="protocol milestones">
+    <section class="sh-stats" :aria-label="c.stats.ariaLabel">
       <div class="sh-wrap sh-stats-grid">
-        <div class="sh-stat">
-          <div class="sh-stat-num mono">779,652</div>
-          <div class="sh-stat-label mono">First stamp · block height</div>
-        </div>
-        <div class="sh-stat">
-          <div class="sh-stat-num mono"><span class="sh-accent">KEVIN</span> #4258</div>
-          <div class="sh-stat-label mono">First KEVIN stamp</div>
-        </div>
-        <div class="sh-stat">
-          <div class="sh-stat-num mono">#18,516</div>
-          <div class="sh-stat-label mono">First SRC-20 token</div>
-        </div>
-        <div class="sh-stat">
-          <div class="sh-stat-num mono">2,300<span class="sh-accent">+</span></div>
-          <div class="sh-stat-label mono">KEVIN holders</div>
+        <div class="sh-stat" v-for="(s, i) in c.stats.items" :key="i">
+          <div class="sh-stat-num mono"><template v-for="(part, j) in s.num" :key="j"><span v-if="part.accent" class="sh-accent">{{ part.text }}</span><template v-else>{{ part.text }}</template></template></div>
+          <div class="sh-stat-label mono">{{ s.label }}</div>
         </div>
       </div>
     </section>
@@ -83,51 +82,30 @@ const stampImg = withBase('/bitcoin-stamp-hero-light.png')
     <section class="sh-block">
       <div class="sh-wrap">
         <div class="sh-sec-head">
-          <span class="sh-sec-index mono">01</span>
-          <h2 class="sh-h2">Why Bitcoin Stamps</h2>
+          <span class="sh-sec-index mono">{{ c.why.index }}</span>
+          <h2 class="sh-h2">{{ c.why.title }}</h2>
           <span class="sh-rule"></span>
-          <span class="sh-aside mono">// permanence as a protocol property</span>
+          <span class="sh-aside mono">{{ c.why.aside }}</span>
         </div>
 
         <div class="sh-why-grid">
           <div class="sh-why-cell lead">
             <div>
-              <div class="sh-why-id mono">STORAGE MODEL</div>
-              <h3 class="sh-why-lead-h3">Data lives in the UTXO set, the one place Bitcoin can never prune.</h3>
-              <p class="sh-why-lead-p">
-                Stamps write asset data directly into unspent transaction outputs.
-                Every full node carries the UTXO set as consensus-critical state, so
-                stamp data survives as long as Bitcoin itself. No witness discount, no
-                prunable sidecar.
-              </p>
+              <div class="sh-why-id mono">{{ c.why.lead.id }}</div>
+              <h3 class="sh-why-lead-h3">{{ c.why.lead.h3 }}</h3>
+              <p class="sh-why-lead-p">{{ c.why.lead.p }}</p>
             </div>
-            <div class="sh-compare mono" aria-label="storage comparison">
-              <div class="sh-compare-row">
-                <span>witness data</span><span>prunable, optional for validation</span>
-              </div>
-              <div class="sh-compare-row">
-                <span>off-chain refs</span><span>depends on external hosts staying alive</span>
-              </div>
-              <div class="sh-compare-row hot">
-                <span>UTXO set</span><span>consensus state, every node, forever</span>
+            <div class="sh-compare mono" :aria-label="c.why.lead.compareAriaLabel">
+              <div class="sh-compare-row" :class="{ hot: row.hot }" v-for="(row, i) in c.why.lead.compare" :key="i">
+                <span>{{ row.key }}</span><span>{{ row.value }}</span>
               </div>
             </div>
           </div>
 
-          <div class="sh-why-cell">
-            <div class="sh-why-id mono">02 / ENCODING</div>
-            <h3 class="sh-why-h3">P2WSH encoding</h3>
-            <p class="sh-why-p">Asset bytes pack into <code>P2WSH</code> outputs using bare multisig-style encoding. Standard transactions, standard relay, zero protocol changes.</p>
-          </div>
-          <div class="sh-why-cell">
-            <div class="sh-why-id mono">03 / TRUST</div>
-            <h3 class="sh-why-h3">No external indexers required</h3>
-            <p class="sh-why-p">You rebuild a stamp from the chain alone. Indexers add convenience, they stay convenience, they never become a trust dependency for what a stamp is.</p>
-          </div>
-          <div class="sh-why-cell">
-            <div class="sh-why-id mono">04 / VERIFIABILITY</div>
-            <h3 class="sh-why-h3">Deterministic across nodes</h3>
-            <p class="sh-why-p">Give every node the same chain and it derives the same stamps in the same order. Numbering, ownership, and <EntityMention entity="src-20">SRC-20</EntityMention> balances stay pure functions of Bitcoin history.</p>
+          <div class="sh-why-cell" v-for="(cell, i) in c.why.cells" :key="i">
+            <div class="sh-why-id mono">{{ cell.id }}</div>
+            <h3 class="sh-why-h3">{{ cell.h3 }}</h3>
+            <p class="sh-why-p"><RichText v-if="Array.isArray(cell.p)" :nodes="cell.p" /><template v-else>{{ cell.p }}</template></p>
           </div>
         </div>
       </div>
@@ -137,32 +115,19 @@ const stampImg = withBase('/bitcoin-stamp-hero-light.png')
     <section class="sh-block">
       <div class="sh-wrap">
         <div class="sh-sec-head">
-          <span class="sh-sec-index mono">02</span>
-          <h2 class="sh-h2">Start building</h2>
+          <span class="sh-sec-index mono">{{ c.build.index }}</span>
+          <h2 class="sh-h2">{{ c.build.title }}</h2>
           <span class="sh-rule"></span>
-          <span class="sh-aside mono">// two doors, one chain</span>
+          <span class="sh-aside mono">{{ c.build.aside }}</span>
         </div>
 
         <div class="sh-build-grid">
-          <div class="sh-build-panel">
-            <span class="sh-build-tag mono">For Creators</span>
-            <h3 class="sh-build-h3">Put art on Bitcoin, permanently.</h3>
-            <p class="sh-build-p">Go from your first stamp to launching an <EntityMention entity="src-20">SRC-20</EntityMention> token. No code required to begin.</p>
+          <div class="sh-build-panel" v-for="(panel, i) in c.build.panels" :key="i">
+            <span class="sh-build-tag mono">{{ panel.tag }}</span>
+            <h3 class="sh-build-h3">{{ panel.h3 }}</h3>
+            <p class="sh-build-p"><RichText v-if="Array.isArray(panel.p)" :nodes="panel.p" /><template v-else>{{ panel.p }}</template></p>
             <ul class="sh-build-links">
-              <li><a href="/en/tutorials/creating-first-stamp"><span class="ref mono">01</span> Create your first stamp <span class="arrow mono">→</span></a></li>
-              <li><a href="/en/tutorials/artist-tools"><span class="ref mono">02</span> Artist tools and workflows <span class="arrow mono">→</span></a></li>
-              <li><a href="/en/tutorials/src20-token-creation"><span class="ref mono">03</span> Launch an SRC-20 token <span class="arrow mono">→</span></a></li>
-            </ul>
-          </div>
-
-          <div class="sh-build-panel">
-            <span class="sh-build-tag mono">For Developers</span>
-            <h3 class="sh-build-h3">Build on the metaprotocol.</h3>
-            <p class="sh-build-p">Deterministic indexing, transaction construction, and a full API surface.</p>
-            <ul class="sh-build-links">
-              <li><a href="/en/protocols/"><span class="ref mono">docs</span> Protocol specifications <span class="arrow mono">→</span></a></li>
-              <li><a href="/en/tutorials/sdk-integration"><span class="ref mono">sdk</span> Transaction-builder SDK <span class="arrow mono">→</span></a></li>
-              <li><a href="/en/tutorials/api-integration"><span class="ref mono">api</span> Stampchain API reference <span class="arrow mono">→</span></a></li>
+              <li v-for="(link, j) in panel.links" :key="j"><a :href="link.href"><span class="ref mono">{{ link.ref }}</span> {{ link.text }} <span class="arrow mono">→</span></a></li>
             </ul>
           </div>
         </div>
@@ -173,63 +138,27 @@ const stampImg = withBase('/bitcoin-stamp-hero-light.png')
     <section class="sh-block">
       <div class="sh-wrap">
         <div class="sh-sec-head">
-          <span class="sh-sec-index mono">03</span>
-          <h2 class="sh-h2">The Bitcoin Graffiti Movement</h2>
+          <span class="sh-sec-index mono">{{ c.origin.index }}</span>
+          <h2 class="sh-h2">{{ c.origin.title }}</h2>
           <span class="sh-rule"></span>
-          <span class="sh-aside mono">// est. block 779,652</span>
+          <span class="sh-aside mono">{{ c.origin.aside }}</span>
         </div>
 
         <div class="sh-origin-grid">
           <div class="sh-origin-copy">
-            <p class="sh-big">
-              Bitcoin Stamps began as an act of graffiti: art sprayed onto the most
-              permanent wall humanity has ever built.
-            </p>
-            <p>
-              <EntityMention entity="mikeinspace">mikeinspace</EntityMention>, the
-              original dreamer, met <EntityMention entity="arwyn">Arwyn</EntityMention>
-              through the Flooneybin project on
-              <EntityMention entity="counterparty">Counterparty</EntityMention>. When
-              Mike shared the Bitcoin Stamps vision,
-              <EntityMention entity="arwyn">Arwyn</EntityMention> saw the meme magic and
-              brought in <EntityMention entity="reinamora">Reinamora</EntityMention>.
-              Together they formed The Original Trinity and cut the first stamp at
-              block 779,652.
-            </p>
-            <p>
-              Then came <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention>.
-              Stamped at #4258 and reborn as the first
-              <EntityMention entity="src-20">SRC-20</EntityMention> token at #18,516,
-              KEVIN grew from an in-joke into the protocol's patron saint. The community
-              decides what matters on Bitcoin, with no company in charge.
-            </p>
+            <p class="sh-big">{{ c.origin.big }}</p>
+            <p><RichText :nodes="c.origin.p2" /></p>
+            <p><RichText :nodes="c.origin.p3" /></p>
             <div class="sh-trinity mono">
-              <span>mikeinspace: the question</span>
-              <span>Arwyn: the code</span>
-              <span>Reinamora: the chain</span>
+              <span v-for="(t, i) in c.origin.trinity" :key="i">{{ t }}</span>
             </div>
           </div>
 
           <div class="sh-timeline mono">
-            <div class="sh-tl-item">
-              <div class="sh-tl-block">BLOCK 779,652</div>
-              <h4 class="sh-tl-h4">The first stamp</h4>
-              <p class="sh-tl-p">Image data lands in the UTXO set. The wall gets marked. The movement begins.</p>
-            </div>
-            <div class="sh-tl-item">
-              <div class="sh-tl-block">STAMP #4258</div>
-              <h4 class="sh-tl-h4">KEVIN appears</h4>
-              <p class="sh-tl-p">A pixelated face becomes the community's heartbeat, and its conscience.</p>
-            </div>
-            <div class="sh-tl-item">
-              <div class="sh-tl-block">STAMP #18,516</div>
-              <h4 class="sh-tl-h4">SRC-20 genesis</h4>
-              <p class="sh-tl-p">KEVIN deploys as the first SRC-20 token: fungible assets, stamped rules, zero intermediaries.</p>
-            </div>
-            <div class="sh-tl-item">
-              <div class="sh-tl-block">TODAY</div>
-              <h4 class="sh-tl-h4">2,300+ KEVIN holders</h4>
-              <p class="sh-tl-p">The graffiti became a protocol. The protocol stays graffiti at heart.</p>
+            <div class="sh-tl-item" v-for="(item, i) in c.origin.timeline" :key="i">
+              <div class="sh-tl-block">{{ item.block }}</div>
+              <h4 class="sh-tl-h4">{{ item.h4 }}</h4>
+              <p class="sh-tl-p">{{ item.p }}</p>
             </div>
           </div>
         </div>
@@ -240,21 +169,15 @@ const stampImg = withBase('/bitcoin-stamp-hero-light.png')
     <section class="sh-block">
       <div class="sh-wrap">
         <div class="sh-sec-head">
-          <span class="sh-sec-index mono">04</span>
-          <h2 class="sh-h2">Community Values</h2>
+          <span class="sh-sec-index mono">{{ c.values.index }}</span>
+          <h2 class="sh-h2">{{ c.values.title }}</h2>
           <span class="sh-rule"></span>
-          <span class="sh-aside mono">// no company, no foundation</span>
+          <span class="sh-aside mono">{{ c.values.aside }}</span>
         </div>
         <div class="sh-values-grid">
-          <p class="sh-values-lead">
-            The Bitcoin Stamps community lives by <em>"In Lak'ech Ala K'in"</em>, I am
-            another you. Your creativity strengthens our collective expression.
-          </p>
-          <p class="sh-values-body">
-            We carry the Rare Pepe tradition forward while embracing Bitcoin's
-            permanence. This movement grew from artists and builders, not corporate
-            planning, and it stands on fair launches and shared creativity.
-            <a class="sh-values-link" href="/en/community/">Meet the community →</a>
+          <p class="sh-values-lead"><RichText :nodes="c.values.lead" /></p>
+          <p class="sh-values-body">{{ c.values.body }}
+            <a class="sh-values-link" :href="c.values.link.href">{{ c.values.link.text }}</a>
           </p>
         </div>
       </div>
@@ -266,52 +189,26 @@ const stampImg = withBase('/bitcoin-stamp-hero-light.png')
         <div class="sh-foot-brand">
           <span class="sh-brand">
             <span class="sh-brand-mark" aria-hidden="true"></span>
-            Bitcoin Stamps
+            {{ c.footer.brand }}
           </span>
-          <p>
-            Community-owned documentation for the Bitcoin Stamps metaprotocol. No
-            company, no foundation. Just the chain and the people stamping on it.
-          </p>
+          <p>{{ c.footer.brandDesc }}</p>
           <div class="sh-foot-motto mono">
-            "In Lak'ech Ala K'in"
-            <small>I am another you</small>
+            {{ c.footer.motto }}
+            <small>{{ c.footer.mottoSmall }}</small>
           </div>
         </div>
 
-        <div class="sh-foot-col">
-          <h5 class="mono">Protocol</h5>
+        <div class="sh-foot-col" v-for="(col, i) in c.footer.columns" :key="i">
+          <h5 class="mono">{{ col.title }}</h5>
           <ul>
-            <li><a href="/en/whitepaper/">Whitepaper</a></li>
-            <li><a href="/en/protocols/src-20">SRC-20 spec</a></li>
-            <li><a href="/en/protocols/src-721">SRC-721 spec</a></li>
-            <li><a href="/en/protocols/sips">SIP registry</a></li>
-          </ul>
-        </div>
-
-        <div class="sh-foot-col">
-          <h5 class="mono">Build</h5>
-          <ul>
-            <li><a href="/en/guide/introduction">Getting started</a></li>
-            <li><a href="/en/tutorials/">Tutorials</a></li>
-            <li><a href="/en/tutorials/api-integration">API reference</a></li>
-            <li><a href="/en/tutorials/sdk-integration">tx-builder SDK</a></li>
-          </ul>
-        </div>
-
-        <div class="sh-foot-col">
-          <h5 class="mono">Community</h5>
-          <ul>
-            <li><a href="/en/narratives/">Stories</a></li>
-            <li><a href="/en/community/">Community hub</a></li>
-            <li><a href="/en/guide/economics">Economics</a></li>
-            <li><a href="/en/blog/">Updates</a></li>
+            <li v-for="(link, j) in col.links" :key="j"><a :href="link.href">{{ link.text }}</a></li>
           </ul>
         </div>
       </div>
 
       <div class="sh-wrap sh-foot-legal mono">
-        <span>© 2023-2026 Bitcoin Stamps Community · MIT License</span>
-        <span>permanence: forever</span>
+        <span>{{ c.footer.legalLeft }}</span>
+        <span>{{ c.footer.legalRight }}</span>
       </div>
     </footer>
   </main>
@@ -344,20 +241,11 @@ const stampImg = withBase('/bitcoin-stamp-hero-light.png')
   display: block;
 }
 
-/* ---------- design tokens (dark override) ---------- */
-:global(.dark) .stamps-home {
-  --sh-bg: #0A0A0A;
-  --sh-raise: #111111;
-  --sh-panel: #1A1A1A;
-  --sh-line: #262626;
-  --sh-text: #EDEDED;
-  --sh-dim: #8A8A8A;
-  --sh-faint: #5C5C5C;
-  --sh-orange: #F7931A;
-  --sh-orange-solid: #F7931A;
-  --sh-orange-ink: #0A0A0A;
-  --sh-orange-soft: rgba(247, 147, 26, 0.12);
-}
+/* ---------- design tokens (dark override) ----------
+   NOTE: the dark token override lives in the GLOBAL theme/style.css as
+   `html.dark .stamps-home { ... }`. A scoped `:global(.dark) .stamps-home`
+   rule here mis-compiles in the VitePress build (scope-attribute mismatch)
+   and does not apply, so it is intentionally NOT declared in this SFC. */
 
 .stamps-home * { box-sizing: border-box; }
 .stamps-home ::selection { background: var(--sh-orange-solid); color: #0A0A0A; }
@@ -390,7 +278,8 @@ const stampImg = withBase('/bitcoin-stamp-hero-light.png')
   mask-image: radial-gradient(ellipse 80% 90% at 70% 10%, #000 0%, transparent 70%);
   pointer-events: none;
 }
-:global(.dark) .sh-hero::before { opacity: 0.25; }
+/* dark-mode overlay opacity moved to GLOBAL theme/style.css as
+   `html.dark .sh-hero::before` (scoped :global descendant mis-compiles). */
 
 .sh-hero-grid {
   position: relative;
@@ -432,7 +321,7 @@ const stampImg = withBase('/bitcoin-stamp-hero-light.png')
   color: var(--sh-dim);
   line-height: 1.65;
 }
-.sh-tagline em {
+.sh-tagline :deep(em) {
   font-style: normal;
   color: var(--sh-text);
   font-family: var(--sh-mono);
@@ -569,7 +458,7 @@ const stampImg = withBase('/bitcoin-stamp-hero-light.png')
 .sh-why-lead-h3 { margin: 14px 0 0; font-size: 26px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; color: var(--sh-text); }
 .sh-why-p { margin: 10px 0 0; font-size: 14.5px; color: var(--sh-dim); line-height: 1.65; }
 .sh-why-lead-p { margin: 10px 0 0; font-size: 16px; max-width: 46ch; color: var(--sh-dim); line-height: 1.65; }
-.sh-why-cell code { font-family: var(--sh-mono); font-size: 0.88em; color: var(--sh-orange); background: var(--sh-orange-soft); padding: 1px 6px; border-radius: 4px; }
+.sh-why-cell :deep(code) { font-family: var(--sh-mono); font-size: 0.88em; color: var(--sh-orange); background: var(--sh-orange-soft); padding: 1px 6px; border-radius: 4px; }
 
 .sh-compare { font-family: var(--sh-mono); font-size: 12.5px; border: 1px solid var(--sh-line); background: var(--sh-raise); }
 .sh-compare-row { display: grid; grid-template-columns: 130px 1fr; border-top: 1px solid var(--sh-line); }
@@ -650,7 +539,7 @@ const stampImg = withBase('/bitcoin-stamp-hero-light.png')
 /* ---------- community values ---------- */
 .sh-values-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: start; }
 .sh-values-lead { font-size: clamp(19px, 2vw, 23px); line-height: 1.5; color: var(--sh-text); font-weight: 600; letter-spacing: -0.015em; margin: 0; }
-.sh-values-lead em { font-style: normal; color: var(--sh-orange); font-family: var(--sh-mono); font-size: 0.82em; }
+.sh-values-lead :deep(em) { font-style: normal; color: var(--sh-orange); font-family: var(--sh-mono); font-size: 0.82em; }
 .sh-values-body { font-size: 15.5px; color: var(--sh-dim); line-height: 1.7; margin: 0; }
 .sh-values-link { display: inline-block; margin-top: 16px; color: var(--sh-orange); font-family: var(--sh-mono); font-size: 13px; }
 .sh-values-link:hover { text-decoration: underline; }
