@@ -17,13 +17,12 @@ The Bitcoin Stamps community welcomes contributors who embrace **"In Lak'ech Ala
 
 This project powers [bitcoinstamps.xyz](https://bitcoinstamps.xyz). The biggest need right now is **translation help** — English content is complete (28 pages) but other languages need contributors:
 
-| Language | Coverage | Help Needed |
-|----------|----------|-------------|
-| English | 100% | Review & updates |
-| Turkish | 43% | Translation |
-| Chinese | 21% | Translation |
-| Spanish | 18% | Translation |
-| French | 18% | Translation |
+| Language | Status | Help Needed |
+|----------|--------|-------------|
+| English | Complete (source of truth) | Review & updates |
+| Spanish, French, Chinese, Turkish, Portuguese, Czech | Homepage, Updates, and key narrative/protocol pages localized (native-reviewed) | Deeper tutorial & reference pages |
+
+Translations are reviewed by native speakers before they ship. Keep technical tokens (SRC-20, OLGA, P2WSH, block heights, KEVIN) verbatim, keep `mikeinspace` lowercase and KEVIN in ALL CAPS, and avoid em dashes (use commas, colons, or parentheses).
 
 To contribute translations:
 1. Fork this repository
@@ -100,6 +99,18 @@ docs/
 3. **Preserve cultural context**: KEVIN in ALL CAPS, Trinity narrative accuracy
 4. **Test your build**: Run `npm run docs:build` before submitting
 5. **Small PRs**: Focused changes are easier to review
+
+## Development Workflow
+
+This project uses a flat, single-branch workflow (no long-lived staging branch):
+
+1. Fork the repo (or branch, for maintainers) and make your change on a feature branch.
+2. Open a pull request **directly against `main`**.
+3. CI runs automatically (build, LEO API validation, JSON-LD, Lighthouse). All required checks must pass.
+4. A maintainer merges via **squash** (linear history, no merge commits).
+5. Merging to `main` auto-deploys to production via Cloudflare Pages. Every PR also gets a live preview deploy.
+
+There is no version/release cycle for the site: `main` is always production.
 
 ## Quality Standards
 

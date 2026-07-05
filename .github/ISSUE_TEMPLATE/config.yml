@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Community chat (Telegram)
+    url: https://t.me/BitcoinStamps
+    about: Questions, ideas, and general discussion with the Bitcoin Stamps community.
+  - name: Indexer / protocol issues
+    url: https://github.com/stampchain-io/btc_stamps/issues
+    about: Bugs or proposals for the Bitcoin Stamps indexer and protocol belong here.
