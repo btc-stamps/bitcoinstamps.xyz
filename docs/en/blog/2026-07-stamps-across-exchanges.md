@@ -21,6 +21,12 @@ In February 2024, the OKX Web3 Wallet [added support for the Stamps SRC-20 stand
 
 One thing to be precise about: this is wallet indexing, not a trading listing. OKX did not open an SRC-20 spot market, and its zero-fee inscriptions marketplace covered other standards, not SRC-20. So "OKX supports SRC-20 in the wallet" is true, and "trade Stamps on OKX" is not.
 
+## Block explorers decode stamps natively
+
+Some general-purpose Bitcoin explorers read stamps directly, not just as raw outputs. Blockchain.com's explorer decodes classic (Counterparty) Bitcoin Stamps and renders the image inline: it detects the `STAMP:base64` data in the transaction, labels it as a Bitcoin Stamp, and shows the picture alongside its dimensions, media type, and asset ID. You can see it on a [live stamp transaction](https://www.blockchain.com/explorer/transactions/btc/176a5d0329a8b48d5f86bcaf0078ccc3a57d50013744f4af3ea0c827347520ce).
+
+That support landed early in the protocol's history, which is a quiet but meaningful vote of confidence: a mainstream explorer chose to understand the format. Native decoding of the newer <EntityMention entity="olga">OLGA</EntityMention> (P2WSH) encoding across every general-purpose explorer is still catching up, so [stampchain.io](https://stampchain.io) remains the most complete view of every stamp.
+
 ## Aggregators and education
 
 Price aggregators track the tokens: CoinGecko maintains a [Top SRC-20 Coins category](https://www.coingecko.com/en/categories/src-20), and CoinMarketCap carries price pages for the individual tokens. Binance Academy also documents the ecosystem with explainer articles on [Bitcoin Stamps](https://academy.binance.com/en/articles/what-are-bitcoin-stamps) and [SRC-20 tokens](https://academy.binance.com/en/glossary/src-20-tokens). That's tracking and education, which is useful for discovery, but it isn't a listing or a partnership, and we don't claim it as one.
