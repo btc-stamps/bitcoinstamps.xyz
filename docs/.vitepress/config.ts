@@ -263,7 +263,8 @@ export default defineConfig({
           { text: 'Libro blanco', link: '/en/whitepaper/' },
           { text: 'Tutoriales', link: '/es/tutorials/' },
           { text: 'Historias', link: '/es/narratives/' },
-          { text: 'Comunidad', link: '/es/community/' }
+          { text: 'Comunidad', link: '/es/community/' },
+          { text: 'Novedades', link: '/es/blog/' }
         ],
         footer: {
           message: 'Proyecto comunitario de código abierto que preserva la cultura digital en Bitcoin',
