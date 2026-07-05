@@ -1,5 +1,7 @@
 ---
-layout: home
+layout: StampsHome
+footer: false
+pageClass: stamps-home-page
 title: "Bitcoin Stamps 元协议文档"
 description: "官方文档，记录直接存储在比特币区块链上的不可变数字资产，使用 SRC-20、SRC-101、SRC-721 元协议，由 KEVIN 的神话智慧和社区价值观指导"
 leoType: "homepage"

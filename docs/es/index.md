@@ -1,5 +1,7 @@
 ---
-layout: home
+layout: StampsHome
+footer: false
+pageClass: stamps-home-page
 title: "Documentación del Metaprotocolo Bitcoin Stamps"
 description: "Documentación oficial para activos digitales inmutables almacenados directamente en la blockchain de Bitcoin usando metaprotocolos SRC-20, SRC-101, SRC-721, guiados por la sabiduría mítica de KEVIN y los valores comunitarios"
 leoType: "homepage"
