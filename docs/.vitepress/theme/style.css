@@ -1441,3 +1441,284 @@ html.dark .stamps-home-page .VPContent { background: #0A0A0A; }
 html.dark { opacity: 1 !important; }
 html.dark .sh-hero::before { opacity: 0.25; }
 
+/* ===========================================================================
+   DARK-TECH INNER-PAGES PASS  (design/inner-pages)
+   ---------------------------------------------------------------------------
+   Extends the approved StampsHome dark-tech language to the DEFAULT VitePress
+   doc layout (guide / protocols / tutorials / narratives / community / blog…),
+   in BOTH light and dark. CSS-only. Doc-shell selectors (.vp-doc, .VPSidebar,
+   .VPDocAside…) never appear on the bespoke homepage, whose custom layout uses
+   its own .sh-* tokens; the few global selectors below (tokens, .VPNav, .a) are
+   either matched more specifically by the existing `.stamps-home-page …` rules
+   above (so the homepage wins) or scoped to `.vp-doc`, so the homepage is not
+   regressed.  Palette mirrors StampsHome:
+       light   bg #FFFFFF · alt #FAFAFA · hairline #E5E5E5 · ink #171717
+       dark    bg #0A0A0A · raise #111111 · panel #1A1A1A · hairline #262626
+       accent  single locked Bitcoin-orange #F7931A  (AA text form #C15200)
+   =========================================================================== */
+
+/* --- 1. Surfaces + hairline tokens aligned to StampsHome -------------------
+   Global token overrides unify the default doc shell. The homepage overrides
+   its own --vp-c-bg* tokens (see `.stamps-home-page` block above) and renders
+   through --sh-* internally, so these values do not change its appearance. */
+:root {
+  --vp-c-divider: #E5E5E5;
+  --vp-c-gutter: #E5E5E5;
+  --vp-c-border: #E5E5E5;
+  --vp-c-bg-alt: #FAFAFA;
+  --vp-c-bg-soft: #F5F5F5;
+  --dt-accent: #C15200;        /* AA orange text on light backgrounds */
+  --dt-accent-solid: #F7931A;  /* fills, bars, markers, dark-mode text */
+  --dt-code-bg: #FBFBFB;
+}
+.dark {
+  --vp-c-bg: #0A0A0A;
+  --vp-c-bg-alt: #111111;
+  --vp-c-bg-elv: #161616;
+  --vp-c-bg-soft: #141414;
+  --vp-c-divider: #262626;
+  --vp-c-gutter: #262626;
+  --vp-c-border: #262626;
+  --dt-accent: #F7931A;
+  --dt-accent-solid: #F7931A;
+  --dt-code-bg: #0E0E0E;
+}
+
+/* --- 2. Top navbar — hairline, no heavy shadow, translucent both modes ----- */
+.VPNav { border-bottom: none; box-shadow: none; }
+.dark .VPNav { border-bottom: none; box-shadow: none; }
+.VPNavBar {
+  background: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+.dark .VPNavBar {
+  background: rgba(10, 10, 10, 0.85);
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+/* --- 3. Headings — stop the all-orange treatment -------------------------- */
+/* Ink / white headings (matches StampsHome .sh-h1/.sh-h2), tight tracking. */
+.vp-doc h1, .vp-doc h2, .vp-doc h3,
+.vp-doc h4, .vp-doc h5, .vp-doc h6,
+.dark .vp-doc h1, .dark .vp-doc h2, .dark .vp-doc h3,
+.dark .vp-doc h4, .dark .vp-doc h5, .dark .vp-doc h6 {
+  color: var(--vp-c-text-1);
+}
+.vp-doc h1 {
+  font-size: clamp(30px, 3.2vw, 40px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+.vp-doc h2 {
+  font-size: clamp(22px, 2.3vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  border-top: 1px solid var(--vp-c-divider);
+  margin-top: 48px;
+  padding-top: 26px;
+}
+.vp-doc h3 {
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+  margin-top: 32px;
+}
+.vp-doc h4 { font-size: 16px; font-weight: 600; letter-spacing: -0.005em; }
+/* Sparing orange accent: a short rule under the H2 section divider, echoing
+   StampsHome's .sh-eyebrow::before / .sh-rule. Orange appears once per section,
+   never on the heading text itself. */
+.vp-doc h2::before {
+  content: "";
+  display: block;
+  width: 28px;
+  height: 2px;
+  background: var(--dt-accent-solid);
+  margin-bottom: 20px;
+}
+
+/* --- 4. Sidebar ----------------------------------------------------------- */
+.VPSidebar {
+  background: var(--vp-c-bg);
+  border-right: 1px solid var(--vp-c-divider);
+}
+.dark .VPSidebar { background: var(--vp-c-bg); }
+/* Section group titles → small-caps, muted */
+.VPSidebarItem.level-0 > .item .text {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--vp-c-text-3);
+}
+/* Nested link labels → normal case, comfortable weight */
+.VPSidebarItem.level-1 .link .text,
+.VPSidebarItem.level-2 .link .text {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--vp-c-text-2);
+  transition: color 0.15s ease;
+}
+.VPSidebarItem .link:hover .text { color: var(--vp-c-text-1); }
+/* Active item → orange left rule (inset, no layout shift) + medium weight */
+.VPSidebarItem.is-active > .item {
+  box-shadow: inset 2px 0 0 var(--dt-accent-solid);
+}
+.VPSidebarItem.is-active > .item .link .text {
+  color: var(--dt-accent);
+  font-weight: 600;
+}
+.dark .VPSidebarItem.is-active > .item .link .text { color: var(--dt-accent-solid); }
+
+/* --- 5. Right TOC ("On this page") ---------------------------------------- */
+.VPDocAsideOutline .outline-title {
+  color: var(--vp-c-text-3);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+.VPDocAsideOutline .outline-link {
+  color: var(--vp-c-text-3);
+  font-size: 13px;
+  transition: color 0.15s ease;
+}
+.VPDocAsideOutline .outline-link:hover,
+.VPDocAsideOutline .outline-link.active { color: var(--dt-accent) !important; }
+.dark .VPDocAsideOutline .outline-link:hover,
+.dark .VPDocAsideOutline .outline-link.active { color: var(--dt-accent-solid) !important; }
+.VPDocAsideOutline .outline-marker { background-color: var(--dt-accent-solid) !important; }
+
+/* --- 6. Content (.vp-doc) -------------------------------------------------- */
+/* Links: orange, subtle underline that firms up on hover */
+.vp-doc a {
+  color: var(--dt-accent);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: rgba(247, 147, 26, 0.35);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+.vp-doc a:hover {
+  color: var(--dt-accent-solid);
+  text-decoration-color: var(--dt-accent-solid);
+}
+.dark .vp-doc a {
+  color: var(--dt-accent-solid);
+  text-decoration-color: rgba(247, 147, 26, 0.4);
+}
+.dark .vp-doc a:hover { color: #FFA739; }
+
+/* Refined divider */
+.vp-doc hr {
+  border: none;
+  border-top: 1px solid var(--vp-c-divider);
+  margin: 40px 0;
+}
+
+/* Tables: hairline borders, subtle header, no zebra */
+.vp-doc table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+.vp-doc th, .vp-doc td {
+  border: 1px solid var(--vp-c-divider);
+  padding: 10px 16px;
+}
+.vp-doc th {
+  background: var(--vp-c-bg-alt);
+  color: var(--vp-c-text-1);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-align: left;
+}
+.vp-doc tr, .vp-doc tr:nth-child(2n) { background: transparent; border: none; }
+
+/* Blockquote: left orange rule, no tint */
+.vp-doc blockquote {
+  border-left: 2px solid var(--dt-accent-solid);
+  padding-left: 20px;
+  margin-left: 0;
+  background: transparent;
+  color: var(--vp-c-text-2);
+  font-style: normal;
+}
+
+/* Custom blocks: left accent rule + subtle surface (no heavy tint) */
+.vp-doc .custom-block {
+  border: 1px solid var(--vp-c-divider);
+  border-left: 3px solid var(--dt-accent-solid);
+  border-radius: 0 6px 6px 0;
+  background: var(--vp-c-bg-alt);
+}
+.vp-doc .custom-block.warning { border-left-color: var(--vp-c-warning); }
+.vp-doc .custom-block.danger  { border-left-color: var(--vp-c-danger); }
+.vp-doc .custom-block.info    { border-left-color: var(--vp-c-text-3); }
+.vp-doc .custom-block .custom-block-title { font-weight: 600; }
+.vp-doc .custom-block a { color: inherit; }
+
+/* Inline code: orange on orange-soft + hairline (matches StampsHome .sh code) */
+.vp-doc :not(pre) > code {
+  font-family: var(--vp-font-family-mono);
+  font-size: 0.85em;
+  color: var(--dt-accent);
+  background: var(--vp-c-brand-softer);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+.dark .vp-doc :not(pre) > code {
+  color: var(--dt-accent-solid);
+  background: rgba(247, 147, 26, 0.10);
+  border-color: rgba(247, 147, 26, 0.22);
+}
+.vp-doc h1 code, .vp-doc h2 code, .vp-doc h3 code { font-size: 0.9em; }
+
+/* Fenced code blocks: distinct surface, hairline border, Geist Mono */
+.vp-doc div[class*="language-"] {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--dt-code-bg);
+}
+.vp-doc [class*="language-"] pre { background: transparent; }
+.vp-doc [class*="language-"] code { font-family: var(--vp-font-family-mono); }
+.vp-doc [class*="language-"] .lang {
+  color: var(--vp-c-text-3);
+  font-family: var(--vp-font-family-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+/* Copy button: faintly visible at rest, firms up on hover/focus */
+.vp-doc [class*="language-"] > button.copy {
+  opacity: 0.55;
+  border: 1px solid var(--vp-c-divider);
+  background-color: var(--vp-c-bg-alt);
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+.vp-doc [class*="language-"]:hover > button.copy,
+.vp-doc [class*="language-"] > button.copy:focus { opacity: 1; }
+.vp-doc [class*="language-"] > button.copy:hover { border-color: var(--dt-accent-solid); }
+
+/* Prev / next pager: hairline cards with orange hover */
+.VPDocFooter .pager-link {
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  transition: border-color 0.2s ease;
+}
+.VPDocFooter .pager-link:hover { border-color: var(--dt-accent-solid); }
+.VPDocFooter .pager-link .title { color: var(--vp-c-text-1); }
+.VPDocFooter .pager-link .desc { color: var(--vp-c-text-3); }
+
+/* Reduced-motion: neutralize the hover transitions added above (the global
+   prefers-reduced-motion block already zeroes transition-duration; this is a
+   belt-and-braces guard for the doc-shell selectors introduced here). */
+@media (prefers-reduced-motion: reduce) {
+  .VPSidebarItem .link .text,
+  .VPDocAsideOutline .outline-link,
+  .vp-doc a,
+  .vp-doc [class*="language-"] > button.copy,
+  .VPDocFooter .pager-link { transition: none; }
+}
+
