@@ -2,7 +2,7 @@
 title: "KEVIN and STAMP List on BitMart"
 date: "2025-12-23"
 author: "reinamora"
-description: "On December 23, 2025, BitMart opened spot trading for KEVIN and STAMP, the first centralized exchange to list two Bitcoin Stamps SRC-20 tokens for trading."
+description: "On December 23, 2025, BitMart opened spot trading for KEVIN and STAMP, bringing two Bitcoin Stamps SRC-20 tokens, including the protocol's founding token, to a centralized exchange."
 tags: ["exchanges", "src-20", "kevin", "listing", "milestone"]
 leoType: "blog"
 ---
