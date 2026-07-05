@@ -100,6 +100,18 @@ docs/
 4. **Test your build**: Run `npm run docs:build` before submitting
 5. **Small PRs**: Focused changes are easier to review
 
+## Development Workflow
+
+This project uses a flat, single-branch workflow (no long-lived staging branch):
+
+1. Fork the repo (or branch, for maintainers) and make your change on a feature branch.
+2. Open a pull request **directly against `main`**.
+3. CI runs automatically (build, LEO API validation, JSON-LD, Lighthouse). All required checks must pass.
+4. A maintainer merges via **squash** (linear history, no merge commits).
+5. Merging to `main` auto-deploys to production via Cloudflare Pages. Every PR also gets a live preview deploy.
+
+There is no version/release cycle for the site: `main` is always production.
+
 ## Quality Standards
 
 **Technical**: Clean code, Bitcoin security model compliance, peer review
