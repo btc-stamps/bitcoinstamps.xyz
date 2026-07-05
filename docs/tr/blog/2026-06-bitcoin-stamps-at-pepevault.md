@@ -13,7 +13,7 @@ Haziran 2026'da, <EntityMention entity="bitcoin-stamps">Bitcoin Stamps</EntityMe
 
 ## Sergilenen soyağacı
 
-PepeVault, Bitcoin Stamps topluluğunun iyi bildiği bir kültürel çizgiyi çerçeveliyor: önce Rare Pepes, sonra Bitcoin Stamps, sonra <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention>. Rare Pepes, internet sanatının <EntityMention entity="counterparty">Counterparty</EntityMention> aracılığıyla bir blokzincir üzerinde yaşayabileceğini kanıtladı. Bitcoin Stamps bu ruhu aldı ve depolamayı Bitcoin'in UTXO kümesinde kalıcı hale getirdi. <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention>, meme enerjisini ilk <EntityMention entity="src-20">SRC-20</EntityMention> token'ına taşıdı.
+PepeVault, Bitcoin Stamps topluluğunun iyi bildiği bir kültürel çizgiyi çerçeveliyor: önce Rare Pepes, sonra Bitcoin Stamps, sonra <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention>. Rare Pepes, internet sanatının <EntityMention entity="counterparty">Counterparty</EntityMention> aracılığıyla bir blok zinciri üzerinde yaşayabileceğini kanıtladı. Bitcoin Stamps bu ruhu aldı ve depolamayı Bitcoin'in UTXO kümesinde kalıcı hale getirdi. <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention>, meme enerjisini ilk <EntityMention entity="src-20">SRC-20</EntityMention> token'ına taşıdı.
 
 Bu parçaları yan yana görmek, mirası bağlam içine oturtuyor. Sanat yoktan var olmadı. On yıllık bir zincir üzeri kültürden doğdu.
 

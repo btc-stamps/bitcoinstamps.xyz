@@ -15,7 +15,7 @@ Le 6 juin 2023, au bloc 793 068, <EntityMention entity="src-20">SRC-20</EntityMe
 
 Les premières transactions <EntityMention entity="src-20">SRC-20</EntityMention> reposaient sur <EntityMention entity="counterparty">Counterparty</EntityMention>, un métaprotocole présent sur Bitcoin depuis 2014. Counterparty a donné au standard une voie d'encodage fonctionnelle à ses tout débuts, et cela a permis à la communauté d'avancer vite.
 
-Mais s'appuyer sur un autre protocole signifie hériter de ses hypothèses et de ses contraintes. Pour un standard bâti autour de la permanence et de l'autosuffisance, cette dépendance était un fil non attaché.
+Mais s'appuyer sur un autre protocole signifie hériter de ses hypothèses et de ses contraintes. Pour un standard bâti autour de la permanence et de l'autosuffisance, cette dépendance était un point en suspens.
 
 ## L'encodage natif au bloc 793 068
 

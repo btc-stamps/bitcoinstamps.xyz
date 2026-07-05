@@ -2,7 +2,7 @@
 title: "OLGA : des stamps moins chers et plus grands grâce au P2WSH"
 date: "2024-03-03"
 author: "reinamora"
-description: "OLGA a déplacé l'encodage des stamps vers le P2WSH, s'activant pour les classic stamps au bloc 833 000 et pour SRC-20 au bloc 865 000. Il réduit la taille des transactions d'environ moitié et les frais de 60 à 70 %."
+description: "OLGA a déplacé l'encodage des stamps vers le P2WSH, s'activant pour les classic stamps au bloc 833 000 et pour SRC-20 au bloc 865 000. Elle réduit la taille des transactions d'environ moitié et les frais de 60 à 70 %."
 tags: ["history", "olga", "milestone", "p2wsh", "fees"]
 leoType: "blog"
 ---
@@ -13,7 +13,7 @@ leoType: "blog"
 
 ## Deux hauteurs d'activation
 
-OLGA a été déployé en deux étapes, chacune ancrée à un bloc. L'encodage P2WSH des classic stamps s'est activé au bloc 833 000, le 3 mars 2024. Le premier stamp <EntityMention entity="src-20">SRC-20</EntityMention> P2WSH OLGA est venu plus tard, au bloc 865 000, le 10 octobre 2024. Les deux hauteurs sont des points de contrôle de consensus, de sorte que les indexeurs savent exactement quand chaque voie s'active.
+OLGA a été déployée en deux étapes, chacune ancrée à un bloc. L'encodage P2WSH des classic stamps s'est activé au bloc 833 000, le 3 mars 2024. Le premier stamp <EntityMention entity="src-20">SRC-20</EntityMention> P2WSH OLGA est venu plus tard, au bloc 865 000, le 10 octobre 2024. Les deux hauteurs sont des points de contrôle de consensus, de sorte que les indexeurs savent exactement quand chaque voie s'active.
 
 ## Ce que le P2WSH change
 

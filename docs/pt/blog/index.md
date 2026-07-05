@@ -7,7 +7,7 @@ layout: "page"
 
 # Novidades
 
-Novidades, anúncios e análises técnicas aprofundadas da comunidade Bitcoin Stamps: os desenvolvedores do protocolo, artistas e colaboradores que moldam os ativos digitais permanentes no Bitcoin.
+Novidades, anúncios e análises técnicas aprofundadas da comunidade Bitcoin Stamps: os programadores do protocolo, artistas e colaboradores que moldam os ativos digitais permanentes no Bitcoin.
 
 <script setup>
 import { data as posts } from '/.vitepress/data/blog.pt.data.ts'

@@ -9,7 +9,7 @@ leoType: "blog"
 
 # Le registre des SIP est en ligne
 
-Le registre des propositions d'amélioration de Bitcoin Stamps (SIP) est désormais publié sur bitcoinstamps.xyz. C'est le foyer canonique et versionné de la façon dont le protocole <EntityMention entity="bitcoin-stamps">Bitcoin Stamps</EntityMention> évolue, et il est public pour que chacun puisse le lire.
+Le registre des propositions d'amélioration de Bitcoin Stamps (SIP) est désormais publié sur bitcoinstamps.xyz. C'est le lieu canonique et versionné qui décrit comment le protocole <EntityMention entity="bitcoin-stamps">Bitcoin Stamps</EntityMention> évolue, et il est public pour que chacun puisse le lire.
 
 ## Ce qu'est une SIP
 

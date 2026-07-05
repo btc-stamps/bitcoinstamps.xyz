@@ -2,7 +2,7 @@
 title: "OLGA: Levnější a větší stampy díky P2WSH"
 date: "2024-03-03"
 author: "reinamora"
-description: "OLGA přesunula kódování stampů na P2WSH; pro classic stampy se aktivovala v bloku 833,000 a pro SRC-20 v bloku 865,000. Zmenšuje velikost transakce zhruba na polovinu a poplatky o 60 až 70 %."
+description: "OLGA přesunula kódování stampů na P2WSH; pro klasické stampy se aktivovala v bloku 833,000 a pro SRC-20 v bloku 865,000. Zmenšuje velikost transakce zhruba na polovinu a poplatky o 60 až 70 %."
 tags: ["history", "olga", "milestone", "p2wsh", "fees"]
 leoType: "blog"
 ---
@@ -13,7 +13,7 @@ leoType: "blog"
 
 ## Dvě aktivační výšky
 
-OLGA se zaváděla ve dvou fázích, každá ukotvená k jednomu bloku. Kódování P2WSH pro classic stampy se aktivovalo v bloku 833,000 dne 3. března 2024. První stamp <EntityMention entity="src-20">SRC-20</EntityMention> P2WSH OLGA přišel později, v bloku 865,000 dne 10. října 2024. Obě výšky jsou konsenzuální kontrolní body, takže indexery přesně vědí, kdy se která cesta zapne.
+OLGA se zaváděla ve dvou fázích, každá ukotvená k jednomu bloku. Kódování P2WSH pro klasické stampy se aktivovalo v bloku 833,000 dne 3. března 2024. První stamp <EntityMention entity="src-20">SRC-20</EntityMention> P2WSH OLGA přišel později, v bloku 865,000 dne 10. října 2024. Obě výšky jsou konsenzuální kontrolní body, takže indexery přesně vědí, kdy se která cesta zapne.
 
 ## Co P2WSH mění
 

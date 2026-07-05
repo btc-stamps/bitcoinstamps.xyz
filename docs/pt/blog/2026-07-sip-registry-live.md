@@ -9,7 +9,7 @@ leoType: "blog"
 
 # O registo de SIPs está no ar
 
-O registo de Propostas de Melhoria do Bitcoin Stamps já está publicado em bitcoinstamps.xyz. É o lar canónico e versionado de como o protocolo <EntityMention entity="bitcoin-stamps">Bitcoin Stamps</EntityMention> muda, e é público para qualquer pessoa ler.
+O registo de Propostas de Melhoria do Bitcoin Stamps já está publicado em bitcoinstamps.xyz. É o repositório canónico e versionado de como o protocolo <EntityMention entity="bitcoin-stamps">Bitcoin Stamps</EntityMention> muda, e é público para qualquer pessoa ler.
 
 ## O que é uma SIP
 

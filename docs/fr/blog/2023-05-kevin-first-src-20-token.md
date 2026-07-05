@@ -2,14 +2,14 @@
 title: "KEVIN devient le premier token SRC-20"
 date: "2023-05-03"
 author: "reinamora"
-description: "Le 3 mai 2023, au bloc 788 041, Arwyn a déployé KEVIN comme tout premier token SRC-20 (Stamp #18,516), lançant le standard de token fongible sur Bitcoin Stamps."
+description: "Le 3 mai 2023, au bloc 788 041, Arwyn a déployé KEVIN comme tout premier token SRC-20 (Stamp #18 516), lançant le standard de token fongible sur Bitcoin Stamps."
 tags: ["history", "src-20", "kevin", "milestone", "token"]
 leoType: "blog"
 ---
 
 # KEVIN devient le premier token SRC-20
 
-Le 3 mai 2023, au bloc 788 041, <EntityMention entity="arwyn">Arwyn</EntityMention> a déployé <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> comme tout premier token <EntityMention entity="src-20">SRC-20</EntityMention>. Il est arrivé sous la forme du Stamp #18,516, et c'est le moment où les tokens fongibles sont arrivés sur <EntityMention entity="bitcoin-stamps">Bitcoin Stamps</EntityMention>.
+Le 3 mai 2023, au bloc 788 041, <EntityMention entity="arwyn">Arwyn</EntityMention> a déployé <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> comme tout premier token <EntityMention entity="src-20">SRC-20</EntityMention>. Il est arrivé sous la forme du Stamp #18 516, et c'est le moment où les tokens fongibles sont arrivés sur <EntityMention entity="bitcoin-stamps">Bitcoin Stamps</EntityMention>.
 
 Jusque-là, les stamps étaient des pièces uniques d'art permanent. SRC-20 posait une question différente : pouvait-on construire un standard de token fongible par-dessus la même garantie de permanence ? <EntityMention entity="kevin" variant="cultural">KEVIN</EntityMention> est la réponse, et il fonctionne toujours.
 

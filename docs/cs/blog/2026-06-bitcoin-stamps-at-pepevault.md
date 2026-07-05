@@ -23,7 +23,7 @@ Organizátor uvádí zastávku v Lisabonu během NFC Summit v Unicorn Factory Li
 
 ## Praha
 
-Druhou zastávkou byla podle PepeVault "PEPEX Prague" v Fuchs2 na ostrově Štvanice dne 11. června, konaná během týdne BTC Prague. Přivést on-chain Pepe a Bitcoin Stamps do středu velkého bitcoinového setkání zapadá do tématu: tohle je bitcoinová kultura, ne vedlejší úkol.
+Druhou zastávkou byla podle PepeVault "PEPEX Prague" ve Fuchs2 na ostrově Štvanice dne 11. června, konaná během týdne BTC Prague. Přivést on-chain Pepe a Bitcoin Stamps do středu velkého bitcoinového setkání zapadá do tématu: tohle je bitcoinová kultura, ne vedlejší úkol.
 
 ## Proč na komunitních akcích záleží
 
