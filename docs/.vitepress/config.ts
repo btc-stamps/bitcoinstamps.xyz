@@ -56,7 +56,7 @@ const _organizationSchema: Record<string, unknown> = {
   'url': 'https://bitcoinstamps.xyz',
   'logo': {
     '@type': 'ImageObject',
-    'url': 'https://bitcoinstamps.xyz/bitcoin-stamps-logo.svg'
+    'url': 'https://bitcoinstamps.xyz/bitcoin-stamp-logo.svg'
   },
   'sameAs': [] as string[]
 }
