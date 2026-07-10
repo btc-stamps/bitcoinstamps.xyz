@@ -397,7 +397,7 @@ const c = computed(() => getHomeContent(lang.value))
 .sh-tick.br { bottom: -1px; right: -1px; border-bottom-width: 2px; border-right-width: 2px; }
 /* white card behind the (transparent-background) stamp PNG so the black artwork
    keeps high contrast in dark mode, matching the approved reference. */
-.sh-stamp-frame img { width: 100%; background: #FFFFFF; border-radius: 2px; }
+.sh-stamp-frame img { width: 100%; }
 .sh-stamp-meta {
   margin-top: 28px;
   padding-top: 18px;
