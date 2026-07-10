@@ -401,8 +401,7 @@ const c = computed(() => getHomeContent(lang.value))
    keeps high contrast in dark mode, matching the approved reference. */
 .sh-stamp-frame img { width: 100%; }
 .sh-stamp-meta {
-  margin-top: 28px;
-  padding-top: 18px;
+  padding: 40px;
   border-top: 1px dashed var(--sh-line);
   font-size: 11.5px;
   color: var(--sh-faint);
