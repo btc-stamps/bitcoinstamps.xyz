@@ -389,7 +389,6 @@ const c = computed(() => getHomeContent(lang.value))
   position: relative;
   border: 1px solid var(--sh-line);
   background: linear-gradient(180deg, rgba(247,147,26,0.05), transparent 40%), var(--sh-raise);
-  padding: 40px;
   align-self: start;
   margin: 0;
 }
