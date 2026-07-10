@@ -24,9 +24,12 @@ import { computed } from 'vue'
 import RichText from './RichText.vue'
 import { getHomeContent } from './stampsHomeContent'
 
-const stampImg = withBase('/bitcoin-stamp-hero-light.png')
+const { lang, isDark } = useData()
 
-const { lang } = useData()
+const stampImg = computed(() =>
+  withBase(isDark.value ? '/bitcoin-stamp-hero-dark.png' : '/bitcoin-stamp-hero-light.png')
+)
+
 const c = computed(() => getHomeContent(lang.value))
 </script>
 
