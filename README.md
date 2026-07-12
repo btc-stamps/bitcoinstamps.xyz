@@ -1,15 +1,25 @@
 <div align="center">
+  <img src="https://raw.githubusercontent.com/btc-stamps/bitcoinstamps.xyz/main/docs/assets/bitcoinstamps-docs-github-hero.png" alt="Bitcoin Stamps - Docs" width="100%">
 
-# bitcoinstamps.xyz
+### Bitcoin Stamps - Documentation
+#### Official website documentation for the Bitcoin Stamps protocol
 
-**Official documentation for the Bitcoin Stamps protocol.**
+&nbsp;
 
-[![CI - LEO API Quality Assurance](https://github.com/btc-stamps/bitcoinstamps.xyz/actions/workflows/ci.yml/badge.svg)](https://github.com/btc-stamps/bitcoinstamps.xyz/actions/workflows/ci.yml)
-[![Deploy to Cloudflare Pages](https://github.com/btc-stamps/bitcoinstamps.xyz/actions/workflows/deploy-cloudflare.yml/badge.svg)](https://github.com/btc-stamps/bitcoinstamps.xyz/actions/workflows/deploy-cloudflare.yml)
+[![Live](https://img.shields.io/badge/live-bitcoinstamps.xyz-F7931A?logo=bitcoin&logoColor=white)](https://bitcoinstamps.xyz)&nbsp;&nbsp;
+[![CI - LEO API Quality Assurance](https://github.com/btc-stamps/bitcoinstamps.xyz/actions/workflows/ci.yml/badge.svg)](https://github.com/btc-stamps/bitcoinstamps.xyz/actions/workflows/ci.yml)&nbsp;&nbsp;
+[![Deploy to Cloudflare Pages](https://github.com/btc-stamps/bitcoinstamps.xyz/actions/workflows/deploy-cloudflare.yml/badge.svg)](https://github.com/btc-stamps/bitcoinstamps.xyz/actions/workflows/deploy-cloudflare.yml)&nbsp;&nbsp;
 [![License: MIT](https://img.shields.io/badge/license-MIT-F7931A)](LICENSE)
-[![Live](https://img.shields.io/badge/live-bitcoinstamps.xyz-F7931A?logo=bitcoin&logoColor=white)](https://bitcoinstamps.xyz)
 
-</div>
+
+&nbsp;
+
+---
+
+</div> 
+&nbsp;
+
+## 📋 Overview
 
 The docs site for [Bitcoin Stamps](https://bitcoinstamps.xyz), unprunable data storage on Bitcoin's UTXO set. Built with [VitePress](https://vitepress.dev) and published in 7 languages (en, es, fr, zh, tr, pt, cs). It serves both developers and artists, with automated Schema.org generation for AI discoverability and cultural preservation of community context (yes, KEVIN is detected automatically).
 
@@ -110,3 +120,13 @@ Pushes to `main` trigger the [Deploy to Cloudflare Pages](https://github.com/btc
 ## License
 
 MIT License, see [LICENSE](LICENSE) for details.
+
+&nbsp;
+
+---
+
+<div align="center">
+
+Built with Bitcoin 🧡 Permanent by design
+
+</div>

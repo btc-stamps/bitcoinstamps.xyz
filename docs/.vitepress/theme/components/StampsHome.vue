@@ -24,9 +24,12 @@ import { computed } from 'vue'
 import RichText from './RichText.vue'
 import { getHomeContent } from './stampsHomeContent'
 
-const stampImg = withBase('/bitcoin-stamp-hero-light.png')
+const { lang, isDark } = useData()
 
-const { lang } = useData()
+const stampImg = computed(() =>
+  withBase(isDark.value ? '/bitcoin-stamp-hero-dark.png' : '/bitcoin-stamp-hero-light.png')
+)
+
 const c = computed(() => getHomeContent(lang.value))
 </script>
 
@@ -386,7 +389,6 @@ const c = computed(() => getHomeContent(lang.value))
   position: relative;
   border: 1px solid var(--sh-line);
   background: linear-gradient(180deg, rgba(247,147,26,0.05), transparent 40%), var(--sh-raise);
-  padding: 40px;
   align-self: start;
   margin: 0;
 }
@@ -397,10 +399,9 @@ const c = computed(() => getHomeContent(lang.value))
 .sh-tick.br { bottom: -1px; right: -1px; border-bottom-width: 2px; border-right-width: 2px; }
 /* white card behind the (transparent-background) stamp PNG so the black artwork
    keeps high contrast in dark mode, matching the approved reference. */
-.sh-stamp-frame img { width: 100%; background: #FFFFFF; border-radius: 2px; }
+.sh-stamp-frame img { width: 100%; }
 .sh-stamp-meta {
-  margin-top: 28px;
-  padding-top: 18px;
+  padding: 30px 40px;
   border-top: 1px dashed var(--sh-line);
   font-size: 11.5px;
   color: var(--sh-faint);
