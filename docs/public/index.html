@@ -17,10 +17,15 @@
     <meta name="twitter:description" content="Official documentation for Bitcoin Stamps metaprotocols including SRC-20, SRC-101, SRC-721, and OLGA.">
     <meta name="twitter:image" content="https://bitcoinstamps.xyz/og-image.jpg">
     <script>
-        // Detect language and redirect appropriately
-        const lang = navigator.language.toLowerCase().split('-')[0];
-        const supportedLangs = ['en', 'es', 'fr', 'zh', 'tr'];
-        const targetLang = supportedLangs.includes(lang) ? lang : 'en';
+        // Detect language and redirect appropriately.
+        // This list MUST stay in sync with the `locales` keys in
+        // docs/.vitepress/config.ts — a locale missing here silently bounces
+        // its speakers to /en/ even though the localisation exists and is
+        // submitted in sitemap.xml.
+        const supportedLangs = ['en', 'es', 'fr', 'zh', 'tr', 'pt', 'cs'];
+        const nav = (navigator.language || navigator.userLanguage || 'en');
+        const lang = String(nav).toLowerCase().split('-')[0];
+        const targetLang = supportedLangs.indexOf(lang) !== -1 ? lang : 'en';
         window.location.replace('/' + targetLang + '/');
     </script>
     <meta http-equiv="refresh" content="0; url=/en/">
@@ -31,7 +36,15 @@
         <h1>Bitcoin Stamps Documentation</h1>
         <p>Official documentation for Bitcoin Stamps metaprotocols and art platform.</p>
         <ul>
-            <li><a href="/en/">English Documentation</a></li>
+            <li><a href="/en/">English</a></li>
+            <li><a href="/es/">Español</a></li>
+            <li><a href="/fr/">Français</a></li>
+            <li><a href="/zh/">中文</a></li>
+            <li><a href="/tr/">Türkçe</a></li>
+            <li><a href="/pt/">Português</a></li>
+            <li><a href="/cs/">Čeština</a></li>
+        </ul>
+        <ul>
             <li><a href="/en/protocols/src-20">SRC-20 Token Protocol</a></li>
             <li><a href="/en/protocols/src-101">SRC-101 Naming System</a></li>
             <li><a href="/en/protocols/src-721">SRC-721 NFT Protocol</a></li>

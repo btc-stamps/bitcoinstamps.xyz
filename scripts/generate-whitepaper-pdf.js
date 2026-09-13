@@ -112,6 +112,50 @@ function createHTMLVersion(mdPath) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bitcoin Stamps Protocol: A Technical Whitepaper</title>
+  <meta name="description" content="Technical whitepaper for the Bitcoin Stamps protocol: permanent UTXO-based digital assets on Bitcoin, covering SRC-20 tokens, SRC-101 naming, SRC-721 recursion, and OLGA P2WSH encoding.">
+  <link rel="canonical" href="https://bitcoinstamps.xyz/bitcoin-stamps-whitepaper">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Bitcoin Stamps Documentation">
+  <meta property="og:title" content="Bitcoin Stamps Protocol: A Technical Whitepaper">
+  <meta property="og:description" content="Technical whitepaper for the Bitcoin Stamps protocol: permanent UTXO-based digital assets on Bitcoin, covering SRC-20 tokens, SRC-101 naming, SRC-721 recursion, and OLGA P2WSH encoding.">
+  <meta property="og:url" content="https://bitcoinstamps.xyz/bitcoin-stamps-whitepaper">
+  <meta property="og:image" content="https://bitcoinstamps.xyz/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@BitcoinStamps">
+  <meta name="twitter:title" content="Bitcoin Stamps Protocol: A Technical Whitepaper">
+  <meta name="twitter:description" content="Technical whitepaper for the Bitcoin Stamps protocol: permanent UTXO-based digital assets on Bitcoin.">
+  <meta name="twitter:image" content="https://bitcoinstamps.xyz/og-image.jpg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Bitcoin Stamps Protocol: A Technical Whitepaper",
+    "description": "Technical whitepaper for the Bitcoin Stamps protocol: permanent UTXO-based digital assets on Bitcoin, covering SRC-20 tokens, SRC-101 naming, SRC-721 recursion, and OLGA P2WSH encoding.",
+    "inLanguage": "en",
+    "url": "https://bitcoinstamps.xyz/bitcoin-stamps-whitepaper",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://bitcoinstamps.xyz/bitcoin-stamps-whitepaper"
+    },
+    "image": "https://bitcoinstamps.xyz/og-image.jpg",
+    "about": ["Bitcoin Stamps", "SRC-20", "SRC-101", "SRC-721", "OLGA"],
+    "author": {
+      "@type": "Organization",
+      "name": "Bitcoin Stamps",
+      "url": "https://bitcoinstamps.xyz/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Bitcoin Stamps",
+      "url": "https://bitcoinstamps.xyz/"
+    },
+    "encoding": {
+      "@type": "MediaObject",
+      "encodingFormat": "application/pdf",
+      "contentUrl": "https://bitcoinstamps.xyz/bitcoin-stamps-whitepaper.pdf"
+    }
+  }
+  </script>
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;

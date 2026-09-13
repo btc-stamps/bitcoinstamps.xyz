@@ -1202,7 +1202,17 @@ export default defineConfig({
       // JSON-LD validation artifacts, `public` = combined-html spillover.
       const EXCLUDED_DIRS = new Set(['assets', 'node_modules', 'delegations', 'seo', 'public'])
       // GEO #6: root-level legacy pages excluded from the sitemap.
-      const EXCLUDED_ROOT_FILES = new Set(['artists.html', 'developers.html'])
+      //
+      // `index.html` is the language-detection shim shipped from
+      // docs/public/index.html. It carries `<meta name="robots" content="noindex">`
+      // and instantly redirects to /{lang}/, so submitting it produced a
+      // "Submitted URL marked noindex" error in Search Console — on the FIRST
+      // URL of the sitemap. The shim is deliberately noindex (an interstitial
+      // that redirects should never be indexed, and making it indexable would
+      // duplicate /en/); the defect was submitting it, not the noindex. The
+      // real default-language landing page /en/ carries priority 1.0 below and
+      // is the hreflang x-default target, so it is what crawlers should enter on.
+      const EXCLUDED_ROOT_FILES = new Set(['index.html', 'artists.html', 'developers.html'])
 
       async function scanDir(dir: string) {
         const entries = await fs.readdir(dir, { withFileTypes: true })
@@ -1229,8 +1239,11 @@ export default defineConfig({
             }
             // Determine priority
             let priority = '0.5'
-            if (urlPath === '/') priority = '1.0'
-            else if (urlPath.match(/^\/(en|es|fr|zh|tr|pt|cs)\/$/)) priority = '0.9'
+            // /en/ is the default-language landing page and the hreflang
+            // x-default target, so it carries top priority now that the
+            // noindex root shim is no longer submitted.
+            if (urlPath === '/en/') priority = '1.0'
+            else if (urlPath.match(/^\/(es|fr|zh|tr|pt|cs)\/$/)) priority = '0.9'
             else if (urlPath.includes('/protocols/')) priority = '0.8'
             else if (urlPath.includes('/whitepaper/')) priority = '0.8'
             else if (urlPath.includes('/guide/')) priority = '0.7'
